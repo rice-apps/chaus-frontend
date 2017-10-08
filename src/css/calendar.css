@@ -1,0 +1,95 @@
+.wrapper {
+    display:grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+}
+
+.shift {
+    text-align: center;
+}
+
+
+.box:hover {
+    background-color: lightslategrey;
+}
+
+.one {
+
+}
+
+.two {
+
+}
+
+.three {
+
+}
+
+.four {
+
+}
+
+.five {
+
+}
+
+.six {
+
+}
+
+.seven {
+
+}
+
+.eight {
+
+}
+
+.nine {
+
+}
+
+.cols {
+
+}
+.hours {
+    display: grid;
+    grid-column-start: 1;
+    grid-column-end: 2;
+}
+.monday {
+    display: grid;
+    grid-column-start: 2;
+    grid-column-end: 3;
+
+}
+.tuesday {
+    display: grid;
+    grid-column-start: 3;
+    grid-column-end: 4;
+}
+.wednesday {
+    display: grid;
+    grid-column-start: 4;
+    grid-column-end: 5;
+}
+.thursday {
+    display: grid;
+    grid-column-start: 5;
+    grid-column-end: 6;
+}
+.friday {
+    display: grid;
+    grid-column-start: 6;
+    grid-column-end: 7;
+}
+.saturday {
+    display: grid;
+    grid-column-start: 7;
+    grid-column-end: 8;
+}
+.sunday {
+    display: grid;
+    grid-column-start: 8;
+    grid-column-end: 9;
+}
