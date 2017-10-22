@@ -134,7 +134,7 @@ const EmployeeCalendar = () => {
             {monday.shifts.map(
               (shift) => (
                 <GridTile>
-                  <Subheader style={{display: 'flex', justifyContent: 'flex-end'}}>{(shift.hour + 5).toString() + ":55"}</Subheader>
+                  <Subheader style={{display: 'flex', justifyContent: 'flex-end'}}>{((shift.hour + 5)%12==0 ? (12):((shift.hour+5)%12)).toString() + ":55"}</Subheader>
                 </GridTile>
               )
             )}
