@@ -41,7 +41,7 @@ const UserList = ({user, users, selectUser}) => {
 
 
     selectuser = selectUser
-    console.log("NETIDS : ",users.netids)
+    console.log("NETIDS : ", users.netids)
     return (
         <div>
             <ul>

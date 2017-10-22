@@ -6,6 +6,17 @@ import { combineReducers } from 'redux'
 
 // import UserReducer from './reducer-users'
 
+const sideBarReducer = (state={toggle:false}, action) => {
+    switch(action.type) {
+        case "TOGGLEBURGER":
+            return {...state, toggle:action.toggle}
+        default:
+            return state
+    }
+
+}
+
+
 const userReducer = (state={netids:[]}, action) => {
     switch(action.type) {
         case "GET_NETIDS":
@@ -89,8 +100,10 @@ const sunReducer = (state={sun:{}}, action) => {
     }
 }
 
+
+
 const Reducer = combineReducers({
-    userReducer, activeReducer, monReducer, tuesReducer, wedReducer, thursReducer, friReducer, satReducer, sunReducer
+    sideBarReducer, userReducer, activeReducer, monReducer, tuesReducer, wedReducer, thursReducer, friReducer, satReducer, sunReducer
 })
 
 export default Reducer
