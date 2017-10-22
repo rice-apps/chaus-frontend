@@ -111,37 +111,7 @@ const monday =
       "hour": 18,
       "availability": [],
       "schedule": []
-    },
-    {
-      "hour": 19,
-      "availability": [],
-      "schedule": []
-    },
-    {
-      "hour": 20,
-      "availability": [],
-      "schedule": []
-    },
-    {
-      "hour": 21,
-      "availability": [],
-      "schedule": []
-    },
-    {
-      "hour": 22,
-      "availability": [],
-      "schedule": []
-    },
-    {
-      "hour": 23,
-      "availability": [],
-      "schedule": []
-    },
-    {
-      "hour": 24,
-      "availability": [],
-      "schedule": []
-    },
+    }
   ]}
 
 
@@ -150,7 +120,7 @@ const CalendarDay = ({dayName, day}) => {
   return (
     <div style={styles.root}>
       <GridList
-        cellHeight={36}
+        cellHeight={30}
         style={styles.gridlist}
         cols={1}>
         {monday.shifts.map(

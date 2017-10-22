@@ -8,7 +8,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 const CalendarHour = () => {
   return (
-    <RaisedButton primary={true} />
+    <RaisedButton primary={true} style={{height: 80}} />
   )
 }
 
