@@ -3,30 +3,20 @@
  */
 
 import React from 'react'
-import UserList from '../containers/user-list'
-import Day from '../containers/day'
-import Calendar from '../containers/calendar'
-import CalendarDay from '../containers/calendar-day'
+import Sidebar from '../containers/sidebar'
 import EmployeeCalendar from '../containers/employee-calendar'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-/*const App = () => (
-    <div>
-        <h2>Username List: </h2>
-        <UserList/>
-        <hr />
-        <Calendar/>
-        <calendarHour/>
-    </div>
-)
-*/
 
 
 const App = () => (
-    <MuiThemeProvider>
-      <div>
-        <EmployeeCalendar/>
-      </div>
-    </MuiThemeProvider>
+    <div>
+        <Sidebar/>
+        <MuiThemeProvider>
+          <div>
+            <EmployeeCalendar/>
+          </div>
+        </MuiThemeProvider>
+    </div>
 )
 
 export default App
