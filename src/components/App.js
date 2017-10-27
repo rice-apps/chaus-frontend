@@ -3,11 +3,7 @@
  */
 
 import React from 'react'
-import UserList from '../containers/user-list'
-import Day from '../containers/day'
-import Calendar from '../containers/calendar'
 import Sidebar from '../containers/sidebar'
-import CalendarDay from '../containers/calendar-day'
 import EmployeeCalendar from '../containers/employee-calendar'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
