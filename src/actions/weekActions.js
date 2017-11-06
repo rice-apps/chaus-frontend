@@ -32,13 +32,13 @@ const resource = (method, endpoint, payload) => {
 
 export const get_week = () => {
     return (dispatch) => {
-        dispatch(get_day('mon'))
-        dispatch(get_day('tues'))
-        dispatch(get_day('wed'))
-        dispatch(get_day('thurs'))
-        dispatch(get_day('fri'))
-        dispatch(get_day('sat'))
-        dispatch(get_day('sun'))
+        // dispatch(get_day('mon'))
+        // dispatch(get_day('tues'))
+        // dispatch(get_day('wed'))
+        // dispatch(get_day('thurs'))
+        // dispatch(get_day('fri'))
+        // dispatch(get_day('sat'))
+        // dispatch(get_day('sun'))
         dispatch(get_netids())
     }
 }

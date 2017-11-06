@@ -32,6 +32,7 @@ const resource = (method, endpoint, payload) => {
 export const selectUser = (netid) => {
     console.log("SELECT USER: ", netid)
     return (dispatch) => {
+        dispatch(get_availability(netid));
         resource('GET', 'user/'+netid).then( r => {
             return dispatch({
                 type: "USER_SELECTED",
@@ -52,4 +53,22 @@ export const get_netids = () => {
             })
         })
     }
+}
+
+export const get_availability = (netid) => {
+  return (dispatch) => {
+    resource('GET', 'master/available/'+netid).then( schedule => {
+      console.log(schedule)
+      schedule.map(day => {
+        var weekLetter = Object.keys(day)[0]
+        day.map(h => {
+          dispatch({
+            type:"CHANGEHOUR"+weekLetter,
+            hour:h,
+            boolean:true
+          })
+        })
+      })
+    })
+  }
 }

@@ -4,8 +4,8 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import { selectUser } from '../actions/userActions'
-import { Button, Modal, Grid, Menu, Segment } from 'semantic-ui-react'
-import GridExampleGrid from './modal'
+import RaisedButton from 'material-ui/RaisedButton'
+// import GridExampleGrid from './modal'
 
 var selectuser = () => {}
 
@@ -13,30 +13,28 @@ const call_selectUser = (netid) => {
     selectuser(netid)
 }
 
+// const ModalModalExample = ({netid, user}) => (
+//     <Modal trigger={<Button onClick={() => call_selectUser(netid)}>{netid}</Button>}>
+//
+//         <Modal.Content>
+//             <Modal.Description>
+//                 <h4>Name: {user.first}</h4>
+//                 <h4>NetID: {user.netid}</h4>
+//                 <h4>Hour Cap: {user.cap}</h4>
+//
+//                 <hr></hr>
+//                 <h4>Availability: </h4>
+//                 <GridExampleGrid />
+//             </Modal.Description>
+//         </Modal.Content>
+//     </Modal>
+// )
 
-
-const ModalModalExample = ({netid, user}) => (
-    <Modal trigger={<Button onClick={() => call_selectUser(netid)}>{netid}</Button>}>
-
-        <Modal.Content>
-            <Modal.Description>
-                <h4>Name: {user.first}</h4>
-                <h4>NetID: {user.netid}</h4>
-                <h4>Hour Cap: {user.cap}</h4>
-                {/*<h2>Monday: {user.mon}</h2>*/}
-                {/*<h2>Tuesday: {user.tues}</h2>*/}
-                {/*<h2>Wednesday: {user.wed}</h2>*/}
-                {/*<h2>Thursday: {user.thurs}</h2>*/}
-                {/*<h2>Friday: {user.fri}</h2>*/}
-                {/*<h2>Saturday: {user.sat}</h2>*/}
-                {/*<h2>Sunday: {user.sun}</h2>*/}
-                <hr></hr>
-                <h4>Availability: </h4>
-                <GridExampleGrid />
-            </Modal.Description>
-        </Modal.Content>
-    </Modal>
-)
+const UserButton = ({netid, user, activeUser}) => {
+  return (
+    <RaisedButton primary={activeUser} onClick={() => call_selectUser(netid)}>{netid}</RaisedButton>
+  )
+}
 const UserList = ({user, users, selectUser}) => {
 
 
@@ -48,11 +46,15 @@ const UserList = ({user, users, selectUser}) => {
                 {users.netids.map((netid) => {
                     return (
                         <div key={netid}>
-                            <ModalModalExample netid={netid} user={user}/>
+                            <UserButton netid={netid} user={user} activeUser={netid==user.netid ? true:false}/>
                         </div>
                     )
                 })}
             </ul>
+            <div>
+              <p>Active User:</p>
+              <h>{user.netid}</h>
+            </div>
         </div>
     )
 }
@@ -71,4 +73,3 @@ export default connect(
         }
     }
 )(UserList)
-
