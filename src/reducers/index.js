@@ -6,33 +6,33 @@ import { combineReducers } from 'redux'
 
 // import UserReducer from './reducer-users'
 
-const sunReducer = (state={sun: [
-    {hour: 7, available: false, changed: false, status:true},
-    {hour: 8, available: false, changed: false, status:true},
-    {hour: 9, available: false, changed: false, status:true},
-    {hour: 10, available: false, changed: false, status:true},
-    {hour: 11, available: false, changed: false, status:true},
-    {hour: 12, available: false, changed: false, status:true},
-    {hour: 13, available: false, changed: false, status:true},
-    {hour: 14, available: false, changed: false, status:true},
-    {hour: 15, available: false, changed: false, status:true},
-    {hour: 16, available: false, changed: false, status:true},
-    {hour: 17, available: false, changed: false, status:true},
-    {hour: 18, available: false, changed: false, status:true},
-    {hour: 19, available: false, changed: false, status:true},
-    {hour: 20, available: false, changed: false, status:true},
-    {hour: 21, available: false, changed: false, status:true},
-    {hour: 22, available: false, changed: false, status:true},
-    {hour: 23, available: false, changed: false, status:true},
-    {hour: 24, available: false, changed: false, status:true}
-  ]}, action) => {
-    switch(action.type) {
-        case "CHANGEHOURU":
-            return {...state, [action.hour]:{available:action.boolean, changed:true, status:true}}
-        default:
-            return {...state}
-    }
-}
+// const sunReducer = (state={sun: [
+//     {hour: 7, available: false, changed: false, status:true},
+//     {hour: 8, available: false, changed: false, status:true},
+//     {hour: 9, available: false, changed: false, status:true},
+//     {hour: 10, available: false, changed: false, status:true},
+//     {hour: 11, available: false, changed: false, status:true},
+//     {hour: 12, available: false, changed: false, status:true},
+//     {hour: 13, available: false, changed: false, status:true},
+//     {hour: 14, available: false, changed: false, status:true},
+//     {hour: 15, available: false, changed: false, status:true},
+//     {hour: 16, available: false, changed: false, status:true},
+//     {hour: 17, available: false, changed: false, status:true},
+//     {hour: 18, available: false, changed: false, status:true},
+//     {hour: 19, available: false, changed: false, status:true},
+//     {hour: 20, available: false, changed: false, status:true},
+//     {hour: 21, available: false, changed: false, status:true},
+//     {hour: 22, available: false, changed: false, status:true},
+//     {hour: 23, available: false, changed: false, status:true},
+//     {hour: 24, available: false, changed: false, status:true}
+//   ]}, action) => {
+//     switch(action.type) {
+//         case "CHANGEHOURU":
+//             return {...state, [action.hour]:{available:action.boolean, changed:true, status:true}}
+//         default:
+//             return {...state}
+//     }
+// }
 
 
 const sideBarReducer = (state={toggle:false}, action) => {

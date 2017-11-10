@@ -46,7 +46,7 @@ const UserList = ({user, users, selectUser}) => {
                 {users.netids.map((netid) => {
                     return (
                         <div key={netid}>
-                            <UserButton netid={netid} user={user} activeUser={netid==user.netid ? true:false}/>
+                            <UserButton key={netid} netid={netid} user={user} activeUser={netid==user.netid ? true:false}/>
                         </div>
                     )
                 })}
