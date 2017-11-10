@@ -32,7 +32,7 @@ const resource = (method, endpoint, payload) => {
 export const selectUser = (netid) => {
     console.log("SELECT USER: ", netid)
     return (dispatch) => {
-        dispatch(get_availability(netid));
+        // dispatch(get_availability(netid));
         resource('GET', 'user/'+netid).then( r => {
             return dispatch({
                 type: "USER_SELECTED",
