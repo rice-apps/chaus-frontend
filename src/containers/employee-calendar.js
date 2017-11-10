@@ -128,10 +128,10 @@ const EmployeeCalendar = ({mon, tues, wed, thurs, fri, sat, sun}) => {
         style={styles.gridlist}
         cellHeight={730}
         >
-        <GridTile style={{marginTop: '-25px', height: 700}}>
+        <GridTile style={{marginTop: '-25px', height: 730}}>
           <GridList
             cols={1}
-            cellHeight={34}
+            cellHeight={38}
             padding={0}
             style={styles.times}>
             {monday.shifts.map(

@@ -119,7 +119,7 @@ const CalendarDay = ({dayName, day}) => {
   return (
     <div style={styles.root}>
       <GridList
-        cellHeight={34}
+        cellHeight={38}
         padding={0}
         style={styles.gridlist}
         cols={1}>
