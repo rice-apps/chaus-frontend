@@ -87,7 +87,7 @@ const monReducer = (state=[
     {hour: 24, available: false, changed: false, closed: false}
 ], action) => {
     switch(action.type) {
-        case "get_mon":
+        case "CHANGEHOURM":
             return {...state, mon:action.mon}
         case "change_availability_mon":
             return {...state, mon:action.mon}
@@ -117,7 +117,7 @@ const tuesReducer = (state=[
     {hour: 24, available: false, changed: false, closed: false}
 ], action) => {
     switch(action.type) {
-        case "get_tues":
+        case "CHANGEHOURT":
             return {...state, tues:action.tues}
         case "change_availability_tues":
             return {...state, tues:action.tues}
@@ -147,7 +147,7 @@ const wedReducer = (state=[
     {hour: 24, available: false, changed: false, closed: false}
 ], action) => {
     switch(action.type) {
-        case "get_wed":
+        case "CHANGEHOURW":
             return {...state, wed:action.wed}
         case "change_availability_wed":
             return {...state, wed:action.wed}
@@ -177,7 +177,7 @@ const thursReducer = (state=[
     {hour: 24, available: false, changed: false, closed: false}
 ], action) => {
     switch(action.type) {
-        case "get_thurs":
+        case "CHANGEHOURR":
             return {...state, thurs:action.thurs}
         case "change_availability_thurs":
             return {...state, thurs:action.thurs}
@@ -208,7 +208,7 @@ const friReducer = (state=[
     {hour: 24, available: false, changed: false, closed: true}
 ], action) => {
     switch(action.type) {
-        case "get_fri":
+        case "CHANGEHOURF":
             return {...state, fri:action.fri}
         case "change_availability_fri":
             return {...state, fri:action.fri}
@@ -238,7 +238,7 @@ const satReducer = (state=[
     {hour: 24, available: false, changed: false, closed: true}
     ], action) => {
     switch(action.type) {
-        case "get_sat":
+        case "CHANGEHOURS":
             return {...state, sat:action.sat}
         case "change_availability_sat":
             return {...state, sat:action.sat}
@@ -267,8 +267,8 @@ const sunReducer = (state=[
     {hour: 24, available: false, changed: false, closed: false}
 ], action) => {
     switch(action.type) {
-        case "get_sun":
-            return {...state, sun:action.sun}
+        case "CHANGEHOURU":
+            return {...state, sun:action.sun, hour: action.h, boolean: action.boolean}
         case "change_availability_sun":
             return {...state, sun:action.sun}
         default:

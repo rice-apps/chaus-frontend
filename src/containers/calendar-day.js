@@ -116,21 +116,23 @@ const monday =
 
 
 const CalendarDay = ({dayName, day}) => {
-  console.log("day", day)
   return (
     <div style={styles.root}>
       <GridList
         cellHeight={30}
         style={styles.gridlist}
         cols={1}>
-        {monday["shifts"].map(
-          (shift) => (
+        {Object.keys(dayName).map(
+          (shift) => {
+          console.log(dayName[shift])
+          return (
             <GridTile
-              key={shift.hour.toString()}
+              key={dayName[shift].hour.toString()}
               >
-              <CalendarHour dayName={dayName} hour={shift} />
+              <CalendarHour key={dayName[shift].hour.toString()} dayName={dayName} hour={dayName[shift].hour.toString()} />
             </GridTile>
           )
+        }
         )}
       </GridList>
     </div>
