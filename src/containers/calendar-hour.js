@@ -6,9 +6,10 @@ import {connect} from 'react-redux'
 //Material Imports
 import RaisedButton from 'material-ui/RaisedButton';
 
-const CalendarHour = () => {
+const CalendarHour = ({dayName, hour}) => {
   return (
-    <RaisedButton primary={true} style={{height: 80}} />
+    <RaisedButton primary={hour.available} secondary={!hour.available} disabled={hour.closed}  style={{height: 80}} />
+
   )
 }
 
