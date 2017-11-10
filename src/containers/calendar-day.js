@@ -140,6 +140,8 @@ const CalendarDay = ({dayName, day}) => {
 export default connect (
     (state) => {
         return {
+          dayName: state.sunReducer,
+          day: state.day
           // dayName: state.dayName,
           // day: state.day
         }
