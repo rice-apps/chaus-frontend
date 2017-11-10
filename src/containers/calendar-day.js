@@ -116,19 +116,19 @@ const monday =
 
 
 const CalendarDay = ({dayName, day}) => {
-  console.log(monday)
+  console.log("day", day)
   return (
     <div style={styles.root}>
       <GridList
         cellHeight={30}
         style={styles.gridlist}
         cols={1}>
-        {monday.shifts.map(
+        {Object.keys(day).map(
           (shift) => (
             <GridTile
-              key={shift.hour.toString()}
+              key={day[shift].hour.toString()}
               >
-              <CalendarHour/>
+              <CalendarHour dayName={dayName} hour={day[shift]} />
             </GridTile>
           )
         )}
@@ -142,6 +142,8 @@ export default connect (
         return {
           dayName: state.sunReducer,
           day: state.day
+          // dayName: state.dayName,
+          // day: state.day
         }
     }
 )(CalendarDay)

@@ -118,9 +118,10 @@ const monday =
     }
   ]}
 
-const EmployeeCalendar = () => {
+const EmployeeCalendar = ({mon, tues, wed, thurs, fri, sat, sun}) => {
   return (
     <div style={styles.root}>
+
       <GridList
         cols={8}
         style={styles.gridlist}
@@ -144,26 +145,27 @@ const EmployeeCalendar = () => {
           </GridList>
         </GridTile>
         <GridTile>
-          <CalendarDay/>
+          <CalendarDay dayname={"Sunday"} day={sun}/>
         </GridTile>
         <GridTile>
-          <CalendarDay/>
+          <CalendarDay dayname={"Monday"} day={mon}/>
         </GridTile>
         <GridTile>
-          <CalendarDay/>
+          <CalendarDay dayname={"Tuesday"} day={tues}/>
         </GridTile>
         <GridTile>
-          <CalendarDay/>
+          <CalendarDay dayname={"Wednesday"} day={wed}/>
         </GridTile>
         <GridTile>
-          <CalendarDay/>
+          <CalendarDay dayname={"Thursday"} day={thurs}/>
         </GridTile>
         <GridTile>
-          <CalendarDay/>
+          <CalendarDay dayname={"Friday"} day={fri}/>
         </GridTile>
         <GridTile>
-          <CalendarDay/>
+          <CalendarDay dayname={"Saturday"} day={sat}/>
         </GridTile>
+
       </GridList>
     </div>
   )
@@ -175,7 +177,13 @@ const EmployeeCalendar = () => {
 export default connect (
     (state) => {
         return {
-          
+          mon: state.monReducer,
+          tues: state.tuesReducer,
+          wed: state.wedReducer,
+          thurs: state.thursReducer,
+          fri: state.friReducer,
+          sat: state.satReducer,
+          sun: state.sunReducer
         }
     }
 )(EmployeeCalendar)
