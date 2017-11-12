@@ -55,6 +55,15 @@ export const get_netids = () => {
     }
 }
 
+export const toggle_availability = (dayname, hour, availability, changed) => {
+  return (dispatch) => dispatch({
+    type: "CHANGE_HOUR_"+dayname,
+    hour: hour,
+    available: !availability,
+    changed: changed
+  })
+}
+
 export const get_availability = (netid) => {
     return (dispatch) => {
         resource('GET', 'master/available/'+netid).then( schedule => {

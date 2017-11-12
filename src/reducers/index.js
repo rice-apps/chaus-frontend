@@ -89,6 +89,24 @@ const monReducer = (state={mon:[
     switch(action.type) {
         case "CHANGEM":
             return {...state, mon:action.state}
+        case "CHANGE_HOUR_M":
+            let shift_index = 0
+            var newShift = {}
+            state.mon.map(
+              (shift) => {
+                if (shift.hour == action.hour) {
+                  console.log(action.available)
+                  shift_index = shift.hour - 7
+                  // newShift = shift: {...shift, available: action.available, changed: !action.changed}}}
+                }
+              }
+            )
+            let mon_array = []
+            state.mon.map((shift) => mon_array.push({...shift}))
+            mon_array[shift_index] = {available: action.available, hour: shift_index + 7, changed: !action.changed}
+            console.log(mon_array)
+            return {...state, mon: mon_array}
+            // return {...state, mon[action.hour-7]:{...mon[action.hour-7], available: action.available, changed: action.changed}}
         default:
             return {...state}
     }
