@@ -3,8 +3,9 @@
  */
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import { selectUser } from '../actions/userActions'
+import { selectUser, get_availability } from '../actions/userActions'
 import RaisedButton from 'material-ui/RaisedButton'
+
 // import GridExampleGrid from './modal'
 
 var selectuser = () => {}
@@ -35,7 +36,7 @@ const UserButton = ({netid, user, activeUser}) => {
     <RaisedButton primary={activeUser} onClick={() => call_selectUser(netid)}>{netid}</RaisedButton>
   )
 }
-const UserList = ({user, users, selectUser}) => {
+const UserList = ({user, users, selectUser, getAvailability}) => {
 
 
     selectuser = selectUser
@@ -46,7 +47,7 @@ const UserList = ({user, users, selectUser}) => {
                 {users.netids.map((netid) => {
                     return (
                         <div key={netid}>
-                            <UserButton key={netid} netid={netid} user={user} activeUser={netid==user.netid ? true:false}/>
+                            <UserButton onClick={() => get_availability(netid)} key={netid} netid={netid} user={user} activeUser={netid==user.netid ? true:false}/>
                         </div>
                     )
                 })}
@@ -69,7 +70,8 @@ export default connect(
     },
     (dispatch) => {
         return {
-            selectUser: (user) => dispatch(selectUser(user))
+            selectUser: (user) => dispatch(selectUser(user)),
+            get_availability: (user) => dispatch(get_availability(user))
         }
     }
 )(UserList)

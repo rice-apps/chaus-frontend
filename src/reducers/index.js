@@ -66,7 +66,7 @@ const activeReducer = (state={user:{}}, action) => {
     }
 }
 
-const monReducer = (state=[
+const monReducer = (state={mon:[
     {hour: 7, available: true, changed: false, closed: false},
     {hour: 8, available: false, changed: false, closed: false},
     {hour: 9, available: false, changed: false, closed: false},
@@ -85,18 +85,72 @@ const monReducer = (state=[
     {hour: 22, available: false, changed: false, closed: false},
     {hour: 23, available: false, changed: false, closed: false},
     {hour: 24, available: false, changed: false, closed: false}
-], action) => {
+]}, action) => {
     switch(action.type) {
-        case "CHANGEHOURM":
-            return {...state, mon:action.mon}
-        case "change_availability_mon":
-            return {...state, mon:action.mon}
+        case "CHANGEM":
+            return {...state, mon:action.state}
         default:
             return {...state}
     }
 }
 
-const tuesReducer = (state=[
+const tuesReducer = (state={tues:[
+    {hour: 7, available: true, changed: false, closed: false},
+    {hour: 8, available: true, changed: false, closed: false},
+    {hour: 9, available: false, changed: false, closed: false},
+    {hour: 10, available: false, changed: false, closed: false},
+    {hour: 11, available: false, changed: false, closed: false},
+    {hour: 12, available: false, changed: false, closed: false },
+    {hour: 13, available: false, changed: false, closed: false},
+    {hour: 14, available: false, changed: false, closed: false},
+    {hour: 15, available: false, changed: false, closed: false},
+    {hour: 16, available: false, changed: false, closed: false },
+    {hour: 17, available: false, changed: false, closed: false},
+    {hour: 18, available: false, changed: false, closed: false},
+    {hour: 19, available: false, changed: false, closed: false},
+    {hour: 20, available: false, changed: false, closed: false},
+    {hour: 21, available: false, changed: false, closed: false},
+    {hour: 22, available: false, changed: false, closed: false},
+    {hour: 23, available: false, changed: false, closed: false},
+    {hour: 24, available: false, changed: false, closed: false}
+]}, action) => {
+    switch(action.type) {
+        case "CHANGET":
+            return {...state, tues:action.state}
+        default:
+            return {...state}
+    }
+}
+
+const wedReducer = (state={wed:[
+    {hour: 7, available: true, changed: false, closed: false},
+    {hour: 8, available: false, changed: false, closed: false},
+    {hour: 9, available: false, changed: false, closed: false},
+    {hour: 10, available: false, changed: false, closed: false},
+    {hour: 11, available: false, changed: false, closed: false},
+    {hour: 12, available: false, changed: false, closed: false },
+    {hour: 13, available: false, changed: false, closed: false},
+    {hour: 14, available: false, changed: false, closed: false},
+    {hour: 15, available: false, changed: false, closed: false},
+    {hour: 16, available: false, changed: false, closed: false },
+    {hour: 17, available: false, changed: false, closed: false},
+    {hour: 18, available: false, changed: false, closed: false},
+    {hour: 19, available: false, changed: false, closed: false},
+    {hour: 20, available: false, changed: false, closed: false},
+    {hour: 21, available: false, changed: false, closed: false},
+    {hour: 22, available: false, changed: false, closed: false},
+    {hour: 23, available: false, changed: false, closed: false},
+    {hour: 24, available: false, changed: false, closed: false}
+]}, action) => {
+    switch(action.type) {
+        case "CHANGEW":
+            return {...state, wed:action.state}
+        default:
+            return {...state}
+    }
+}
+
+const thursReducer = (state={thurs:[
     {hour: 7, available: false, changed: false, closed: false},
     {hour: 8, available: false, changed: false, closed: false},
     {hour: 9, available: false, changed: false, closed: false},
@@ -115,67 +169,7 @@ const tuesReducer = (state=[
     {hour: 22, available: false, changed: false, closed: false},
     {hour: 23, available: false, changed: false, closed: false},
     {hour: 24, available: false, changed: false, closed: false}
-], action) => {
-    switch(action.type) {
-        case "CHANGEHOURT":
-            return {...state, tues:action.tues}
-        case "change_availability_tues":
-            return {...state, tues:action.tues}
-        default:
-            return {...state}
-    }
-}
-
-const wedReducer = (state=[
-    {hour: 7, available: false, changed: false, closed: false},
-    {hour: 8, available: false, changed: false, closed: false},
-    {hour: 9, available: false, changed: false, closed: false},
-    {hour: 10, available: false, changed: false, closed: false},
-    {hour: 11, available: false, changed: false, closed: false},
-    {hour: 12, available: false, changed: false, closed: false },
-    {hour: 13, available: false, changed: false, closed: false},
-    {hour: 14, available: false, changed: false, closed: false},
-    {hour: 15, available: false, changed: false, closed: false},
-    {hour: 16, available: false, changed: false, closed: false },
-    {hour: 17, available: false, changed: false, closed: false},
-    {hour: 18, available: false, changed: false, closed: false},
-    {hour: 19, available: false, changed: false, closed: false},
-    {hour: 20, available: false, changed: false, closed: false},
-    {hour: 21, available: false, changed: false, closed: false},
-    {hour: 22, available: false, changed: false, closed: false},
-    {hour: 23, available: false, changed: false, closed: false},
-    {hour: 24, available: false, changed: false, closed: false}
-], action) => {
-    switch(action.type) {
-        case "CHANGEHOURW":
-            return {...state, wed:action.wed}
-        case "change_availability_wed":
-            return {...state, wed:action.wed}
-        default:
-            return {...state}
-    }
-}
-
-const thursReducer = (state=[
-    {hour: 7, available: false, changed: false, closed: false},
-    {hour: 8, available: false, changed: false, closed: false},
-    {hour: 9, available: false, changed: false, closed: false},
-    {hour: 10, available: false, changed: false, closed: false},
-    {hour: 11, available: false, changed: false, closed: false},
-    {hour: 12, available: false, changed: false, closed: false },
-    {hour: 13, available: false, changed: false, closed: false},
-    {hour: 14, available: false, changed: false, closed: false},
-    {hour: 15, available: false, changed: false, closed: false},
-    {hour: 16, available: false, changed: false, closed: false },
-    {hour: 17, available: false, changed: false, closed: false},
-    {hour: 18, available: false, changed: false, closed: false},
-    {hour: 19, available: false, changed: false, closed: false},
-    {hour: 20, available: false, changed: false, closed: false},
-    {hour: 21, available: false, changed: false, closed: false},
-    {hour: 22, available: false, changed: false, closed: false},
-    {hour: 23, available: false, changed: false, closed: false},
-    {hour: 24, available: false, changed: false, closed: false}
-], action) => {
+]}, action) => {
     switch(action.type) {
         case "CHANGEHOURR":
             return {...state, thurs:action.thurs}
@@ -187,7 +181,7 @@ const thursReducer = (state=[
     }
 }
 
-const friReducer = (state=[
+const friReducer = (state={fri:[
     {hour: 7, available: false, changed: false, closed: false},
     {hour: 8, available: false, changed: false, closed: false},
     {hour: 9, available: false, changed: false, closed: false},
@@ -206,7 +200,7 @@ const friReducer = (state=[
     {hour: 22, available: false, changed: false, closed: true},
     {hour: 23, available: false, changed: false, closed: true},
     {hour: 24, available: false, changed: false, closed: true}
-], action) => {
+]}, action) => {
     switch(action.type) {
         case "CHANGEHOURF":
             return {...state, fri:action.fri}
@@ -217,7 +211,7 @@ const friReducer = (state=[
     }
 }
 
-const satReducer = (state=[
+const satReducer = (state={sat:[
     {hour: 7, available: false, changed: false, closed: true},
     {hour: 8, available: false, changed: false, closed: true},
     {hour: 9, available: false, changed: false, closed: true},
@@ -226,7 +220,7 @@ const satReducer = (state=[
     {hour: 12, available: false, changed: false, closed: false },
     {hour: 13, available: false, changed: false, closed: false},
     {hour: 14, available: false, changed: false, closed: false},
-    {hour: 15, available: false, changed: false, closed: false},
+    {hour: 15, available: true, changed: false, closed: false},
     {hour: 16, available: false, changed: false, closed: false },
     {hour: 17, available: false, changed: false, closed: true},
     {hour: 18, available: false, changed: false, closed: true},
@@ -236,7 +230,7 @@ const satReducer = (state=[
     {hour: 22, available: false, changed: false, closed: true},
     {hour: 23, available: false, changed: false, closed: true},
     {hour: 24, available: false, changed: false, closed: true}
-    ], action) => {
+    ]}, action) => {
     switch(action.type) {
         case "CHANGEHOURS":
             return {...state, sat:action.sat}
@@ -246,7 +240,7 @@ const satReducer = (state=[
             return {...state}
     }
 }
-const sunReducer = (state=[
+const sunReducer = (state={sun:[
     {hour: 7, available: false, changed: false, closed: true},
     {hour: 8, available: false, changed: false, closed: true},
     {hour: 9, available: false, changed: false, closed: true},
@@ -265,7 +259,7 @@ const sunReducer = (state=[
     {hour: 22, available: false, changed: false, closed: false},
     {hour: 23, available: false, changed: false, closed: false},
     {hour: 24, available: false, changed: false, closed: false}
-], action) => {
+]}, action) => {
     switch(action.type) {
         case "CHANGEHOURU":
             return {...state, sun:action.sun, hour: action.h, boolean: action.boolean}

@@ -56,19 +56,18 @@ export const get_netids = () => {
 }
 
 export const get_availability = (netid) => {
-  return (dispatch) => {
-    resource('GET', 'master/available/'+netid).then( schedule => {
-      schedule.map(day => {
-        Object.keys(day).map(weekLetter => {
-          day[weekLetter].map(h => {
-            dispatch({
-              type:"CHANGEHOUR"+weekLetter,
-              hour:h,
-              boolean:true
+    return (dispatch) => {
+        resource('GET', 'master/available/'+netid).then( schedule => {
+            schedule.map(day => {
+                Object.keys(day).map(weekLetter => {
+                    dispatch({
+                       type:"CHANGE"+weekLetter,
+                       state:day[weekLetter]
+                    })
+
+                })
             })
-          })
         })
-      })
-    })
-  }
+    }
 }
+

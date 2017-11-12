@@ -179,13 +179,13 @@ const EmployeeCalendar = ({mon, tues, wed, thurs, fri, sat, sun}) => {
 export default connect (
     (state) => {
         return {
-          mon: state.monReducer,
-          tues: state.tuesReducer,
-          wed: state.wedReducer,
-          thurs: state.thursReducer,
-          fri: state.friReducer,
-          sat: state.satReducer,
-          sun: state.sunReducer
+          mon: state.monReducer.mon,
+          tues: state.tuesReducer.tues,
+          wed: state.wedReducer.wed,
+          thurs: state.thursReducer.thurs,
+          fri: state.friReducer.fri,
+          sat: state.satReducer.sat,
+          sun: state.sunReducer.sun
         }
     }
 )(EmployeeCalendar)

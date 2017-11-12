@@ -123,14 +123,14 @@ const CalendarDay = ({dayName, day}) => {
         padding={0}
         style={styles.gridlist}
         cols={1}>
-        {Object.keys(dayName).map(
+        {Object.keys(day).map(
           (shift) => {
-          console.log(dayName[shift])
+          console.log(day[shift])
           return (
             <GridTile
-              key={dayName[shift].hour.toString()}
+              key={day[shift].hour.toString()}
               >
-              <CalendarHour key={dayName[shift].hour.toString()} dayName={dayName} hour={dayName[shift].hour.toString()} />
+              <CalendarHour key={day[shift].hour.toString()} dayName={dayName} hour={day[shift]} />
             </GridTile>
           )
         }
@@ -143,8 +143,8 @@ const CalendarDay = ({dayName, day}) => {
 export default connect (
     (state) => {
         return {
-          dayName: state.sunReducer,
-          day: state.day
+          // dayName: state.sunReducer.sun,
+          // day: state.day
           // dayName: state.dayName,
           // day: state.day
         }
