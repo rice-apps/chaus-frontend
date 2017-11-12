@@ -124,13 +124,15 @@ const EmployeeCalendar = ({mon, tues, wed, thurs, fri, sat, sun}) => {
 
       <GridList
         cols={8}
+        padding={-2}
         style={styles.gridlist}
-        cellHeight={630}
+        cellHeight={730}
         >
-        <GridTile style={{marginTop: '-25px', height: 700}}>
+        <GridTile style={{marginTop: '-25px', height: 730}}>
           <GridList
             cols={1}
-            cellHeight={30}
+            cellHeight={38}
+            padding={0}
             style={styles.times}>
             {monday.shifts.map(
               (shift) => (
@@ -140,7 +142,7 @@ const EmployeeCalendar = ({mon, tues, wed, thurs, fri, sat, sun}) => {
               )
             )}
             <GridTile>
-              <Subheader style={{display: 'flex', justifyContent: 'flex-end'}}>Close</Subheader>
+              <Subheader style={{display: 'flex', justifyContent: 'flex-end', marginTop: -9}}>Close</Subheader>
             </GridTile>
           </GridList>
         </GridTile>

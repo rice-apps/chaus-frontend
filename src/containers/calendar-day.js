@@ -16,7 +16,7 @@ const styles = {
   },
   gridlist: {
     marginTop: 10,
-    width: 88
+    width: 96
   }
 }
 
@@ -119,7 +119,8 @@ const CalendarDay = ({dayName, day}) => {
   return (
     <div style={styles.root}>
       <GridList
-        cellHeight={30}
+        cellHeight={38}
+        padding={0}
         style={styles.gridlist}
         cols={1}>
         {Object.keys(dayName).map(
