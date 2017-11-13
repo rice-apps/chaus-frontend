@@ -7,6 +7,7 @@ import Sidebar from '../containers/sidebar'
 import EmployeeCalendar from '../containers/employee-calendar'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import UserList from '../containers/user-list'
+import ChangeButton from '../containers/changes-button'
 
 const App = () => (
     <div>
@@ -15,6 +16,7 @@ const App = () => (
           <div>
             <UserList />
             <EmployeeCalendar/>
+            <ChangeButton/>
           </div>
         </MuiThemeProvider>
     </div>

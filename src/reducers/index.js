@@ -66,6 +66,16 @@ const activeReducer = (state={user:{}}, action) => {
     }
 }
 
+const changesReducer = (state={changes_saved: false}, action) => {
+    switch(action.type) {
+      case "CHANGES_SAVED":
+        console.log(action.changes_saved)
+        return {...state, changes_saved: action.changes_saved}
+      default:
+        return state
+    }
+}
+
 const monReducer = (state={mon:[
     {hour: 7, available: true, changed: false, closed: false},
     {hour: 8, available: false, changed: false, closed: false},
@@ -135,6 +145,23 @@ const tuesReducer = (state={tues:[
     switch(action.type) {
         case "CHANGET":
             return {...state, tues:action.state}
+        case "CHANGE_HOUR_T":
+            let shift_index = 0
+            var newShift = {}
+            state.tues.map(
+              (shift) => {
+                if (shift.hour == action.hour) {
+                  console.log(action.available)
+                  shift_index = shift.hour - 7
+                  // newShift = shift: {...shift, available: action.available, changed: !action.changed}}}
+                }
+              }
+            )
+            let tues_array = []
+            state.tues.map((shift) => tues_array.push({...shift}))
+            tues_array[shift_index] = {available: action.available, hour: shift_index + 7, changed: !action.changed}
+            console.log(tues_array)
+            return {...state, tues: tues_array}
         default:
             return {...state}
     }
@@ -163,6 +190,23 @@ const wedReducer = (state={wed:[
     switch(action.type) {
         case "CHANGEW":
             return {...state, wed:action.state}
+        case "CHANGE_HOUR_W":
+            let shift_index = 0
+            var newShift = {}
+            state.wed.map(
+              (shift) => {
+                if (shift.hour == action.hour) {
+                  console.log(action.available)
+                  shift_index = shift.hour - 7
+                  // newShift = shift: {...shift, available: action.available, changed: !action.changed}}}
+                }
+              }
+            )
+            let wed_array = []
+            state.wed.map((shift) => wed_array.push({...shift}))
+            wed_array[shift_index] = {available: action.available, hour: shift_index + 7, changed: !action.changed}
+            console.log(wed_array)
+            return {...state, wed: wed_array}
         default:
             return {...state}
     }
@@ -191,6 +235,23 @@ const thursReducer = (state={thurs:[
     switch(action.type) {
         case "CHANGEHOURR":
             return {...state, thurs:action.thurs}
+        case "CHANGE_HOUR_R":
+            let shift_index = 0
+            var newShift = {}
+            state.thurs.map(
+              (shift) => {
+                if (shift.hour == action.hour) {
+                  console.log(action.available)
+                  shift_index = shift.hour - 7
+                  // newShift = shift: {...shift, available: action.available, changed: !action.changed}}}
+                }
+              }
+            )
+            let thurs_array = []
+            state.thurs.map((shift) => thurs_array.push({...shift}))
+            thurs_array[shift_index] = {available: action.available, hour: shift_index + 7, changed: !action.changed}
+            console.log(thurs_array)
+            return {...state, thurs: thurs_array}
         case "change_availability_thurs":
             return {...state, thurs:action.thurs}
 
@@ -222,6 +283,23 @@ const friReducer = (state={fri:[
     switch(action.type) {
         case "CHANGEHOURF":
             return {...state, fri:action.fri}
+        case "CHANGE_HOUR_F":
+            let shift_index = 0
+            var newShift = {}
+            state.fri.map(
+              (shift) => {
+                if (shift.hour == action.hour) {
+                  console.log(action.available)
+                  shift_index = shift.hour - 7
+                  // newShift = shift: {...shift, available: action.available, changed: !action.changed}}}
+                }
+              }
+            )
+            let fri_array = []
+            state.fri.map((shift) => fri_array.push({...shift}))
+            fri_array[shift_index] = {available: action.available, hour: shift_index + 7, changed: !action.changed}
+            console.log(fri_array)
+            return {...state, fri: fri_array}
         case "change_availability_fri":
             return {...state, fri:action.fri}
         default:
@@ -252,6 +330,23 @@ const satReducer = (state={sat:[
     switch(action.type) {
         case "CHANGEHOURS":
             return {...state, sat:action.sat}
+        case "CHANGE_HOUR_S":
+            let shift_index = 0
+            var newShift = {}
+            state.sat.map(
+              (shift) => {
+                if (shift.hour == action.hour) {
+                  console.log(action.available)
+                  shift_index = shift.hour - 7
+                  // newShift = shift: {...shift, available: action.available, changed: !action.changed}}}
+                }
+              }
+            )
+            let sat_array = []
+            state.sat.map((shift) => sat_array.push({...shift}))
+            sat_array[shift_index] = {available: action.available, hour: shift_index + 7, changed: !action.changed}
+            console.log(sat_array)
+            return {...state, sat: sat_array}
         case "change_availability_sat":
             return {...state, sat:action.sat}
         default:
@@ -281,6 +376,23 @@ const sunReducer = (state={sun:[
     switch(action.type) {
         case "CHANGEHOURU":
             return {...state, sun:action.sun, hour: action.h, boolean: action.boolean}
+        case "CHANGE_HOUR_U":
+            let shift_index = 0
+            var newShift = {}
+            state.sun.map(
+              (shift) => {
+                if (shift.hour == action.hour) {
+                  console.log(action.available)
+                  shift_index = shift.hour - 7
+                  // newShift = shift: {...shift, available: action.available, changed: !action.changed}}}
+                }
+              }
+            )
+            let sun_array = []
+            state.sun.map((shift) => sun_array.push({...shift}))
+            sun_array[shift_index] = {available: action.available, hour: shift_index + 7, changed: !action.changed}
+            console.log(sun_array)
+            return {...state, sun: sun_array}
         case "change_availability_sun":
             return {...state, sun:action.sun}
         default:
@@ -292,6 +404,10 @@ const sunReducer = (state={sun:[
 
 const Reducer = combineReducers({
     sideBarReducer, userReducer, activeReducer, monReducer, tuesReducer, wedReducer, thursReducer, friReducer, satReducer, sunReducer
+})
+
+export const WReducer = combineReducers({
+    monReducer, tuesReducer, wedReducer, thursReducer, friReducer, satReducer, sunReducer
 })
 
 export default Reducer
