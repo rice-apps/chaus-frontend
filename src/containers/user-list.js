@@ -52,9 +52,10 @@ const UserList = ({user, users, selectUser, getAvailability}) => {
                     )
                 })}
             </ul>
-            <div>
-              <p>Active User:</p>
-              <h>{user.netid}</h>
+            <div style={{margin: 40}}>
+                <p>Active User:</p>
+                <hr style={{marginTop: -14}}/>
+                <h>{user.netid}</h>
             </div>
         </div>
     )

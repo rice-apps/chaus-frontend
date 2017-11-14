@@ -11,7 +11,7 @@ import ChangeButton from '../containers/changes-button'
 const FullCalendar = () => {
     return (
         <MuiThemeProvider>
-            <div style={{display: 'flex'}}>
+            <div style={{display: 'flex', marginTop: 10}}>
                 <UserList />
                 <EmployeeCalendar/>
                 <ChangeButton/>
