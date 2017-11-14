@@ -147,25 +147,25 @@ const EmployeeCalendar = ({mon, tues, wed, thurs, fri, sat, sun}) => {
           </GridList>
         </GridTile>
         <GridTile>
-          <CalendarDay dayname={"Sunday"} day={sun}/>
+          <CalendarDay dayname={"U"} day={sun}/>
         </GridTile>
         <GridTile>
-          <CalendarDay dayname={"Monday"} day={mon}/>
+          <CalendarDay dayname={"M"} day={mon}/>
         </GridTile>
         <GridTile>
-          <CalendarDay dayname={"Tuesday"} day={tues}/>
+          <CalendarDay dayname={"T"} day={tues}/>
         </GridTile>
         <GridTile>
-          <CalendarDay dayname={"Wednesday"} day={wed}/>
+          <CalendarDay dayname={"W"} day={wed}/>
         </GridTile>
         <GridTile>
-          <CalendarDay dayname={"Thursday"} day={thurs}/>
+          <CalendarDay dayname={"R"} day={thurs}/>
         </GridTile>
         <GridTile>
-          <CalendarDay dayname={"Friday"} day={fri}/>
+          <CalendarDay dayname={"F"} day={fri}/>
         </GridTile>
         <GridTile>
-          <CalendarDay dayname={"Saturday"} day={sat}/>
+          <CalendarDay dayname={"S"} day={sat}/>
         </GridTile>
 
       </GridList>

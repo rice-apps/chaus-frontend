@@ -55,6 +55,27 @@ export const get_netids = () => {
     }
 }
 
+export const toggle_availability = (dayname, hour, availability, changed) => {
+  return (dispatch) => dispatch({
+    type: "CHANGE_HOUR_"+dayname,
+    hour: hour,
+    available: !availability,
+    changed: changed
+  })
+}
+
+export const save_changes = (week, netid) => {
+  return (dispatch) => {
+    console.log(week, netid)
+    resource('PUT', 'master/update/availability/'+netid, week).then( info => {
+      dispatch({
+        type: "CHANGES_SAVED",
+        changes_saved: true
+      })
+    })
+  }
+}
+
 export const get_availability = (netid) => {
     return (dispatch) => {
         resource('GET', 'master/available/'+netid).then( schedule => {
