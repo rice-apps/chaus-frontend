@@ -7,7 +7,8 @@ import { save_changes } from '../actions/userActions'
 // import { WReducer } from '../reducers/index'
 //Material Imports
 import RaisedButton from 'material-ui/RaisedButton';
-import ActionAndroid from 'material-ui/svg-icons/action/android'
+import Save from 'material-ui/svg-icons/content/save'
+import {fullWhite} from 'material-ui/styles/colors';
 
 const combineDays = () => {
   weekObject = {"Monday":mon, "Tuesday":tues, "Wednesday":wed, "Thursday":thurs, "Friday":fri, "Saturday":sat, "Sunday":sun}
@@ -20,7 +21,7 @@ const ChangeButton = ({netid, save_changes, mon, tues, wed, thurs, fri, sat, sun
   return (
       <div style={{height: 710, display: 'flex', flexDirection: 'column'}}>
           <div style={{flex: 1}}/>
-          <RaisedButton icon={<ActionAndroid />} onClick={() => save_changes(weekObject, netid)} style={{height: 38, margin: 10}}/>
+          <RaisedButton backgroundColor="#a4c639" icon={<Save color={fullWhite}/>} onClick={() => save_changes(weekObject, netid)} style={{height: 38, margin: 10}}/>
       </div>
   )
 }
