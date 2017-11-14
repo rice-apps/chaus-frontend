@@ -4,20 +4,15 @@
 
 import React from 'react'
 import Sidebar from '../containers/sidebar'
-import EmployeeCalendar from '../containers/employee-calendar'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import UserList from '../containers/user-list'
-import ChangeButton from '../containers/changes-button'
+import FullCalendar from '../containers/full-calendar'
+
 
 const App = () => (
     <div>
         <Sidebar/>
         <MuiThemeProvider>
-          <div>
-            <UserList />
-            <EmployeeCalendar/>
-            <ChangeButton/>
-          </div>
+            <FullCalendar/>
         </MuiThemeProvider>
     </div>
 )
