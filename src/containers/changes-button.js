@@ -18,7 +18,10 @@ const ChangeButton = ({netid, save_changes, mon, tues, wed, thurs, fri, sat, sun
                     "Wednesday":wed, "Thursday":thurs, "Friday":fri, "Saturday":sat, "Sunday":sun}
   console.log(weekObject)
   return (
-    <RaisedButton icon={<ActionAndroid />} onClick={() => save_changes(weekObject, netid)}/>
+      <div style={{height: 710, display: 'flex', flexDirection: 'column'}}>
+          <div style={{flex: 1}}/>
+          <RaisedButton icon={<ActionAndroid />} onClick={() => save_changes(weekObject, netid)} style={{height: 38, margin: 10}}/>
+      </div>
   )
 }
 
