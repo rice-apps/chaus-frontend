@@ -43,13 +43,8 @@ const EmployeeCalendar = ({mon, tues, wed, thurs, fri, sat, sun}) => {
         style={styles.gridlist}
         cellHeight={730}
         >
-<<<<<<< HEAD
-        <GridTile style={{marginTop: '-25px', height: 730}}>
-            <GridList
-=======
         <GridTile style={{marginTop: '-35px', height: 760}}>
           <GridList
->>>>>>> 568e3c4f7e61e3ba273c0e3eef98de7600f11a75
             cols={1}
             cellHeight={38}
             padding={0}
