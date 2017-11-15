@@ -129,7 +129,7 @@ const EmployeeCalendar = ({mon, tues, wed, thurs, fri, sat, sun}) => {
         cellHeight={730}
         >
         <GridTile style={{marginTop: '-25px', height: 730}}>
-          <GridList
+            <GridList
             cols={1}
             cellHeight={38}
             padding={0}
@@ -147,25 +147,32 @@ const EmployeeCalendar = ({mon, tues, wed, thurs, fri, sat, sun}) => {
           </GridList>
         </GridTile>
         <GridTile>
-          <CalendarDay dayname={"U"} day={sun}/>
+            {/*<p>{"U"}</p>*/}
+            <CalendarDay dayname={"U"} day={sun}/>
         </GridTile>
         <GridTile>
-          <CalendarDay dayname={"M"} day={mon}/>
+            {/*<p>{"M"}</p>*/}
+            <CalendarDay dayname={"M"} day={mon}/>
         </GridTile>
         <GridTile>
-          <CalendarDay dayname={"T"} day={tues}/>
+            {/*<p>{"T"}</p>*/}
+            <CalendarDay dayname={"T"} day={tues}/>
         </GridTile>
         <GridTile>
-          <CalendarDay dayname={"W"} day={wed}/>
+            {/*<p>{"W"}</p>*/}
+            <CalendarDay dayname={"W"} day={wed}/>
         </GridTile>
         <GridTile>
-          <CalendarDay dayname={"R"} day={thurs}/>
+            {/*<p>{"R"}</p>*/}
+            <CalendarDay dayname={"R"} day={thurs}/>
         </GridTile>
         <GridTile>
-          <CalendarDay dayname={"F"} day={fri}/>
+            {/*<p>{"F"}</p>*/}
+            <CalendarDay dayname={"F"} day={fri}/>
         </GridTile>
         <GridTile>
-          <CalendarDay dayname={"S"} day={sat}/>
+            {/*<p>{"S"}</p>*/}
+            <CalendarDay dayname={"S"} day={sat}/>
         </GridTile>
 
       </GridList>

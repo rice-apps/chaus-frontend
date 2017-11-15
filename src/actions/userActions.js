@@ -81,6 +81,11 @@ export const get_availability = (netid) => {
         resource('GET', 'master/available/'+netid).then( schedule => {
             schedule.map(day => {
                 Object.keys(day).map(weekLetter => {
+                    console.log("DAY: " + weekLetter)
+                    console.log(day[weekLetter])
+                    day[weekLetter].map((x) => {
+
+                    })
                     dispatch({
                        type:"CHANGE"+weekLetter,
                        state:day[weekLetter]

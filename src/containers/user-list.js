@@ -36,7 +36,7 @@ const UserButton = ({netid, user, activeUser}) => {
     <RaisedButton primary={activeUser} onClick={() => call_selectUser(netid)}>{netid}</RaisedButton>
   )
 }
-const UserList = ({user, users, selectUser, getAvailability}) => {
+const UserList = ({user, users, selectUser, get_availability}) => {
 
 
     selectuser = selectUser

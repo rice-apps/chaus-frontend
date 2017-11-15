@@ -124,14 +124,12 @@ const CalendarDay = ({dayname, day}) => {
         style={styles.gridlist}
         cols={1}>
         {Object.keys(day).map(
+
           (shift) => {
-          console.log(day[shift])
           return (
-            <GridTile
-              key={day[shift].hour.toString()}
-              >
-              <CalendarHour key={day[shift].hour.toString()} dayname={dayname} hour={day[shift]} />
-            </GridTile>
+              <GridTile key={day[shift].hour.toString()}>
+                    <CalendarHour key={day[shift].hour.toString()} dayname={dayname} hour={day[shift]} />
+              </GridTile>
           )
         }
         )}
