@@ -5,6 +5,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 //Material Imports
 import {GridList, GridTile} from 'material-ui/GridList'
+import Subheader from 'material-ui/Subheader'
 //Inner Imports
 import CalendarHour from './calendar-hour'
 
@@ -15,105 +16,30 @@ const styles = {
     justifyContent: 'space-around'
   },
   gridlist: {
-    marginTop: 10,
     width: 96
   }
 }
 
-const monday =
-  {"shifts": [
-    {
-      "hour": 1,
-      "availability": [],
-      "schedule": []
-    },
-    {
-      "hour": 2,
-      "availability": [],
-      "schedule": []
-    },
-    {
-      "hour": 3,
-      "availability": [],
-      "schedule": []
-    },
-    {
-      "hour": 4,
-      "availability": [],
-      "schedule": []
-    },
-    {
-      "hour": 5,
-      "availability": [],
-      "schedule": []
-    },
-    {
-      "hour": 6,
-      "availability": [],
-      "schedule": []
-    },
-    {
-      "hour": 7,
-      "availability": [],
-      "schedule": []
-    },
-    {
-      "hour": 8,
-      "availability": [],
-      "schedule": []
-    },
-    {
-      "hour": 9,
-      "availability": [],
-      "schedule": []
-    },
-    {
-      "hour": 10,
-      "availability": [],
-      "schedule": []
-    },
-    {
-      "hour": 11,
-      "availability": [],
-      "schedule": []
-    },
-    {
-      "hour": 12,
-      "availability": [],
-      "schedule": []
-    },
-    {
-      "hour": 13,
-      "availability": [],
-      "schedule": []
-    },
-    {
-      "hour": 14,
-      "availability": [],
-      "schedule": []
-    },
-    {
-      "hour": 15,
-      "availability": [],
-      "schedule": []
-    },
-    {
-      "hour": 16,
-      "availability": [],
-      "schedule": []
-    },
-    {
-      "hour": 17,
-      "availability": [],
-      "schedule": []
-    },
-    {
-      "hour": 18,
-      "availability": [],
-      "schedule": []
+const DayTitle = (dayname) => {
+    switch(dayname) {
+        case "U":
+            return "Sunday"
+        case "M":
+            return "Monday"
+        case "T":
+            return "Tuesday"
+        case "W":
+            return "Wednesday"
+        case "R":
+            return "Thursday"
+        case "F":
+            return "Friday"
+        case "S":
+            return "Saturday"
+        default:
+            return "ah"
     }
-  ]}
-
+}
 
 const CalendarDay = ({dayname, day}) => {
   return (
@@ -123,6 +49,9 @@ const CalendarDay = ({dayname, day}) => {
         padding={0}
         style={styles.gridlist}
         cols={1}>
+          <GridTile>
+              <Subheader style={{padding: 2, display: 'flex'}}>{DayTitle(dayname)}</Subheader>
+          </GridTile>
         {Object.keys(day).map(
 
           (shift) => {
