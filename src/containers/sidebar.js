@@ -34,7 +34,9 @@ const SideBar = ({toggle, toggleMenu}) => {
                     onLeftIconButtonTouchTap={() => toggleMenu(toggle)}
 
                 >
-                    <img src={"http://coffeehouse.blogs.rice.edu/files/2017/07/Website-header-logo-utp0mt.png"} height={40} />
+                    <a href={'http://coffeehouse.rice.edu/'} target={'_blank'}>
+                        <img src={"http://coffeehouse.blogs.rice.edu/files/2017/07/Website-header-logo-utp0mt.png"} height={40} />
+                    </a>
                 </AppBar>
 
             </MuiThemeProvider>
