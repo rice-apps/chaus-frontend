@@ -24,6 +24,15 @@ const styles = {
   }
 }
 
+const HourCount = () => {
+    var hours = [];
+    for (var i = 6; i < 24; i++) {
+        hours.push(i);
+    }
+    return hours
+}
+
+
 const EmployeeCalendar = ({mon, tues, wed, thurs, fri, sat, sun}) => {
   return (
     <div style={styles.root}>
@@ -40,10 +49,10 @@ const EmployeeCalendar = ({mon, tues, wed, thurs, fri, sat, sun}) => {
             cellHeight={38}
             padding={0}
             style={styles.times}>
-            {monday.shifts.map(
-              (shift) => (
+            {HourCount().map(
+              (hour) => (
                 <GridTile>
-                  <Subheader style={{display: 'flex', justifyContent: 'flex-end'}}>{((shift.hour + 5)%12==0 ? (12):((shift.hour+5)%12)).toString() + ":55" + ((shift.hour + 5) > 11 ? (" PM"):(" AM"))}</Subheader>
+                  <Subheader style={{display: 'flex', justifyContent: 'flex-end'}}>{((hour)%12==0 ? (12):((hour)%12)).toString() + ":55" + ((hour) > 11 ? (" PM"):(" AM"))}</Subheader>
                 </GridTile>
               )
             )}
