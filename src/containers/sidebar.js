@@ -20,7 +20,7 @@ const SideBar = ({toggle, toggleMenu}) => {
 
 
     return (
-        <div>
+        <div style={{position: 'fixed', width: '100%', zIndex: 1}}>
             <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)} >
                 <AppBar
 

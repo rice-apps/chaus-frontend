@@ -10,7 +10,7 @@ import UserList from '../containers/user-list'
 const FullCalendar = () => {
     return (
         <MuiThemeProvider>
-            <div style={{display: 'flex'}}>
+            <div style={{display: 'flex', paddingTop: 60}}>
                 <div style={{flexGrow: 0.3}} >
                     <UserList />
                 </div>
