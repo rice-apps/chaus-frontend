@@ -12,7 +12,9 @@ const FullCalendar = () => {
     return (
         <MuiThemeProvider>
             <div style={{display: 'flex'}}>
-                <UserList />
+                <div style={{flexGrow: 0.4}} >
+                    <UserList />
+                </div>
                 <EmployeeCalendar/>
                 <ChangeButton/>
             </div>
