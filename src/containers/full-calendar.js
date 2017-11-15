@@ -6,17 +6,15 @@ import React, {Component} from 'react'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import EmployeeCalendar from '../containers/employee-calendar'
 import UserList from '../containers/user-list'
-import ChangeButton from '../containers/changes-button'
 
 const FullCalendar = () => {
     return (
         <MuiThemeProvider>
             <div style={{display: 'flex'}}>
-                <div style={{flexGrow: 0.4}} >
+                <div style={{flexGrow: 0.3}} >
                     <UserList />
                 </div>
                 <EmployeeCalendar/>
-                <ChangeButton/>
             </div>
         </MuiThemeProvider>
     )

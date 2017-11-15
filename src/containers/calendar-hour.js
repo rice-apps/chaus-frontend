@@ -6,12 +6,13 @@ import {connect} from 'react-redux'
 import { toggle_availability } from '../actions/userActions'
 //Material Imports
 import RaisedButton from 'material-ui/RaisedButton';
+import ChangeButton from '../containers/changes-button'
 
 const CalendarHour = ({dayname, hour, toggle_availability}) => {
   return (
-    <div style={{height: 34, display: 'flex', justifyContent: 'center'}}>
-        <RaisedButton primary={hour.available} secondary={!hour.available} disabled={hour.closed} style={{height:34}}
-          onClick={() => toggle_availability(dayname, hour.hour, hour.available, hour.changed)}/>
+      <div style={{height: 34, display: 'flex', justifyContent: 'center'}}>
+          {dayname == 'S' && hour.hour== '24' ? <ChangeButton/> : <RaisedButton primary={hour.available} secondary={!hour.available} disabled={hour.closed} style={{height:34}}
+          onClick={() => toggle_availability(dayname, hour.hour, hour.available, hour.changed)}/>}
     </div>
   )
 }
