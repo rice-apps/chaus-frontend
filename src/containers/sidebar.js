@@ -24,19 +24,24 @@ const SideBar = ({toggle, toggleMenu}) => {
             <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)} >
                 <AppBar
 
-                    title="Employee Availability"
-                    style={{background:"white"}}
 
+                    title="Employee Availability"
+                    titleStyle={{color: 'white'}}
+                    zDepth={1}
+                    style={{background:'#556987', display: 'flex', alignItems: 'center'}}
                     iconClassNameRight="muidocs-icon-navigation-expand-more"
+                    iconStyleLeft={{filter: 'invert(100%)'}}
                     onLeftIconButtonTouchTap={() => toggleMenu(toggle)}
 
-                />
+                >
+                    <img src={"http://coffeehouse.blogs.rice.edu/files/2017/07/Website-header-logo-utp0mt.png"} height={40} />
+                </AppBar>
 
             </MuiThemeProvider>
 
             <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
 
-                <Drawer open={toggle}>
+                <Drawer open={toggle} >
 
                         <MenuItem leftIcon={<NavigationMenu color={"black"} />} onClick={() => toggleMenu(toggle)}>
                         </MenuItem>
