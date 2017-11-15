@@ -5,6 +5,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 //Material Imports
 import {GridList, GridTile} from 'material-ui/GridList'
+import Subheader from 'material-ui/Subheader'
 //Inner Imports
 import CalendarHour from './calendar-hour'
 
@@ -15,7 +16,6 @@ const styles = {
     justifyContent: 'space-around'
   },
   gridlist: {
-    marginTop: 10,
     width: 96
   }
 }
@@ -114,6 +114,26 @@ const monday =
     }
   ]}
 
+const DayTitle = (dayname) => {
+    switch(dayname) {
+        case "U":
+            return "Sunday"
+        case "M":
+            return "Monday"
+        case "T":
+            return "Tuesday"
+        case "W":
+            return "Wednesday"
+        case "R":
+            return "Thursday"
+        case "F":
+            return "Friday"
+        case "S":
+            return "Saturday"
+        default:
+            return "ah"
+    }
+}
 
 const CalendarDay = ({dayname, day}) => {
   return (
@@ -123,9 +143,11 @@ const CalendarDay = ({dayname, day}) => {
         padding={0}
         style={styles.gridlist}
         cols={1}>
+          <GridTile>
+              <Subheader style={{padding: 2, display: 'flex'}}>{DayTitle(dayname)}</Subheader>
+          </GridTile>
         {Object.keys(day).map(
           (shift) => {
-          console.log(day[shift])
           return (
             <GridTile
               key={day[shift].hour.toString()}

@@ -42,7 +42,7 @@ const UserList = ({user, users, selectUser, getAvailability}) => {
     selectuser = selectUser
     console.log("NETIDS : ", users.netids)
     return (
-        <div>
+        <div style={{marginTop: 33}}>
             <ul>
                 {users.netids.map((netid) => {
                     return (

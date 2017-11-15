@@ -19,7 +19,7 @@ const styles = {
     height: 500
   },
   times: {
-    marginTop: 10,
+    marginTop: 48,
     width: 88
   }
 }
@@ -126,9 +126,9 @@ const EmployeeCalendar = ({mon, tues, wed, thurs, fri, sat, sun}) => {
         cols={8}
         padding={-2}
         style={styles.gridlist}
-        cellHeight={720}
+        cellHeight={730}
         >
-        <GridTile style={{marginTop: '-25px', height: 730}}>
+        <GridTile style={{marginTop: '-35px', height: 760}}>
           <GridList
             cols={1}
             cellHeight={38}
