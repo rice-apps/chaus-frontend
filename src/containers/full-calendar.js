@@ -6,6 +6,8 @@ import React, {Component} from 'react'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import EmployeeCalendar from '../containers/employee-calendar'
 import UserList from '../containers/user-list'
+import ActiveSchedule from '../containers/active-user-schedule'
+
 
 const FullCalendar = () => {
     return (
@@ -15,6 +17,7 @@ const FullCalendar = () => {
                     <UserList />
                 </div>
                 <EmployeeCalendar/>
+                <ActiveSchedule/>
             </div>
         </MuiThemeProvider>
     )

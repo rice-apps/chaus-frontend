@@ -7,7 +7,6 @@ import Sidebar from '../containers/sidebar'
 import FullCalendar from '../containers/full-calendar'
 import Logo from '../containers/chaus-logo'
 
-
 const App = () => (
     <div>
         <Sidebar/>

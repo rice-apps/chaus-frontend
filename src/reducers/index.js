@@ -55,12 +55,14 @@ const userReducer = (state={netids:[]}, action) => {
     }
 
 }
-const activeReducer = (state={user:{}}, action) => {
+const activeReducer = (state={user:{}, schedule:{M:[], T:[], W:[], R:[], F:[], S:[], U:[]}}, action) => {
 
     switch(action.type) {
         case "USER_SELECTED":
             console.log(action.user)
             return {...state, user:action.user}
+        case "GENERATE":
+            return {...state, schedule:action.schedule}
         default:
             return state
     }

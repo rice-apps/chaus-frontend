@@ -81,11 +81,6 @@ export const get_availability = (netid) => {
         resource('GET', 'master/available/'+netid).then( schedule => {
             schedule.map(day => {
                 Object.keys(day).map(weekLetter => {
-                    console.log("DAY: " + weekLetter)
-                    console.log(day[weekLetter])
-                    day[weekLetter].map((x) => {
-
-                    })
                     dispatch({
                        type:"CHANGE"+weekLetter,
                        state:day[weekLetter]
@@ -97,3 +92,31 @@ export const get_availability = (netid) => {
     }
 }
 
+export const get_schedule = (netid) => {
+    return (dispatch) => {
+        resource("GET", "master/schedule/" + netid).then((schedule) => {
+            let masterObj = {M:[], T:[], W:[], R:[], F:[], S:[], U:[]}
+
+            schedule.map((dayObj) => {
+                Object.keys(dayObj).map(key => {
+                    console.log(key)
+                    let arr = []
+                    dayObj[key].map(hourObj => {
+                            if (hourObj.schedule) {
+                                arr.push(hourObj.hour)
+                            }
+                        }
+                    )
+                    masterObj[key] = arr
+
+                })
+
+            })
+            dispatch({
+                type:"GENERATE",
+                schedule: masterObj
+            })
+        })
+
+    }
+}
