@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/App";
-import Reducer from './reducers'
+import Reducer from './reducers/index'
 import { Provider } from 'react-redux'
 import thunkMiddleware from 'redux-thunk'
 

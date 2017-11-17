@@ -3,7 +3,7 @@
  */
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import style from '../css/calendar.css'
+import style from '../../css/calendar.css'
 
 
 
@@ -110,14 +110,14 @@ const Calender = ({netids, mon, tues, wed, thurs, fri, sat, sun}) => {
 export default connect (
     (state) => {
         return {
-            netids : state.userReducer.netids,
-            mon: state.monReducer.mon,
-            tues: state.tuesReducer.tues,
-            wed: state.wedReducer.wed,
-            thurs: state.thursReducer.thurs,
-            fri: state.friReducer.fri,
-            sat: state.satReducer.sat,
-            sun: state.sunReducer.sun,
+            netids : state.eCal.userReducer.netids,
+            mon: state.eCal.monReducer.mon,
+            tues: state.eCal.tuesReducer.tues,
+            wed: state.eCal.wedReducer.wed,
+            thurs: state.eCal.thursReducer.thurs,
+            fri: state.eCal.friReducer.fri,
+            sat: state.eCal.satReducer.sat,
+            sun: state.eCal.sunReducer.sun,
         }
     }
 )(Calender)

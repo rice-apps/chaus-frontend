@@ -38,3 +38,11 @@ export const toggleMenu = (state) => {
         toggle:!state
     })
 }
+
+
+export const changePage = (page) => {
+    return (dispatch) => dispatch({
+        type:"CHANGELOCATION",
+        location:page
+    })
+}

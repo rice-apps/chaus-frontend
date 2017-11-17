@@ -80,7 +80,6 @@ const EmployeeCalendar = ({mon, tues, wed, thurs, fri, sat, sun}) => {
             <CalendarDay dayname={"F"} day={fri}/>
         </GridTile>
         <GridTile>
-            {/*<p>{"S"}</p>*/}
             <CalendarDay dayname={"S"} day={sat}/>
         </GridTile>
 
@@ -89,19 +88,16 @@ const EmployeeCalendar = ({mon, tues, wed, thurs, fri, sat, sun}) => {
   )
 }
 
-//Removed content
-// <Subheader style={{display: 'flex', justifyContent: 'flex-end'}}>{((shift.hour == 7 ? (12) : ((shift.hour + 5)%12)).toString() + ":55"}</Subheader>
-
 export default connect (
     (state) => {
         return {
-          mon: state.monReducer.mon,
-          tues: state.tuesReducer.tues,
-          wed: state.wedReducer.wed,
-          thurs: state.thursReducer.thurs,
-          fri: state.friReducer.fri,
-          sat: state.satReducer.sat,
-          sun: state.sunReducer.sun
+          mon: state.eCal.monReducer.mon,
+          tues: state.eCal.tuesReducer.tues,
+          wed: state.eCal.wedReducer.wed,
+          thurs: state.eCal.thursReducer.thurs,
+          fri: state.eCal.friReducer.fri,
+          sat: state.eCal.satReducer.sat,
+          sun: state.eCal.sunReducer.sun
         }
     }
 )(EmployeeCalendar)

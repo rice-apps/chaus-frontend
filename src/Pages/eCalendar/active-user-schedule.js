@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {get_schedule} from '../actions/userActions'
+import {get_schedule} from '../../actions/userActions'
 
 
 
@@ -23,8 +23,8 @@ const GenerateSchedule = ({activeUser, activeSchedule, get_schedule}) => {
 export default connect(
     (state) => {
         return {
-            activeUser: state.activeReducer.user,
-            activeSchedule : state.activeReducer.schedule
+            activeUser: state.eCal.activeReducer.user,
+            activeSchedule : state.eCal.activeReducer.schedule
         }
     },
     (dispatch) => {

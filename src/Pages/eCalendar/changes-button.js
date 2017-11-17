@@ -3,7 +3,7 @@
  */
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import { save_changes } from '../actions/userActions'
+import { save_changes } from '../../actions/userActions'
 // import { WReducer } from '../reducers/index'
 //Material Imports
 import RaisedButton from 'material-ui/RaisedButton';
@@ -17,13 +17,8 @@ const combineDays = () => {
 const ChangeButton = ({netid, save_changes, mon, tues, wed, thurs, fri, sat, sun}) => {
   let weekObject = {"Monday":mon, "Tuesday":tues, 
                     "Wednesday":wed, "Thursday":thurs, "Friday":fri, "Saturday":sat, "Sunday":sun}
-  console.log(weekObject)
   return (
-      // Button outside of grid
-      //<div style={{height: 738, display: 'flex', flexDirection: 'column'}}>
-      //    <div style={{flex: 1}}/>
-      //    <RaisedButton backgroundColor="#a4c639" icon={<Save color={fullWhite}/>} onClick={() => save_changes(weekObject, netid)} style={{height: 38, margin: 10}}/>
-      //</div>
+
       <RaisedButton backgroundColor="#a4c639" icon={<Save color={fullWhite}/>} onClick={() => save_changes(weekObject, netid)} style={{height: 34}}/>
   )
 }
@@ -31,14 +26,14 @@ const ChangeButton = ({netid, save_changes, mon, tues, wed, thurs, fri, sat, sun
 export default connect(
     (state) => {
         return {
-            mon: state.monReducer.mon,
-            tues: state.tuesReducer.tues,
-            wed: state.wedReducer.wed,
-            thurs: state.thursReducer.thurs,
-            fri: state.friReducer.fri,
-            sat: state.satReducer.sat,
-            sun: state.sunReducer.sun,
-            netid: state.activeReducer.user.netid
+            mon: state.eCal.monReducer.mon,
+            tues: state.eCal.tuesReducer.tues,
+            wed: state.eCal.wedReducer.wed,
+            thurs: state.eCal.thursReducer.thurs,
+            fri: state.eCal.friReducer.fri,
+            sat: state.eCal.satReducer.sat,
+            sun: state.eCal.sunReducer.sun,
+            netid: state.eCal.activeReducer.user.netid
         }
     },
     (dispatch) => {

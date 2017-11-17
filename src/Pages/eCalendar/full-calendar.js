@@ -4,9 +4,9 @@
 
 import React, {Component} from 'react'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import EmployeeCalendar from '../containers/employee-calendar'
-import UserList from '../containers/user-list'
-import ActiveSchedule from '../containers/active-user-schedule'
+import EmployeeCalendar from './/employee-calendar'
+import UserList from './/user-list'
+import ActiveSchedule from './/active-user-schedule'
 
 
 const FullCalendar = () => {

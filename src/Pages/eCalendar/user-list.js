@@ -3,7 +3,7 @@
  */
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import { selectUser, get_availability } from '../actions/userActions'
+import { selectUser, get_availability } from '../../actions/userActions'
 import RaisedButton from 'material-ui/RaisedButton'
 
 // import GridExampleGrid from './modal'
@@ -65,8 +65,8 @@ const UserList = ({user, users, selectUser, get_availability}) => {
 export default connect(
     (state) => {
         return {
-            users: state.userReducer,
-            user: state.activeReducer.user
+            users: state.eCal.userReducer,
+            user: state.eCal.activeReducer.user
         }
     },
     (dispatch) => {

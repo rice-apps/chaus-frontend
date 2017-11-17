@@ -3,16 +3,44 @@
  */
 
 import React from 'react'
-import Sidebar from '../containers/sidebar'
-import FullCalendar from '../containers/full-calendar'
-import Logo from '../containers/chaus-logo'
+import {connect} from 'react-redux'
+import Sidebar from '../Pages/sidebar'
+import FullCalendar from '../Pages/eCalendar/full-calendar'
+import Logo from '../Pages/chaus-logo'
 
-const App = () => (
-    <div>
-        <Sidebar/>
-        <FullCalendar/>
-        <Logo/>
-    </div>
-)
+const App = ({location}) => {
+    switch (location) {
+        case "eCalendar":
+            return (
+                <div>
+                    <Sidebar/>
+                    <FullCalendar/>
+                    <Logo/>
+                </div>
+            )
+        case "mCalendar":
+            return (
+                <div>
+                    <Sidebar/>
+                    <Logo/>
+                </div>
+            )
+        default:
+            return (
+                <div>
+                    <Sidebar/>
+                    <FullCalendar/>
+                    <Logo/>
+                </div>
+            )
+    }
 
-export default App
+}
+
+export default connect(
+    (state) => {
+        return {
+            location: state.pageReducer.location
+        }
+    }
+)(App)

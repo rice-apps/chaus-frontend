@@ -30,7 +30,6 @@ const resource = (method, endpoint, payload) => {
 
 
 export const selectUser = (netid) => {
-    console.log("SELECT USER: ", netid)
     return (dispatch) => {
         dispatch(get_availability(netid));
         resource('GET', 'user/'+netid).then( r => {
@@ -46,7 +45,6 @@ export const selectUser = (netid) => {
 export const get_netids = () => {
     return (dispatch) => {
         resource('GET', 'netids').then( r => {
-            console.log(r)
             dispatch({
                 type: "GET_NETIDS",
                 netids: r
@@ -66,7 +64,6 @@ export const toggle_availability = (dayname, hour, availability, changed) => {
 
 export const save_changes = (week, netid) => {
   return (dispatch) => {
-    console.log(week, netid)
     resource('PUT', 'master/update/availability/'+netid, week).then( info => {
       dispatch({
         type: "CHANGES_SAVED",
@@ -99,7 +96,6 @@ export const get_schedule = (netid) => {
 
             schedule.map((dayObj) => {
                 Object.keys(dayObj).map(key => {
-                    console.log(key)
                     let arr = []
                     dayObj[key].map(hourObj => {
                             if (hourObj.schedule) {

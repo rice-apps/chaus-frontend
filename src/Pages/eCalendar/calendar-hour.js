@@ -3,10 +3,10 @@
  */
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import { toggle_availability } from '../actions/userActions'
+import { toggle_availability } from '../../actions/userActions'
 //Material Imports
 import RaisedButton from 'material-ui/RaisedButton';
-import ChangeButton from '../containers/changes-button'
+import ChangeButton from './/changes-button'
 
 const CalendarHour = ({dayname, hour, toggle_availability}) => {
   return (

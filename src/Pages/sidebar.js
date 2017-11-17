@@ -11,21 +11,24 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 
-import {toggleMenu} from '../actions/sidebarActions';
+import {toggleMenu, changePage} from '../actions/sidebarActions';
 import MenuItem from 'material-ui/MenuItem';
 
 import NavigationMenu from 'material-ui/svg-icons/navigation/menu';
 
-const SideBar = ({toggle, toggleMenu}) => {
-
+const SideBar = ({toggle, toggleMenu, changePage, page}) => {
+    let pageTitle
+    if (page == "mCalendar") {
+        pageTitle = "Master Calendar"
+    } else {
+        pageTitle = "Employee Availability"
+    }
 
     return (
         <div style={{position: 'fixed', width: '100%', zIndex: 1}}>
             <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)} >
                 <AppBar
-
-
-                    title="Employee Availability"
+                    title={pageTitle}
                     titleStyle={{color: 'white'}}
                     zDepth={1}
                     style={{background:'#556987', display: 'flex', alignItems: 'center'}}
@@ -48,8 +51,8 @@ const SideBar = ({toggle, toggleMenu}) => {
                         <MenuItem leftIcon={<NavigationMenu color={"black"} />} onClick={() => toggleMenu(toggle)}>
                         </MenuItem>
 
-                        <MenuItem >Employee Availability</MenuItem>
-                        <MenuItem >Master Schedule</MenuItem>
+                        <MenuItem onClick={() => changePage("eCalendar")}>Employee Availability</MenuItem>
+                        <MenuItem onClick={() => changePage("mCalendar")}>Master Schedule</MenuItem>
                 </Drawer>
 
             </MuiThemeProvider>
@@ -62,12 +65,15 @@ const SideBar = ({toggle, toggleMenu}) => {
 export default connect(
     (state) => {
         return {
-            toggle: state.sideBarReducer.toggle
+            toggle: state.eCal.sideBarReducer.toggle,
+            page: state.pageReducer.location
         }
     },
     (dispatch) => {
         return {
-            toggleMenu: (state) => dispatch(toggleMenu(state))
+            toggleMenu: (state) => dispatch(toggleMenu(state)),
+            changePage: (page) => dispatch(changePage(page))
+
         }
     }
 )(SideBar)

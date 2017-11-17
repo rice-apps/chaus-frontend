@@ -106,7 +106,7 @@ const UserAvailability = ({user}) => {
 export default connect(
     (state) => {
         return {
-            user: state.activeReducer.user
+            user: state.eCal.activeReducer.user
         }
     }
 )(UserAvailability)
