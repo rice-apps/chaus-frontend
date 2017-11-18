@@ -36,8 +36,6 @@ const DayTitle = (dayname) => {
             return "Friday"
         case "S":
             return "Saturday"
-        default:
-            return "ah"
     }
 }
 
