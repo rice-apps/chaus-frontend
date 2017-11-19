@@ -8,8 +8,6 @@ import { combineReducers } from 'redux'
 
 
 
-const mCalReducer = combineReducers({
+export default combineReducers({
+
 })
-
-
-export default mCalReducer
