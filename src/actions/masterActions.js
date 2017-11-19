@@ -33,11 +33,12 @@ const resource = (method, endpoint, payload) => {
 export const open_modal = (dayname, hour) => {
     return (dispatch) => {
         resource('GET', 'master/shift/'+ dayname + '/' + hour.hour).then( r => {
+            console.log(r)
             return dispatch({
                 type: "SHIFT_SELECTED",
                 available: r[0].availability,
-                scheduled: r[0].schedule,
-                modal_open: true
+                schedule: r[0].schedule,
+                open: true
             })
         })
     }
@@ -48,7 +49,7 @@ export const close_modal = () => {
     return (dispatch) => {
             return dispatch({
                 type: "CLOSE_MODAL",
-                modal_open: true
+                modal_open: false
             })
     }
 }
