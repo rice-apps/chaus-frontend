@@ -51,8 +51,8 @@ const SideBar = ({toggle, toggleMenu, changePage, page}) => {
                         <MenuItem leftIcon={<NavigationMenu color={"black"} />} onClick={() => toggleMenu(toggle)}>
                         </MenuItem>
 
-                        <MenuItem onClick={() => changePage("eCalendar")}>Employee Availability</MenuItem>
-                        <MenuItem onClick={() => changePage("mCalendar")}>Master Schedule</MenuItem>
+                        <MenuItem onClick={() => (changePage("eCalendar"), toggleMenu(toggle))}>Employee Availability</MenuItem>
+                        <MenuItem onClick={() => (changePage("mCalendar"), toggleMenu(toggle))}>Master Schedule</MenuItem>
                 </Drawer>
 
             </MuiThemeProvider>
