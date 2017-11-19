@@ -82,7 +82,6 @@ export const get_availability = (netid) => {
                        type:"CHANGE"+weekLetter,
                        state:day[weekLetter]
                     })
-
                 })
             })
         })
