@@ -53,3 +53,14 @@ export const close_modal = () => {
             })
     }
 }
+
+export const toggle_scheduled = (netid) => {
+  console.log("inside action")
+  return (dispatch) => {
+            return dispatch({
+                type: "TOGGLE_SCHEDULED",
+                netid: netid
+            })
+  }
+}
+

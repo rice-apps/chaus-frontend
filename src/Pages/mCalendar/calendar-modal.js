@@ -4,6 +4,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {close_modal} from '../../actions/masterActions'
+import ModalList from './modal-list'
 //Material Imports
 import Dialog from 'material-ui/Dialog';
 
@@ -17,21 +18,25 @@ const CalModal = ({availability, schedule, open, close_modal, debug}) => {
             open={open}
             onRequestClose={() => close_modal()}
         >
-            {availability}
-            {schedule}
+            <ModalList/>
         </Dialog>
     )
 }
 
-export default connect(
+export default connect (
     (state) => {
-        debug: state
-        availability: state.activeShiftReducer.available
-        schedule: state.activeShiftReducer.schedule
-        open: state.activeShiftReducer.open
+      return {
+        debug: state,
+        availability: state.mCal.activeShiftReducer.available,
+        schedule: state.mCal.activeShiftReducer.schedule,
+        open: state.mCal.activeShiftReducer.open
+      }
     },
     (dispatch) => {
+      return {
         close_modal: () => dispatch(close_modal())
+
+      }
     }
 )(CalModal)
 
