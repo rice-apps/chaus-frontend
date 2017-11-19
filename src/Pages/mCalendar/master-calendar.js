@@ -6,7 +6,7 @@ import React, {Component} from 'react'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import CalendarMonth from './/calendar-month'
 
-const mFullCalendar = () => {
+const MFullCalendar = () => {
     return (
         <MuiThemeProvider>
             <div style={{display: 'flex', paddingTop: 60}}>
@@ -18,4 +18,4 @@ const mFullCalendar = () => {
     )
 }
 
-export default mFullCalendar
+export default MFullCalendar
