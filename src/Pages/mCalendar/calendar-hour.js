@@ -3,14 +3,15 @@
  */
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import { open_modal } from '../../actions/masterActions'
 //Material Imports
 import RaisedButton from 'material-ui/RaisedButton';
-import ChangeButton from './/changes-button'
 
-const CalendarHour = ({dayname, hour}) => {
+const CalendarHour = ({dayname, hour, open_modal}) => {
   return (
       <div style={{height: 34, display: 'flex', justifyContent: 'center'}}>
-          {dayname == 'S' && hour.hour== '24' ? <ChangeButton/> : <RaisedButton primary={hour.available} secondary={!hour.available} disabled={hour.closed} style={{height:34}}/>}
+          <RaisedButton primary={hour.available} secondary={!hour.available} disabled={hour.closed} style={{height:34}}
+                        onClick={() => open_modal(dayname, hour)}/>
     </div>
   )
 }
@@ -21,6 +22,7 @@ export default connect (
     },
     (dispatch) => {
         return {
+            open_modal: (dayname, hour) => dispatch(open_modal(dayname, hour))
         }
     }
 )(CalendarHour)
