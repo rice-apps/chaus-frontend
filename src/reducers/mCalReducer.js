@@ -4,12 +4,17 @@
 import { combineReducers } from 'redux'
 
 
+const activeShiftReducer = (state={day:"",hour:0, closed:true, available:[], schedule:[]}, action) => {
+    switch(action.type) {
+        case "SHIFT_SELECTED":
+            return {...state, avaliable:action.avaliable, schedule:action.schedule}
+        default:
+            return state
+    }
 
+}
 
-
-
-const mCalReducer = combineReducers({
+export default combineReducers({
+    activeShiftReducer
 })
 
-
-export default mCalReducer
