@@ -4,8 +4,8 @@
 
 import React, {Component} from 'react'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import CalendarMonth from './/calendar-month'
-import CalModal from './/calendar-modal'
+import CalendarMonth from './calendar-month'
+import CalModal from './calendar-modal'
 
 const MFullCalendar = () => {
     return (

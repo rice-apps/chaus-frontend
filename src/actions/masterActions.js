@@ -1,9 +1,10 @@
 /**
  * Created by Will and Josh on 11/19/2017.
  */
-export const url =  'http://localhost:3000';
+// export const url =  'http://localhost:3000';
+export const url =  'https://chaus-backend.herokuapp.com';
 
-const resource = (method, endpoint, payload) => {
+export const resource = (method, endpoint, payload) => {
     // console.log("THE ENDPOINT: " + endpoint + "\n" + "THE PAYLOAD: " + payload + "\n" + "THE METHOD: " + method)
     const options =  {
         method,
