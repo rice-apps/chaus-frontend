@@ -8,12 +8,12 @@ import ModalList from './modal-list'
 //Material Imports
 import Dialog from 'material-ui/Dialog';
 
-const CalModal = ({availability, schedule, open, close_modal, debug}) => {
-    console.log(availability, schedule, open, close_modal)
-    console.log("DEBUG: ", debug)
+const CalModal = ({availability, schedule, open, close_modal, dayname, hour}) => {
+    var modalTitle = dayname
+    modalTitle += hour
     return (
         <Dialog
-            title='TITLE'
+            title={modalTitle}
             modal={false}
             open={open}
             onRequestClose={() => close_modal()}
@@ -25,18 +25,18 @@ const CalModal = ({availability, schedule, open, close_modal, debug}) => {
 
 export default connect (
     (state) => {
-      return {
-        debug: state,
-        availability: state.mCal.activeShiftReducer.available,
-        schedule: state.mCal.activeShiftReducer.schedule,
-        open: state.mCal.activeShiftReducer.open
-      }
+        return {
+            availability: state.mCal.activeShiftReducer.available,
+            schedule: state.mCal.activeShiftReducer.schedule,
+            open: state.mCal.activeShiftReducer.open,
+            dayname: state.mCal.activeShiftReducer.dayname,
+            hour: state.mCal.activeShiftReducer.hour
+        }
     },
     (dispatch) => {
-      return {
-        close_modal: () => dispatch(close_modal())
-
-      }
+        return {
+            close_modal: () => dispatch(close_modal())
+        }
     }
 )(CalModal)
 

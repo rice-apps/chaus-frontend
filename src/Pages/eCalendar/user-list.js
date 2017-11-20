@@ -14,22 +14,6 @@ const call_selectUser = (netid) => {
     selectuser(netid)
 }
 
-// const ModalModalExample = ({netid, user}) => (
-//     <Modal trigger={<Button onClick={() => call_selectUser(netid)}>{netid}</Button>}>
-//
-//         <Modal.Content>
-//             <Modal.Description>
-//                 <h4>Name: {user.first}</h4>
-//                 <h4>NetID: {user.netid}</h4>
-//                 <h4>Hour Cap: {user.cap}</h4>
-//
-//                 <hr></hr>
-//                 <h4>Availability: </h4>
-//                 <GridExampleGrid />
-//             </Modal.Description>
-//         </Modal.Content>
-//     </Modal>
-// )
 
 const UserButton = ({netid, user, activeUser}) => {
   return (

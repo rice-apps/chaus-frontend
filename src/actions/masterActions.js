@@ -38,7 +38,9 @@ export const open_modal = (dayname, hour) => {
                 type: "SHIFT_SELECTED",
                 available: r[0].availability,
                 schedule: r[0].schedule,
-                open: true
+                hour: r[0].hour,
+                open: true,
+                dayname: dayname
             })
         })
     }
@@ -64,3 +66,14 @@ export const toggle_scheduled = (netid) => {
   }
 }
 
+export const save_shift = (schedule, availability, weekday, hour) => {
+    const payload = {"availability": availability, "schedule": schedule, "weekday": weekday, "hour": hour}
+    return (dispatch) => {
+        resource('PUT', 'master/update/'+weekday +'/'+hour, payload).then( info => {
+            dispatch({
+                type: "SHIFT_SAVED",
+                changes_saved: true
+            })
+        })
+    }
+}
