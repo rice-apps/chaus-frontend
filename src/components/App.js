@@ -6,6 +6,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import Sidebar from '../Pages/sidebar'
 import FullCalendar from '../Pages/eCalendar/full-calendar'
+import MFullCalendar from '../Pages/mCalendar/master-calendar'
 import Logo from '../Pages/chaus-logo'
 
 const App = ({location}) => {
@@ -22,6 +23,7 @@ const App = ({location}) => {
             return (
                 <div>
                     <Sidebar/>
+                    <MFullCalendar/>
                     <Logo/>
                 </div>
             )
