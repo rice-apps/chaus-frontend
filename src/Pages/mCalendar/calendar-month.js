@@ -91,13 +91,13 @@ const CalendarMonth = ({mon, tues, wed, thurs, fri, sat, sun}) => {
 export default connect (
     (state) => {
         return {
-          mon: state.eCal.monReducer.mon,
-          tues: state.eCal.tuesReducer.tues,
-          wed: state.eCal.wedReducer.wed,
-          thurs: state.eCal.thursReducer.thurs,
-          fri: state.eCal.friReducer.fri,
-          sat: state.eCal.satReducer.sat,
-          sun: state.eCal.sunReducer.sun
+          mon: state.mCal.mmonReducer.mon,
+          tues: state.mCal.mtuesReducer.tues,
+          wed: state.mCal.mwedReducer.wed,
+          thurs: state.mCal.mthursReducer.thurs,
+          fri: state.mCal.mfriReducer.fri,
+          sat: state.mCal.msatReducer.sat,
+          sun: state.mCal.msunReducer.sun
         }
     }
 )(CalendarMonth)

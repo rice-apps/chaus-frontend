@@ -22,7 +22,6 @@ const userReducer = (state={netids:[]}, action) => {
         default:
             return state
     }
-
 }
 const activeReducer = (state={user:{}, schedule:{M:[], T:[], W:[], R:[], F:[], S:[], U:[]}}, action) => {
 
@@ -59,24 +58,24 @@ const monReducer = (state={mon:[
 ]}, action) => {
     switch(action.type) {
         case "CHANGEM":
-            return {...state, mon:action.state}
+            let arrs = []
+            for (var i = 0; i < action.state.length; i++) {
+                arrs.push({...state.mon[i], available:action.state[i].available})
+            }
+            return {...state, mon:arrs}
         case "CHANGE_HOUR_M":
-            let shift_index = 0
-            var newShift = {}
+            let arr = []
+
             state.mon.map(
                 (shift) => {
                     if (shift.hour == action.hour) {
-                        console.log(action.available)
-                        shift_index = shift.hour - 7
-                        // newShift = shift: {...shift, available: action.available, changed: !action.changed}}}
+                        arr.push({...shift, available:action.available, changed:!action.changed})
+                    } else {
+                        arr.push({...shift})
                     }
                 }
             )
-            let mon_array = []
-            state.mon.map((shift) => mon_array.push({...shift}))
-            mon_array[shift_index] = {available: action.available, hour: shift_index + 7, changed: !action.changed}
-            console.log(mon_array)
-            return {...state, mon: mon_array}
+            return {...state, mon: arr}
         // return {...state, mon[action.hour-7]:{...mon[action.hour-7], available: action.available, changed: action.changed}}
         default:
             return {...state}
@@ -105,7 +104,12 @@ const tuesReducer = (state={tues:[
 ]}, action) => {
     switch(action.type) {
         case "CHANGET":
-            return {...state, tues:action.state}
+            let arrs = []
+            for (var i = 0; i < action.state.length; i++) {
+                arrs.push({...state.tues[i], available:action.state[i].available})
+            }
+
+            return {...state, tues:arrs}
         case "CHANGE_HOUR_T":
             let arr = []
             state.tues.map(
@@ -145,7 +149,12 @@ const wedReducer = (state={wed:[
 ]}, action) => {
     switch(action.type) {
         case "CHANGEW":
-            return {...state, wed:action.state}
+            let arrs = []
+            for (var i = 0; i < action.state.length; i++) {
+                arrs.push({...state.wed[i], available:action.state[i].available})
+            }
+
+            return {...state, wed:arrs}
         case "CHANGE_HOUR_W":
             let arr = []
             state.wed.map(
@@ -185,7 +194,12 @@ const thursReducer = (state={thurs:[
 ]}, action) => {
     switch(action.type) {
         case "CHANGER":
-            return {...state, thurs:action.state}
+            let arrs = []
+            for (var i = 0; i < action.state.length; i++) {
+                arrs.push({...state.thurs[i], available:action.state[i].available})
+            }
+
+            return {...state, thurs:arrs}
         case "CHANGE_HOUR_R":
             let arr = []
             state.thurs.map(
@@ -228,7 +242,12 @@ const friReducer = (state={fri:[
 ]}, action) => {
     switch(action.type) {
         case "CHANGEF":
-            return {...state, fri:action.state}
+            let arrs = []
+            for (var i = 0; i < action.state.length; i++) {
+                arrs.push({...state.fri[i], available:action.state[i].available})
+            }
+
+            return {...state, fri:arrs}
         case "CHANGE_HOUR_F":
             let arr = []
             state.fri.map(
@@ -270,7 +289,12 @@ const satReducer = (state={sat:[
 ]}, action) => {
     switch(action.type) {
         case "CHANGES":
-            return {...state, sat:action.state}
+            let arrs = []
+            for (var i = 0; i < action.state.length; i++) {
+                arrs.push({...state.sat[i], available:action.state[i].available})
+            }
+
+            return {...state, sat:arrs}
         case "CHANGE_HOUR_S":
             let arr = []
             state.sat.map(
@@ -311,7 +335,12 @@ const sunReducer = (state={sun:[
 ]}, action) => {
     switch(action.type) {
         case "CHANGEU":
-            return {...state, sun:action.state}
+            let arrs = []
+            for (var i = 0; i < action.state.length; i++) {
+                arrs.push({...state.sun[i], available:action.state[i].available})
+            }
+            return {...state, sun:arrs}
+
         case "CHANGE_HOUR_U":
             let arr = []
             state.sun.map(
