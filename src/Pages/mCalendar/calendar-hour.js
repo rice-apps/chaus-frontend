@@ -10,7 +10,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 const CalendarHour = ({dayname, hour, open_modal}) => {
   return (
       <div style={{height: 34, display: 'flex', justifyContent: 'center'}}>
-          <RaisedButton primary={hour.available} secondary={!hour.available} disabled={hour.closed} style={{height:34}}
+          <RaisedButton primary={true} disabled={hour.closed} style={{height:34}}
                         onClick={() => open_modal(dayname, hour)}/>
     </div>
   )

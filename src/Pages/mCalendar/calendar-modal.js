@@ -8,9 +8,31 @@ import ModalList from './modal-list'
 //Material Imports
 import Dialog from 'material-ui/Dialog';
 
+const DayTitle = (dayname) => {
+    switch(dayname) {
+        case "U":
+            return "Sunday"
+        case "M":
+            return "Monday"
+        case "T":
+            return "Tuesday"
+        case "W":
+            return "Wednesday"
+        case "R":
+            return "Thursday"
+        case "F":
+            return "Friday"
+        case "S":
+            return "Saturday"
+    }
+}
+
 const CalModal = ({availability, schedule, open, close_modal, dayname, hour}) => {
-    var modalTitle = dayname
-    modalTitle += hour
+    var modalTitle = DayTitle(dayname)
+    var hourEnd = ((hour)%12==0 ? (12):((hour)%12))
+    var hourStart = ((hourEnd - 1)==0 ? (12):(hourEnd - 1))
+    var timeRange = (hourStart.toString() + ":55 - " + hourEnd.toString() + ":55" + ((hour) > 11 ? (" PM"):(" AM")))
+    modalTitle += (", " + timeRange)
     return (
         <Dialog
             title={modalTitle}
