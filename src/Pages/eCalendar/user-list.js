@@ -20,11 +20,12 @@ const UserButton = ({netid, user, activeUser}) => {
     <RaisedButton primary={activeUser} onClick={() => call_selectUser(netid)}>{netid}</RaisedButton>
   )
 }
+
+
 const UserList = ({user, users, selectUser, get_availability}) => {
 
 
     selectuser = selectUser
-    console.log("NETIDS : ", users.netids)
     return (
         <div style={{marginTop: 33}}>
             <ul>

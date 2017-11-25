@@ -195,7 +195,12 @@ const mfriReducer = (state={fri:[
 ]}, action) => {
     switch(action.type) {
         case "CHANGEF":
-            return {...state, fri:action.state}
+            let arrs = []
+            for (var i = 0; i < action.state.length; i++) {
+                arrs.push({...state.fri[i], available:action.state[i].available})
+            }
+
+            return {...state, fri:arrs}
         case "CHANGE_HOUR_F":
             let arr = []
             state.fri.map(
@@ -237,7 +242,12 @@ const msatReducer = (state={sat:[
 ]}, action) => {
     switch(action.type) {
         case "CHANGES":
-            return {...state, sat:action.state}
+            let arrs = []
+            for (var i = 0; i < action.state.length; i++) {
+                arrs.push({...state.sat[i], available:action.state[i].available})
+            }
+
+            return {...state, sat:arrs}
         case "CHANGE_HOUR_S":
             let arr = []
             state.sat.map(
@@ -278,7 +288,11 @@ const msunReducer = (state={sun:[
 ]}, action) => {
     switch(action.type) {
         case "CHANGEU":
-            return {...state, sun:action.state}
+            let arrs = []
+            for (var i = 0; i < action.state.length; i++) {
+                arrs.push({...state.sun[i], available:action.state[i].available})
+            }
+            return {...state, sun:arrs}
         case "CHANGE_HOUR_U":
             let arr = []
             state.sun.map(
