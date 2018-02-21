@@ -8,10 +8,27 @@ import { toggle_availability } from '../../actions/userActions'
 import RaisedButton from 'material-ui/RaisedButton';
 import ChangeButton from './/changes-button'
 
+const changeColor = (preference) => {
+  switch(preference) {
+    case 0:
+      return "grey"
+    case 1:
+      return "green"
+    case 2:
+      return "yellow"
+    case 3:
+      return "orange"
+    case 4:
+      return "red"
+    default:
+      return "black"
+  }
+}
+
 const CalendarHour = ({dayname, hour, toggle_availability}) => {
   return (
       <div style={{height: 34, display: 'flex', justifyContent: 'center'}}>
-          {dayname == 'S' && hour.hour== '24' ? <ChangeButton/> : <RaisedButton primary={hour.available} secondary={!hour.available} disabled={hour.closed} style={{height:34}}
+          {dayname == 'S' && hour.hour== '24' ? <ChangeButton/> : <RaisedButton backgroundColor={changeColor(hour.available)} disabled={hour.closed} style={{height:34}}
           onClick={() => toggle_availability(dayname, hour.hour, hour.available, hour.changed)}/>}
     </div>
   )

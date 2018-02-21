@@ -50,6 +50,7 @@ const CalendarDay = ({dayname, day}) => {
           <GridTile>
               <Subheader style={{padding: 2, display: 'flex'}}>{DayTitle(dayname)}</Subheader>
           </GridTile>
+        {console.log(day)}
         {Object.keys(day).map(
 
           (shift) => {

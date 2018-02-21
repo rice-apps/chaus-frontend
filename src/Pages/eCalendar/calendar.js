@@ -111,13 +111,20 @@ export default connect (
     (state) => {
         return {
             netids : state.eCal.userReducer.netids,
-            mon: state.eCal.monReducer.mon,
-            tues: state.eCal.tuesReducer.tues,
-            wed: state.eCal.wedReducer.wed,
-            thurs: state.eCal.thursReducer.thurs,
-            fri: state.eCal.friReducer.fri,
-            sat: state.eCal.satReducer.sat,
-            sun: state.eCal.sunReducer.sun,
+            // mon: state.eCal.monReducer.mon,
+            // tues: state.eCal.tuesReducer.tues,
+            // wed: state.eCal.wedReducer.wed,
+            // thurs: state.eCal.thursReducer.thurs,
+            // fri: state.eCal.friReducer.fri,
+            // sat: state.eCal.satReducer.sat,
+            // sun: state.eCal.sunReducer.sun,
+            mon: state.eCal.scheduleReducer.M,
+            tues: state.eCal.scheduleReducer.T,
+            wed: state.eCal.scheduleReducer.W,
+            thurs: state.eCal.scheduleReducer.R,
+            fri: state.eCal.scheduleReducer.F,
+            sat: state.eCal.scheduleReducer.S,
+            sun: state.eCal.scheduleReducer.U,
         }
     }
 )(Calender)
