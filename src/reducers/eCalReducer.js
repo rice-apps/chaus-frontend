@@ -23,7 +23,7 @@ const userReducer = (state={netids:[]}, action) => {
             return state
     }
 }
-const activeReducer = (state={user:{}, schedule:{M:[], T:[], W:[], R:[], F:[], S:[], U:[]}}, action) => {
+const activeReducer = (state={user:{netids:'', firstName:'', lastName:'', minHour:0, maxHour:0, totalHours:0}, schedule:{M:[], T:[], W:[], R:[], F:[], S:[], U:[]}}, action) => {
 
     switch(action.type) {
         case "USER_SELECTED":

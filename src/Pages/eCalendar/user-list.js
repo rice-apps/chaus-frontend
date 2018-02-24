@@ -6,33 +6,23 @@ import {connect} from 'react-redux'
 import { selectUser, get_availability } from '../../actions/userActions'
 import RaisedButton from 'material-ui/RaisedButton'
 
-// import GridExampleGrid from './modal'
 
-var selectuser = () => {}
-
-const call_selectUser = (netid) => {
-    selectuser(netid)
+const UserButton = ({netid, user, activeUser, selectUser}) => {
+    return (
+        <RaisedButton primary={activeUser} onClick={() => selectUser(netid)}>{firstName}</RaisedButton>
+    )
 }
 
 
-const UserButton = ({netid, user, activeUser}) => {
-  return (
-    <RaisedButton primary={activeUser} onClick={() => call_selectUser(netid)}>{netid}</RaisedButton>
-  )
-}
+const UserList = ({user, users, selectUser}) => {
 
-
-const UserList = ({user, users, selectUser, get_availability}) => {
-
-
-    selectuser = selectUser
     return (
         <div style={{marginTop: 33}}>
             <ul>
                 {users.netids.map((netid) => {
                     return (
                         <div key={netid}>
-                            <UserButton onClick={() => get_availability(netid)} key={netid} netid={netid} user={user} activeUser={netid==user.netid ? true:false}/>
+                            <UserButton key={netid} netid={netid} user={user} activeUser={netid==user.netid ? true:false} selectUser={selectUser}/>
                         </div>
                     )
                 })}
@@ -57,7 +47,6 @@ export default connect(
     (dispatch) => {
         return {
             selectUser: (user) => dispatch(selectUser(user)),
-            get_availability: (user) => dispatch(get_availability(user))
         }
     }
 )(UserList)

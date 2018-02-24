@@ -25,10 +25,11 @@ const GenerateSchedule = ({activeUser, activeSchedule, get_schedule}) => {
     return (
         <div style={{padding: '1em'}}>
 
-            <RaisedButton label={activeUser.netid+"'s Schedule"}
-                          primary = {typeof(activeUser.netid) !== "undefined"}
-                          disabled = {typeof(activeUser.netid) === "undefined"}
-                          onClick={() => get_schedule(activeUser.netid)} />
+            {/*<RaisedButton label={activeUser.netid+"'s Schedule"}*/}
+                          {/*primary = {typeof(activeUser.netid) !== "undefined"}*/}
+                          {/*disabled = {typeof(activeUser.netid) === "undefined"}*/}
+                          {/*onClick={() => get_schedule(activeUser.netid)} />*/}
+            <h2>{activeUser.firstName + " " + activeUser.lastName+"'s Schedule"} </h2>
             {Object.keys(activeSchedule).map((key) => {
                 var shiftString = processedShifts(activeSchedule[key])
                 return (

@@ -8,6 +8,7 @@ import { resource } from './masterActions'
 export const selectUser = (netid) => {
     return (dispatch) => {
         dispatch(get_availability(netid));
+        dispatch(get_schedule(netid));
         resource('GET', 'user/'+netid).then( r => {
             return dispatch({
                 type: "USER_SELECTED",
@@ -54,6 +55,9 @@ export const get_availability = (netid) => {
         resource('GET', 'master/available/'+netid).then( schedule => {
             schedule.map(day => {
                 Object.keys(day).map(weekLetter => {
+                    console.log("in get_availability" + day[weekLetter])
+
+
                     dispatch({
                        type:"CHANGE"+weekLetter,
                        state:day[weekLetter]
