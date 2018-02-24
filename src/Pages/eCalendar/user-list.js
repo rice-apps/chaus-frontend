@@ -24,7 +24,6 @@ const UserButton = ({netid, user, activeUser}) => {
 
 const UserList = ({user, users, selectUser, get_availability}) => {
 
-
     selectuser = selectUser
     return (
         <div style={{marginTop: 33}}>

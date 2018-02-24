@@ -21,11 +21,12 @@ const changeColor = (preference) => {
     case 4:
       return "red"
     default:
-      return "black"
+      return "grey"
   }
 }
 
 const CalendarHour = ({dayname, hour, toggle_availability}) => {
+  console.log(hour)
   return (
       <div style={{height: 34, display: 'flex', justifyContent: 'center'}}>
           {dayname == 'S' && hour.hour== '24' ? <ChangeButton/> : <RaisedButton backgroundColor={changeColor(hour.available)} disabled={hour.closed} style={{height:34}}

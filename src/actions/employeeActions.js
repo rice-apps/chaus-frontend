@@ -5,45 +5,45 @@ import { resource } from './masterActions'
 
 const reformat_availability = (schedule) => {
   let reformatted_schedule = []
-  // Iterate through days of week 
-  for (let i = 1; i < 8; i++) {
-    // day of week
-    week_day = []
-    // Iterate through 18 hours we are tracking
-    for (let j = 1; j < 19; j++) {
-      current_hour = i * j
-      employee_pref = schedule[current_hour]
-      week_day.push({hour: current_hour, available: employee_pref, changed: false, closed: false})
+  // day of week
+  let week_day = []
+  // Iterate through days of week
+  for (let i = 0; i < 127; i++) {
+    console.log(i)
+    if (i%18 == 0 && i != 0) {
+      reformatted_schedule.push(week_day)
+      week_day = []
     }
-    reformatted_schedule.push(week_day)
+    let employee_pref = schedule[i]
+    // handling mod 18
+    week_day.push({hour: (i%18) + 1, available: employee_pref, changed: false, closed: false})
   }
   return reformatted_schedule
 }
 
-export const get_availability = () => {
+export const get_availability = (netid) => {
   return (dispatch) => {
     // Makes a GET call, fetching employee availability preferences
     resource('GET', 'employee/available/'+netid).then(schedule => {
-      console.log(schedule)
       // Reformat schedule
-      reformatted = reformat_availability(schedule)
+      let reformatted = reformat_availability(schedule)
       dispatch({
         type: "GET_AVAILABILITY",
-        schedule
+        schedule: reformatted
       })
     })
   }
 }
 
-export const get_scheduled = () => {
+export const get_scheduled = (netid) => {
   return (dispatch) => {
     // Makes a GET call, returns array of True False values, dependending on whether employee is scheduled
-    resource('GET', 'employee/scheduled'+netid).then(schedule => {
+    resource('GET', 'employee/scheduled/'+netid).then(schedule => {
       // Reformat data
-      reformatted = reformat_scheduled(schedule)
+      let reformatted = reformat_scheduled(schedule)
       dispatch({
         type: "GET_SCHEDULED",
-        schedule
+        schedule: reformatted
       })
     })
   }

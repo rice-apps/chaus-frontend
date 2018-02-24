@@ -8,6 +8,9 @@ import {GridList, GridTile} from 'material-ui/GridList'
 import Subheader from 'material-ui/Subheader'
 //Inner Imports
 import CalendarHour from './calendar-hour'
+// Action Imports
+import {selectUser} from '../../actions/userActions'
+import {get_availability} from '../../actions/employeeActions'
 
 const styles = {
   root: {
@@ -39,7 +42,8 @@ const DayTitle = (dayname) => {
     }
 }
 
-const CalendarDay = ({dayname, day}) => {
+const CalendarDay = ({dayname, day, users, user, get_availability, selectUser}) => {
+  console.log(day)
   return (
     <div style={styles.root}>
       <GridList
@@ -50,7 +54,6 @@ const CalendarDay = ({dayname, day}) => {
           <GridTile>
               <Subheader style={{padding: 2, display: 'flex'}}>{DayTitle(dayname)}</Subheader>
           </GridTile>
-        {console.log(day)}
         {Object.keys(day).map(
 
           (shift) => {
@@ -74,5 +77,11 @@ export default connect (
           // dayName: state.dayName,
           // day: state.day
         }
+    },
+    (dispatch) => {
+      return {
+        get_availability: (netid) => dispatch(get_availability(netid)),
+        selectUser: (user) => dispatch(selectUser(user)),
+      }
     }
 )(CalendarDay)
