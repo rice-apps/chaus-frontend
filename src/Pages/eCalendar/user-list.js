@@ -8,16 +8,16 @@ import RaisedButton from 'material-ui/RaisedButton'
 
 // import GridExampleGrid from './modal'
 
-var selectuser = () => {}
+// var selectuser = () => {}
+//
+// const call_selectUser = (netid) => {
+//     selectuser(netid)
+// }
 
-const call_selectUser = (netid) => {
-    selectuser(netid)
-}
 
-
-const UserButton = ({name, netid, user, activeUser}) => {
+const UserButton = ({name, netid, user, activeUser, selectUser}) => {
   return (
-    <RaisedButton primary={activeUser} onClick={() => call_selectUser(netid)}>{name}</RaisedButton>
+    <RaisedButton primary={activeUser} onClick={() => selectUser(netid)}>{name}</RaisedButton>
   )
 }
 
@@ -25,7 +25,7 @@ const UserButton = ({name, netid, user, activeUser}) => {
 const UserList = ({user, users, selectUser, get_availability}) => {
 
 
-    selectuser = selectUser
+    // selectuser = selectUser
     return (
         <div style={{marginTop: 33}}>
             <ul>
@@ -36,7 +36,9 @@ const UserList = ({user, users, selectUser, get_availability}) => {
                             <UserButton onClick={() => get_availability(x.netid)}
                                         name={x.firstName+" "+x.lastName}
                                         key={x.netid} netid={x.netid}
-                                        user={user} activeUser={x.netid==user.netid}/>
+                                        user={user} activeUser={x.netid==user.netid}
+                                        selectUser={selectUser}
+                            />
                         </div>
                     )
                 })}
