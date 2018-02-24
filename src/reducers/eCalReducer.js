@@ -15,10 +15,10 @@ const sideBarReducer = (state={toggle:false}, action) => {
 }
 
 
-const userReducer = (state={netids:[]}, action) => {
+const userReducer = (state={all_users:[]}, action) => {
     switch(action.type) {
-        case "GET_NETIDS":
-            return {...state, netids:action.netids}
+        case "GET_USERS":
+            return {...state, all_users:action.all_users}
         default:
             return state
     }

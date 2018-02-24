@@ -18,12 +18,12 @@ export const selectUser = (netid) => {
 
 }
 
-export const get_netids = () => {
+export const get_users = () => {
     return (dispatch) => {
-        resource('GET', 'netids').then( r => {
+        resource('GET', 'users/').then( r => {
             dispatch({
-                type: "GET_NETIDS",
-                netids: r
+                type: "GET_USERS",
+                all_users: r
             })
         })
     }
