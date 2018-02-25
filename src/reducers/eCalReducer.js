@@ -145,10 +145,11 @@ const sunDefault = [
 ]
 
 const scheduleReducer = (state={schedule:{M:monDefault, T:tuesDefault, W:wedDefault, R:thursDefault, F:friDefault, S:satDefault, U:sunDefault}}, action) => {
+    let new_schedule;
     switch(action.type) {
         case "GET_AVAILABILITY":
-          console.log(action.schedule)
-            let new_schedule = {
+            console.log(action.schedule)
+            new_schedule = {
               M: action.schedule[0],
               T: action.schedule[1],
               W: action.schedule[2],
@@ -160,6 +161,97 @@ const scheduleReducer = (state={schedule:{M:monDefault, T:tuesDefault, W:wedDefa
             return {...state, schedule:new_schedule}
         case "GET_SCHEDULED":
             return {...state, schedule:action.schedule}
+        case "CHANGE_HOUR_M":
+            new_schedule = []
+            state.schedule.M.map(
+              (shift) => {
+                if (shift.hour == action.hour) {
+                  new_schedule.push({...shift, available: action.available})
+                }
+                else {
+                  new_schedule.push({...shift})
+                }
+              }
+            )
+            return {...state, schedule: {...state.schedule, M: new_schedule}}
+        case "CHANGE_HOUR_T":
+            new_schedule = []
+            state.schedule.T.map(
+              (shift) => {
+                if (shift.hour == action.hour) {
+                  new_schedule.push({...shift, available: action.available})
+                }
+                else {
+                  new_schedule.push({...shift})
+                }
+              }
+            )
+            return {...state, schedule: {...state.schedule, T: new_schedule}}
+        case "CHANGE_HOUR_W":
+            new_schedule = []
+            state.schedule.W.map(
+              (shift) => {
+                if (shift.hour == action.hour) {
+                  new_schedule.push({...shift, available: action.available})
+                }
+                else {
+                  new_schedule.push({...shift})
+                }
+              }
+            )
+            return {...state, schedule: {...state.schedule, W: new_schedule}}
+        case "CHANGE_HOUR_R":
+            new_schedule = []
+            state.schedule.R.map(
+              (shift) => {
+                if (shift.hour == action.hour) {
+                  new_schedule.push({...shift, available: action.available})
+                }
+                else {
+                  new_schedule.push({...shift})
+                }
+              }
+            )
+            return {...state, schedule: {...state.schedule, R: new_schedule}}
+        case "CHANGE_HOUR_F":
+            new_schedule = []
+            state.schedule.F.map(
+              (shift) => {
+                if (shift.hour == action.hour) {
+                  new_schedule.push({...shift, available: action.available})
+                }
+                else {
+                  new_schedule.push({...shift})
+                }
+              }
+            )
+            return {...state, schedule: {...state.schedule, F: new_schedule}}
+        case "CHANGE_HOUR_S":
+            new_schedule = []
+            state.schedule.S.map(
+              (shift) => {
+                if (shift.hour == action.hour) {
+                  new_schedule.push({...shift, available: action.available})
+                }
+                else {
+                  new_schedule.push({...shift})
+                }
+              }
+            )
+            return {...state, schedule: {...state.schedule, S: new_schedule}}
+        case "CHANGE_HOUR_U":
+            new_schedule = []
+            state.schedule.U.map(
+              (shift) => {
+                if (shift.hour == action.hour) {
+                  new_schedule.push({...shift, available: action.available})
+                }
+                else {
+                  new_schedule.push({...shift})
+                }
+              }
+            )
+            return {...state, schedule: {...state.schedule, U: new_schedule}}
         default:
             return state
     }

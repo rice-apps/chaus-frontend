@@ -240,3 +240,13 @@ export const get_scheduled = (netid) => {
     })
   }
 }
+
+export const toggle_availability = (dayname, hour, available) => {
+  return (dispatch) => dispatch({
+    // Directs to specific case in reducer
+    type: "CHANGE_HOUR_"+dayname,
+    hour: hour,
+    // On click, available will change to the next type (red -> grey -> green -> yellow -> orange)
+    available: (available%4)+1
+  })
+}
