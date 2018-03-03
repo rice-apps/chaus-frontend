@@ -3,7 +3,8 @@
  */
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import { save_changes } from '../../actions/userActions'
+// import { save_changes } from '../../actions/userActions'
+import { save_availability } from '../../actions/employeeActions'
 // import { WReducer } from '../reducers/index'
 //Material Imports
 import RaisedButton from 'material-ui/RaisedButton';
@@ -14,12 +15,12 @@ const combineDays = () => {
   weekObject = {"Monday":mon, "Tuesday":tues, "Wednesday":wed, "Thursday":thurs, "Friday":fri, "Saturday":sat, "Sunday":sun}
 }
 
-const ChangeButton = ({netid, save_changes, mon, tues, wed, thurs, fri, sat, sun}) => {
+const ChangeButton = ({netid, save_availability, mon, tues, wed, thurs, fri, sat, sun}) => {
   let weekObject = {"Monday":mon, "Tuesday":tues,
                     "Wednesday":wed, "Thursday":thurs, "Friday":fri, "Saturday":sat, "Sunday":sun}
   return (
 
-      <RaisedButton backgroundColor="#a4c639" icon={<Save color={fullWhite}/>} onClick={() => save_changes(weekObject, netid)} style={{height: 34}}/>
+      <RaisedButton backgroundColor="#a4c639" icon={<Save color={fullWhite}/>} onClick={() => save_availability(netid, weekObject)} style={{height: 34}}/>
   )
 }
 
@@ -38,7 +39,7 @@ export default connect(
     },
     (dispatch) => {
         return {
-            save_changes: (week, netid) => dispatch(save_changes(week, netid))
+            save_availability: (netid, shifts) => dispatch(save_availability(netid, shifts))
         }
     }
 )(ChangeButton)

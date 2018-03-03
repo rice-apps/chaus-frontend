@@ -247,6 +247,41 @@ export const toggle_availability = (dayname, hour, available) => {
     type: "CHANGE_HOUR_"+dayname,
     hour: hour,
     // On click, available will change to the next type (red -> grey -> green -> yellow -> orange)
-    available: (available%4)+1
+    available: (available%4)+1,
+    changed: true
   })
 }
+
+export const reset_changes = () => {
+  return (dispatch) => dispatch({
+    type: "RESET_CHANGED_PROPERTY"
+  })
+}
+
+export const save_availability = (netid, shifts) => {
+  return (dispatch) => {
+    console.log(shifts)
+    let payload = {shifts: shifts};
+    // Send a put call to backend
+    resource('PUT', 'employee/available/'+netid, payload).then(schedule => {
+      // If changes are saved, set shift 'changed' properties to false
+      dispatch(reset_changes())
+      console.log("Reset Changes!")
+      // If changes return 200, indicate that to user
+      dispatch({
+        type: "SAVE_AVAILABILITY",
+        success: true
+      })
+    })
+    .catch((err) => {
+      console.log(err)
+      console.log("Changes Not Implemented :(")
+      dispatch({
+        type: "SAVE_AVAILABILITY",
+        success: false
+      })
+    })
+  }
+}
+
+// export const

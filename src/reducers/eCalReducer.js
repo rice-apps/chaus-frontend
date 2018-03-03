@@ -166,7 +166,7 @@ const scheduleReducer = (state={schedule:{M:monDefault, T:tuesDefault, W:wedDefa
             state.schedule.M.map(
               (shift) => {
                 if (shift.hour == action.hour) {
-                  new_schedule.push({...shift, available: action.available})
+                  new_schedule.push({...shift, available: action.available, changed: action.changed})
                 }
                 else {
                   new_schedule.push({...shift})
@@ -179,7 +179,7 @@ const scheduleReducer = (state={schedule:{M:monDefault, T:tuesDefault, W:wedDefa
             state.schedule.T.map(
               (shift) => {
                 if (shift.hour == action.hour) {
-                  new_schedule.push({...shift, available: action.available})
+                  new_schedule.push({...shift, available: action.available, changed: action.changed})
                 }
                 else {
                   new_schedule.push({...shift})
@@ -192,7 +192,7 @@ const scheduleReducer = (state={schedule:{M:monDefault, T:tuesDefault, W:wedDefa
             state.schedule.W.map(
               (shift) => {
                 if (shift.hour == action.hour) {
-                  new_schedule.push({...shift, available: action.available})
+                  new_schedule.push({...shift, available: action.available, changed: action.changed})
                 }
                 else {
                   new_schedule.push({...shift})
@@ -205,7 +205,7 @@ const scheduleReducer = (state={schedule:{M:monDefault, T:tuesDefault, W:wedDefa
             state.schedule.R.map(
               (shift) => {
                 if (shift.hour == action.hour) {
-                  new_schedule.push({...shift, available: action.available})
+                  new_schedule.push({...shift, available: action.available, changed: action.changed})
                 }
                 else {
                   new_schedule.push({...shift})
@@ -218,7 +218,7 @@ const scheduleReducer = (state={schedule:{M:monDefault, T:tuesDefault, W:wedDefa
             state.schedule.F.map(
               (shift) => {
                 if (shift.hour == action.hour) {
-                  new_schedule.push({...shift, available: action.available})
+                  new_schedule.push({...shift, available: action.available, changed: action.changed})
                 }
                 else {
                   new_schedule.push({...shift})
@@ -231,7 +231,7 @@ const scheduleReducer = (state={schedule:{M:monDefault, T:tuesDefault, W:wedDefa
             state.schedule.S.map(
               (shift) => {
                 if (shift.hour == action.hour) {
-                  new_schedule.push({...shift, available: action.available})
+                  new_schedule.push({...shift, available: action.available, changed: action.changed})
                 }
                 else {
                   new_schedule.push({...shift})
@@ -244,7 +244,7 @@ const scheduleReducer = (state={schedule:{M:monDefault, T:tuesDefault, W:wedDefa
             state.schedule.U.map(
               (shift) => {
                 if (shift.hour == action.hour) {
-                  new_schedule.push({...shift, available: action.available})
+                  new_schedule.push({...shift, available: action.available, changed: action.changed})
                 }
                 else {
                   new_schedule.push({...shift})
@@ -252,6 +252,21 @@ const scheduleReducer = (state={schedule:{M:monDefault, T:tuesDefault, W:wedDefa
               }
             )
             return {...state, schedule: {...state.schedule, U: new_schedule}}
+        case "RESET_CHANGED_PROPERTY":
+            let new_week = {}
+            let sched = state.schedule
+            for (var day in state.schedule) {
+              let new_day = []
+              console.log(state.schedule[day])
+              state.schedule[day].map(
+                (shift) => {
+                  new_day.push({...shift, changed: false})
+                }
+              )
+              new_week[day] = new_day
+            }
+            console.log(new_week)
+            return {...state, schedule: new_week}
         default:
             return state
     }
