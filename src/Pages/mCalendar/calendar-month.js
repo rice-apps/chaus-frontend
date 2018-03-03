@@ -62,25 +62,25 @@ const CalendarMonth = ({mon, tues, wed, thurs, fri, sat, sun}) => {
           </GridList>
         </GridTile>
         <GridTile>
-            <CalendarDay dayname={"U"} day={sun}/>
+            <CalendarDay dayname={0} day={sun}/>
         </GridTile>
         <GridTile>
-            <CalendarDay dayname={"M"} day={mon}/>
+            <CalendarDay dayname={1} day={mon}/>
         </GridTile>
         <GridTile>
-            <CalendarDay dayname={"T"} day={tues}/>
+            <CalendarDay dayname={2} day={tues}/>
         </GridTile>
         <GridTile>
-            <CalendarDay dayname={"W"} day={wed}/>
+            <CalendarDay dayname={3} day={wed}/>
         </GridTile>
         <GridTile>
-            <CalendarDay dayname={"R"} day={thurs}/>
+            <CalendarDay dayname={4} day={thurs}/>
         </GridTile>
         <GridTile>
-            <CalendarDay dayname={"F"} day={fri}/>
+            <CalendarDay dayname={5} day={fri}/>
         </GridTile>
         <GridTile>
-            <CalendarDay dayname={"S"} day={sat}/>
+            <CalendarDay dayname={6} day={sat}/>
         </GridTile>
 
       </GridList>

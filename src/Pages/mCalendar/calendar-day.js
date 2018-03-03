@@ -22,19 +22,19 @@ const styles = {
 
 const DayTitle = (dayname) => {
     switch(dayname) {
-        case "U":
+        case 0:
             return "Sunday"
-        case "M":
+        case 1:
             return "Monday"
-        case "T":
+        case 2:
             return "Tuesday"
-        case "W":
+        case 3:
             return "Wednesday"
-        case "R":
+        case 4:
             return "Thursday"
-        case "F":
+        case 5:
             return "Friday"
-        case "S":
+        case 6:
             return "Saturday"
     }
 }
