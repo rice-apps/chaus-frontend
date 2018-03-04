@@ -33,7 +33,7 @@ const HourCount = () => {
 }
 
 
-const EmployeeCalendar = ({mon, tues, wed, thurs, fri, sat, sun}) => {
+const EmployeeCalendar = ({mon, tues, wed, thurs, fri, sat, sun, user}) => {
   return (
     <div style={styles.root}>
 
@@ -62,25 +62,25 @@ const EmployeeCalendar = ({mon, tues, wed, thurs, fri, sat, sun}) => {
           </GridList>
         </GridTile>
         <GridTile>
-            <CalendarDay dayname={"U"} day={sun}/>
+            <CalendarDay dayname={"U"} day={sun} user={user}/>
         </GridTile>
         <GridTile>
-            <CalendarDay dayname={"M"} day={mon}/>
+            <CalendarDay dayname={"M"} day={mon} user={user}/>
         </GridTile>
         <GridTile>
-            <CalendarDay dayname={"T"} day={tues}/>
+            <CalendarDay dayname={"T"} day={tues} user={user}/>
         </GridTile>
         <GridTile>
-            <CalendarDay dayname={"W"} day={wed}/>
+            <CalendarDay dayname={"W"} day={wed} user={user}/>
         </GridTile>
         <GridTile>
-            <CalendarDay dayname={"R"} day={thurs}/>
+            <CalendarDay dayname={"R"} day={thurs} user={user}/>
         </GridTile>
         <GridTile>
-            <CalendarDay dayname={"F"} day={fri}/>
+            <CalendarDay dayname={"F"} day={fri} user={user}/>
         </GridTile>
         <GridTile>
-            <CalendarDay dayname={"S"} day={sat}/>
+            <CalendarDay dayname={"S"} day={sat} user={user}/>
         </GridTile>
 
       </GridList>
@@ -91,13 +91,16 @@ const EmployeeCalendar = ({mon, tues, wed, thurs, fri, sat, sun}) => {
 export default connect (
     (state) => {
         return {
-          mon: state.eCal.monReducer.mon,
-          tues: state.eCal.tuesReducer.tues,
-          wed: state.eCal.wedReducer.wed,
-          thurs: state.eCal.thursReducer.thurs,
-          fri: state.eCal.friReducer.fri,
-          sat: state.eCal.satReducer.sat,
-          sun: state.eCal.sunReducer.sun
+          // schedules
+          mon: state.eCal.scheduleReducer.schedule.M,
+          tues: state.eCal.scheduleReducer.schedule.T,
+          wed: state.eCal.scheduleReducer.schedule.W,
+          thurs: state.eCal.scheduleReducer.schedule.R,
+          fri: state.eCal.scheduleReducer.schedule.F,
+          sat: state.eCal.scheduleReducer.schedule.S,
+          sun: state.eCal.scheduleReducer.schedule.U,
+          // user
+          user: state.eCal.activeReducer.user
         }
     }
 )(EmployeeCalendar)

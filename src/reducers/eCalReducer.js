@@ -1,8 +1,276 @@
 /**
- * Created by Jeffr on 7/17/2017.
+ * Created by Will on 2/17/2018.
  */
 import { combineReducers } from 'redux'
 
+const monDefault = [
+  {hour: 7, available: 0, changed: false, closed: false},
+  {hour: 8, available: 0, changed: false, closed: false},
+  {hour: 9, available: 0, changed: false, closed: false},
+  {hour: 10, available: 0, changed: false, closed: false},
+  {hour: 11, available: 0, changed: false, closed: false},
+  {hour: 12, available: 0, changed: false, closed: false },
+  {hour: 13, available: 0, changed: false, closed: false},
+  {hour: 14, available: 0, changed: false, closed: false},
+  {hour: 15, available: 0, changed: false, closed: false},
+  {hour: 16, available: 0, changed: false, closed: false },
+  {hour: 17, available: 0, changed: false, closed: false},
+  {hour: 18, available: 0, changed: false, closed: false},
+  {hour: 19, available: 0, changed: false, closed: false},
+  {hour: 20, available: 0, changed: false, closed: false},
+  {hour: 21, available: 0, changed: false, closed: false},
+  {hour: 22, available: 0, changed: false, closed: false},
+  {hour: 23, available: 0, changed: false, closed: false},
+  {hour: 24, available: 0, changed: false, closed: false}
+]
+const tuesDefault = [
+  {hour: 7, available: 0, changed: false, closed: false},
+  {hour: 8, available: 0, changed: false, closed: false},
+  {hour: 9, available: 0, changed: false, closed: false},
+  {hour: 10, available: 0, changed: false, closed: false},
+  {hour: 11, available: 0, changed: false, closed: false},
+  {hour: 12, available: 0, changed: false, closed: false },
+  {hour: 13, available: 0, changed: false, closed: false},
+  {hour: 14, available: 0, changed: false, closed: false},
+  {hour: 15, available: 0, changed: false, closed: false},
+  {hour: 16, available: 0, changed: false, closed: false },
+  {hour: 17, available: 0, changed: false, closed: false},
+  {hour: 18, available: 0, changed: false, closed: false},
+  {hour: 19, available: 0, changed: false, closed: false},
+  {hour: 20, available: 0, changed: false, closed: false},
+  {hour: 21, available: 0, changed: false, closed: false},
+  {hour: 22, available: 0, changed: false, closed: false},
+  {hour: 23, available: 0, changed: false, closed: false},
+  {hour: 24, available: 0, changed: false, closed: false}
+]
+const wedDefault = [
+  {hour: 7, available: 0, changed: false, closed: false},
+  {hour: 8, available: 0, changed: false, closed: false},
+  {hour: 9, available: 0, changed: false, closed: false},
+  {hour: 10, available: 0, changed: false, closed: false},
+  {hour: 11, available: 0, changed: false, closed: false},
+  {hour: 12, available: 0, changed: false, closed: false },
+  {hour: 13, available: 0, changed: false, closed: false},
+  {hour: 14, available: 0, changed: false, closed: false},
+  {hour: 15, available: 0, changed: false, closed: false},
+  {hour: 16, available: 0, changed: false, closed: false },
+  {hour: 17, available: 0, changed: false, closed: false},
+  {hour: 18, available: 0, changed: false, closed: false},
+  {hour: 19, available: 0, changed: false, closed: false},
+  {hour: 20, available: 0, changed: false, closed: false},
+  {hour: 21, available: 0, changed: false, closed: false},
+  {hour: 22, available: 0, changed: false, closed: false},
+  {hour: 23, available: 0, changed: false, closed: false},
+  {hour: 24, available: 0, changed: false, closed: false}
+]
+const thursDefault = [
+  {hour: 7, available: 0, changed: false, closed: false},
+  {hour: 8, available: 0, changed: false, closed: false},
+  {hour: 9, available: 0, changed: false, closed: false},
+  {hour: 10, available: 0, changed: false, closed: false},
+  {hour: 11, available: 0, changed: false, closed: false},
+  {hour: 12, available: 0, changed: false, closed: false },
+  {hour: 13, available: 0, changed: false, closed: false},
+  {hour: 14, available: 0, changed: false, closed: false},
+  {hour: 15, available: 0, changed: false, closed: false},
+  {hour: 16, available: 0, changed: false, closed: false },
+  {hour: 17, available: 0, changed: false, closed: false},
+  {hour: 18, available: 0, changed: false, closed: false},
+  {hour: 19, available: 0, changed: false, closed: false},
+  {hour: 20, available: 0, changed: false, closed: false},
+  {hour: 21, available: 0, changed: false, closed: false},
+  {hour: 22, available: 0, changed: false, closed: false},
+  {hour: 23, available: 0, changed: false, closed: false},
+  {hour: 24, available: 0, changed: false, closed: false}
+]
+const friDefault = [
+  {hour: 7, available: 0, changed: false, closed: false},
+  {hour: 8, available: 0, changed: false, closed: false},
+  {hour: 9, available: 0, changed: false, closed: false},
+  {hour: 10, available: 0, changed: false, closed: false},
+  {hour: 11, available: 0, changed: false, closed: false},
+  {hour: 12, available: 0, changed: false, closed: false },
+  {hour: 13, available: 0, changed: false, closed: false},
+  {hour: 14, available: 0, changed: false, closed: false},
+  {hour: 15, available: 0, changed: false, closed: false},
+  {hour: 16, available: 0, changed: false, closed: false },
+  {hour: 17, available: 0, changed: false, closed: true},
+  {hour: 18, available: 0, changed: false, closed: true},
+  {hour: 19, available: 0, changed: false, closed: true},
+  {hour: 20, available: 0, changed: false, closed: true},
+  {hour: 21, available: 0, changed: false, closed: true},
+  {hour: 22, available: 0, changed: false, closed: true},
+  {hour: 23, available: 0, changed: false, closed: true},
+  {hour: 24, available: 0, changed: false, closed: true}
+]
+const satDefault = [
+  {hour: 7, available: 0, changed: false, closed: true},
+  {hour: 8, available: 0, changed: false, closed: true},
+  {hour: 9, available: 0, changed: false, closed: true},
+  {hour: 10, available: 0, changed: false, closed: false},
+  {hour: 11, available: 0, changed: false, closed: false},
+  {hour: 12, available: 0, changed: false, closed: false },
+  {hour: 13, available: 0, changed: false, closed: false},
+  {hour: 14, available: 0, changed: false, closed: false},
+  {hour: 15, available: 0, changed: false, closed: false},
+  {hour: 16, available: 0, changed: false, closed: false},
+  {hour: 17, available: 0, changed: false, closed: true},
+  {hour: 18, available: 0, changed: false, closed: true},
+  {hour: 19, available: 0, changed: false, closed: true},
+  {hour: 20, available: 0, changed: false, closed: true},
+  {hour: 21, available: 0, changed: false, closed: true},
+  {hour: 22, available: 0, changed: false, closed: true},
+  {hour: 23, available: 0, changed: false, closed: true},
+  {hour: 24, available: 0, changed: false, closed: true}
+]
+const sunDefault = [
+  {hour: 7, available: 0, changed: false, closed: true},
+  {hour: 8, available: 0, changed: false, closed: true},
+  {hour: 9, available: 0, changed: false, closed: true},
+  {hour: 10, available: 0, changed: false, closed: true},
+  {hour: 11, available: 0, changed: false, closed: true},
+  {hour: 12, available: 0, changed: false, closed: true },
+  {hour: 13, available: 0, changed: false, closed: true},
+  {hour: 14, available: 0, changed: false, closed: false},
+  {hour: 15, available: 0, changed: false, closed: false},
+  {hour: 16, available: 0, changed: false, closed: false },
+  {hour: 17, available: 0, changed: false, closed: false},
+  {hour: 18, available: 0, changed: false, closed: false},
+  {hour: 19, available: 0, changed: false, closed: false},
+  {hour: 20, available: 0, changed: false, closed: false},
+  {hour: 21, available: 0, changed: false, closed: false},
+  {hour: 22, available: 0, changed: false, closed: false},
+  {hour: 23, available: 0, changed: false, closed: false},
+  {hour: 24, available: 0, changed: false, closed: false}
+]
+
+const scheduleReducer = (state={schedule:{M:monDefault, T:tuesDefault, W:wedDefault, R:thursDefault, F:friDefault, S:satDefault, U:sunDefault}}, action) => {
+    let new_schedule;
+    switch(action.type) {
+        case "GET_AVAILABILITY":
+            console.log(action.schedule)
+            new_schedule = {
+              M: action.schedule[0],
+              T: action.schedule[1],
+              W: action.schedule[2],
+              R: action.schedule[3],
+              F: action.schedule[4],
+              S: action.schedule[5],
+              U: action.schedule[6],
+            }
+            return {...state, schedule:new_schedule}
+        case "GET_SCHEDULED":
+            return {...state, schedule:action.schedule}
+        case "CHANGE_HOUR_M":
+            new_schedule = []
+            state.schedule.M.map(
+              (shift) => {
+                if (shift.hour == action.hour) {
+                  new_schedule.push({...shift, available: action.available, changed: action.changed})
+                }
+                else {
+                  new_schedule.push({...shift})
+                }
+              }
+            )
+            return {...state, schedule: {...state.schedule, M: new_schedule}}
+        case "CHANGE_HOUR_T":
+            new_schedule = []
+            state.schedule.T.map(
+              (shift) => {
+                if (shift.hour == action.hour) {
+                  new_schedule.push({...shift, available: action.available, changed: action.changed})
+                }
+                else {
+                  new_schedule.push({...shift})
+                }
+              }
+            )
+            return {...state, schedule: {...state.schedule, T: new_schedule}}
+        case "CHANGE_HOUR_W":
+            new_schedule = []
+            state.schedule.W.map(
+              (shift) => {
+                if (shift.hour == action.hour) {
+                  new_schedule.push({...shift, available: action.available, changed: action.changed})
+                }
+                else {
+                  new_schedule.push({...shift})
+                }
+              }
+            )
+            return {...state, schedule: {...state.schedule, W: new_schedule}}
+        case "CHANGE_HOUR_R":
+            new_schedule = []
+            state.schedule.R.map(
+              (shift) => {
+                if (shift.hour == action.hour) {
+                  new_schedule.push({...shift, available: action.available, changed: action.changed})
+                }
+                else {
+                  new_schedule.push({...shift})
+                }
+              }
+            )
+            return {...state, schedule: {...state.schedule, R: new_schedule}}
+        case "CHANGE_HOUR_F":
+            new_schedule = []
+            state.schedule.F.map(
+              (shift) => {
+                if (shift.hour == action.hour) {
+                  new_schedule.push({...shift, available: action.available, changed: action.changed})
+                }
+                else {
+                  new_schedule.push({...shift})
+                }
+              }
+            )
+            return {...state, schedule: {...state.schedule, F: new_schedule}}
+        case "CHANGE_HOUR_S":
+            new_schedule = []
+            state.schedule.S.map(
+              (shift) => {
+                if (shift.hour == action.hour) {
+                  new_schedule.push({...shift, available: action.available, changed: action.changed})
+                }
+                else {
+                  new_schedule.push({...shift})
+                }
+              }
+            )
+            return {...state, schedule: {...state.schedule, S: new_schedule}}
+        case "CHANGE_HOUR_U":
+            new_schedule = []
+            state.schedule.U.map(
+              (shift) => {
+                if (shift.hour == action.hour) {
+                  new_schedule.push({...shift, available: action.available, changed: action.changed})
+                }
+                else {
+                  new_schedule.push({...shift})
+                }
+              }
+            )
+            return {...state, schedule: {...state.schedule, U: new_schedule}}
+        case "RESET_CHANGED_PROPERTY":
+            let new_week = {}
+            let sched = state.schedule
+            for (var day in state.schedule) {
+              let new_day = []
+              console.log(state.schedule[day])
+              state.schedule[day].map(
+                (shift) => {
+                  new_day.push({...shift, changed: false})
+                }
+              )
+              new_week[day] = new_day
+            }
+            console.log(new_week)
+            return {...state, schedule: new_week}
+        default:
+            return state
+    }
+}
 
 const sideBarReducer = (state={toggle:false}, action) => {
     switch(action.type) {
@@ -15,10 +283,10 @@ const sideBarReducer = (state={toggle:false}, action) => {
 }
 
 
-const userReducer = (state={all_users:[]}, action) => {
+const userReducer = (state={netids:[]}, action) => {
     switch(action.type) {
-        case "GET_USERS":
-            return {...state, all_users:action.all_users}
+        case "GET_NETIDS":
+            return {...state, netids:action.netids}
         default:
             return state
     }
@@ -36,333 +304,6 @@ const activeReducer = (state={user:{}, schedule:{M:[], T:[], W:[], R:[], F:[], S
     }
 }
 
-const monReducer = (state={mon:[
-    {hour: 7, available: false, changed: false, closed: false},
-    {hour: 8, available: false, changed: false, closed: false},
-    {hour: 9, available: false, changed: false, closed: false},
-    {hour: 10, available: false, changed: false, closed: false},
-    {hour: 11, available: false, changed: false, closed: false},
-    {hour: 12, available: false, changed: false, closed: false },
-    {hour: 13, available: false, changed: false, closed: false},
-    {hour: 14, available: false, changed: false, closed: false},
-    {hour: 15, available: false, changed: false, closed: false},
-    {hour: 16, available: false, changed: false, closed: false },
-    {hour: 17, available: false, changed: false, closed: false},
-    {hour: 18, available: false, changed: false, closed: false},
-    {hour: 19, available: false, changed: false, closed: false},
-    {hour: 20, available: false, changed: false, closed: false},
-    {hour: 21, available: false, changed: false, closed: false},
-    {hour: 22, available: false, changed: false, closed: false},
-    {hour: 23, available: false, changed: false, closed: false},
-    {hour: 24, available: false, changed: false, closed: false}
-]}, action) => {
-    switch(action.type) {
-        case "CHANGEM":
-            let arrs = []
-            for (var i = 0; i < action.state.length; i++) {
-                arrs.push({...state.mon[i], available:action.state[i].available})
-            }
-            return {...state, mon:arrs}
-        case "CHANGE_HOUR_M":
-            let arr = []
-
-            state.mon.map(
-                (shift) => {
-                    if (shift.hour == action.hour) {
-                        arr.push({...shift, available:action.available, changed:!action.changed})
-                    } else {
-                        arr.push({...shift})
-                    }
-                }
-            )
-            return {...state, mon: arr}
-        // return {...state, mon[action.hour-7]:{...mon[action.hour-7], available: action.available, changed: action.changed}}
-        default:
-            return {...state}
-    }
-}
-
-const tuesReducer = (state={tues:[
-    {hour: 7, available: false, changed: false, closed: false},
-    {hour: 8, available: false, changed: false, closed: false},
-    {hour: 9, available: false, changed: false, closed: false},
-    {hour: 10, available: false, changed: false, closed: false},
-    {hour: 11, available: false, changed: false, closed: false},
-    {hour: 12, available: false, changed: false, closed: false },
-    {hour: 13, available: false, changed: false, closed: false},
-    {hour: 14, available: false, changed: false, closed: false},
-    {hour: 15, available: false, changed: false, closed: false},
-    {hour: 16, available: false, changed: false, closed: false },
-    {hour: 17, available: false, changed: false, closed: false},
-    {hour: 18, available: false, changed: false, closed: false},
-    {hour: 19, available: false, changed: false, closed: false},
-    {hour: 20, available: false, changed: false, closed: false},
-    {hour: 21, available: false, changed: false, closed: false},
-    {hour: 22, available: false, changed: false, closed: false},
-    {hour: 23, available: false, changed: false, closed: false},
-    {hour: 24, available: false, changed: false, closed: false}
-]}, action) => {
-    switch(action.type) {
-        case "CHANGET":
-            let arrs = []
-            for (var i = 0; i < action.state.length; i++) {
-                arrs.push({...state.tues[i], available:action.state[i].available})
-            }
-
-            return {...state, tues:arrs}
-        case "CHANGE_HOUR_T":
-            let arr = []
-            state.tues.map(
-                (shift) => {
-                    if (shift.hour == action.hour) {
-                        arr.push({...shift, available:action.available, changed:!action.changed})
-                    } else {
-                        arr.push({...shift})
-                    }
-                }
-            )
-            return {...state, tues: arr}
-        default:
-            return {...state}
-    }
-}
-
-const wedReducer = (state={wed:[
-    {hour: 7, available: false, changed: false, closed: false},
-    {hour: 8, available: false, changed: false, closed: false},
-    {hour: 9, available: false, changed: false, closed: false},
-    {hour: 10, available: false, changed: false, closed: false},
-    {hour: 11, available: false, changed: false, closed: false},
-    {hour: 12, available: false, changed: false, closed: false },
-    {hour: 13, available: false, changed: false, closed: false},
-    {hour: 14, available: false, changed: false, closed: false},
-    {hour: 15, available: false, changed: false, closed: false},
-    {hour: 16, available: false, changed: false, closed: false },
-    {hour: 17, available: false, changed: false, closed: false},
-    {hour: 18, available: false, changed: false, closed: false},
-    {hour: 19, available: false, changed: false, closed: false},
-    {hour: 20, available: false, changed: false, closed: false},
-    {hour: 21, available: false, changed: false, closed: false},
-    {hour: 22, available: false, changed: false, closed: false},
-    {hour: 23, available: false, changed: false, closed: false},
-    {hour: 24, available: false, changed: false, closed: false}
-]}, action) => {
-    switch(action.type) {
-        case "CHANGEW":
-            let arrs = []
-            for (var i = 0; i < action.state.length; i++) {
-                arrs.push({...state.wed[i], available:action.state[i].available})
-            }
-
-            return {...state, wed:arrs}
-        case "CHANGE_HOUR_W":
-            let arr = []
-            state.wed.map(
-                (shift) => {
-                    if (shift.hour == action.hour) {
-                        arr.push({...shift, available:action.available, changed:!action.changed})
-                    } else {
-                        arr.push({...shift})
-                    }
-                }
-            )
-            return {...state, wed: arr}
-        default:
-            return {...state}
-    }
-}
-
-const thursReducer = (state={thurs:[
-    {hour: 7, available: false, changed: false, closed: false},
-    {hour: 8, available: false, changed: false, closed: false},
-    {hour: 9, available: false, changed: false, closed: false},
-    {hour: 10, available: false, changed: false, closed: false},
-    {hour: 11, available: false, changed: false, closed: false},
-    {hour: 12, available: false, changed: false, closed: false },
-    {hour: 13, available: false, changed: false, closed: false},
-    {hour: 14, available: false, changed: false, closed: false},
-    {hour: 15, available: false, changed: false, closed: false},
-    {hour: 16, available: false, changed: false, closed: false },
-    {hour: 17, available: false, changed: false, closed: false},
-    {hour: 18, available: false, changed: false, closed: false},
-    {hour: 19, available: false, changed: false, closed: false},
-    {hour: 20, available: false, changed: false, closed: false},
-    {hour: 21, available: false, changed: false, closed: false},
-    {hour: 22, available: false, changed: false, closed: false},
-    {hour: 23, available: false, changed: false, closed: false},
-    {hour: 24, available: false, changed: false, closed: false}
-]}, action) => {
-    switch(action.type) {
-        case "CHANGER":
-            let arrs = []
-            for (var i = 0; i < action.state.length; i++) {
-                arrs.push({...state.thurs[i], available:action.state[i].available})
-            }
-
-            return {...state, thurs:arrs}
-        case "CHANGE_HOUR_R":
-            let arr = []
-            state.thurs.map(
-                (shift) => {
-                    if (shift.hour == action.hour) {
-                        arr.push({...shift, available:action.available, changed:!action.changed})
-                    } else {
-                        arr.push({...shift})
-                    }
-                }
-            )
-            return {...state, thurs: arr}
-        case "change_availability_thurs":
-            return {...state, thurs:action.thurs}
-
-        default:
-            return {...state}
-    }
-}
-
-const friReducer = (state={fri:[
-    {hour: 7, available: false, changed: false, closed: false},
-    {hour: 8, available: false, changed: false, closed: false},
-    {hour: 9, available: false, changed: false, closed: false},
-    {hour: 10, available: false, changed: false, closed: false},
-    {hour: 11, available: false, changed: false, closed: false},
-    {hour: 12, available: false, changed: false, closed: false },
-    {hour: 13, available: false, changed: false, closed: false},
-    {hour: 14, available: false, changed: false, closed: false},
-    {hour: 15, available: false, changed: false, closed: false},
-    {hour: 16, available: false, changed: false, closed: false },
-    {hour: 17, available: false, changed: false, closed: true},
-    {hour: 18, available: false, changed: false, closed: true},
-    {hour: 19, available: false, changed: false, closed: true},
-    {hour: 20, available: false, changed: false, closed: true},
-    {hour: 21, available: false, changed: false, closed: true},
-    {hour: 22, available: false, changed: false, closed: true},
-    {hour: 23, available: false, changed: false, closed: true},
-    {hour: 24, available: false, changed: false, closed: true}
-]}, action) => {
-    switch(action.type) {
-        case "CHANGEF":
-            let arrs = []
-            for (var i = 0; i < action.state.length; i++) {
-                arrs.push({...state.fri[i], available:action.state[i].available})
-            }
-
-            return {...state, fri:arrs}
-        case "CHANGE_HOUR_F":
-            let arr = []
-            state.fri.map(
-                (shift) => {
-                    if (shift.hour == action.hour) {
-                        arr.push({...shift, available:action.available, changed:!action.changed})
-                    } else {
-                        arr.push({...shift})
-                    }
-                }
-            )
-            return {...state, fri: arr}
-        case "change_availability_fri":
-            return {...state, fri:action.fri}
-        default:
-            return {...state}
-    }
-}
-
-const satReducer = (state={sat:[
-    {hour: 7, available: false, changed: false, closed: true},
-    {hour: 8, available: false, changed: false, closed: true},
-    {hour: 9, available: false, changed: false, closed: true},
-    {hour: 10, available: false, changed: false, closed: false},
-    {hour: 11, available: false, changed: false, closed: false},
-    {hour: 12, available: false, changed: false, closed: false },
-    {hour: 13, available: false, changed: false, closed: false},
-    {hour: 14, available: false, changed: false, closed: false},
-    {hour: 15, available: false, changed: false, closed: false},
-    {hour: 16, available: false, changed: false, closed: false},
-    {hour: 17, available: false, changed: false, closed: true},
-    {hour: 18, available: false, changed: false, closed: true},
-    {hour: 19, available: false, changed: false, closed: true},
-    {hour: 20, available: false, changed: false, closed: true},
-    {hour: 21, available: false, changed: false, closed: true},
-    {hour: 22, available: false, changed: false, closed: true},
-    {hour: 23, available: false, changed: false, closed: true},
-    {hour: 24, available: false, changed: false, closed: true}
-]}, action) => {
-    switch(action.type) {
-        case "CHANGES":
-            let arrs = []
-            for (var i = 0; i < action.state.length; i++) {
-                arrs.push({...state.sat[i], available:action.state[i].available})
-            }
-
-            return {...state, sat:arrs}
-        case "CHANGE_HOUR_S":
-            let arr = []
-            state.sat.map(
-                (shift) => {
-                    if (shift.hour == action.hour) {
-                        arr.push({...shift, available:action.available, changed:!action.changed})
-                    } else {
-                        arr.push({...shift})
-                    }
-                }
-            )
-            return {...state, sat:arr}
-        case "change_availability_sat":
-            return {...state, sat:action.sat}
-        default:
-            return {...state}
-    }
-}
-const sunReducer = (state={sun:[
-    {hour: 7, available: false, changed: false, closed: true},
-    {hour: 8, available: false, changed: false, closed: true},
-    {hour: 9, available: false, changed: false, closed: true},
-    {hour: 10, available: false, changed: false, closed: true},
-    {hour: 11, available: false, changed: false, closed: true},
-    {hour: 12, available: false, changed: false, closed: true },
-    {hour: 13, available: false, changed: false, closed: true},
-    {hour: 14, available: false, changed: false, closed: false},
-    {hour: 15, available: false, changed: false, closed: false},
-    {hour: 16, available: false, changed: false, closed: false },
-    {hour: 17, available: false, changed: false, closed: false},
-    {hour: 18, available: false, changed: false, closed: false},
-    {hour: 19, available: false, changed: false, closed: false},
-    {hour: 20, available: false, changed: false, closed: false},
-    {hour: 21, available: false, changed: false, closed: false},
-    {hour: 22, available: false, changed: false, closed: false},
-    {hour: 23, available: false, changed: false, closed: false},
-    {hour: 24, available: false, changed: false, closed: false}
-]}, action) => {
-    switch(action.type) {
-        case "CHANGEU":
-            let arrs = []
-            for (var i = 0; i < action.state.length; i++) {
-                arrs.push({...state.sun[i], available:action.state[i].available})
-            }
-            return {...state, sun:arrs}
-
-        case "CHANGE_HOUR_U":
-            let arr = []
-            state.sun.map(
-                (shift) => {
-                    if (shift.hour == action.hour) {
-                        arr.push({...shift, available:action.available, changed:!action.changed})
-                    } else {
-                        arr.push({...shift})
-                    }
-                }
-            )
-            return {...state, sun: arr}
-        case "change_availability_sun":
-            return {...state, sun:action.sun}
-        default:
-            return {...state}
-    }
-}
-
-
-
-
 export default combineReducers({
-    sideBarReducer, userReducer, activeReducer, monReducer, tuesReducer, wedReducer, thursReducer, friReducer, satReducer, sunReducer
+    sideBarReducer, userReducer, activeReducer, scheduleReducer
 })

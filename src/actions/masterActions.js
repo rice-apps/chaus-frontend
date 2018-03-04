@@ -1,8 +1,9 @@
 /**
  * Created by Will and Josh on 11/19/2017.
  */
+export const url =  'http://localhost:3000';
+=======
 // export const url =  'http://localhost:3000';
-export const url =  'http://riceapps.org:3240';
 // export const url =  'https://chaus-backend.herokuapp.com';
 
 export const resource = (method, endpoint, payload) => {
