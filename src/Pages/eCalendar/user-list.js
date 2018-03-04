@@ -8,16 +8,16 @@ import RaisedButton from 'material-ui/RaisedButton'
 
 // import GridExampleGrid from './modal'
 
-var selectuser = () => {}
+// var selectuser = () => {}
+//
+// const call_selectUser = (netid) => {
+//     selectuser(netid)
+// }
 
-const call_selectUser = (netid) => {
-    selectuser(netid)
-}
 
-
-const UserButton = ({netid, user, activeUser}) => {
+const UserButton = ({name, netid, user, activeUser, selectUser}) => {
   return (
-    <RaisedButton primary={activeUser} onClick={() => call_selectUser(netid)}>{netid}</RaisedButton>
+    <RaisedButton primary={activeUser} onClick={() => selectUser(netid)}>{name}</RaisedButton>
   )
 }
 
@@ -25,13 +25,21 @@ const UserButton = ({netid, user, activeUser}) => {
 const UserList = ({user, users, selectUser, get_availability}) => {
 
     selectuser = selectUser
+
+    // selectuser = selectUser
     return (
         <div style={{marginTop: 33}}>
             <ul>
-                {users.netids.map((netid) => {
+                {users.all_users.map((x) => {
+                    console.log(x)
                     return (
-                        <div key={netid}>
-                            <UserButton onClick={() => get_availability(netid)} key={netid} netid={netid} user={user} activeUser={netid==user.netid ? true:false}/>
+                        <div key={x.netid}>
+                            <UserButton onClick={() => get_availability(x.netid)}
+                                        name={x.firstName+" "+x.lastName}
+                                        key={x.netid} netid={x.netid}
+                                        user={user} activeUser={x.netid==user.netid}
+                                        selectUser={selectUser}
+                            />
                         </div>
                     )
                 })}
@@ -39,7 +47,7 @@ const UserList = ({user, users, selectUser, get_availability}) => {
             <div style={{margin: 40}}>
                 <p>Active User:</p>
                 <hr style={{marginTop: -14, marginLeft: 0, width: 72}}/>
-                <h>{user.netid}</h>
+                <h>{user.firstName+" "+user.lastName+" ("+user.netid+")"}</h>
             </div>
         </div>
     )

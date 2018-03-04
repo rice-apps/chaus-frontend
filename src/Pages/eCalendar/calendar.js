@@ -24,7 +24,7 @@ const Hour_shifts = ({week_day}) => {
     )
 }
 
-const Calender = ({netids, mon, tues, wed, thurs, fri, sat, sun}) => {
+const Calender = ({mon, tues, wed, thurs, fri, sat, sun}) => {
     return (
         <div className={style.wrapper}>
             <div className={style.cols+' '+style.hours}>

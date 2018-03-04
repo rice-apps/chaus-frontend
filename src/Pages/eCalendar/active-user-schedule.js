@@ -24,7 +24,7 @@ const processedShifts = (shiftArr) => {
 const GenerateSchedule = ({activeUser, activeSchedule, get_scheduled}) => {
     return (
         <div style={{padding: '1em'}}>
-
+            <h2>{activeUser.firstName + " " + activeUser.lastName + "'s Schedule"}</h2>
             <RaisedButton label={activeUser.netid+"'s Schedule"}
                           primary = {typeof(activeUser.netid) !== "undefined"}
                           disabled = {typeof(activeUser.netid) === "undefined"}
