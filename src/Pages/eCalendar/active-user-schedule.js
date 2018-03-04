@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {get_schedule} from '../../actions/userActions'
+import {get_scheduled} from '../../actions/employeeActions'
 import RaisedButton from 'material-ui/RaisedButton'
 
 const processedShifts = (shiftArr) => {
@@ -21,11 +21,14 @@ const processedShifts = (shiftArr) => {
     return shiftString
 }
 
-const GenerateSchedule = ({activeUser, activeSchedule, get_schedule}) => {
+const GenerateSchedule = ({activeUser, activeSchedule, get_scheduled}) => {
     return (
         <div style={{padding: '1em'}}>
             <h2>{activeUser.firstName + " " + activeUser.lastName + "'s Schedule"}</h2>
-
+            <RaisedButton label={activeUser.netid+"'s Schedule"}
+                          primary = {typeof(activeUser.netid) !== "undefined"}
+                          disabled = {typeof(activeUser.netid) === "undefined"}
+                          onClick={() => get_scheduled(activeUser.netid)} />
             {Object.keys(activeSchedule).map((key) => {
                 var shiftString = processedShifts(activeSchedule[key])
                 return (
@@ -48,7 +51,7 @@ export default connect(
     },
     (dispatch) => {
         return {
-            get_schedule: (user) => dispatch(get_schedule(user))
+            get_scheduled: (user) => dispatch(get_scheduled(user))
         }
     }
 )(GenerateSchedule)

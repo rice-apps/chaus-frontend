@@ -24,6 +24,7 @@ const UserButton = ({name, netid, user, activeUser, selectUser}) => {
 
 const UserList = ({user, users, selectUser, get_availability}) => {
 
+    selectuser = selectUser
 
     // selectuser = selectUser
     return (
