@@ -1,10 +1,10 @@
 /**
  * Created by Will and Josh on 11/19/2017.
  */
+// export const url =  'http://riceapps.org:3240';
 export const url =  'http://localhost:3000';
-=======
+//export const url =  'https://chaus-backend.herokuapp.com';
 // export const url =  'http://localhost:3000';
-// export const url =  'https://chaus-backend.herokuapp.com';
 
 export const resource = (method, endpoint, payload) => {
     // console.log("THE ENDPOINT: " + endpoint + "\n" + "THE PAYLOAD: " + payload + "\n" + "THE METHOD: " + method)
@@ -35,13 +35,17 @@ export const resource = (method, endpoint, payload) => {
 
 export const open_modal = (dayname, hour) => {
     return (dispatch) => {
-        resource('GET', 'master/shift/'+ dayname + '/' + hour.hour).then( r => {
-            console.log(r)
+        console.log(dayname, hour.hour)
+        resource('GET', 'master/shift/'+ dayname + '/' + (hour.hour - 7)).then( r => {
+            console.log("HERE IS R", r)
             return dispatch({
                 type: "SHIFT_SELECTED",
-                available: r[0].availability,
-                schedule: r[0].schedule,
-                hour: r[0].hour,
+                p1: r[1],
+                p2: r[2],
+                p3: r[3],
+                p4: r[4],
+                schedule: r.scheduled,
+                hour: r.hour,
                 open: true,
                 dayname: dayname
             })
@@ -69,8 +73,8 @@ export const toggle_scheduled = (netid) => {
   }
 }
 
-export const save_shift = (schedule, availability, weekday, hour) => {
-    const payload = {"availability": availability, "schedule": schedule, "weekday": weekday, "hour": hour}
+export const save_shift = (schedule, p1, p2, p3, p4, weekday, hour) => {
+    const payload = {"p1": p1, "p2": p2, "p3": p3, "p4": p4, "schedule": schedule, "weekday": weekday, "hour": hour}
     return (dispatch) => {
         resource('PUT', 'master/update/'+weekday +'/'+hour, payload).then( info => {
             dispatch({

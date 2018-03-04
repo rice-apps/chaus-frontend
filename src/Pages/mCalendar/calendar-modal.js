@@ -10,24 +10,24 @@ import Dialog from 'material-ui/Dialog';
 
 const DayTitle = (dayname) => {
     switch(dayname) {
-        case "U":
+        case 0:
             return "Sunday"
-        case "M":
+        case 1:
             return "Monday"
-        case "T":
+        case 2:
             return "Tuesday"
-        case "W":
+        case 3:
             return "Wednesday"
-        case "R":
+        case 4:
             return "Thursday"
-        case "F":
+        case 5:
             return "Friday"
-        case "S":
+        case 6:
             return "Saturday"
     }
 }
 
-const CalModal = ({availability, schedule, open, close_modal, dayname, hour}) => {
+const CalModal = ({open, close_modal, dayname, hour}) => {
     var modalTitle = DayTitle(dayname)
     var hourEnd = ((hour)%12==0 ? (12):((hour)%12))
     var hourStart = ((hourEnd - 1)==0 ? (12):(hourEnd - 1))
@@ -48,8 +48,8 @@ const CalModal = ({availability, schedule, open, close_modal, dayname, hour}) =>
 export default connect (
     (state) => {
         return {
-            availability: state.mCal.activeShiftReducer.available,
-            schedule: state.mCal.activeShiftReducer.schedule,
+            //availability: state.mCal.activeShiftReducer.available,
+            //schedule: state.mCal.activeShiftReducer.schedule,
             open: state.mCal.activeShiftReducer.open,
             dayname: state.mCal.activeShiftReducer.dayname,
             hour: state.mCal.activeShiftReducer.hour
