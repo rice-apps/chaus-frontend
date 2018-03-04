@@ -174,7 +174,6 @@ const reformat_availability = (schedule) => {
       week_day = []
       current_week += 1
     }
-    console.log(current_week)
     let employee_pref = schedule[i]
     let shift;
     switch (current_week) {

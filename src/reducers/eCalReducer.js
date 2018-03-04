@@ -286,6 +286,7 @@ const sideBarReducer = (state={toggle:false}, action) => {
 const userReducer = (state={netids:[]}, action) => {
     switch(action.type) {
         case "GET_NETIDS":
+            console.log(action.netids)
             return {...state, netids:action.netids}
         default:
             return state

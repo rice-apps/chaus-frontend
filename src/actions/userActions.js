@@ -9,7 +9,8 @@ import { get_availability, get_scheduled } from './employeeActions'
 export const selectUser = (netid) => {
     return (dispatch) => {
         dispatch(get_availability(netid));
-        dispatch(get_schedule(netid));
+        dispatch(get_scheduled(netid));
+        console.log(netid)
         resource('GET', 'user/'+netid).then( r => {
             return dispatch({
                 type: "USER_SELECTED",
@@ -24,10 +25,11 @@ export const get_users = () => {
     return (dispatch) => {
         resource('GET', 'netids').then( r => {
             // Sets default active user
+            console.log(r)
             dispatch(selectUser(r[0]))
             dispatch({
-                type: "GET_USERS",
-                all_users: r
+                type: "GET_NETIDS",
+                netids: r
             })
         })
     }

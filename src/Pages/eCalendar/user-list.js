@@ -3,7 +3,8 @@
  */
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import { selectUser, get_availability } from '../../actions/userActions'
+import { selectUser } from '../../actions/userActions'
+import { get_availability } from '../../actions/employeeActions'
 import RaisedButton from 'material-ui/RaisedButton'
 
 // import GridExampleGrid from './modal'
@@ -24,13 +25,13 @@ const UserButton = ({name, netid, user, activeUser, selectUser}) => {
 
 const UserList = ({user, users, selectUser, get_availability}) => {
 
-    selectuser = selectUser
-
+    // let selectuser = selectUser
+    console.log(users)
     // selectuser = selectUser
     return (
         <div style={{marginTop: 33}}>
             <ul>
-                {users.all_users.map((x) => {
+                {users.netids.map((x) => {
                     console.log(x)
                     return (
                         <div key={x.netid}>
