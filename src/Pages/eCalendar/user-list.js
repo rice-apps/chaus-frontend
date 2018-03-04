@@ -31,7 +31,7 @@ const UserList = ({user, users, selectUser, get_availability}) => {
     return (
         <div style={{marginTop: 33}}>
             <ul>
-                {users.netids.map((x) => {
+                {users.map((x) => {
                     console.log(x)
                     return (
                         <div key={x.netid}>
@@ -58,7 +58,7 @@ const UserList = ({user, users, selectUser, get_availability}) => {
 export default connect(
     (state) => {
         return {
-            users: state.eCal.userReducer,
+            users: state.eCal.userReducer.users,
             user: state.eCal.activeReducer.user
         }
     },

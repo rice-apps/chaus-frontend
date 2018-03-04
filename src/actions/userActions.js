@@ -23,13 +23,13 @@ export const selectUser = (netid) => {
 
 export const get_users = () => {
     return (dispatch) => {
-        resource('GET', 'netids').then( r => {
+        resource('GET', 'users').then( r => {
             // Sets default active user
             console.log(r)
-            dispatch(selectUser(r[0]))
+            dispatch(selectUser(r[0].netid))
             dispatch({
-                type: "GET_NETIDS",
-                netids: r
+                type: "GET_USERS",
+                users: r
             })
         })
     }
