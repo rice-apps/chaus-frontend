@@ -283,7 +283,7 @@ const sideBarReducer = (state={toggle:false}, action) => {
 }
 
 
-const userReducer = (state={netids:[], users: []}, action) => {
+const userReducer = (state={netids:[], users: [], current_user: {}}, action) => {
     switch(action.type) {
         case "GET_NETIDS":
             console.log(action.netids)
@@ -294,6 +294,8 @@ const userReducer = (state={netids:[], users: []}, action) => {
                 netids.push(action.users[user].netid)
             }
             return {...state, netids:netids, users: action.users}
+        case "LOGGED_IN":
+            return {...state, current_user: action.user}
         default:
             return state
     }
