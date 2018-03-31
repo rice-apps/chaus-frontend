@@ -312,7 +312,6 @@ const msunReducer = (state={sun:[
 }
 
 
-
 const activeShiftReducer = (state={dayname:"",hour:{hour: 0}, closed:true, p1:[], p2:[], p3:[], p4:[], schedule:[""], open:false, userHours:{netid:{max:0,min:0,total:0}}}, action) => {
     switch(action.type) {
         case "SHIFT_SELECTED":
@@ -333,7 +332,60 @@ const activeShiftReducer = (state={dayname:"",hour:{hour: 0}, closed:true, p1:[]
             return state
     }
 
+}*/
+
+const activeShiftReducer = (state={dayname:"",hour:{hour: 0}, closed:true, p1:[], p2:[], p3:[], p4:[], schedule:[""], open:false}, action) => {
+    switch(action.type) {
+        case "SHIFT_SELECTED":
+            return {...state, p1:action.p1, p2:action.p2, p3:action.p3, p4:action.p4, schedule:action.schedule, open:action.open, hour:action.hour, dayname:action.dayname, userHours:{jmd16: {max: 10, min: 5, total: 6}, da30: {max: 8, min: 4, total: 8}, qqq99: {max: 1, min: 0, total: 4}, ob10: {max: 1, min: 0, total: 4}, jlt10: {max: 1, min: 0, total: 4}, jhw5: {max: 1, min: 0, total: 4}, jf35: {max: 1, min: 0, total: 4}, wsm3: {max: 1, min: 0, total: 4}, abc1: {max: 1, min: 0, total: 4}, xyz2: {max: 1, min: 0, total: 4}}}
+        case "CLOSE_MODAL":
+            return {...state, open:action.open}
+        case "TOGGLE_SCHEDULED":
+            console.log("TOGGLING: ", state.userHours)
+            let new_schedule = []
+            var user = action.netid
+            if (state.schedule.includes(user)) {
+                new_schedule = state.schedule.filter(x => x != user)
+                var new_total = state.userHours[user].total - 1
+            }
+            else {
+                new_schedule = (state.schedule).slice()
+                new_schedule.push(user)
+                var new_total = state.userHours[user].total + 1
+            }
+            console.log("USER: ", state.userHours)
+            console.log("NEW TOTAL: ", new_total)
+            return {...state, schedule: new_schedule, userHours: {...state.userHours, [user]: {...state.userHours[user], total: new_total}}}
+        default:
+            return state
+    }
+
 }
+
+/*const activeShiftReducer = (state={dayname:"",hour:{hour: 0}, closed:true, p1:[], p2:[], p3:[], p4:[], schedule:[""], open:false, userHours:{}}, action) => {
+    switch(action.type) {
+        case "SHIFT_SELECTED":
+            return {...state, p1:action.p1, p2:action.p2, p3:action.p3, p4:action.p4, schedule:action.schedule, open:action.open, hour:action.hour, dayname:action.dayname, userHours:action.userHours}
+        case "CLOSE_MODAL":
+            return {...state, open:action.open}
+        case "TOGGLE_SCHEDULED":
+            let new_schedule = []
+            if (state.schedule.includes(action.netid)) {
+                new_schedule = state.schedule.filter(x => x != action.netid)
+                new_total = state.userHours[action.netid].total + 1
+            }
+            else {
+                new_schedule = (state.schedule).slice()
+                new_schedule.push(action.netid)
+                new_total = state.userHours[action.netid].total - 1
+            }
+            var user = action.netid
+            return {...state, schedule: new_schedule, userHours: {...state, user: {...state, total: new_total}}}
+        default:
+            return state
+    }
+
+}*/
 
 export default combineReducers({
     activeShiftReducer, mmonReducer, mtuesReducer, mwedReducer, mthursReducer, mfriReducer, msatReducer, msunReducer
