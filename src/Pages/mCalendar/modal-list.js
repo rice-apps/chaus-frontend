@@ -93,7 +93,8 @@ export default connect (
             p4: state.mCal.activeShiftReducer.p4,
             schedule: state.mCal.activeShiftReducer.schedule,
             dayname: state.mCal.activeShiftReducer.dayname,
-            hour: state.mCal.activeShiftReducer.hour}
+            hour: state.mCal.activeShiftReducer.hour,
+            userHours: state.mCal.activeShiftReducer.userHours}
     },
     (dispatch) => {
         return {

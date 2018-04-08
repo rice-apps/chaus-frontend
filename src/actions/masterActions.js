@@ -37,7 +37,21 @@ export const open_modal = (dayname, hour) => {
     return (dispatch) => {
         console.log(dayname, hour.hour)
         resource('GET', 'master/shift/'+ dayname + '/' + (hour.hour - 7)).then( r => {
+            // console.log("Here is something else", resource('GET','users').then (s => {}))
             console.log("HERE IS R", r)
+
+            /*
+            ALL THIS INTO A FUNCTION
+            let users = {}
+            usr = fn resource('GET','users').then(r => {
+                users = r
+            })
+            var userHrs = {}
+            const payload = users.map((user) => {userHrs[user.netid] = {max: user.maxHour,
+                min:user.minHour,
+                total:user.totalHours}
+            */
+
             return dispatch({
                 type: "SHIFT_SELECTED",
                 p1: r[1],
@@ -47,12 +61,12 @@ export const open_modal = (dayname, hour) => {
                 schedule: r.scheduled,
                 hour: r.hour,
                 open: true,
-                dayname: dayname
+                dayname: dayname,
+                userHours: {}//RESULT OF FUNCTION
             })
         })
-    }
+    }}
 
-}
 
 export const close_modal = () => {
     return (dispatch) => {

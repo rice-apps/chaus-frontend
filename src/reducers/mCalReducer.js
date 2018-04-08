@@ -313,10 +313,10 @@ const msunReducer = (state={sun:[
 
 
 
-const activeShiftReducer = (state={dayname:"",hour:{hour: 0}, closed:true, p1:[], p2:[], p3:[], p4:[], schedule:[""], open:false}, action) => {
+const activeShiftReducer = (state={dayname:"",hour:{hour: 0}, closed:true, p1:[], p2:[], p3:[], p4:[], schedule:[""], open:false, userHours:{netid:{max:0,min:0,total:0}}}, action) => {
     switch(action.type) {
         case "SHIFT_SELECTED":
-            return {...state, p1:action.p1, p2:action.p2, p3:action.p3, p4:action.p4, schedule:action.schedule, open:action.open, hour:action.hour, dayname:action.dayname}
+            return {...state, p1:action.p1, p2:action.p2, p3:action.p3, p4:action.p4, schedule:action.schedule, open:action.open, hour:action.hour, dayname:action.dayname, userHours:action.userHours}
         case "CLOSE_MODAL":
             return {...state, open:action.open}
         case "TOGGLE_SCHEDULED":
