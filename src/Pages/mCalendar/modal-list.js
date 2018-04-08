@@ -45,6 +45,10 @@ const getButtonColor = (user, totals) => {
 
 const ModalList = ({p1, p2, p3, p4, schedule, toggle_scheduled, save_shift, dayname, hour, userHours}) => {
     console.log("MODAL CALLED")
+
+    // Change 'allowedShifts' to reflect max capacity of each shift (default 3 right now)
+    var allowedShifts = 3
+
     console.log(p1, p2, p3, p4, schedule, toggle_scheduled, save_shift, dayname, hour, userHours)
     return (
         <div>
@@ -101,7 +105,16 @@ const ModalList = ({p1, p2, p3, p4, schedule, toggle_scheduled, save_shift, dayn
                     >
                         <GridTile>
                             <h1>Scheduled</h1>
-                            {schedule.length < 3 ? <div>{3 - schedule.length} spots left</div>:<div>Shift filled</div>}
+                            {schedule.length < allowedShifts ? 
+                                <div>{allowedShifts - schedule.length == 1? 
+                                    <div>1 spot left</div>:
+                                    <div>{allowedShifts - schedule.length} spots left</div>}
+                                </div>:
+                                <div>{schedule.length > allowedShifts ?
+                                    <div>{schedule.length - allowedShifts == 1? 
+                                        <div>Overfilled by 1 spot</div>:
+                                        <div>Overfilled by {schedule.length - allowedShifts} spots</div>} </div>:
+                                    <div>Shift filled</div>}</div>}
                             {schedule.map((netid) => {
                                 return (
                                     <RaisedButton style={{margin: 2}} key={netid} label={netid} backgroundColor={getButtonColor(netid, userHours)} onClick={() => toggle_scheduled(netid)} />
