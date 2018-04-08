@@ -32,26 +32,34 @@ export const resource = (method, endpoint, payload) => {
         .catch(err => console.error(err))
 }
 
+function update_user_total_hours(netid, hour_obj) {
+    resource('GET', 'master/hourtotal/'+netid).then(r => {
+        hour_obj.total += Number(r);
+    });
+    console.log("hope this works", hour_obj)
+    console.log("total", hour_obj.total)
+    return hour_obj
+}
+
+function create_users_hours() {
+    var userHrs = {};
+    resource('GET', 'users').then(r => {
+        r.map((user) => {userHrs[user.netid] = update_user_total_hours(user.netid,
+            {max: user.maxHour,
+            min: user.minHour,
+            total: 0})
+        });
+    });
+    return userHrs
+}
 
 export const open_modal = (dayname, hour) => {
     return (dispatch) => {
         console.log(dayname, hour.hour)
         resource('GET', 'master/shift/'+ dayname + '/' + (hour.hour - 7)).then( r => {
             // console.log("Here is something else", resource('GET','users').then (s => {}))
-            console.log("HERE IS R", r)
-
-            /*
-            ALL THIS INTO A FUNCTION
-            let users = {}
-            usr = fn resource('GET','users').then(r => {
-                users = r
-            })
-            var userHrs = {}
-            const payload = users.map((user) => {userHrs[user.netid] = {max: user.maxHour,
-                min:user.minHour,
-                total:user.totalHours}
-            */
-
+            console.log("HERE IS R", r);
+            console.log("user hour object", create_users_hours())
             return dispatch({
                 type: "SHIFT_SELECTED",
                 p1: r[1],
@@ -62,7 +70,7 @@ export const open_modal = (dayname, hour) => {
                 hour: r.hour,
                 open: true,
                 dayname: dayname,
-                userHours: {}//RESULT OF FUNCTION
+                userHours: create_users_hours()
             })
         })
     }}
