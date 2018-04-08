@@ -1,10 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/App";
+import LoginPage from "./Pages/login.js"
 import FullCalendar from "./pages/eCalendar/full-calendar.js"
 import Reducer from './reducers/index'
 import { Provider } from 'react-redux'
 import thunkMiddleware from 'redux-thunk'
+
 
 import { createStore, applyMiddleware } from 'redux'
 
@@ -35,6 +37,7 @@ ReactDOM.render(
             <Route exact path='/' component={App}/>
             <Route path='/ecal' component={FullCalendar}/>
             <Route path='/mcal' component={App}/>
+            <Route path='/login' component={LoginPage}/>
         </Switch>
     </BrowserRouter>
     </Provider>
