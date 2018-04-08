@@ -334,6 +334,16 @@ const activeShiftReducer = (state={dayname:"",hour:{hour: 0}, closed:true, p1:[]
 
 }*/
 
+/*const calendarMaxReducer = (state={overscheduled: false}, action) => {
+    switch(action.type) {
+        case "MAKE_CALENDAR":
+            return {...state, overscheduled: action.overscheduled}
+        default:
+            return state
+    }
+
+}*/
+
 const activeShiftReducer = (state={dayname:"",hour:{hour: 0}, closed:true, p1:[], p2:[], p3:[], p4:[], schedule:[""], open:false, userHours: {}}, action) => {
     switch(action.type) {
         case "SHIFT_SELECTED":
@@ -359,7 +369,6 @@ const activeShiftReducer = (state={dayname:"",hour:{hour: 0}, closed:true, p1:[]
         default:
             return state
     }
-
 }
 
 /*const activeShiftReducer = (state={dayname:"",hour:{hour: 0}, closed:true, p1:[], p2:[], p3:[], p4:[], schedule:[""], open:false, userHours:{}}, action) => {

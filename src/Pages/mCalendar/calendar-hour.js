@@ -3,7 +3,7 @@
  */
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import { open_modal } from '../../actions/masterActions'
+import { open_modal, check_hours } from '../../actions/masterActions'
 //Material Imports
 import RaisedButton from 'material-ui/RaisedButton';
 
@@ -23,6 +23,7 @@ export default connect (
     (dispatch) => {
         return {
             open_modal: (dayname, hour) => dispatch(open_modal(dayname, hour))
+            //check_hours: (dayname, hour) => dispatch(check_hours(dayname, hour))
         }
     }
 )(CalendarHour)

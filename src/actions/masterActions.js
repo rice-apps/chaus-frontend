@@ -77,6 +77,26 @@ export const open_modal = (dayname, hour) => {
     }}
 
 
+export const check_hours = (dayname, hour) => {
+    return (dispatch) => {
+        resource('GET', 'master/shift/'+ dayname + '/' + (hour.hour - 7)).then( r => {
+            console.log("HERE IS R", r)
+            return dispatch({
+                type: "SHIFT_SELECTED",
+                p1: r[1],
+                p2: r[2],
+                p3: r[3],
+                p4: r[4],
+                schedule: r.scheduled,
+                hour: r.hour,
+                open: true,
+                dayname: dayname
+            })
+        })
+    }
+
+}
+
 export const close_modal = () => {
     return (dispatch) => {
             return dispatch({
