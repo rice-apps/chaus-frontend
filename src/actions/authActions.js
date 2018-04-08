@@ -17,20 +17,19 @@ export const sendTicket = (search) => {
 
 export const ticketToBackend = (ticket) => {
     return (dispatch) => {
-      resource('GET', 'auth', {"ticket": ticket}).then(
-        (err, result) => {
-          console.log("Hit");
-          if (err) {
-            console.log("Error");
-            dispatch({
-              type: "TICKET_DECLINED"
-            })
-          }
-          else {
+      resource('GET', 'auth'+'?ticket='+ticket).then(
+        (result) => {
+          if (result) {
             dispatch({
               type: "TICKET_APPROVED",
               netid: result.user.username,
               token: result.user.token
+            })
+          }
+          else {
+            console.log("Error");
+            dispatch({
+              type: "TICKET_DECLINED"
             })
           }
         }
