@@ -8,9 +8,13 @@ import ActiveSchedule from '../eCalendar/active-user-schedule'
 // Actions
 import { sendTicket } from '../../actions/authActions'
 
-const Auth = ({search, sendTicket}) => {
+const Auth = ({search, loggedIn, sendTicket, redirectUrl}) => {
   // Call action which sends ticket to backend
   sendTicket(search);
+  // Check whether user is logged in
+  if (loggedIn == true) {
+    redirectUrl()
+  }
   return (
     <MuiThemeProvider>
       <div>
@@ -23,12 +27,14 @@ const Auth = ({search, sendTicket}) => {
 export default connect (
     (state, ownProps) => {
       return {
-        search: ownProps.location.search
+        search: ownProps.location.search,
+        loggedIn: state.auth.authenticated
       }
     },
-    (dispatch) => {
+    (dispatch, ownProps) => {
         return {
-          sendTicket: (search) => dispatch(sendTicket(search))
+          sendTicket: (search) => dispatch(sendTicket(search)),
+          redirectUrl: () => ownProps.history.push('/mcal')
         }
     }
 )(Auth)

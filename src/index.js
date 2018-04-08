@@ -26,21 +26,28 @@ const store = createStore(
 )
 
 //const history = syncHistoryWithStore(hashHistory, store)
+const PrivateRoute = ({ component: Component, ...rest }) => (
+   <Route {...rest} render={(props) => (
+       true
+           ? <Component {...props} />
+           : <Redirect to='/login' />
+   )} />
+)
 
 
 get_users()(store.dispatch)
 // get_netids()(store.dispatch)
 ReactDOM.render(
-    <Provider store={store}>
-    <BrowserRouter>
-        <Switch>
-            <Route exact path='/' component={App}/>
-            <Route path='/ecal' component={FullCalendar}/>
-            <Route path='/mcal' component={App}/>
-            <Route path='/login' component={LoginPage}/>
-            <Route path='/auth' component={Auth}/>
-        </Switch>
-    </BrowserRouter>
-    </Provider>
-    , document.getElementById('app')
+   <Provider store={store}>
+   <BrowserRouter>
+       <Switch>
+           <Route exact path='/' component={LoginPage}/>
+           <PrivateRoute path='/ecal' component={FullCalendar}/>
+           <PrivateRoute path='/mcal' component={App} />
+           <Route path='/login' component={LoginPage}/>
+           <Route path='/auth' component={Auth} />
+       </Switch>
+   </BrowserRouter>
+   </Provider>
+   , document.getElementById('app')
 );
