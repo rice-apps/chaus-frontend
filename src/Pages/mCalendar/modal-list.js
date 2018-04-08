@@ -44,6 +44,7 @@ const getButtonColor = (user, totals) => {
 }
 
 const ModalList = ({p1, p2, p3, p4, schedule, toggle_scheduled, save_shift, dayname, hour, userHours}) => {
+    console.log("MODAL CALLED")
     console.log(p1, p2, p3, p4, schedule, toggle_scheduled, save_shift, dayname, hour, userHours)
     return (
         <div>

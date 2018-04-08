@@ -55,6 +55,7 @@ function create_users_hours() {
 
 export const open_modal = (dayname, hour) => {
     return (dispatch) => {
+        console.log("open_modal called")
         console.log(dayname, hour.hour)
         resource('GET', 'master/shift/'+ dayname + '/' + (hour.hour - 7)).then( r => {
             // console.log("Here is something else", resource('GET','users').then (s => {}))
