@@ -10,7 +10,7 @@ import thunkMiddleware from 'redux-thunk'
 
 import { createStore, applyMiddleware, combineReducers } from 'redux'
 
-import { BrowserRouter, Route, Switch, Link } from 'react-router-dom'
+import { BrowserRouter, Route, Switch, Link, Redirect } from 'react-router-dom'
 
 import {get_users} from './actions/userActions'
 
@@ -28,7 +28,7 @@ const store = createStore(
 //const history = syncHistoryWithStore(hashHistory, store)
 const PrivateRoute = ({ component: Component, ...rest }) => (
    <Route {...rest} render={(props) => (
-       true
+       localStorage.getItem('token')
            ? <Component {...props} />
            : <Redirect to='/login' />
    )} />
