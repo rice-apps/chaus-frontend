@@ -6,8 +6,6 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import RaisedButton from 'material-ui/RaisedButton';
 
 
-const MyLink = props => <Link to="http://www.google.com" {...props} />
-
 const LOGINURL = 'https://idp.rice.edu/idp/profile/cas/login'
 const SERVICEURL = 'https://speak.riceapps.org/auth'
 
