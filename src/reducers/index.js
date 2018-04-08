@@ -18,7 +18,7 @@ const pageReducer = (state={location:"mCalendar"}, action) => {
 }
 
 const Reducer = combineReducers({
-    eCal, mCal, pageReducer, routing: routerReducer
+    eCal, mCal, pageReducer
 })
 
 
