@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/App";
 import LoginPage from "./Pages/login.js"
+
 import FullCalendar from "./pages/eCalendar/full-calendar.js"
 import Reducer from './reducers/index'
 import { Provider } from 'react-redux'
