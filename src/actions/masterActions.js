@@ -32,18 +32,20 @@ export const resource = (method, endpoint, payload) => {
         .catch(err => console.error(err))
 }
 
-function update_user_total_hours(netid, hour_obj) {
+/*const update_user_total_hours = (netid, hour_obj) =>{
     resource('GET', 'master/hourtotal/'+netid).then(r => {
-        hour_obj.total += Number(r);
+        var new_total = hour_obj.total + Number(r);
+        hour_obj = {...hour_obj, total: new_total}
     });
-    console.log("hope this works", hour_obj)
-    console.log("total", hour_obj.total)
+    console.log("hope this works", JSON.stringify(hour_obj))
+    console.log("total", JSON.stringify(hour_obj.total))
     return hour_obj
 }
 
-function create_users_hours() {
+const create_users_hours = () =>{
     var userHrs = {};
     resource('GET', 'users').then(r => {
+        console.log("RRRR: ", r)
         r.map((user) => {userHrs[user.netid] = update_user_total_hours(user.netid,
             {max: user.maxHour,
             min: user.minHour,
@@ -51,7 +53,34 @@ function create_users_hours() {
         });
     });
     return userHrs
+}*/
+
+const update_user_total_hours = (user) => {
+    resource('GET', 'master/hourtotal/'+user.netid).then(r => {
+        var newTotal = Number(r);
+        userHours = {min: user.minHour,
+                    max: user.maxHour,
+                    total: newTotal}
+    });
+    
+    //console.log("hope this works", JSON.stringify(hour_obj))
+    //console.log("total", JSON.stringify(hour_obj.total))
+    return userHours
 }
+
+const create_users_hours = () =>{
+    var userHrs = {};
+    resource('GET', 'users').then(r => {
+        console.log("RRRR: ", r)
+        r.map((user) => {
+            console.log(user);
+            userHrs[user.netid] = update_user_total_hours(user)
+            console.log(userHrs[user.netid]);
+        });
+    });
+    return userHrs
+}
+
 
 export const open_modal = (dayname, hour) => {
     return (dispatch) => {
@@ -60,7 +89,8 @@ export const open_modal = (dayname, hour) => {
         resource('GET', 'master/shift/'+ dayname + '/' + (hour.hour - 7)).then( r => {
             // console.log("Here is something else", resource('GET','users').then (s => {}))
             console.log("HERE IS R", r);
-            console.log("user hour object", create_users_hours())
+            var user_hours = create_users_hours()
+            console.log("user hour object", user_hours)
             return dispatch({
                 type: "SHIFT_SELECTED",
                 p1: r[1],
@@ -71,7 +101,7 @@ export const open_modal = (dayname, hour) => {
                 hour: r.hour,
                 open: true,
                 dayname: dayname,
-                userHours: create_users_hours()
+                userHours: user_hours
             })
         })
     }}
