@@ -321,19 +321,20 @@ const activeShiftReducer = (state={dayname:"",hour:{hour: 0}, closed:true, p1:[]
         case "TOGGLE_SCHEDULED":
             console.log("TOGGLING: ", state.userHours)
             let new_schedule = []
+            let user_hours_copy = {...state.userHours}
             var user = action.netid
             if (state.schedule.includes(user)) {
                 new_schedule = state.schedule.filter(x => x != user)
-                var new_total = state.userHours[user].total - 1
+                var new_total = user_hours_copy[user].total - 1
             }
             else {
                 new_schedule = (state.schedule).slice()
                 new_schedule.push(user)
-                var new_total = state.userHours[user].total + 1
+                var new_total = user_hours_copy[user].total + 1
             }
-            console.log("USER: ", state.userHours)
+            console.log("USER: ", user_hours_copy)
             console.log("NEW TOTAL: ", new_total)
-            return {...state, schedule: new_schedule, userHours: {...state.userHours, [user]: {...state.userHours[user], total: new_total}}}
+            return {...state, schedule: new_schedule, userHours: {...state.userHours, [user]: {...user_hours_copy[user], total: new_total}}}
         default:
             return state
     }
@@ -405,4 +406,3 @@ const activeShiftReducer = (state={dayname:"",hour:{hour: 0}, closed:true, p1:[]
 export default combineReducers({
     activeShiftReducer, mmonReducer, mtuesReducer, mwedReducer, mthursReducer, mfriReducer, msatReducer, msunReducer
 })
-

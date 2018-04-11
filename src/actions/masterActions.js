@@ -96,20 +96,28 @@ export const open_modal = (dayname, hour) => {
             // console.log("Here is something else", resource('GET','users').then (s => {}))
             console.log("HERE IS R", r);
             create_users_hours()
-            .then((user_hours) => {
-              console.log("user hour object", user_hours)
-              return dispatch({
-                  type: "SHIFT_SELECTED",
-                  p1: r[1],
-                  p2: r[2],
-                  p3: r[3],
-                  p4: r[4],
-                  schedule: r.scheduled,
-                  hour: r.hour,
-                  open: true,
-                  dayname: dayname,
-                  userHours: user_hours
+            .then((promise) => {
+              var user_hours = {}
+              Promise.all(Object.values(promise)).then((promises) => {
+                console.log(promises)
+                Object.keys(promise).forEach((key, index) => {
+                  user_hours[key] = promises[index]
+                })
+                console.log("user hour object", user_hours)
+                return dispatch({
+                    type: "SHIFT_SELECTED",
+                    p1: r[1],
+                    p2: r[2],
+                    p3: r[3],
+                    p4: r[4],
+                    schedule: r.scheduled,
+                    hour: r.hour,
+                    open: true,
+                    dayname: dayname,
+                    userHours: user_hours
+                })
               })
+
             })
         })
     }}

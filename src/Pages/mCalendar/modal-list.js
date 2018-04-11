@@ -11,7 +11,7 @@ import Save from 'material-ui/svg-icons/content/save'
 import {fullWhite} from 'material-ui/styles/colors';
 
 const getButtonColor = (user, totals) => {
-    // Determine if employee is underscheduled, within hour range, 
+    // Determine if employee is underscheduled, within hour range,
     // at max hours, or overscheduled, and return respective button color
     console.log("DEBUG 1: ", JSON.stringify(totals))
     console.log("DEBUG 2:", user)
@@ -21,7 +21,7 @@ const getButtonColor = (user, totals) => {
     var total = totals[user].total
     var max = totals[user].max
     var min = totals[user].min
-    var color = ((total > max) ? 
+    var color = ((total > max) ?
                     4:
                     ((total == max) ?
                         3:
@@ -70,7 +70,7 @@ const ModalList = ({p1, p2, p3, p4, schedule, toggle_scheduled, save_shift, dayn
                             <h1>Priority 1 (Preferred)</h1>
                             {p1.map((netid) => {
                                 return (
-                                    <RaisedButton 
+                                    <RaisedButton
                                         style={{margin: 2}} key={netid} label={netid} backgroundColor={getButtonColor(netid, userHours)} onClick={() => toggle_scheduled(netid)} />
                                 )
                             })}
@@ -108,13 +108,13 @@ const ModalList = ({p1, p2, p3, p4, schedule, toggle_scheduled, save_shift, dayn
                     >
                         <GridTile>
                             <h1>Scheduled</h1>
-                            {schedule.length < allowedShifts ? 
-                                <div>{allowedShifts - schedule.length == 1? 
+                            {schedule.length < allowedShifts ?
+                                <div>{allowedShifts - schedule.length == 1?
                                     <div>1 spot left</div>:
                                     <div>{allowedShifts - schedule.length} spots left</div>}
                                 </div>:
                                 <div>{schedule.length > allowedShifts ?
-                                    <div>{schedule.length - allowedShifts == 1? 
+                                    <div>{schedule.length - allowedShifts == 1?
                                         <div>Overfilled by 1 spot</div>:
                                         <div>Overfilled by {schedule.length - allowedShifts} spots</div>} </div>:
                                     <div>Shift filled</div>}</div>}
@@ -156,5 +156,3 @@ export default connect (
         }
     }
 )(ModalList)
-
-
