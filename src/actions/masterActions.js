@@ -61,31 +61,6 @@ const create_users_hours = () =>{
   })
 }
 
-// const update_user_total_hours = (user) => {
-//     resource('GET', 'master/hourtotal/'+user.netid).then(r => {
-//         var newTotal = Number(r);
-//         userHours = {min: user.minHour,
-//                     max: user.maxHour,
-//                     total: newTotal}
-//     });
-//
-//     //console.log("hope this works", JSON.stringify(hour_obj))
-//     //console.log("total", JSON.stringify(hour_obj.total))
-//     return userHours
-// }
-//
-// const create_users_hours = () =>{
-//     var userHrs = {};
-//     resource('GET', 'users').then(r => {
-//         console.log("RRRR: ", r)
-//         r.map((user) => {
-//             console.log(user);
-//             userHrs[user.netid] = update_user_total_hours(user)
-//             console.log(userHrs[user.netid]);
-//         });
-//     });
-//     return userHrs
-// }
 
 
 export const open_modal = (dayname, hour) => {
