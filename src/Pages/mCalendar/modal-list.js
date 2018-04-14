@@ -13,11 +13,6 @@ import {fullWhite} from 'material-ui/styles/colors';
 const getButtonColor = (user, totals) => {
     // Determine if employee is underscheduled, within hour range,
     // at max hours, or overscheduled, and return respective button color
-    console.log("DEBUG 1: ", JSON.stringify(totals))
-    console.log("DEBUG 2:", user)
-    console.log("DEBUG 3:", totals.user)
-    console.log(Object.keys(totals))
-    console.log(totals["jmd16"])
     var total = totals[user].total
     var max = totals[user].max
     var min = totals[user].min
@@ -27,6 +22,8 @@ const getButtonColor = (user, totals) => {
                         3:
                         ((total >= min) ?
                             2:1)))
+
+    //var color = 10;
   switch(color) {
     case 1:
       // from material-ui color tool, 5th line of 'blue grey'
