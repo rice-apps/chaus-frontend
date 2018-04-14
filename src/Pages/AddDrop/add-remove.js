@@ -82,24 +82,28 @@ class AddUser extends React.Component {
           floatingLabelText="First Name"
           onChange={(e, val) => this.setState({firstName: val})}
           value={this.state.firstName}
+          underlineShow={false}
           />
         <Divider />
         <TextField
           floatingLabelText="Last Name"
           onChange={(e, val) => this.setState({lastName: val})}
           value={this.state.lastName}
+          underlineShow={false}
           />
         <Divider />
         <TextField
           floatingLabelText="Minimum Hours"
           onChange={(e, val) => this.setState({minHours: val})}
           value={this.state.minHours}
+          underlineShow={false}
           />
         <Divider />
         <TextField
           floatingLabelText="Maximum Hours"
           onChange={(e, val) => this.setState({maxHours: val})}
           value={this.state.maxHours}
+          underlineShow={false}
           />
         <Divider />
         <RaisedButton
