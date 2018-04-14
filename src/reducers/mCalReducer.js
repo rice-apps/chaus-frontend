@@ -341,6 +341,18 @@ const activeShiftReducer = (state={dayname:"",hour:{hour: 0}, closed:true, p1:[]
 
 }
 
+const hourTotalReducer = (state={totalHours: {}}, action) =>{
+    switch(action.type) {
+        case "RENDER_PAGE":
+            //console.log(action)
+            //console.log(state)
+            return {...state, totalHours: {...state.totalHours, [action.shift]:action.full}}
+            
+        default:
+            return state
+    }
+}
+
 /*const calendarMaxReducer = (state={overscheduled: false}, action) => {
     switch(action.type) {
         case "MAKE_CALENDAR":
@@ -404,5 +416,5 @@ const activeShiftReducer = (state={dayname:"",hour:{hour: 0}, closed:true, p1:[]
 }*/
 
 export default combineReducers({
-    activeShiftReducer, mmonReducer, mtuesReducer, mwedReducer, mthursReducer, mfriReducer, msatReducer, msunReducer
+    activeShiftReducer, hourTotalReducer, mmonReducer, mtuesReducer, mwedReducer, mthursReducer, mfriReducer, msatReducer, msunReducer
 })
