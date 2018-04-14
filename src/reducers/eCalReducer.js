@@ -284,6 +284,8 @@ const sideBarReducer = (state={toggle:false}, action) => {
 
 
 const userReducer = (state={netids:[], users: []}, action) => {
+    let new_netids;
+    let new_users;
     switch(action.type) {
         case "GET_NETIDS":
             console.log(action.netids)
@@ -294,6 +296,28 @@ const userReducer = (state={netids:[], users: []}, action) => {
                 netids.push(action.users[user].netid)
             }
             return {...state, netids:netids, users: action.users}
+        case "CREATE_USER_FAILED":
+            return {...state}
+        case "CREATE_USER_SUCCESS":
+            // Add created user to netids
+            new_netids = state.netids.slice();
+            new_netids.push(action.netid);
+            // // Add created user to users
+            // new_users = state.users.slice();
+            // new_users.push({...action.payload, netid: action.netid})
+            return {...state, netids: new_netids, users: action.users}
+        case "DELETE_USER_FAILED":
+            return {...state}
+        case "DELETE_USER_SUCCESS":
+            // Remove deleted user from netids
+            new_netids = state.netids.slice();
+            // find position of netid in array
+            let netid_location = new_netids.indexOf(action.netid);
+            // take it out
+            new_netids.splice(netid_location, 1);
+            // // Remove deleted user from users: filter array without user
+            // new_users = state.users.filter(user => user.netid != action.netid);
+            return {...state, netids: new_netids, users: action.users}
         default:
             return state
     }
