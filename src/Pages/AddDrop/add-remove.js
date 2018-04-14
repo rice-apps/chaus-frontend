@@ -7,6 +7,8 @@ import RaisedButton from 'material-ui/RaisedButton';
 import Divider from 'material-ui/Divider';
 import TextField from 'material-ui/TextField';
 import {List, ListItem} from 'material-ui/List';
+// Reactstrap
+import {Container, Row, Col} from 'reactstrap';
 // Actions
 import {add_user, remove_user} from '../../actions/userActions'
 
@@ -32,10 +34,11 @@ const listIconStyle = {
 }
 
 const addUserStyle = {
-  display: 'block',
+  display: 'grid',
   marginLeft: '5vw',
   marginRight: '5vw',
-  width: '25vw'
+  width: '25vw',
+  alignContent: 'right'
 }
 
 class AddUser extends React.Component {
@@ -149,12 +152,11 @@ class AddUser extends React.Component {
 const AddRemove = ({users, netids, add_user, remove_user}) => {
   return (
     <MuiThemeProvider>
-    <div className="grid-container">
-      <h1>Hello</h1>
-        <div className="grid-item" style={{justifyContent: 'right'}}>
+    <div>
+        <div style={{alignContent: 'right'}}>
           <AddUser add_user={add_user}/>
         </div>
-        <div className="grid-item" style={{display: 'flex', justifyContent: 'left'}}>
+        <div style={{display: 'flex', alignContent: 'left'}}>
           <List style={list_style}>
             {users.map((user) => {
               let name = user.firstName + " " + user.lastName;
