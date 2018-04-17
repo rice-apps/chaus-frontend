@@ -282,22 +282,6 @@ const sideBarReducer = (state={toggle:false}, action) => {
 
 }
 
-
-const userReducer = (state={netids:[], users: []}, action) => {
-    switch(action.type) {
-        case "GET_NETIDS":
-            console.log(action.netids)
-            return {...state, netids:action.netids}
-        case "GET_USERS":
-            let netids = []
-            for (var user in action.users) {
-                netids.push(action.users[user].netid)
-            }
-            return {...state, netids:netids, users: action.users}
-        default:
-            return state
-    }
-}
 const activeReducer = (state={user:{}, schedule:{M:[], T:[], W:[], R:[], F:[], S:[], U:[]}}, action) => {
 
     switch(action.type) {
@@ -312,5 +296,5 @@ const activeReducer = (state={user:{}, schedule:{M:[], T:[], W:[], R:[], F:[], S
 }
 
 export default combineReducers({
-    sideBarReducer, userReducer, activeReducer, scheduleReducer
+    sideBarReducer, activeReducer, scheduleReducer
 })

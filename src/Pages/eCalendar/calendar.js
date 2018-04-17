@@ -110,7 +110,7 @@ const Calender = ({mon, tues, wed, thurs, fri, sat, sun}) => {
 export default connect (
     (state) => {
         return {
-            netids : state.eCal.userReducer.netids,
+            // netids : state.userReducer.netids,
             // mon: state.eCal.monReducer.mon,
             // tues: state.eCal.tuesReducer.tues,
             // wed: state.eCal.wedReducer.wed,
