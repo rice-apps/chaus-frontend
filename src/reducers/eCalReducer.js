@@ -148,7 +148,7 @@ const scheduleReducer = (state={schedule:{M:monDefault, T:tuesDefault, W:wedDefa
     let new_schedule;
     switch(action.type) {
         case "GET_AVAILABILITY":
-            console.log(action.schedule)
+            //console.log(action.schedule)
             new_schedule = {
               M: action.schedule[0],
               T: action.schedule[1],

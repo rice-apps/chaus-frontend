@@ -68,8 +68,9 @@ export const open_modal = (dayname, hour) => {
         console.log("open_modal called")
         console.log(dayname, hour.hour)
         resource('GET', 'master/shift/'+ dayname + '/' + (hour.hour - 7)).then( r => {
-            // console.log("Here is something else", resource('GET','users').then (s => {}))
-            console.log("HERE IS R", r);
+            console.log("PLEASE WORK")
+            //console.log("Here is something else", resource('GET','users').then (s => {}))
+            //console.log("HERE IS R", r);
             create_users_hours()
             .then((promise) => {
               var user_hours = {}
@@ -101,22 +102,31 @@ export const open_modal = (dayname, hour) => {
 export const check_hours = (dayname, hour) => {
     return (dispatch) => {
         resource('GET', 'master/shift/'+ dayname + '/' + (hour.hour - 7)).then( r => {
-            console.log("HERE IS R", r)
+            console.log("HOURS BEING CHECKED")
             return dispatch({
-                type: "SHIFT_SELECTED",
-                p1: r[1],
-                p2: r[2],
-                p3: r[3],
-                p4: r[4],
-                schedule: r.scheduled,
-                hour: r.hour,
-                open: true,
-                dayname: dayname
+                type: "RENDER_PAGE",
+                shift: (dayname * 18) + hour.hour,
+                full: ([r.scheduled].length >= 3)
             })
         })
     }
 
 }
+
+/*export const check_hours = () => {
+    return (dispatch) => {
+        resource('GET', 'schedule').then( r => {
+            return dispatch({
+                type: "RENDER_PAGE",
+                shift: (dayname * 18) + hour.hour,
+                full: ([r.scheduled].length >= 3)
+            })
+        })
+    }
+
+}*/
+
+
 
 export const close_modal = () => {
     return (dispatch) => {

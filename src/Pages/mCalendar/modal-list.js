@@ -13,6 +13,9 @@ import {fullWhite} from 'material-ui/styles/colors';
 const getButtonColor = (user, totals) => {
     // Determine if employee is underscheduled, within hour range,
     // at max hours, or overscheduled, and return respective button color
+    //console.log("DEBUG 1: ", JSON.stringify(totals))
+    //console.log("DEBUG 2:", user)
+    //onsole.log("DEBUG 3:", totals.user)
     var total = totals[user].total
     var max = totals[user].max
     var min = totals[user].min
@@ -43,13 +46,32 @@ const getButtonColor = (user, totals) => {
   }
 }
 
-const ModalList = ({p1, p2, p3, p4, schedule, toggle_scheduled, save_shift, dayname, hour, userHours}) => {
+const getName = (netid, users) => {
+    var person = users.find( (user) => {return user.netid == netid})
+    return person.firstName + " " + person.lastName[0]
+}
+
+const styles = {
+    topGrid: {
+        display: 'flex',
+        flexDirection: 'row wrap',
+        padding: 20
+    },
+    availGrid: {
+        flex:4
+    },
+    schedGrid: {
+        flex:1
+    }
+}
+
+const ModalList = ({p1, p2, p3, p4, schedule, toggle_scheduled, save_shift, dayname, hour, userHours, users}) => {
     console.log("MODAL CALLED")
 
     // Change 'allowedShifts' to reflect max capacity of each shift (default 3 right now)
     var allowedShifts = 3
 
-    console.log(p1, p2, p3, p4, schedule, toggle_scheduled, save_shift, dayname, hour, userHours)
+    // console.log(p1, p2, p3, p4, schedule, toggle_scheduled, save_shift, dayname, hour, userHours)
     return (
         <div>
             <div style={{borderLeft: '2px solid', height: 600, position: 'absolute', marginLeft: '46.5%'}}/>
@@ -57,8 +79,11 @@ const ModalList = ({p1, p2, p3, p4, schedule, toggle_scheduled, save_shift, dayn
                 cols={2}
                 cellHeight={700}
                 padding={12}
+                style={styles.topGrid}
             >
-                <GridTile>
+                <GridTile
+                    style={styles.availGrid}
+                >
                     <GridList
                         cols={1}
                         cellHeight={150}
@@ -68,7 +93,7 @@ const ModalList = ({p1, p2, p3, p4, schedule, toggle_scheduled, save_shift, dayn
                             {p1.map((netid) => {
                                 return (
                                     <RaisedButton
-                                        style={{margin: 2}} key={netid} label={netid} backgroundColor={getButtonColor(netid, userHours)} onClick={() => toggle_scheduled(netid)} />
+                                        style={{margin: 2}} key={netid} label={getName(netid, users)} backgroundColor={getButtonColor(netid, userHours)} onClick={() => toggle_scheduled(netid)} />
                                 )
                             })}
                         </GridTile>
@@ -76,7 +101,7 @@ const ModalList = ({p1, p2, p3, p4, schedule, toggle_scheduled, save_shift, dayn
                             <h1>Priority 2 (Available)</h1>
                             {p2.map((netid) => {
                                 return (
-                                    <RaisedButton style={{margin: 2}} key={netid} label={netid} backgroundColor={getButtonColor(netid, userHours)} onClick={() => toggle_scheduled(netid)} />
+                                    <RaisedButton style={{margin: 2}} key={netid} label={getName(netid, users)} backgroundColor={getButtonColor(netid, userHours)} onClick={() => toggle_scheduled(netid)} />
                                 )
                             })}
                         </GridTile>
@@ -84,7 +109,7 @@ const ModalList = ({p1, p2, p3, p4, schedule, toggle_scheduled, save_shift, dayn
                             <h1>Priority 3 (Not Preferred)</h1>
                             {p3.map((netid) => {
                                 return (
-                                    <RaisedButton style={{margin: 2}} key={netid} label={netid} backgroundColor={getButtonColor(netid, userHours)} onClick={() => toggle_scheduled(netid)} />
+                                    <RaisedButton style={{margin: 2}} key={netid} label={getName(netid, users)} backgroundColor={getButtonColor(netid, userHours)} onClick={() => toggle_scheduled(netid)} />
                                 )
                             })}
                         </GridTile>
@@ -92,13 +117,15 @@ const ModalList = ({p1, p2, p3, p4, schedule, toggle_scheduled, save_shift, dayn
                             <h1>Priority 4 (Unavailable)</h1>
                             {p4.map((netid) => {
                                 return (
-                                    <RaisedButton style={{margin: 2}} key={netid} label={netid} backgroundColor={getButtonColor(netid, userHours)} onClick={() => toggle_scheduled(netid)} />
+                                    <RaisedButton style={{margin: 2}} key={netid} label={getName(netid, users)} backgroundColor={getButtonColor(netid, userHours)} onClick={() => toggle_scheduled(netid)} />
                                 )
                             })}
                         </GridTile>
                     </GridList>
                 </GridTile>
-                <GridTile>
+                <GridTile
+                    style={styles.schedGrid}
+                >
                     <GridList
                         cols={1}
                         cellHeight={560}
@@ -117,7 +144,7 @@ const ModalList = ({p1, p2, p3, p4, schedule, toggle_scheduled, save_shift, dayn
                                     <div>Shift filled</div>}</div>}
                             {schedule.map((netid) => {
                                 return (
-                                    <RaisedButton style={{margin: 2}} key={netid} label={netid} backgroundColor={getButtonColor(netid, userHours)} onClick={() => toggle_scheduled(netid)} />
+                                    <RaisedButton style={{margin: 2}} key={netid} label={getName(netid, users)} backgroundColor={getButtonColor(netid, userHours)} onClick={() => toggle_scheduled(netid)} />
                                 )
                             })}
                         </GridTile>
@@ -144,7 +171,8 @@ export default connect (
             schedule: state.mCal.activeShiftReducer.schedule,
             dayname: state.mCal.activeShiftReducer.dayname,
             hour: state.mCal.activeShiftReducer.hour,
-            userHours: state.mCal.activeShiftReducer.userHours}
+            userHours: state.mCal.activeShiftReducer.userHours,
+            users: state.userReducer.users}
     },
     (dispatch) => {
         return {
