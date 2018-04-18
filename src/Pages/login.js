@@ -60,10 +60,11 @@ const teamStyle = {
 
 const teamHeadStyle = {
   position: 'fixed',
-  fontSize: 30,
+  fontSize: 26,
   marginTop: '78vh',
-  marginLeft: '24vw',
-  color: 'white'
+  marginLeft: '26vw',
+  color: '#BDBDBD',
+  fontFamily: 'Raleway'
 }
 
 const chausStyle = {
