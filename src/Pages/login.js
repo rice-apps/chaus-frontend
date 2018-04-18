@@ -63,7 +63,8 @@ const teamHeadStyle = {
   fontSize: 26,
   marginTop: '78vh',
   marginLeft: '26vw',
-  color: '#BDBDBD',
+  // color: '#BDBDBD',
+  color: '#B0BEC5',
   fontFamily: 'Raleway'
 }
 
