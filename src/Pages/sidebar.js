@@ -7,12 +7,14 @@ import {connect} from 'react-redux'
 import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import RaisedButton from 'material-ui/RaisedButton';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 
 import {toggleMenu, changePage} from '../actions/sidebarActions';
 import MenuItem from 'material-ui/MenuItem';
+import {Link} from 'react-router-dom';
 
 import NavigationMenu from 'material-ui/svg-icons/navigation/menu';
 
@@ -35,7 +37,6 @@ const SideBar = ({toggle, toggleMenu, changePage, page}) => {
                     iconClassNameRight="muidocs-icon-navigation-expand-more"
                     iconStyleLeft={{filter: 'invert(100%)'}}
                     onLeftIconButtonTouchTap={() => toggleMenu(toggle)}
-
                 >
                     <a href={'http://coffeehouse.rice.edu/'} target={'_blank'}>
                         <img src={"http://coffeehouse.blogs.rice.edu/files/2017/07/Website-header-logo-utp0mt.png"} height={40} />
@@ -50,9 +51,11 @@ const SideBar = ({toggle, toggleMenu, changePage, page}) => {
 
                         <MenuItem leftIcon={<NavigationMenu color={"black"} />} onClick={() => toggleMenu(toggle)}>
                         </MenuItem>
-
-                        <MenuItem onClick={() => (changePage("eCalendar"), toggleMenu(toggle))}>Employee Availability</MenuItem>
-                        <MenuItem onClick={() => (changePage("mCalendar"), toggleMenu(toggle))}>Master Schedule</MenuItem>
+                        <MenuItem><Link to='/ecal' onClick={() => (changePage("eCalendar"), toggleMenu(toggle))}>Employee Calendar</Link></MenuItem>
+                        <MenuItem><Link to='/mcal' onClick={() => (changePage("mCalendar"), toggleMenu(toggle))}>Master Calendar</Link></MenuItem>
+                        <Link to='/' onClick={() => localStorage.removeItem("token")}>
+                            <RaisedButton label="Logout" secondary={true} style={{"margin-left":15}}/>
+                        </Link>
                 </Drawer>
 
             </MuiThemeProvider>
@@ -60,6 +63,7 @@ const SideBar = ({toggle, toggleMenu, changePage, page}) => {
         </div>
     )
 }
+
 
 
 export default connect(

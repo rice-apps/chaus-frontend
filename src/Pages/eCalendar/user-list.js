@@ -26,7 +26,7 @@ const UserButton = ({name, netid, user, activeUser, selectUser}) => {
 const UserList = ({user, users, selectUser, get_availability}) => {
 
     // let selectuser = selectUser
-    console.log(users)
+    console.log("Here are the users",users)
     // selectuser = selectUser
     return (
         <div style={{marginTop: 33}}>
@@ -58,7 +58,7 @@ const UserList = ({user, users, selectUser, get_availability}) => {
 export default connect(
     (state) => {
         return {
-            users: state.eCal.userReducer.users,
+            users: state.userReducer.users,
             user: state.eCal.activeReducer.user
         }
     },

@@ -27,6 +27,7 @@ const store = createStore(
 )
 
 //const history = syncHistoryWithStore(hashHistory, store)
+
 const PrivateRoute = ({ component: Component, ...rest }) => (
    <Route {...rest} render={(props) => (
        localStorage.getItem('token')

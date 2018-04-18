@@ -7,6 +7,7 @@ import {close_modal} from '../../actions/masterActions'
 import ModalList from './modal-list'
 //Material Imports
 import Dialog from 'material-ui/Dialog';
+import FlatButton from 'material-ui/FlatButton';
 
 const DayTitle = (dayname) => {
     switch(dayname) {
@@ -27,7 +28,14 @@ const DayTitle = (dayname) => {
     }
 }
 
+const customContentStyle = {
+    width: '95%',
+    maxWidth:'none',
+};
+
 const CalModal = ({open, close_modal, dayname, hour}) => {
+    var hour = Number(hour)+7
+    console.log("hour:",hour)
     var modalTitle = DayTitle(dayname)
     var hourEnd = ((hour)%12==0 ? (12):((hour)%12))
     var hourStart = ((hourEnd - 1)==0 ? (12):(hourEnd - 1))
@@ -39,7 +47,26 @@ const CalModal = ({open, close_modal, dayname, hour}) => {
             modal={false}
             open={open}
             onRequestClose={() => close_modal()}
+            contentStyle = {customContentStyle}
         >
+            <div style={{position: 'absolute', right: 20, top: 15}}>
+                <div>
+                    <FlatButton style={{backgroundColor: "#607d8b", height: 15, minWidth: 15, marginRight: 5}}/>
+                   = Underscheduled
+                </div>
+                <div>
+                    <FlatButton style={{backgroundColor: "#4caf50", height: 15, minWidth: 15, marginTop: '-4.5px', marginRight: 5}}/>
+                   = In hour range 
+                </div>
+                <div>
+                    <FlatButton style={{backgroundColor: "#ffc107", height: 15, minWidth: 15, marginTop: '-4.5px', marginRight: 5}}/>
+                   = At max hours 
+                </div>
+                <div>
+                    <FlatButton style={{backgroundColor: "#f44336", height: 15, minWidth: 15, marginTop: '-4.5px', marginRight: 5}}/>
+                   = Overscheduled 
+                </div>
+            </div>
             <ModalList/>
         </Dialog>
     )

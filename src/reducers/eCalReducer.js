@@ -148,7 +148,7 @@ const scheduleReducer = (state={schedule:{M:monDefault, T:tuesDefault, W:wedDefa
     let new_schedule;
     switch(action.type) {
         case "GET_AVAILABILITY":
-            console.log(action.schedule)
+            //console.log(action.schedule)
             new_schedule = {
               M: action.schedule[0],
               T: action.schedule[1],
@@ -282,7 +282,6 @@ const sideBarReducer = (state={toggle:false}, action) => {
 
 }
 
-
 const userReducer = (state={netids:[], users: []}, action) => {
     let new_netids;
     let new_users;
@@ -322,6 +321,7 @@ const userReducer = (state={netids:[], users: []}, action) => {
             return state
     }
 }
+
 const activeReducer = (state={user:{}, schedule:{M:[], T:[], W:[], R:[], F:[], S:[], U:[]}}, action) => {
 
     switch(action.type) {
@@ -336,5 +336,5 @@ const activeReducer = (state={user:{}, schedule:{M:[], T:[], W:[], R:[], F:[], S
 }
 
 export default combineReducers({
-    sideBarReducer, userReducer, activeReducer, scheduleReducer
+    sideBarReducer, activeReducer, scheduleReducer
 })

@@ -35,6 +35,7 @@ const HourCount = () => {
 
 const CalendarMonth = ({mon, tues, wed, thurs, fri, sat, sun}) => {
   return (
+    console.log("TESTBOI", mon),
     <div style={styles.root}>
 
       <GridList

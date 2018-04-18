@@ -82,6 +82,15 @@ export const add_user = (netid, firstName, lastName, minHour = 8, maxHour = 16) 
           users
         })
       }
+export const logged_in = () => {
+  return (dispatch) => {
+    let user = {};
+    if (localStorage.getItem('current_user')) {
+      user = localStorage.getItem('current_user');
+    }
+    dispatch({
+      type: "LOGGED_IN",
+      user
     })
   }
 }
@@ -106,6 +115,18 @@ export const remove_user = (netid) => {
           users
         })
       }
+export const authenticate = (ticket) => {
+  return (dispatch) => {
+    let url = 'https://idp.rice.edu/idp/profile/cas/login';
+    resource('GET', `${url}/auth?ticket=${ticket}`).then( res => {
+      let result = res.json();
+      if (result && result.success) {
+        localStorage.setItem('current_user', JSON.stringify(result));
+      }
+      else {
+        console.log("Auth Failed");
+      }
+      dispatch(logged_in);
     })
   }
 }
