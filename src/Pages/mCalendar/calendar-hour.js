@@ -3,23 +3,36 @@
  */
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import { open_modal, check_hours } from '../../actions/masterActions'
+import { open_modal } from '../../actions/masterActions'
 //Material Imports
 import RaisedButton from 'material-ui/RaisedButton';
 
-const CalendarHour = ({dayname, hour, open_modal, check_hours, full}) => {
+const getButtonColor = (total) => {
 
-  //() => check_hours(dayname, hour)
-  var shift = (dayname * 18 + hour.hour).toString()
+  switch(total) {
+    case 0:
+      // from material-ui color tool, 5th line of 'blue grey'
+      return "#607d8b"
+    case 1:
+      // from material-ui color tool, 5th line of 'green'
+      return "#4caf50"
+    case 2:
+      // from material-ui color tool, 5th line of 'green'
+      return "#4caf50"
+    case 3:
+      // from material-ui color tool, 5th line of 'amber'
+      return "#ffc107"
+    default:
+      // from material-ui color tool, 5th line of 'red'
+      return "#f44336"
+  }
+}
 
-  /*const check = () => {
-    check_hours(dayname, hour);
-    return full[shift]
-  }*/
+const CalendarHour = ({dayname, hour, total, open_modal}) => {
 
   return (
       <div style={{height: 34, display: 'flex', justifyContent: 'center'}}>
-          <RaisedButton primary={true}
+          <RaisedButton backgroundColor={getButtonColor(total)}
                         disabled={hour.closed}
                         style={{height:34}}
                         onClick={() => open_modal(dayname, hour)}/>
@@ -30,13 +43,11 @@ const CalendarHour = ({dayname, hour, open_modal, check_hours, full}) => {
 export default connect (
     (state) => {
       return {
-        full: state.mCal.hourTotalReducer.totalHours
       }
     },
     (dispatch) => {
         return {
             open_modal: (dayname, hour) => dispatch(open_modal(dayname, hour)),
-            check_hours: (dayname, hour) => dispatch(check_hours(dayname, hour))
         }
     }
 )(CalendarHour)

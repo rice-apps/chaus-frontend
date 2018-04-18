@@ -18,7 +18,7 @@ import RaisedButton from 'material-ui/RaisedButton'
 
 const UserButton = ({name, netid, user, activeUser, selectUser}) => {
   return (
-    <RaisedButton primary={activeUser} onClick={() => selectUser(netid)}>{name}</RaisedButton>
+    <RaisedButton primary={activeUser} style={{width: 120}} onClick={() => selectUser(netid)}>{name}</RaisedButton>
   )
 }
 

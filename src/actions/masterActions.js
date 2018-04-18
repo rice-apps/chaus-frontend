@@ -113,26 +113,24 @@ export const check_hours = (dayname, hour) => {
 
 }
 
-/*export const check_hours = () => {
+export const get_hour_totals = () => {
     return (dispatch) => {
-        resource('GET', 'schedule').then( r => {
-            return dispatch({
-                type: "RENDER_PAGE",
-                shift: (dayname * 18) + hour.hour,
-                full: ([r.scheduled].length >= 3)
+        resource('GET', 'master/schedule').then( r => {
+            dispatch({
+                type: "CHECK_TOTALS",
+                shifts: r.week
             })
         })
     }
 
-}*/
-
-
+}
 
 export const close_modal = () => {
     return (dispatch) => {
+            dispatch(get_hour_totals())
             return dispatch({
                 type: "CLOSE_MODAL",
-                modal_open: false
+                modal_open: false,
             })
     }
 }
