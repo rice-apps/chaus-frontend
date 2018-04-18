@@ -4,6 +4,7 @@ import App from "./components/App";
 import LoginPage from "./Pages/login.js";
 import Auth from "./Pages/Auth/Auth";
 import FullCalendar from "./pages/eCalendar/full-calendar.js"
+import AddRemove from "./pages/AddDrop/add-remove.js"
 import Reducer from './reducers/index'
 import { Provider } from 'react-redux'
 import thunkMiddleware from 'redux-thunk'
@@ -45,6 +46,7 @@ ReactDOM.render(
            <Route exact path='/' component={LoginPage}/>
            <PrivateRoute path='/ecal' component={FullCalendar}/>
            <PrivateRoute path='/mcal' component={App} />
+           <PrivateRoute path='/addremove' component={AddRemove}/>
            <Route path='/login' component={LoginPage}/>
            <Route path='/auth' component={Auth} />
        </Switch>

@@ -55,6 +55,33 @@ export const save_changes = (week, netid) => {
   }
 }
 
+// Add & Drop Users
+
+/*
+Input: netid, firstName, lastName, minHour, maxHour
+Output: Creates user with given netid
+Backend Call: /add/:netid
+*/
+export const add_user = (netid, firstName, lastName, minHour = 8, maxHour = 16) => {
+  return (dispatch) => {
+    // Create payload
+    let payload = {firstName, lastName, minHour, maxHour, totalHours: 0};
+    console.log(payload);
+    resource('PUT', 'add/'+netid, payload).then( users => {
+      console.log(users);
+      if (typeof(users) == String) {
+        dispatch({
+          type: "CREATE_USER_FAILED",
+        })
+      }
+      else {
+        // info is returned data from backend: entire user list
+        dispatch({
+          type: "CREATE_USER_SUCCESS",
+          netid,
+          users
+        })
+      }
 export const logged_in = () => {
   return (dispatch) => {
     let user = {};
@@ -68,6 +95,26 @@ export const logged_in = () => {
   }
 }
 
+/*
+Input: netid
+Output: Deletes user from DB with given netid
+Backend Call: /remove/:netid
+*/
+export const remove_user = (netid) => {
+  return (dispatch) => {
+    resource('GET', 'remove/'+netid).then( users => {
+      if (!users) {
+        dispatch({
+          type: "DELETE_USER_FAILED"
+        })
+      }
+      else {
+        dispatch({
+          type: "DELETE_USER_SUCCESS",
+          netid,
+          users
+        })
+      }
 export const authenticate = (ticket) => {
   return (dispatch) => {
     let url = 'https://idp.rice.edu/idp/profile/cas/login';
