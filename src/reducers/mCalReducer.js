@@ -341,12 +341,28 @@ const activeShiftReducer = (state={dayname:"",hour:{hour: 0}, closed:true, p1:[]
 
 }
 
+// OLD REDUCER IGNORE THIS ITS GARBAGE BLEH
 const hourTotalReducer = (state={totalHours: {}}, action) =>{
     switch(action.type) {
         case "RENDER_PAGE":
             //console.log(action)
             //console.log(state)
             return {...state, totalHours: {...state.totalHours, [action.shift]:action.full}}
+            
+        default:
+            return state
+    }
+}
+
+const checkTotalsReducer = (state={shifts: []}, action) =>{
+    switch(action.type) {
+        case "CHECK_TOTALS":
+            var shifts = []
+            action.shifts.map(
+                (shift) => {
+                    shifts.push((shift.scheduled).length)
+                })
+            return {...state, shifts: shifts}
             
         default:
             return state
@@ -416,5 +432,5 @@ const hourTotalReducer = (state={totalHours: {}}, action) =>{
 }*/
 
 export default combineReducers({
-    activeShiftReducer, hourTotalReducer, mmonReducer, mtuesReducer, mwedReducer, mthursReducer, mfriReducer, msatReducer, msunReducer
+    activeShiftReducer, checkTotalsReducer, hourTotalReducer, mmonReducer, mtuesReducer, mwedReducer, mthursReducer, mfriReducer, msatReducer, msunReducer
 })

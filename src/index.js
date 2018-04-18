@@ -2,9 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/App";
 import LoginPage from "./Pages/login.js";
-import Auth from "./Pages/Auth/Auth";
-import FullCalendar from "./pages/eCalendar/full-calendar.js"
-import AddRemove from "./pages/AddDrop/add-remove.js"
+import Auth from "./Pages/Auth/auth";
+import FullCalendar from "./Pages/eCalendar/full-calendar.js"
+import AddRemove from "./Pages/AddDrop/add-remove.js"
 import Reducer from './reducers/index'
 import { Provider } from 'react-redux'
 import thunkMiddleware from 'redux-thunk'

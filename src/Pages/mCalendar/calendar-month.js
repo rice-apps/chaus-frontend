@@ -7,6 +7,8 @@ import {connect} from 'react-redux'
 import {GridList, GridTile} from 'material-ui/GridList'
 import Subheader from 'material-ui/Subheader'
 import CalendarDay from './calendar-day'
+import { get_hour_totals } from '../../actions/masterActions'
+import lifecycle from 'react-pure-lifecycle';
 
 const styles = {
   root: {
@@ -32,8 +34,16 @@ const HourCount = () => {
     return hours
 }
 
+const componentDidMount = (props) => {
+  props.get_hour_totals()  
+};
 
-const CalendarMonth = ({mon, tues, wed, thurs, fri, sat, sun}) => {
+const methods = {
+  componentDidMount
+};
+
+const CalendarMonth = ({mon, tues, wed, thurs, fri, sat, sun, hourTotals, get_hour_totals}) => {
+
   return (
     console.log("TESTBOI", mon),
     <div style={styles.root}>
@@ -63,25 +73,25 @@ const CalendarMonth = ({mon, tues, wed, thurs, fri, sat, sun}) => {
           </GridList>
         </GridTile>
         <GridTile>
-            <CalendarDay dayname={0} day={sun}/>
+            <CalendarDay dayname={0} day={sun} totals={hourTotals.slice(0, 18)}/>
         </GridTile>
         <GridTile>
-            <CalendarDay dayname={1} day={mon}/>
+            <CalendarDay dayname={1} day={mon} totals={hourTotals.slice(18, 36)}/>
         </GridTile>
         <GridTile>
-            <CalendarDay dayname={2} day={tues}/>
+            <CalendarDay dayname={2} day={tues} totals={hourTotals.slice(36, 54)}/>
         </GridTile>
         <GridTile>
-            <CalendarDay dayname={3} day={wed}/>
+            <CalendarDay dayname={3} day={wed} totals={hourTotals.slice(54, 72)}/>
         </GridTile>
         <GridTile>
-            <CalendarDay dayname={4} day={thurs}/>
+            <CalendarDay dayname={4} day={thurs} totals={hourTotals.slice(72, 90)}/>
         </GridTile>
         <GridTile>
-            <CalendarDay dayname={5} day={fri}/>
+            <CalendarDay dayname={5} day={fri} totals={hourTotals.slice(90, 108)}/>
         </GridTile>
         <GridTile>
-            <CalendarDay dayname={6} day={sat}/>
+            <CalendarDay dayname={6} day={sat} totals={hourTotals.slice(108, 126)}/>
         </GridTile>
 
       </GridList>
@@ -98,7 +108,14 @@ export default connect (
           thurs: state.mCal.mthursReducer.thurs,
           fri: state.mCal.mfriReducer.fri,
           sat: state.mCal.msatReducer.sat,
-          sun: state.mCal.msunReducer.sun
+          sun: state.mCal.msunReducer.sun,
+          hourTotals: state.mCal.checkTotalsReducer.shifts
+        }
+    },
+    (dispatch) => {
+        return {
+            get_hour_totals: () => dispatch(get_hour_totals())
         }
     }
-)(CalendarMonth)
+)(lifecycle(methods)(CalendarMonth))
+

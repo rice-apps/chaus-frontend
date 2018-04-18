@@ -39,7 +39,7 @@ const DayTitle = (dayname) => {
     }
 }
 
-const CalendarDay = ({dayname, day}) => {
+const CalendarDay = ({dayname, day, totals}) => {
   return (
     <div style={styles.root}>
       <GridList
@@ -55,7 +55,7 @@ const CalendarDay = ({dayname, day}) => {
           (shift) => {
           return (
               <GridTile key={day[shift].hour.toString()}>
-                    <CalendarHour key={day[shift].hour.toString()} dayname={dayname} hour={day[shift]} />
+                    <CalendarHour key={day[shift].hour.toString()} dayname={dayname} hour={day[shift]} total={totals[day[shift].hour - 7]}/>
               </GridTile>
           )
         }

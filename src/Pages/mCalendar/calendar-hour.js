@@ -7,7 +7,7 @@ import { open_modal, check_hours } from '../../actions/masterActions'
 //Material Imports
 import RaisedButton from 'material-ui/RaisedButton';
 
-const CalendarHour = ({dayname, hour, open_modal, check_hours, full}) => {
+const CalendarHour = ({dayname, hour, total, open_modal, check_hours, full}) => {
 
   //() => check_hours(dayname, hour)
   var shift = (dayname * 18 + hour.hour).toString()
@@ -19,7 +19,7 @@ const CalendarHour = ({dayname, hour, open_modal, check_hours, full}) => {
 
   return (
       <div style={{height: 34, display: 'flex', justifyContent: 'center'}}>
-          <RaisedButton primary={true}
+          <RaisedButton primary={total}
                         disabled={hour.closed}
                         style={{height:34}}
                         onClick={() => open_modal(dayname, hour)}/>
