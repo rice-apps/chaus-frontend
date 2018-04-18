@@ -8,6 +8,12 @@ import ActiveSchedule from '../eCalendar/active-user-schedule'
 // Actions
 import { sendTicket } from '../../actions/authActions'
 
+// Styles
+const divStyle = {
+  backgroundColor: '#5e6c8a',
+  height: '100vh'
+}
+
 const Auth = ({search, loggedIn, sendTicket, redirectUrl}) => {
   // Call action which sends ticket to backend
   sendTicket(search);
@@ -17,8 +23,7 @@ const Auth = ({search, loggedIn, sendTicket, redirectUrl}) => {
   }
   return (
     <MuiThemeProvider>
-      <div>
-        <h1>Hello</h1>
+      <div style={divStyle}>
       </div>
     </MuiThemeProvider>
   )
