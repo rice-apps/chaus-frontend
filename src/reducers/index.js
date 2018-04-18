@@ -38,7 +38,7 @@ const userReducer = (state={users: []}, action) => {
 
 
 const Reducer = combineReducers({
-    eCal, mCal, auth, pageReducer, routerReducer
+    eCal, mCal, auth, pageReducer, userReducer, routerReducer
 })
 
 

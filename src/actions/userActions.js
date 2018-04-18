@@ -82,6 +82,10 @@ export const add_user = (netid, firstName, lastName, minHour = 8, maxHour = 16) 
           users
         })
       }
+    })
+  }
+}
+
 export const logged_in = () => {
   return (dispatch) => {
     let user = {};
@@ -115,6 +119,10 @@ export const remove_user = (netid) => {
           users
         })
       }
+    })
+  }
+}
+
 export const authenticate = (ticket) => {
   return (dispatch) => {
     let url = 'https://idp.rice.edu/idp/profile/cas/login';
