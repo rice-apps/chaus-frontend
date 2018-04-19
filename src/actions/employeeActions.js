@@ -212,6 +212,7 @@ const reformat_availability = (schedule) => {
   return reformatted_schedule
 }
 
+
 export const get_availability = (netid) => {
   return (dispatch) => {
     // Makes a GET call, fetching employee availability preferences
@@ -231,10 +232,10 @@ export const get_scheduled = (netid) => {
     // Makes a GET call, returns array of True False values, dependending on whether employee is scheduled
     resource('GET', 'employee/scheduled/'+netid).then(schedule => {
       // Reformat data
-      let reformatted = reformat_scheduled(schedule)
+      // let reformatted = reformat_scheduled(schedule)
       dispatch({
         type: "GET_SCHEDULED",
-        schedule: reformatted
+        schedule: schedule
       })
     })
   }
