@@ -3,7 +3,7 @@
  */
 // export const url =  'http://riceapps.org:3240';
 // export const url =  'http://localhost:3000/api';
-export const url = 'http://chaus.riceapps.org:3300'
+export const url = 'http://chaus.riceapps.org:3300/api'
 
 //export const url =  'https://chaus-backend.herokuapp.com';
 // export const url =  'http://localhost:3000';
