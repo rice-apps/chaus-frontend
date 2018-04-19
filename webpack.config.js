@@ -11,7 +11,7 @@ var ignore = [
 
 module.exports = {
     entry: [
-        'webpack-dev-server/client?http://localhost:8080',
+        'webpack-dev-server/client?http://chaus.riceapps.org',
         'webpack/hot/dev-server',
         pkg.main],
     output: { path: path.resolve(__dirname, 'dist'), filename: 'bundle.js' },
