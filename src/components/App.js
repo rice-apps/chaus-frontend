@@ -7,6 +7,7 @@ import {connect} from 'react-redux'
 import Sidebar from '../Pages/sidebar'
 import FullCalendar from '../Pages/eCalendar/full-calendar'
 import MFullCalendar from '../Pages/mCalendar/master-calendar'
+import AddRemove from '../Pages/AddDrop/add-remove'
 import Logo from '../Pages/chaus-logo'
 
 const App = ({location}) => {
@@ -26,6 +27,14 @@ const App = ({location}) => {
                     <MFullCalendar/>
                     <Logo/>
                 </div>
+            )
+        case "ar":
+            return (
+              <div>
+                <Sidebar />
+                <AddRemove/>
+                <Logo/>
+              </div>
             )
         default:
             return (

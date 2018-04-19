@@ -336,5 +336,5 @@ const activeReducer = (state={user:{}, schedule:{M:[], T:[], W:[], R:[], F:[], S
 }
 
 export default combineReducers({
-    sideBarReducer, activeReducer, scheduleReducer
+    sideBarReducer, activeReducer, scheduleReducer, userReducer
 })
