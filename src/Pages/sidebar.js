@@ -22,7 +22,9 @@ const SideBar = ({toggle, toggleMenu, changePage, page}) => {
     let pageTitle
     if (page == "mCalendar") {
         pageTitle = "Master Calendar"
-    } else {
+    } else if (page == "addRemove") {
+        pageTitle = "Add and Remove Users"
+    }else {
         pageTitle = "Employee Availability"
     }
 
@@ -53,6 +55,8 @@ const SideBar = ({toggle, toggleMenu, changePage, page}) => {
                         </MenuItem>
                         <MenuItem><Link to='/ecal' onClick={() => (changePage("eCalendar"), toggleMenu(toggle))}>Employee Calendar</Link></MenuItem>
                         <MenuItem><Link to='/mcal' onClick={() => (changePage("mCalendar"), toggleMenu(toggle))}>Master Calendar</Link></MenuItem>
+                        <MenuItem><Link to='/addremove' onClick={() => (changePage("addRemove"), toggleMenu(toggle))}>Add &remove Users</Link></MenuItem>
+
                         <Link to='/' onClick={() => localStorage.removeItem("token")}>
                             <RaisedButton label="Logout" secondary={true} style={{"margin-left":15}}/>
                         </Link>
