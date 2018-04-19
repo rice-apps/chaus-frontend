@@ -6,7 +6,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import RaisedButton from 'material-ui/RaisedButton';
 
 const LOGINURL = 'https://idp.rice.edu/idp/profile/cas/login';
-const SERVICEURL = 'http://chaus.riceapps.org/api/auth';
+const SERVICEURL = 'http://chaus.riceapps.org/auth';
 
 const divStyle = {
   backgroundColor: '#5e6c8a', // light blue material-ui
