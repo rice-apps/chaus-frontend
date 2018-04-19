@@ -154,7 +154,7 @@ class AddUser extends React.Component {
 const AddRemove = ({users, netids, add_user, remove_user}) => {
   return (
     <MuiThemeProvider>
-    <div>
+    <div style={{display: 'inline-block'}}>
         <div style={{marginBottom: "50px", zIndex: 10, position: 'relative'}}>
             <Sidebar/>
         </div>
