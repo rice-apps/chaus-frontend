@@ -1,5 +1,5 @@
 /**
- * Created by dandreini16 on 4/8/18.
+ * Created by Will Mundy, Danny Andreini on 4/8/18.
  */
 import React, {Component} from 'react'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'

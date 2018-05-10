@@ -1,0 +1,175 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checks Login Reroute 1`] = `
+<div
+  style={
+    Object {
+      "backgroundColor": "#5e6c8a",
+      "display": "flex",
+      "height": "100vh",
+      "justifyContent": "center",
+    }
+  }
+>
+  <div>
+    <a
+      href="http://coffeehouse.rice.edu/"
+      style={
+        Object {
+          "left": 25,
+          "marginLeft": "52vh",
+          "marginTop": "30vh",
+          "position": "fixed",
+        }
+      }
+      target="_blank"
+    >
+      <img
+        height={120}
+        src="http://coffeehouse.blogs.rice.edu/files/2017/07/Website-header-logo-utp0mt.png"
+      />
+    </a>
+  </div>
+  <div>
+    <div
+      className={undefined}
+      style={
+        Object {
+          "WebkitTapHighlightColor": "rgba(0,0,0,0)",
+          "backgroundColor": "#ffffff",
+          "borderRadius": 2,
+          "boxShadow": "0 1px 6px rgba(0, 0, 0, 0.12),
+         0 1px 4px rgba(0, 0, 0, 0.12)",
+          "boxSizing": "border-box",
+          "color": "rgba(0, 0, 0, 0.87)",
+          "display": "flex",
+          "fontFamily": "Roboto, sans-serif",
+          "height": "30px",
+          "justifyContent": "center",
+          "marginTop": "50vh",
+          "minWidth": 88,
+          "muiPrepared": true,
+          "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+        }
+      }
+    >
+      <a
+        disabled={false}
+        href="https://idp.rice.edu/idp/profile/cas/login?service=http://localhost:8080/auth"
+        linkButton={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchStart={[Function]}
+        style={
+          Object {
+            "WebkitTapHighlightColor": "rgba(0, 0, 0, 0)",
+            "backgroundColor": "#00bcd4",
+            "border": 10,
+            "borderRadius": 2,
+            "boxSizing": "border-box",
+            "cursor": "pointer",
+            "display": "flex",
+            "fontFamily": "Roboto, sans-serif",
+            "fontSize": "inherit",
+            "fontWeight": "inherit",
+            "height": "40px",
+            "justifyContent": "center",
+            "lineHeight": "30pxpx",
+            "margin": 0,
+            "muiPrepared": true,
+            "outline": "none",
+            "padding": 0,
+            "position": "relative",
+            "textAlign": "center",
+            "textDecoration": "none",
+            "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+            "verticalAlign": "middle",
+            "width": "100%",
+          }
+        }
+        tabIndex={0}
+      >
+        <div
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchStart={[Function]}
+        >
+          <div
+            style={
+              Object {
+                "backgroundColor": false,
+                "borderRadius": 2,
+                "height": "40px",
+                "muiPrepared": true,
+                "top": 0,
+                "transition": "all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms",
+              }
+            }
+          >
+            <h1
+              style={
+                Object {
+                  "color": "white",
+                  "fontFamily": "Raleway",
+                  "fontSize": 25,
+                  "marginTop": "5px",
+                }
+              }
+            >
+              Login
+            </h1>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div
+    style={
+      Object {
+        "display": "inline-block",
+      }
+    }
+  >
+    <h3
+      style={
+        Object {
+          "color": "#B0BEC5",
+          "fontFamily": "Raleway",
+          "fontSize": 26,
+          "marginLeft": "26vw",
+          "marginTop": "78vh",
+          "position": "fixed",
+        }
+      }
+    >
+      Powered By: 
+    </h3>
+    <a
+      href="https://www.riceapps.org"
+      style={
+        Object {
+          "marginLeft": "35vw",
+          "marginTop": "77vh",
+          "position": "fixed",
+        }
+      }
+      target="_blank"
+    >
+      <img
+        height={63}
+        src="https://riceapps.org/assets/logos/logo-light-nowords.svg"
+      />
+    </a>
+  </div>
+</div>
+`;
