@@ -7,9 +7,9 @@ import {connect} from 'react-redux'
 import { save_availability } from '../../actions/employeeActions'
 // import { WReducer } from '../reducers/index'
 //Material Imports
-import RaisedButton from 'material-ui/RaisedButton';
-import Save from 'material-ui/svg-icons/content/save'
-import {fullWhite} from 'material-ui/styles/colors';
+import Button from 'material-ui/Button';
+import Save from '@material-ui/icons/save'
+// import {fullWhite} from 'material-ui/styles/colors';
 
 const combineDays = () => {
   weekObject = {"Monday":mon, "Tuesday":tues, "Wednesday":wed, "Thursday":thurs, "Friday":fri, "Saturday":sat, "Sunday":sun}
@@ -20,7 +20,7 @@ const ChangeButton = ({netid, save_availability, mon, tues, wed, thurs, fri, sat
                     "Wednesday":wed, "Thursday":thurs, "Friday":fri, "Saturday":sat, "Sunday":sun}
   return (
 
-      <RaisedButton backgroundColor="#a4c639" icon={<Save color={fullWhite}/>} onClick={() => save_availability(netid, weekObject)} style={{height: 34}}/>
+      <Button variant="Raised" backgroundColor="#a4c639" icon={<Save />} onClick={() => save_availability(netid, weekObject)} style={{height: 34}}/>
   )
 }
 

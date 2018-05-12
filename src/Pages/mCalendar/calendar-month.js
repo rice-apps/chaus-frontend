@@ -5,7 +5,6 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 //Material Imports
 import {GridList, GridTile} from 'material-ui/GridList'
-import Subheader from 'material-ui/Subheader'
 import CalendarDay from './calendar-day'
 import { get_hour_totals } from '../../actions/masterActions'
 import lifecycle from 'react-pure-lifecycle';
@@ -35,7 +34,7 @@ const HourCount = () => {
 }
 
 const componentDidMount = (props) => {
-  props.get_hour_totals()  
+  props.get_hour_totals()
 };
 
 const methods = {
@@ -63,12 +62,12 @@ const CalendarMonth = ({mon, tues, wed, thurs, fri, sat, sun, hourTotals, get_ho
             {HourCount().map(
               (hour) => (
                 <GridTile>
-                  <Subheader style={{display: 'flex', justifyContent: 'flex-end'}}>{((hour)%12==0 ? (12):((hour)%12)).toString() + ":55" + ((hour) > 11 ? (" PM"):(" AM"))}</Subheader>
+                  <h1 style={{display: 'flex', justifyContent: 'flex-end'}}>{((hour)%12==0 ? (12):((hour)%12)).toString() + ":55" + ((hour) > 11 ? (" PM"):(" AM"))}</h1>
                 </GridTile>
               )
             )}
             <GridTile>
-              <Subheader style={{display: 'flex', justifyContent: 'flex-end', marginTop: -9}}>Close</Subheader>
+              <h1 style={{display: 'flex', justifyContent: 'flex-end', marginTop: -9}}>Close</h1>
             </GridTile>
           </GridList>
         </GridTile>
@@ -118,4 +117,3 @@ export default connect (
         }
     }
 )(lifecycle(methods)(CalendarMonth))
-

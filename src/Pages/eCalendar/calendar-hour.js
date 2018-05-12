@@ -5,7 +5,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import { toggle_availability } from '../../actions/employeeActions'
 //Material Imports
-import RaisedButton from 'material-ui/RaisedButton';
+import Button from 'material-ui/Button';
 import ChangeButton from './/changes-button'
 
 const changeColor = (preference) => {
@@ -51,7 +51,7 @@ const CalendarHour = ({dayname, hour, toggle_availability}) => {
   console.log(hour)
   return (
       <div style={{height: 34, display: 'flex', justifyContent: 'center'}}>
-          {dayname == 'S' && hour.hour== '24' ? <ChangeButton/> : <RaisedButton backgroundColor={changeColor2(hour.available)} disabled={hour.closed} style={{height:34}}
+          {dayname == 'S' && hour.hour== '24' ? <ChangeButton/> : <Button variant="Raised" backgroundColor={changeColor2(hour.available)} disabled={hour.closed} style={{height:34}}
           onClick={() => toggle_availability(dayname, hour.hour, hour.available)}/>}
     </div>
   )

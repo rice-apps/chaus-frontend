@@ -5,7 +5,6 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 //Material Imports
 import {GridList, GridTile} from 'material-ui/GridList'
-import Subheader from 'material-ui/Subheader'
 //Inner Imports
 import CalendarHour from './calendar-hour'
 
@@ -48,7 +47,7 @@ const CalendarDay = ({dayname, day, totals}) => {
         style={styles.gridlist}
         cols={1}>
           <GridTile>
-              <Subheader style={{padding: 2, display: 'flex'}}>{DayTitle(dayname)}</Subheader>
+              <h1 style={{padding: 2, display: 'flex'}}>{DayTitle(dayname)}</h1>
           </GridTile>
         {Object.keys(day).map(
 

@@ -5,7 +5,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import { selectUser } from '../../actions/userActions'
 import { get_availability } from '../../actions/employeeActions'
-import RaisedButton from 'material-ui/RaisedButton'
+import Button from 'material-ui/Button'
 
 // import GridExampleGrid from './modal'
 
@@ -18,7 +18,7 @@ import RaisedButton from 'material-ui/RaisedButton'
 
 const UserButton = ({name, netid, user, activeUser, selectUser}) => {
   return (
-    <RaisedButton primary={activeUser} style={{width: 120}} onClick={() => selectUser(netid)}>{name}</RaisedButton>
+    <Button variant="Raised" primary={activeUser} style={{width: 120}} onClick={() => selectUser(netid)}>{name}</Button>
   )
 }
 

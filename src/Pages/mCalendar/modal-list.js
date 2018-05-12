@@ -6,9 +6,8 @@ import {connect} from 'react-redux'
 import {close_modal, toggle_scheduled, save_shift} from '../../actions/masterActions'
 //Material Imports
 import {GridList, GridTile} from 'material-ui/GridList';
-import RaisedButton from 'material-ui/RaisedButton';
-import Save from 'material-ui/svg-icons/content/save'
-import {fullWhite} from 'material-ui/styles/colors';
+import Button from 'material-ui/Button';
+import Save from '@material-ui/icons/save'
 
 const getButtonColor = (user, totals) => {
     // Determine if employee is underscheduled, within hour range,
@@ -92,7 +91,7 @@ const ModalList = ({p1, p2, p3, p4, schedule, toggle_scheduled, save_shift, dayn
                             <h1>Priority 1 (Preferred)</h1>
                             {p1.map((netid) => {
                                 return (
-                                    <RaisedButton
+                                    <Button variant="Raised"
                                         style={{margin: 2}} key={netid} label={getName(netid, users)} backgroundColor={getButtonColor(netid, userHours)} onClick={() => toggle_scheduled(netid)} />
                                 )
                             })}
@@ -101,7 +100,7 @@ const ModalList = ({p1, p2, p3, p4, schedule, toggle_scheduled, save_shift, dayn
                             <h1>Priority 2 (Available)</h1>
                             {p2.map((netid) => {
                                 return (
-                                    <RaisedButton style={{margin: 2}} key={netid} label={getName(netid, users)} backgroundColor={getButtonColor(netid, userHours)} onClick={() => toggle_scheduled(netid)} />
+                                    <Button variant="Raised" style={{margin: 2}} key={netid} label={getName(netid, users)} backgroundColor={getButtonColor(netid, userHours)} onClick={() => toggle_scheduled(netid)} />
                                 )
                             })}
                         </GridTile>
@@ -109,7 +108,7 @@ const ModalList = ({p1, p2, p3, p4, schedule, toggle_scheduled, save_shift, dayn
                             <h1>Priority 3 (Not Preferred)</h1>
                             {p3.map((netid) => {
                                 return (
-                                    <RaisedButton style={{margin: 2}} key={netid} label={getName(netid, users)} backgroundColor={getButtonColor(netid, userHours)} onClick={() => toggle_scheduled(netid)} />
+                                    <Button variant="Raised" style={{margin: 2}} key={netid} label={getName(netid, users)} backgroundColor={getButtonColor(netid, userHours)} onClick={() => toggle_scheduled(netid)} />
                                 )
                             })}
                         </GridTile>
@@ -117,7 +116,7 @@ const ModalList = ({p1, p2, p3, p4, schedule, toggle_scheduled, save_shift, dayn
                             <h1>Priority 4 (Unavailable)</h1>
                             {p4.map((netid) => {
                                 return (
-                                    <RaisedButton style={{margin: 2}} key={netid} label={getName(netid, users)} backgroundColor={getButtonColor(netid, userHours)} onClick={() => toggle_scheduled(netid)} />
+                                    <Button variant="Raised" style={{margin: 2}} key={netid} label={getName(netid, users)} backgroundColor={getButtonColor(netid, userHours)} onClick={() => toggle_scheduled(netid)} />
                                 )
                             })}
                         </GridTile>
@@ -144,14 +143,14 @@ const ModalList = ({p1, p2, p3, p4, schedule, toggle_scheduled, save_shift, dayn
                                     <div>Shift filled</div>}</div>}
                             {schedule.map((netid) => {
                                 return (
-                                    <RaisedButton style={{margin: 2}} key={netid} label={getName(netid, users)} backgroundColor={getButtonColor(netid, userHours)} onClick={() => toggle_scheduled(netid)} />
+                                    <Button variant="Raised" style={{margin: 2}} key={netid} label={getName(netid, users)} backgroundColor={getButtonColor(netid, userHours)} onClick={() => toggle_scheduled(netid)} />
                                 )
                             })}
                         </GridTile>
                         <GridTile>
                             <div style={{display: 'flex'}}>
                                 <span style={{flex:1}}/>
-                                <RaisedButton backgroundColor="#a4c639" icon={<Save color={fullWhite}/>} onClick={() => save_shift(schedule, p1, p2, p3, p4, dayname, hour)} />
+                                <Button variant="Raised" backgroundColor="#a4c639" icon={<Save />} onClick={() => save_shift(schedule, p1, p2, p3, p4, dayname, hour)} />
                             </div>
                         </GridTile>
                     </GridList>

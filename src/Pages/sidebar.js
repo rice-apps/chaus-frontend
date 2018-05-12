@@ -4,19 +4,16 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
-import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
-import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import RaisedButton from 'material-ui/RaisedButton';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import Button from 'material-ui/Button';
 import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 
 import {toggleMenu, changePage} from '../actions/sidebarActions';
-import MenuItem from 'material-ui/MenuItem';
+import { MenuItem } from 'material-ui/Menu';
 import {Link} from 'react-router-dom';
 
-import NavigationMenu from 'material-ui/svg-icons/navigation/menu';
+import NavigationMenu from '@material-ui/icons/menu';
 
 const SideBar = ({toggle, toggleMenu, changePage, page}) => {
     let pageTitle
@@ -30,7 +27,7 @@ const SideBar = ({toggle, toggleMenu, changePage, page}) => {
 
     return (
         <div style={{position: 'fixed', width: '100%', zIndex: 1}}>
-            <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)} >
+            <MuiThemeProvider >
                 <AppBar
                     title={pageTitle}
                     titleStyle={{color: 'white'}}
@@ -47,7 +44,7 @@ const SideBar = ({toggle, toggleMenu, changePage, page}) => {
 
             </MuiThemeProvider>
 
-            <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
+            <MuiThemeProvider>
 
                 <Drawer open={toggle} >
 
@@ -58,7 +55,7 @@ const SideBar = ({toggle, toggleMenu, changePage, page}) => {
                         <MenuItem><Link to='/addremove' onClick={() => (changePage("addRemove"), toggleMenu(toggle))}>Add & Remove Users</Link></MenuItem>
 
                         <Link to='/' onClick={() => localStorage.removeItem("token")}>
-                            <RaisedButton label="Logout" secondary={true} style={{"margin-left":15}}/>
+                            <Button variant="Raised" label="Logout" secondary={true} style={{"margin-left":15}}/>
                         </Link>
                 </Drawer>
 

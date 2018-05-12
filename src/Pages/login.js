@@ -3,7 +3,7 @@
  */
 import React, {Component} from 'react'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import RaisedButton from 'material-ui/RaisedButton';
+import Button from 'material-ui/Button';
 
 const LOGINURL = 'https://idp.rice.edu/idp/profile/cas/login';
 const SERVICEURL = 'http://chaus.riceapps.org/auth';
@@ -84,7 +84,8 @@ const LoginPage = () => {
               </a>
             </div>
             <div>
-              <RaisedButton
+              <Button
+                variant="Raised"
                 style={buttonStyle}
                 buttonStyle={bbuttonStyle}
                 overlayStyle={overlayStyle}
@@ -93,7 +94,7 @@ const LoginPage = () => {
                 href={LOGINURL + "?service=" + SERVICEURL}
                 backgroundColor={"#64B5F6"}>
                 <h1 style={labelStyle}>Login</h1>
-              </RaisedButton>
+              </Button>
             </div>
             <div style={{display: "inline-block"}}>
               <h3 style={teamHeadStyle}>Powered By: </h3>

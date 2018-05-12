@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {get_scheduled} from '../../actions/employeeActions'
-import RaisedButton from 'material-ui/RaisedButton'
+import Button from 'material-ui/Button'
 
 const processedShifts = (shiftArr) => {
 
@@ -25,7 +25,7 @@ const GenerateSchedule = ({activeUser, activeSchedule, get_scheduled}) => {
     return (
         <div style={{padding: '1em'}}>
             <h2>{activeUser.firstName + " " + activeUser.lastName + "'s Schedule"}</h2>
-            <RaisedButton label={activeUser.netid+"'s Schedule"}
+            <Button variant="Raised" label={activeUser.netid+"'s Schedule"}
                           primary = {typeof(activeUser.netid) !== "undefined"}
                           disabled = {typeof(activeUser.netid) === "undefined"}
                           onClick={() => get_scheduled(activeUser.netid)} />

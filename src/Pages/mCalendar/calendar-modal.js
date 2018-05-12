@@ -7,7 +7,7 @@ import {close_modal} from '../../actions/masterActions'
 import ModalList from './modal-list'
 //Material Imports
 import Dialog from 'material-ui/Dialog';
-import FlatButton from 'material-ui/FlatButton';
+import Button from 'material-ui/Button';
 
 const DayTitle = (dayname) => {
     switch(dayname) {
@@ -51,20 +51,20 @@ const CalModal = ({open, close_modal, dayname, hour}) => {
         >
             <div style={{position: 'absolute', right: 20, top: 15}}>
                 <div>
-                    <FlatButton style={{backgroundColor: "#607d8b", height: 15, minWidth: 15, marginRight: 5}}/>
+                    <Button variant="Flat" style={{backgroundColor: "#607d8b", height: 15, minWidth: 15, marginRight: 5}}/>
                    = Underscheduled
                 </div>
                 <div>
-                    <FlatButton style={{backgroundColor: "#4caf50", height: 15, minWidth: 15, marginTop: '-4.5px', marginRight: 5}}/>
-                   = In hour range 
+                    <Button variant="Flat" style={{backgroundColor: "#4caf50", height: 15, minWidth: 15, marginTop: '-4.5px', marginRight: 5}}/>
+                   = In hour range
                 </div>
                 <div>
-                    <FlatButton style={{backgroundColor: "#ffc107", height: 15, minWidth: 15, marginTop: '-4.5px', marginRight: 5}}/>
-                   = At max hours 
+                    <Button variant="Flat" style={{backgroundColor: "#ffc107", height: 15, minWidth: 15, marginTop: '-4.5px', marginRight: 5}}/>
+                   = At max hours
                 </div>
                 <div>
-                    <FlatButton style={{backgroundColor: "#f44336", height: 15, minWidth: 15, marginTop: '-4.5px', marginRight: 5}}/>
-                   = Overscheduled 
+                    <Button variant="Flat" style={{backgroundColor: "#f44336", height: 15, minWidth: 15, marginTop: '-4.5px', marginRight: 5}}/>
+                   = Overscheduled
                 </div>
             </div>
             <ModalList/>
@@ -88,5 +88,3 @@ export default connect (
         }
     }
 )(CalModal)
-
-

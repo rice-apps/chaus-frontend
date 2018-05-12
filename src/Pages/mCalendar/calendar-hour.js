@@ -5,7 +5,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import { open_modal } from '../../actions/masterActions'
 //Material Imports
-import RaisedButton from 'material-ui/RaisedButton';
+import Button from 'material-ui/Button';
 
 const getButtonColor = (total) => {
 
@@ -32,7 +32,8 @@ const CalendarHour = ({dayname, hour, total, open_modal}) => {
 
   return (
       <div style={{height: 34, display: 'flex', justifyContent: 'center'}}>
-          <RaisedButton backgroundColor={getButtonColor(total)}
+          <Button variant="Raised"
+                        backgroundColor={getButtonColor(total)}
                         disabled={hour.closed}
                         style={{height:34}}
                         onClick={() => open_modal(dayname, hour)}/>

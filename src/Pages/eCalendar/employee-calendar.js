@@ -5,7 +5,6 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 //Material Imports
 import {GridList, GridTile} from 'material-ui/GridList'
-import Subheader from 'material-ui/Subheader'
 import CalendarDay from './calendar-day'
 
 const styles = {
@@ -52,12 +51,12 @@ const EmployeeCalendar = ({mon, tues, wed, thurs, fri, sat, sun, user}) => {
             {HourCount().map(
               (hour) => (
                 <GridTile>
-                  <Subheader style={{display: 'flex', justifyContent: 'flex-end'}}>{((hour)%12==0 ? (12):((hour)%12)).toString() + ":55" + ((hour) > 11 ? (" PM"):(" AM"))}</Subheader>
+                  <h1 style={{display: 'flex', justifyContent: 'flex-end'}}>{((hour)%12==0 ? (12):((hour)%12)).toString() + ":55" + ((hour) > 11 ? (" PM"):(" AM"))}</h1>
                 </GridTile>
               )
             )}
             <GridTile>
-              <Subheader style={{display: 'flex', justifyContent: 'flex-end', marginTop: -9}}>Close</Subheader>
+              <h1 style={{display: 'flex', justifyContent: 'flex-end', marginTop: -9}}>Close</h1>
             </GridTile>
           </GridList>
         </GridTile>

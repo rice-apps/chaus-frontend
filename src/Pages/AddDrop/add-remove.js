@@ -1,9 +1,10 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import DeleteForever from 'material-ui/svg-icons/action/delete-forever'
+// import DeleteForever from 'material-ui/svg-icons/action/delete-forever'
+import Delete from '@material-ui/icons/Delete';
 import IconButton from 'material-ui/IconButton';
-import RaisedButton from 'material-ui/RaisedButton';
+import Button from 'material-ui/Button';
 import Divider from 'material-ui/Divider';
 import TextField from 'material-ui/TextField';
 import {List, ListItem} from 'material-ui/List';
@@ -111,7 +112,8 @@ class AddUser extends React.Component {
           underlineShow={false}
           />
         <Divider />
-        <RaisedButton
+        <Button
+          variant="Raised"
           label="Submit"
           onClick={this.handleSubmit.bind(this)}
           />
@@ -171,7 +173,8 @@ const AddRemove = ({users, netids, add_user, remove_user}) => {
                     key={user._id}
                     disabled
                     style={listItemStyle}>
-                    <RaisedButton
+                    <Button
+                      variant="Raised"
                       primary
                       label={name}
                       style={buttonStyle} />
