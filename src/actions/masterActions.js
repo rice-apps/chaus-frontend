@@ -7,7 +7,6 @@ export const url =  'http://localhost:3000/api';
 // export const url =  'http://localhost:3000';
 
 export const resource = (method, endpoint, payload) => {
-    // console.log("THE ENDPOINT: " + endpoint + "\n" + "THE PAYLOAD: " + payload + "\n" + "THE METHOD: " + method)
     const options =  {
         method,
         credentials: 'include',
@@ -17,8 +16,6 @@ export const resource = (method, endpoint, payload) => {
     }
     if (payload) options.body = JSON.stringify(payload)
 
-    // console.log('The options for ', endpoint, options)
-    // console.log('The url: ',`${url}/${endpoint}`)
     return fetch(`${url}/${endpoint}`, options)
         .then(r => {
             if (r.status === 200) {
@@ -69,8 +66,6 @@ export const open_modal = (dayname, hour) => {
         console.log(dayname, hour.hour)
         resource('GET', 'master/shift/'+ dayname + '/' + (hour.hour - 7)).then( r => {
             console.log("PLEASE WORK")
-            //console.log("Here is something else", resource('GET','users').then (s => {}))
-            //console.log("HERE IS R", r);
             create_users_hours()
             .then((promise) => {
               var user_hours = {}

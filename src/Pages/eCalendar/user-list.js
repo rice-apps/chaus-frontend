@@ -23,23 +23,25 @@ const UserButton = ({name, netid, user, activeUser, selectUser}) => {
 }
 
 
-const UserList = ({user, users, selectUser, get_availability}) => {
+const UserList = ({user, users, selectUser, netids, get_availability}) => {
 
     // let selectuser = selectUser
-    console.log("Here are the users",users)
+    console.log("Here are the users: ",users)
     // selectuser = selectUser
     return (
         <div style={{marginTop: 33}}>
             <ul>
                 {users.map((x) => {
-                    console.log(x)
+                    console.log("user: " + x)
                     return (
                         <div key={x.netid}>
-                            <UserButton onClick={() => get_availability(x.netid)}
-                                        name={x.firstName+" "+x.lastName}
-                                        key={x.netid} netid={x.netid}
-                                        user={user} activeUser={x.netid==user.netid}
-                                        selectUser={selectUser}
+                            <RaisedButton primary={x.netid==user.netid} 
+                                            style={{width: 120}} 
+                                            onClick={() => selectUser(x.netid)}
+
+                            > 
+                            {x.firstName+" "+x.lastName} </RaisedButton>
+
                             />
                         </div>
                     )
@@ -58,7 +60,8 @@ const UserList = ({user, users, selectUser, get_availability}) => {
 export default connect(
     (state) => {
         return {
-            users: state.userReducer.users,
+            users: state.eCal.userReducer.users,
+            netids: state.eCal.userReducer.netid,
             user: state.eCal.activeReducer.user
         }
     },

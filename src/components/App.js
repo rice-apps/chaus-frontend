@@ -2,56 +2,43 @@
  * Created by Jeffr on 7/17/2017.
  */
 
+ // Dependencies
 import React from 'react'
 import {connect} from 'react-redux'
+import { BrowserRouter, Route, Switch, Link, Redirect } from 'react-router-dom'
+
+// Pages
 import Sidebar from '../Pages/sidebar'
-import FullCalendar from '../Pages/eCalendar/full-calendar'
 import MFullCalendar from '../Pages/mCalendar/master-calendar'
-import AddRemove from '../Pages/AddDrop/add-remove'
 import Logo from '../Pages/chaus-logo'
+import FullCalendar from '../Pages/eCalendar/full-calendar'
+import LoginPage from '../Pages/login'
+import AddRemove from '../Pages/AddDrop/add-remove'
+import Auth from '../Pages/Auth/auth'
 
-const App = ({location}) => {
-    switch (location) {
-        case "eCalendar":
-            return (
-                <div>
-                    <Sidebar/>
-                    <FullCalendar/>
-                    <Logo/>
-                </div>
-            )
-        case "mCalendar":
-            return (
-                <div>
-                    <Sidebar/>
-                    <MFullCalendar/>
-                    <Logo/>
-                </div>
-            )
-        case "ar":
-            return (
-              <div>
-                <Sidebar />
-                <AddRemove/>
-                <Logo/>
-              </div>
-            )
-        default:
-            return (
-                <div>
-                    <Sidebar/>
-                    <FullCalendar/>
-                    <Logo/>
-                </div>
-            )
-    }
 
+const PrivateRoute = ({ component: Component, ...rest }) => (
+    <Route {...rest} render={(props) => (
+        localStorage.getItem('token')
+            ? <Component {...props} />
+            : <Redirect to='/login' />
+    )} />
+ )
+const App = () => {
+        return (
+            <div>
+                <BrowserRouter>
+                    <Switch>
+                        <PrivateRoute exact path='/' component={MFullCalendar}/>
+                        <PrivateRoute path='/ecal' component={FullCalendar}/>
+                        <PrivateRoute path='/mcal' component={MFullCalendar} />
+                        <PrivateRoute path='/addremove' component={AddRemove}/>
+                        <Route path='/login' component={LoginPage}/>
+                        <Route path='/auth' component={Auth} />
+                    </Switch>
+                </BrowserRouter>
+            </div>    
+        )
 }
 
-export default connect(
-    (state) => {
-        return {
-            location: state.pageReducer.location
-        }
-    }
-)(App)
+export default App

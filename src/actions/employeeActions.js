@@ -213,6 +213,50 @@ const reformat_availability = (schedule) => {
 }
 
 
+const reformat_sched = (schedule) => {
+  let reformatted_schedule = []
+  let week_day = []
+  let current_week = 0
+  for (let i = 0; i < 127; i++) {
+    if (i%18 == 0 && i != 0) {
+      reformatted_schedule.push(week_day)
+      week_day = []
+      current_week += 1
+    }
+    let employee_pref = schedule[i]
+    switch (current_week) {
+      case 0:
+        week_day.push(employee_pref)
+        break;
+      case 1:
+        week_day.push(employee_pref)
+        break;
+      case 2:
+        week_day.push(employee_pref)
+        break;
+      case 3:
+        week_day.push(employee_pref)
+        break;
+      case 4:
+        week_day.push(employee_pref)
+        break;
+      case 5:
+        week_day.push(employee_pref)
+        break;
+      case 6:
+        week_day.push(employee_pref)
+        break;
+      default:
+        break;
+    }
+  }
+  return reformatted_schedule
+}
+
+/**
+ * Gets the availablity of a specific person
+ * @param {*} netid 
+ */
 export const get_availability = (netid) => {
   return (dispatch) => {
     // Makes a GET call, fetching employee availability preferences
@@ -232,10 +276,10 @@ export const get_scheduled = (netid) => {
     // Makes a GET call, returns array of True False values, dependending on whether employee is scheduled
     resource('GET', 'employee/scheduled/'+netid).then(schedule => {
       // Reformat data
-      // let reformatted = reformat_scheduled(schedule)
+      let reformatted = reformat_sched(schedule)
       dispatch({
         type: "GET_SCHEDULED",
-        schedule: schedule
+        schedule: reformatted
       })
     })
   }

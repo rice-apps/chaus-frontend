@@ -172,7 +172,7 @@ export default connect (
             dayname: state.mCal.activeShiftReducer.dayname,
             hour: state.mCal.activeShiftReducer.hour,
             userHours: state.mCal.activeShiftReducer.userHours,
-            users: state.userReducer.users}
+            users: state.eCal.userReducer.users}
     },
     (dispatch) => {
         return {

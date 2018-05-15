@@ -148,7 +148,7 @@ const scheduleReducer = (state={schedule:{M:monDefault, T:tuesDefault, W:wedDefa
     let new_schedule;
     switch(action.type) {
         case "GET_AVAILABILITY":
-            //console.log(action.schedule)
+            console.log("THIS IS THE SCHEDULE when GET_AVAILABILITY is CALLED: " + action.schedule)
             new_schedule = {
               M: action.schedule[0],
               T: action.schedule[1],
@@ -159,8 +159,7 @@ const scheduleReducer = (state={schedule:{M:monDefault, T:tuesDefault, W:wedDefa
               U: action.schedule[6],
             }
             return {...state, schedule:new_schedule}
-        case "GET_SCHEDULED":
-            return {...state, schedule:action.schedule}
+
         case "CHANGE_HOUR_M":
             new_schedule = []
             state.schedule.M.map(
@@ -275,7 +274,7 @@ const scheduleReducer = (state={schedule:{M:monDefault, T:tuesDefault, W:wedDefa
 const sideBarReducer = (state={toggle:false}, action) => {
     switch(action.type) {
         case "TOGGLEBURGER":
-            return {...state, toggle:action.toggle}
+            return {...state, toggle:!state.toggle}
         default:
             return state
     }
@@ -290,11 +289,13 @@ const userReducer = (state={netids:[], users: []}, action) => {
             console.log(action.netids)
             return {...state, netids:action.netids}
         case "GET_USERS":
-            let netids = []
-            for (var user in action.users) {
-                netids.push(action.users[user].netid)
+            let newarr = []
+            for (let i in action.users) {
+              console.log("netids: " + action.users[i].netid)
+              newarr.push(action.users[i].netid)
+
             }
-            return {...state, netids:netids, users: action.users}
+            return {...state, netids:newarr, users: action.users}
         case "CREATE_USER_FAILED":
             return {...state}
         case "CREATE_USER_SUCCESS":
@@ -322,12 +323,27 @@ const userReducer = (state={netids:[], users: []}, action) => {
     }
 }
 
+const defaultScheduled = {
+  M:[],
+
+}
+
 const activeReducer = (state={user:{}, schedule:{M:[], T:[], W:[], R:[], F:[], S:[], U:[]}}, action) => {
 
     switch(action.type) {
         case "USER_SELECTED":
-            console.log(action.user)
             return {...state, user:action.user}
+        case "GET_SCHEDULED":
+            let new_schedule = {
+              M: action.schedule[0],
+              T: action.schedule[1],
+              W: action.schedule[2],
+              R: action.schedule[3],
+              F: action.schedule[4],
+              S: action.schedule[5],
+              U: action.schedule[6],
+            }
+            return {...state, schedule:new_schedule}
         case "GENERATE":
             return {...state, schedule:action.schedule}
         default:

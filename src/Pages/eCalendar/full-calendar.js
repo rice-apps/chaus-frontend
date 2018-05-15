@@ -12,6 +12,7 @@ import Logo from '../chaus-logo.js'
 
 
 const FullCalendar = () => {
+    
     return (
         <div>
             <Sidebar/>

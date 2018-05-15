@@ -4,6 +4,7 @@
 import React, {Component} from 'react'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import RaisedButton from 'material-ui/RaisedButton';
+import {get_users} from '../actions/userActions'
 
 const LOGINURL = 'https://idp.rice.edu/idp/profile/cas/login';
 const SERVICEURL = 'http://localhost:8080/auth';
@@ -75,6 +76,8 @@ const chausStyle = {
 }
 
 const LoginPage = () => {
+    
+
     return (
         <MuiThemeProvider>
           <div style={divStyle}>

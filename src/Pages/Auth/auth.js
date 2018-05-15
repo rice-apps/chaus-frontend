@@ -7,6 +7,7 @@ import UserList from '../eCalendar/user-list'
 import ActiveSchedule from '../eCalendar/active-user-schedule'
 // Actions
 import { sendTicket } from '../../actions/authActions'
+import { initializeStates } from '../../actions/userActions';
 
 // Styles
 const divStyle = {
@@ -14,12 +15,17 @@ const divStyle = {
   height: '100vh'
 }
 
-const Auth = ({search, loggedIn, sendTicket, redirectUrl}) => {
+const Auth = ({search, loggedIn, sendTicket, redirectUrl, users}) => {
   // Call action which sends ticket to backend
   sendTicket(search);
   // Check whether user is logged in
+  console.log("checking if user is logged in...state: " + loggedIn)
   if (loggedIn == true) {
+    console.log("logged in... Initializing states..")
+    console.log("redirecting...")
     redirectUrl()
+    // initializeStates()
+    // console.log("INITIALIZED USERS: " + users)
   }
   return (
     <MuiThemeProvider>
@@ -29,17 +35,22 @@ const Auth = ({search, loggedIn, sendTicket, redirectUrl}) => {
   )
 }
 
+/**
+ * Connect method which calls 
+ */
 export default connect (
     (state, ownProps) => {
       return {
         search: ownProps.location.search,
-        loggedIn: state.auth.authenticated
+        loggedIn: state.auth.authenticated,
+        users: state.eCal.userReducer.users
       }
     },
     (dispatch, ownProps) => {
         return {
           sendTicket: (search) => dispatch(sendTicket(search)),
-          redirectUrl: () => ownProps.history.push('/mcal')
+          redirectUrl: () => ownProps.history.push('/mcal'),
+          initialize_states: () => dispatch(initializeStates())
         }
     }
 )(Auth)

@@ -4,6 +4,14 @@ Created by Will on 4/8/18
 
 */
 
+/**
+ * Reducer that keeps track of different states related to authorization
+ * @param {*} state 
+ *      authenticated: Whether or not user is authenticated
+ *      fetching: Whether or not we sent the ticket to backend
+ *      failed: If ticket is declined from backend
+ * @param {*} action 
+ */
 const auth = (state={authenticated:false, fetching: false, failed: false}, action) => {
     switch(action.type) {
         case "TICKET_SENT":

@@ -43,7 +43,6 @@ const DayTitle = (dayname) => {
 }
 
 const CalendarDay = ({dayname, day, users, user, get_availability, selectUser}) => {
-  console.log(day)
   return (
     <div style={styles.root}>
       <GridList
@@ -55,7 +54,6 @@ const CalendarDay = ({dayname, day, users, user, get_availability, selectUser}) 
               <Subheader style={{padding: 2, display: 'flex'}}>{DayTitle(dayname)}</Subheader>
           </GridTile>
         {Object.keys(day).map(
-
           (shift) => {
           return (
               <GridTile key={day[shift].hour.toString()}>

@@ -15,15 +15,7 @@ const sideBarReducer = (state={toggle:false}, action) => {
 }
 
 
-const userReducer = (state={netids:[]}, action) => {
-    let new_netids;
-    switch(action.type) {
-        case "GET_NETIDS":
-            return {...state, netids:action.netids}
-        default:
-            return state
-    }
-}
+
 const activeReducer = (state={user:{}, schedule:{M:[], T:[], W:[], R:[], F:[], S:[], U:[]}}, action) => {
 
     switch(action.type) {
@@ -365,5 +357,5 @@ const sunReducer = (state={sun:[
 
 
 export default combineReducers({
-    sideBarReducer, userReducer, activeReducer, monReducer, tuesReducer, wedReducer, thursReducer, friReducer, satReducer, sunReducer
+    sideBarReducer, activeReducer, monReducer, tuesReducer, wedReducer, thursReducer, friReducer, satReducer, sunReducer
 })
