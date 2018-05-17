@@ -22,6 +22,7 @@ const getSchedule = gql`
       id
       week {
         id
+        dayName
         shifts {
           id
           startTime
@@ -47,7 +48,30 @@ const changeShiftAvailabilities = gql`
 `
 
 // Components
+const FullSchedule = () => {
+  return (
+    <Query query={getSchedule}>
+    {({loading, error, data}) => {
+      if (loading) return (<p>Loading...</p>)
+      if (error) return (<p>Error!</p>)
+      return (
+        <Grid container spacing={24}>
+          {data.schedules[0].week.map((day) => {
+            return (
+              <Day
+                name={day.dayName}
+                shifts={day.shifts}
+                
+                />
+            )
+          })}
+        </Grid>
+      )
+    }}
+
+    </Query>
+  )
+}
 
 
-
-export default EmployeeAvailability;
+export default FullSchedule;
