@@ -148,7 +148,6 @@ Inputs:
   - String specifiying min || max
 */
 export const setHours = (netid, hours, minOrMax) => {
-  console.log(minOrMax)
   return (dispatch) => {
     switch (minOrMax) {
       case 'min':
@@ -167,6 +166,14 @@ export const setHours = (netid, hours, minOrMax) => {
             type: "USER_HOUR_UPDATE",
             user
           })
+        })
+        break;
+      case 'total':
+        resource('PUT', `totalHours/${netid}`, {totalHours: hours})
+        .then((success) => {
+          return dispatch({
+            type: "USER_TOTAL_HOURS_UPDATE"
+          });
         })
         break;
       default:

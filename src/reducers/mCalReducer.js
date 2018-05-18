@@ -350,7 +350,8 @@ const checkTotalsReducer = (state={shifts: []}, action) =>{
                     shifts.push((shift.scheduled).length)
                 })
             return {...state, shifts: shifts}
-            
+        case "USER_TOTAL_HOURS_UPDATE":
+            return {...state}
         default:
             return state
     }

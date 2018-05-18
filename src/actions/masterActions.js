@@ -1,3 +1,5 @@
+import { setHours } from "./userActions";
+
 /**
  * Created by Will and Josh on 11/19/2017.
  */
@@ -78,6 +80,9 @@ export const open_modal = (dayname, hour) => {
                 console.log(promises)
                 Object.keys(promise).forEach((key, index) => {
                   user_hours[key] = promises[index]
+                  let netid = key;
+                  let hours = promises[index].total
+                  dispatch(setHours(netid, hours, 'total'))
                 })
                 console.log("user hour object", user_hours)
                 return dispatch({
