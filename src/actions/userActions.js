@@ -144,6 +144,50 @@ export const remove_user = (netid) => {
 //   }
 // }
 
+/*
+Set minHour/maxHour on backend for user
+url: /api/minHour || /api/maxHour
+Inputs: 
+  - netid (String)
+  - integer
+  - String specifiying min || max
+*/
+export const setHours = (netid, hours, minOrMax) => {
+  return (dispatch) => {
+    switch (minOrMax) {
+      case 'min':
+        resource('PUT', `minHour/${netid}`, {minHour: hours})
+        .then((user) => {
+          return dispatch({
+            type: "USER_HOUR_UPDATE",
+            user
+          })
+        })
+        break;
+      case 'max':
+        resource('PUT', `maxHour/${netid}`, {maxHour: hours})
+        .then((user) => {
+          return dispatch({
+            type: "USER_HOUR_UPDATE",
+            user
+          })
+        })
+        break;
+      case 'total':
+        resource('PUT', `totalHours/${netid}`, {totalHours: hours})
+        .then((success) => {
+          return dispatch({
+            type: "USER_TOTAL_HOURS_UPDATE"
+          });
+        })
+        break;
+      default:
+        console.log("Wrong value, pal")
+        break;
+    }
+  }
+}
+
 // export const get_availability = (netid) => {
 //     return (dispatch) => {
 //         resource('GET', 'employee/available/'+netid).then( schedule => {

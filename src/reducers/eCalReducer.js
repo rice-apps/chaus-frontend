@@ -318,6 +318,15 @@ const userReducer = (state={netids:[], users: []}, action) => {
             // // Remove deleted user from users: filter array without user
             // new_users = state.users.filter(user => user.netid != action.netid);
             return {...state, netids: new_netids, users: action.users}
+        case "USER_HOUR_UPDATE":
+            // Find our user by id
+            let usersCopy = state.users
+            let userIndex = usersCopy.findIndex((user) => {
+                return user._id == action.user._id
+            });
+            // Replace in copied array
+            usersCopy.splice(userIndex, 1, action.user)
+            return {...state, users: usersCopy}
         default:
             return state
     }
