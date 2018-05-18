@@ -5,6 +5,7 @@ import LoginPage from "./Pages/login.js";
 import Auth from "./Pages/Auth/auth";
 import FullCalendar from "./Pages/eCalendar/full-calendar.js"
 import AddRemove from "./Pages/AddDrop/add-remove.js"
+// import Test from './Pages/AddDrop/testUsers.js'
 import Reducer from './reducers/index'
 import { Provider } from 'react-redux'
 import thunkMiddleware from 'redux-thunk'

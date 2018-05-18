@@ -30,6 +30,15 @@ const userReducer = (state={users: []}, action) => {
                 netids.push(action.users[user].netid)
             }
             return {...state, netids:netids, users: action.users}
+        case "USER_HOUR_UPDATE":
+            // Find our user by id
+            let usersCopy = state.users
+            let userIndex = usersCopy.findIndex((user) => {
+                return user._id == action.user._id
+            });
+            // Replace in copied array
+            usersCopy.splice(userIndex, 1, action.user)
+            return {...state, users: usersCopy}
         default:
             return state
     }
