@@ -57,7 +57,7 @@ const GenerateSchedule = ({activeUser, activeSchedule, get_scheduled}) => {
                     <p>{key}: {shiftString}</p>
                 )
             })}
-            <h3>Min Hours: {activeUser.minHour}</h3>
+            <h3>Ideal Hours: {activeUser.idealHours}</h3>
             <h3>Max Hours: {activeUser.maxHour}</h3>
             
         </div>

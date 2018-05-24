@@ -50,7 +50,7 @@ class AddUser extends React.Component {
       netid: "",
       firstName: "",
       lastName: "",
-      minHours: undefined,
+      idealHours: undefined,
       maxHours: undefined
     }
   };
@@ -59,18 +59,18 @@ class AddUser extends React.Component {
     console.log("Running!")
     // Dispatch add action
     let state_copy = {...this.state}
-    let {netid, firstName, lastName, minHours, maxHours} = state_copy;
+    let {netid, firstName, lastName, idealHours, maxHours} = state_copy;
     // Check if optional fields are empty
-    if (minHours == "") {
-      minHours = undefined
+    if (idealHours == "") {
+      idealHours = undefined
     }
     if (maxHours == "") {
       maxHours = undefined
     }
-    console.log(netid, firstName, lastName, minHours, maxHours);
-    this.props.add_user(netid, firstName, lastName, minHours, maxHours);
+    console.log(netid, firstName, lastName, idealHours, maxHours);
+    this.props.add_user(netid, firstName, lastName, idealHours, maxHours);
     // Clear values
-    this.setState({netid: "", firstName: "", lastName: "", minHours: "", maxHours: ""});
+    this.setState({netid: "", firstName: "", lastName: "", idealHours: "", maxHours: ""});
   }
 
   render() {
@@ -98,9 +98,9 @@ class AddUser extends React.Component {
           />
         <Divider />
         <TextField
-          floatingLabelText="Minimum Hours"
-          onChange={(e, val) => this.setState({minHours: val})}
-          value={this.state.minHours}
+          floatingLabelText="Ideal Hours"
+          onChange={(e, val) => this.setState({idealHours: val})}
+          value={this.state.idealHours}
           underlineShow={false}
           />
         <Divider />
@@ -200,8 +200,8 @@ export default connect (
     },
     (dispatch, ownProps) => {
         return {
-          add_user: (netid, firstName, lastName, minHour, maxHour) => dispatch(
-            add_user(netid, firstName, lastName, minHour, maxHour)),
+          add_user: (netid, firstName, lastName, idealHours, maxHour) => dispatch(
+            add_user(netid, firstName, lastName, idealHours, maxHour)),
           remove_user: (netid) => dispatch(remove_user(netid))
         }
     }

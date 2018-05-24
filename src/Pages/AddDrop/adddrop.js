@@ -32,8 +32,8 @@ export default connect (
     },
     (dispatch, ownProps) => {
         return {
-          add_user: (netid, firstName, lastName, minHour, maxHour) => dispatch(
-            add_user(netid, firstName, lastName, minHour, maxHour)),
+          add_user: (netid, firstName, lastName, idealHours, maxHour) => dispatch(
+            add_user(netid, firstName, lastName, idealHours, maxHour)),
           remove_user: (netid) => dispatch(remove_user(netid))
         }
     }

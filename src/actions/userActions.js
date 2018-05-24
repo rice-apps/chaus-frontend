@@ -62,14 +62,14 @@ export const save_changes = (week, netid) => {
 // Add & Drop Users
 
 /*
-Input: netid, firstName, lastName, minHour, maxHour
+Input: netid, firstName, lastName, idealHours, maxHour
 Output: Creates user with given netid
 Backend Call: /add/:netid
 */
-export const add_user = (netid, firstName, lastName, minHour = 8, maxHour = 16) => {
+export const add_user = (netid, firstName, lastName, idealHours = 8, maxHour = 10) => {
   return (dispatch) => {
     // Create payload
-    let payload = {firstName, lastName, minHour, maxHour, totalHours: 0};
+    let payload = {firstName, lastName, idealHours, maxHour, totalHours: 0};
     console.log(payload);
     resource('PUT', 'add/'+netid, payload).then( (users) => {
       console.log(users);
@@ -145,8 +145,8 @@ export const remove_user = (netid) => {
 // }
 
 /*
-Set minHour/maxHour on backend for user
-url: /api/minHour || /api/maxHour
+Set idealHours/maxHour on backend for user
+url: /api/idealHours || /api/maxHour
 Inputs: 
   - netid (String)
   - integer
@@ -156,7 +156,7 @@ export const setHours = (netid, hours, minOrMax) => {
   return (dispatch) => {
     switch (minOrMax) {
       case 'min':
-        resource('PUT', `minHour/${netid}`, {minHour: hours})
+        resource('PUT', `idealHours/${netid}`, {idealHours: hours})
         .then((user) => {
           return dispatch({
             type: "USER_HOUR_UPDATE",

@@ -50,7 +50,7 @@ const create_users_hours = () =>{
         console.log("RRRR: ", r)
         Promise.all(r.map((user) => {userHrs[user.netid] = update_user_total_hours(user.netid,
             {max: user.maxHour,
-            min: user.minHour,
+            ideal: user.idealHours,
             total: 0})
         }))
         .then(() => {
