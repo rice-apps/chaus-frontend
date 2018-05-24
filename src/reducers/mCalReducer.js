@@ -4,7 +4,7 @@
 import { combineReducers } from 'redux'
 
 const mmonReducer = (state={mon:[
-    {hour: 7, closed: false},
+    {hour: 7, closed: true},
     {hour: 8, closed: false},
     {hour: 9, closed: false},
     {hour: 10, closed: false},
@@ -15,13 +15,13 @@ const mmonReducer = (state={mon:[
     {hour: 15, closed: false},
     {hour: 16, closed: false },
     {hour: 17, closed: false},
-    {hour: 18, closed: false},
-    {hour: 19, closed: false},
-    {hour: 20, closed: false},
-    {hour: 21, closed: false},
-    {hour: 22, closed: false},
-    {hour: 23, closed: false},
-    {hour: 24, closed: false}
+    {hour: 18, closed: true},
+    {hour: 19, closed: true},
+    {hour: 20, closed: true},
+    {hour: 21, closed: true},
+    {hour: 22, closed: true},
+    {hour: 23, closed: true},
+    {hour: 24, closed: true}
 ]}, action) => {
     switch(action.type) {
         case "CHANGEM":
@@ -50,7 +50,7 @@ const mmonReducer = (state={mon:[
 }
 
 const mtuesReducer = (state={tues:[
-    {hour: 7, closed: false},
+    {hour: 7, closed: true},
     {hour: 8, closed: false},
     {hour: 9, closed: false},
     {hour: 10, closed: false},
@@ -61,13 +61,13 @@ const mtuesReducer = (state={tues:[
     {hour: 15, closed: false},
     {hour: 16, closed: false },
     {hour: 17, closed: false},
-    {hour: 18, closed: false},
-    {hour: 19, closed: false},
-    {hour: 20, closed: false},
-    {hour: 21, closed: false},
-    {hour: 22, closed: false},
-    {hour: 23, closed: false},
-    {hour: 24, closed: false}
+    {hour: 18, closed: true},
+    {hour: 19, closed: true},
+    {hour: 20, closed: true},
+    {hour: 21, closed: true},
+    {hour: 22, closed: true},
+    {hour: 23, closed: true},
+    {hour: 24, closed: true}
 ]}, action) => {
     switch(action.type) {
         case "CHANGET":
@@ -90,7 +90,7 @@ const mtuesReducer = (state={tues:[
 }
 
 const mwedReducer = (state={wed:[
-    {hour: 7, closed: false},
+    {hour: 7, closed: true},
     {hour: 8, closed: false},
     {hour: 9, closed: false},
     {hour: 10, closed: false},
@@ -101,13 +101,13 @@ const mwedReducer = (state={wed:[
     {hour: 15, closed: false},
     {hour: 16, closed: false },
     {hour: 17, closed: false},
-    {hour: 18, closed: false},
-    {hour: 19, closed: false},
-    {hour: 20, closed: false},
-    {hour: 21, closed: false},
-    {hour: 22, closed: false},
-    {hour: 23, closed: false},
-    {hour: 24, closed: false}
+    {hour: 18, closed: true},
+    {hour: 19, closed: true},
+    {hour: 20, closed: true},
+    {hour: 21, closed: true},
+    {hour: 22, closed: true},
+    {hour: 23, closed: true},
+    {hour: 24, closed: true}
 ]}, action) => {
     switch(action.type) {
         case "CHANGEW":
@@ -130,7 +130,7 @@ const mwedReducer = (state={wed:[
 }
 
 const mthursReducer = (state={thurs:[
-    {hour: 7, closed: false},
+    {hour: 7, closed: true},
     {hour: 8, closed: false},
     {hour: 9, closed: false},
     {hour: 10, closed: false},
@@ -141,13 +141,13 @@ const mthursReducer = (state={thurs:[
     {hour: 15, closed: false},
     {hour: 16, closed: false },
     {hour: 17, closed: false},
-    {hour: 18, closed: false},
-    {hour: 19, closed: false},
-    {hour: 20, closed: false},
-    {hour: 21, closed: false},
-    {hour: 22, closed: false},
-    {hour: 23, closed: false},
-    {hour: 24, closed: false}
+    {hour: 18, closed: true},
+    {hour: 19, closed: true},
+    {hour: 20, closed: true},
+    {hour: 21, closed: true},
+    {hour: 22, closed: true},
+    {hour: 23, closed: true},
+    {hour: 24, closed: true}
 ]}, action) => {
     switch(action.type) {
         case "CHANGER":
@@ -173,7 +173,7 @@ const mthursReducer = (state={thurs:[
 }
 
 const mfriReducer = (state={fri:[
-    {hour: 7, closed: false},
+    {hour: 7, closed: true},
     {hour: 8, closed: false},
     {hour: 9, closed: false},
     {hour: 10, closed: false},
@@ -183,7 +183,7 @@ const mfriReducer = (state={fri:[
     {hour: 14, closed: false},
     {hour: 15, closed: false},
     {hour: 16, closed: false },
-    {hour: 17, closed: true},
+    {hour: 17, closed: false},
     {hour: 18, closed: true},
     {hour: 19, closed: true},
     {hour: 20, closed: true},
@@ -223,13 +223,13 @@ const msatReducer = (state={sat:[
     {hour: 7, closed: true},
     {hour: 8, closed: true},
     {hour: 9, closed: true},
-    {hour: 10, closed: false},
-    {hour: 11, closed: false},
-    {hour: 12, closed: false },
-    {hour: 13, closed: false},
-    {hour: 14, closed: false},
-    {hour: 15, closed: false},
-    {hour: 16, closed: false},
+    {hour: 10, closed: true},
+    {hour: 11, closed: true},
+    {hour: 12, closed: true },
+    {hour: 13, closed: true},
+    {hour: 14, closed: true},
+    {hour: 15, closed: true},
+    {hour: 16, closed: true},
     {hour: 17, closed: true},
     {hour: 18, closed: true},
     {hour: 19, closed: true},
@@ -273,17 +273,17 @@ const msunReducer = (state={sun:[
     {hour: 11, closed: true},
     {hour: 12, closed: true },
     {hour: 13, closed: true},
-    {hour: 14, closed: false},
-    {hour: 15, closed: false},
-    {hour: 16, closed: false },
-    {hour: 17, closed: false},
-    {hour: 18, closed: false},
-    {hour: 19, closed: false},
-    {hour: 20, closed: false},
-    {hour: 21, closed: false},
-    {hour: 22, closed: false},
-    {hour: 23, closed: false},
-    {hour: 24, closed: false}
+    {hour: 14, closed: true},
+    {hour: 15, closed: true},
+    {hour: 16, closed: true},
+    {hour: 17, closed: true},
+    {hour: 18, closed: true},
+    {hour: 19, closed: true},
+    {hour: 20, closed: true},
+    {hour: 21, closed: true},
+    {hour: 22, closed: true},
+    {hour: 23, closed: true},
+    {hour: 24, closed: true}
 ]}, action) => {
     switch(action.type) {
         case "CHANGEU":
