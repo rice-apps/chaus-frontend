@@ -35,15 +35,15 @@ const changeColor2 = (preference) => {
   // If we want to stick to a single color scheme
   switch (preference) {
     case 1:
-      return "#2196f3"
+      return "#5fa55a" // green
     case 2:
-      return "#64b5f6"
+      return "#f6d51f" // yellow
     case 3:
-      return "#bbdefb" // light blue
+      return "#fa8925" // orange
     case 4:
-      return "#f44336" // red
+      return "#fa5457" // red
     default:
-      return "#607d8b"
+      return "#01b4bc" // blue
   }
 }
 
