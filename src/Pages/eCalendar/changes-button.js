@@ -15,12 +15,12 @@ const combineDays = () => {
   weekObject = {"Monday":mon, "Tuesday":tues, "Wednesday":wed, "Thursday":thurs, "Friday":fri, "Saturday":sat, "Sunday":sun}
 }
 
-const ChangeButton = ({netid, save_availability, mon, tues, wed, thurs, fri, sat, sun}) => {
+const ChangeButton = ({netid, save_availability, hoursFilled, mon, tues, wed, thurs, fri, sat, sun}) => {
   let weekObject = {"Monday":mon, "Tuesday":tues,
                     "Wednesday":wed, "Thursday":thurs, "Friday":fri, "Saturday":sat, "Sunday":sun}
   return (
 
-      <RaisedButton backgroundColor="#a4c639" icon={<Save color={fullWhite}/>} onClick={() => save_availability(netid, weekObject)} style={{height: 34}}/>
+      <RaisedButton disabled={!hoursFilled} backgroundColor="#a4c639" icon={<Save color={fullWhite}/>} onClick={() => save_availability(netid, weekObject)} style={{height: 34}}/>
   )
 }
 
@@ -34,6 +34,7 @@ export default connect(
             fri: state.eCal.scheduleReducer.schedule.F,
             sat: state.eCal.scheduleReducer.schedule.S,
             sun: state.eCal.scheduleReducer.schedule.U,
+            hoursFilled: state.eCal.scheduleReducer.hoursFilled,
             netid: state.eCal.activeReducer.user.netid
         }
     },

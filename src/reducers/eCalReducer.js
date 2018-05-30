@@ -2,6 +2,7 @@
  * Created by Will on 2/17/2018.
  */
 import { combineReducers } from 'redux'
+import 'babel-polyfill'; // for async/await
 
 const monDefault = [
   {hour: 7, available: 0, changed: false, closed: true},
@@ -144,7 +145,7 @@ const sunDefault = [
   {hour: 24, available: 0, changed: false, closed: true}
 ]
 
-const scheduleReducer = (state={schedule:{M:monDefault, T:tuesDefault, W:wedDefault, R:thursDefault, F:friDefault, S:satDefault, U:sunDefault}}, action) => {
+const scheduleReducer = (state={schedule:{M:monDefault, T:tuesDefault, W:wedDefault, R:thursDefault, F:friDefault, S:satDefault, U:sunDefault}, hoursFilled: false}, action) => {
     let new_schedule;
     switch(action.type) {
         case "GET_AVAILABILITY":
@@ -266,6 +267,19 @@ const scheduleReducer = (state={schedule:{M:monDefault, T:tuesDefault, W:wedDefa
             }
             console.log(new_week)
             return {...state, schedule: new_week}
+        case "CHECK_HOURS_FILLED":
+            let hoursFilled = true;
+            // Check each day in schedule in parallel
+            let availability = state.schedule
+            Object.keys(availability).forEach(async (day) => {
+              // Now iterate through each preference in parallel
+              availability[day].forEach(async (shiftObj) => {
+                if (shiftObj['closed'] == false && shiftObj['available'] == 0) {
+                  hoursFilled = false
+                }
+              })
+            })
+            return {...state, hoursFilled}
         default:
             return state
     }

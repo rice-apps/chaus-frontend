@@ -3,8 +3,6 @@ import {connect} from 'react-redux'
 import {get_scheduled} from '../../actions/employeeActions'
 import RaisedButton from 'material-ui/RaisedButton'
 
-
-
 const processedShifts = (dayArr) => {
     let first = -1
     for (let i = 0; i<dayArr.length; i++) {

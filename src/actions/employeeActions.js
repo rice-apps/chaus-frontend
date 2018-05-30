@@ -212,7 +212,6 @@ const reformat_availability = (schedule) => {
   return reformatted_schedule
 }
 
-
 const reformat_sched = (schedule) => {
   let reformatted_schedule = []
   let week_day = []
@@ -267,6 +266,7 @@ export const get_availability = (netid) => {
         type: "GET_AVAILABILITY",
         schedule: reformatted
       })
+      dispatch(check_hours_filled()) // Call this once availability schedule is set 
     })
   }
 }
@@ -286,14 +286,18 @@ export const get_scheduled = (netid) => {
 }
 
 export const toggle_availability = (dayname, hour, available) => {
-  return (dispatch) => dispatch({
-    // Directs to specific case in reducer
-    type: "CHANGE_HOUR_"+dayname,
-    hour: hour,
-    // On click, available will change to the next type (red -> grey -> green -> yellow -> orange)
-    available: (available%4)+1,
-    changed: true
-  })
+  return (dispatch) => {
+      // Fire off update to hours_filled
+      dispatch({
+        // Directs to specific case in reducer
+        type: "CHANGE_HOUR_"+dayname,
+        hour: hour,
+        // On click, available will change to the next type (red -> grey -> green -> yellow -> orange)
+        available: (available%4)+1,
+        changed: true
+      })
+      dispatch(check_hours_filled());
+  }
 }
 
 export const reset_changes = () => {
@@ -326,6 +330,12 @@ export const save_availability = (netid, shifts) => {
       })
     })
   }
+}
+
+export const check_hours_filled = () => {
+  return (dispatch) => dispatch({
+    type: "CHECK_HOURS_FILLED"
+  })
 }
 
 // export const
