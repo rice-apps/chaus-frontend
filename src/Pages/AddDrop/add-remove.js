@@ -49,9 +49,7 @@ class AddUser extends React.Component {
     this.state = {
       netid: "",
       firstName: "",
-      lastName: "",
-      idealHours: undefined,
-      maxHours: undefined
+      lastName: ""
     }
   };
 
@@ -59,18 +57,11 @@ class AddUser extends React.Component {
     console.log("Running!")
     // Dispatch add action
     let state_copy = {...this.state}
-    let {netid, firstName, lastName, idealHours, maxHours} = state_copy;
-    // Check if optional fields are empty
-    if (idealHours == "") {
-      idealHours = undefined
-    }
-    if (maxHours == "") {
-      maxHours = undefined
-    }
-    console.log(netid, firstName, lastName, idealHours, maxHours);
-    this.props.add_user(netid, firstName, lastName, idealHours, maxHours);
+    let {netid, firstName, lastName} = state_copy;
+    console.log(netid, firstName, lastName);
+    this.props.add_user(netid, firstName, lastName);
     // Clear values
-    this.setState({netid: "", firstName: "", lastName: "", idealHours: "", maxHours: ""});
+    this.setState({netid: "", firstName: "", lastName: ""});
   }
 
   render() {
@@ -97,20 +88,6 @@ class AddUser extends React.Component {
           underlineShow={false}
           />
         <Divider />
-        <TextField
-          floatingLabelText="Ideal Hours"
-          onChange={(e, val) => this.setState({idealHours: val})}
-          value={this.state.idealHours}
-          underlineShow={false}
-          />
-        <Divider />
-        <TextField
-          floatingLabelText="Maximum Hours"
-          onChange={(e, val) => this.setState({maxHours: val})}
-          value={this.state.maxHours}
-          underlineShow={false}
-          />
-        <Divider />
         <RaisedButton
           label="Submit"
           onClick={this.handleSubmit.bind(this)}
@@ -120,36 +97,6 @@ class AddUser extends React.Component {
   }
 }
 
-// const AddUser = ({add_user}) => {
-//   return (
-//     <div style={addUserStyle}>
-//       <TextField
-//         floatingLabelText="Netid"
-//         />
-//       <Divider />
-//       <TextField
-//         floatingLabelText="First Name"
-//         />
-//       <Divider />
-//       <TextField
-//         floatingLabelText="Last Name"
-//         />
-//       <Divider />
-//       <TextField
-//         floatingLabelText="Minimum Hours"
-//         />
-//       <Divider />
-//       <TextField
-//         floatingLabelText="Maximum Hours"
-//         />
-//       <Divider />
-//       <RaisedButton
-//         label="Submit"
-//         onClick={() => add_user()}
-//         />
-//     </div>
-//   )
-// }
 
 const AddRemove = ({users, netids, add_user, remove_user}) => {
   return (
@@ -200,8 +147,8 @@ export default connect (
     },
     (dispatch, ownProps) => {
         return {
-          add_user: (netid, firstName, lastName, idealHours, maxHour) => dispatch(
-            add_user(netid, firstName, lastName, idealHours, maxHour)),
+          add_user: (netid, firstName, lastName) => dispatch(
+            add_user(netid, firstName, lastName)),
           remove_user: (netid) => dispatch(remove_user(netid))
         }
     }

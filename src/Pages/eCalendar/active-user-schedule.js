@@ -1,7 +1,26 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {get_scheduled} from '../../actions/employeeActions'
-import RaisedButton from 'material-ui/RaisedButton'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
+import {List, ListItem} from 'material-ui/List';
+// Reactstrap
+import {Container, Row, Col} from 'reactstrap';
+// Actions
+import {setHours} from '../../actions/userActions'
+
+const SetIdealMaxHours = ({netid, hour, idealOrMax, setHours}) => {
+    return (
+        <MuiThemeProvider>
+            <RaisedButton
+                primary
+                label="Set Ideal Hours"
+                onClick={() => setHours(netid, hour, idealOrMax)}
+                />
+        </MuiThemeProvider>
+    )
+}
 
 const processedShifts = (dayArr) => {
     let first = -1
@@ -44,7 +63,15 @@ const processedShifts = (dayArr) => {
     return shiftString.slice(0, shiftString.length - 2)
 }
 
-const GenerateSchedule = ({activeUser, activeSchedule, get_scheduled}) => {
+
+
+const GenerateSchedule = ({activeUser, activeSchedule, get_scheduled, setHours}) => {
+    const ideal = activeUser.idealHour
+    const max = activeUser.maxHour
+
+    const handleOnChange = (event) => {
+        
+    }
     return (
         <div style={{padding: '1em'}}>
             <h2>{activeUser.firstName + " " + activeUser.lastName + "'s Schedule"}</h2>
@@ -55,8 +82,20 @@ const GenerateSchedule = ({activeUser, activeSchedule, get_scheduled}) => {
                     <p>{key}: {shiftString}</p>
                 )
             })}
-            <h3>Ideal Hours: {activeUser.idealHours}</h3>
-            <h3>Max Hours: {activeUser.maxHour}</h3>
+
+            <h3>Ideal Hours: {activeUser.idealHour}</h3>
+            <TextField
+                floatingLabelText={"Ideal Hours: "+activeUser.idealHour}
+                onChange={(event) => setHours(activeUser.netid, event.target.value, "ideal")}
+            />
+            <br />
+
+            <TextField
+                defaultValue={activeUser.maxHour}
+                floatingLabelText={"Max Hours: "+activeUser.maxHour}
+            >
+            </TextField>
+            <br />
             
         </div>
     )
@@ -68,12 +107,14 @@ const GenerateSchedule = ({activeUser, activeSchedule, get_scheduled}) => {
 export default connect(
     (state) => {
         return {
-            activeUser: state.eCal.activeReducer.user,
+            activeUser : state.eCal.activeReducer.user,
             activeSchedule : state.eCal.activeReducer.schedule
         }
     },
     (dispatch) => {
         return {
+            setHours: (netid, hours, idealOrMax) => dispatch(setHours(netid, hours, idealOrMax)),
+            
         }
     }
 )(GenerateSchedule)

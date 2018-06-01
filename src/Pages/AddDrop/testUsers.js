@@ -27,7 +27,7 @@ export default connect(
     },
     (dispatch) => {
         return {
-            setHours: (netid, hours, minOrMax) => dispatch(setHours(netid, hours, minOrMax))
+            setHours: (netid, hours, idealOrMax) => dispatch(setHours(netid, hours, idealOrMax))
         }
     }
 )(TestUserActions)
