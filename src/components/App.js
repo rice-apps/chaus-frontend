@@ -29,7 +29,7 @@ const App = () => {
             <div>
                 <BrowserRouter>
                     <Switch>
-                        <PrivateRoute exact path='/' component={MFullCalendar}/>
+                        <PrivateRoute exact path='/' component={FullCalendar}/>
                         <PrivateRoute path='/ecal' component={FullCalendar}/>
                         <PrivateRoute path='/mcal' component={MFullCalendar} />
                         <PrivateRoute path='/addremove' component={AddRemove}/>

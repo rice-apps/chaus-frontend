@@ -22,10 +22,10 @@ const pageTitle = () => {
     switch (window.location.pathname) {
         case "/mcal":
             return "Master Calendar"
-        case "/ecal":
-            return "Employee Availability"
-        default:
+        case "/addremove":
             return "Add/Remove Users"
+        default:
+            return "Employee Calendar"
     }
 }
 
