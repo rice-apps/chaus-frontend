@@ -158,6 +158,12 @@ export const setHours = (netid, hours, idealOrMax) => {
       case 'ideal':
         resource('PUT', `idealHour/${netid}`, {idealHour: hours})
         .then((user) => {
+          // First adjust active user ideal hours
+          dispatch({
+            type: "ACTIVEUSER_IDEAL_HOUR_UPDATE",
+            hours
+          })
+          // then update entire list
           return dispatch({
             type: "USER_HOUR_UPDATE",
             user
@@ -167,6 +173,11 @@ export const setHours = (netid, hours, idealOrMax) => {
       case 'max':
         resource('PUT', `maxHour/${netid}`, {maxHour: hours})
         .then((user) => {
+          // First update active user
+          dispatch({
+            type: "ACTIVEUSER_MAX_HOUR_UPDATE",
+            hours
+          })
           return dispatch({
             type: "USER_HOUR_UPDATE",
             user

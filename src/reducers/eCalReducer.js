@@ -369,6 +369,10 @@ const activeReducer = (state={user:{}, schedule:{M:[], T:[], W:[], R:[], F:[], S
             return {...state, schedule:new_schedule}
         case "GENERATE":
             return {...state, schedule:action.schedule}
+        case "ACTIVEUSER_IDEAL_HOUR_UPDATE":
+            return {...state, user: {...state.user, idealHour: action.hours}}
+        case "ACTIVEUSER_MAX_HOUR_UPDATE":
+            return {...state, user: {...state.user, maxHour: action.hours}}
         default:
             return state
     }

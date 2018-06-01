@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {get_scheduled} from '../../actions/employeeActions'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import SetHours from './set-hours';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import {List, ListItem} from 'material-ui/List';
@@ -69,9 +70,6 @@ const GenerateSchedule = ({activeUser, activeSchedule, get_scheduled, setHours})
     const ideal = activeUser.idealHour
     const max = activeUser.maxHour
 
-    const handleOnChange = (event) => {
-        
-    }
     return (
         <div style={{padding: '1em'}}>
             <h2>{activeUser.firstName + " " + activeUser.lastName + "'s Schedule"}</h2>
@@ -84,18 +82,7 @@ const GenerateSchedule = ({activeUser, activeSchedule, get_scheduled, setHours})
             })}
 
             <h3>Ideal Hours: {activeUser.idealHour}</h3>
-            <TextField
-                floatingLabelText={"Ideal Hours: "+activeUser.idealHour}
-                onChange={(event) => setHours(activeUser.netid, event.target.value, "ideal")}
-            />
-            <br />
-
-            <TextField
-                defaultValue={activeUser.maxHour}
-                floatingLabelText={"Max Hours: "+activeUser.maxHour}
-            >
-            </TextField>
-            <br />
+            <SetHours setIdealHours={setHours} setMaxHours={setHours} netid={activeUser.netid} />
             
         </div>
     )
