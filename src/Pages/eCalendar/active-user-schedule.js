@@ -82,6 +82,8 @@ const GenerateSchedule = ({activeUser, activeSchedule, get_scheduled, setHours})
             })}
 
             <h3>Ideal Hours: {activeUser.idealHour}</h3>
+            <h3>Max Hours: {activeUser.maxHour}</h3>
+
             <SetHours setIdealHours={setHours} setMaxHours={setHours} netid={activeUser.netid} />
             
         </div>
