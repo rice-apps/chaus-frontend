@@ -178,31 +178,31 @@ const reformat_availability = (schedule) => {
     let shift;
     switch (current_week) {
       case 0:
-        shift = monDefault[i%18]
+        shift = sunDefault[i%18]
         week_day.push({...shift, available: employee_pref})
         break;
       case 1:
-        shift = tuesDefault[i%18]
+        shift = monDefault[i%18]
         week_day.push({...shift, available: employee_pref})
         break;
       case 2:
-        shift = wedDefault[i%18]
+        shift = tuesDefault[i%18]
         week_day.push({...shift, available: employee_pref})
         break;
       case 3:
-        shift = thursDefault[i%18]
+        shift = wedDefault[i%18]
         week_day.push({...shift, available: employee_pref})
         break;
       case 4:
-        shift = friDefault[i%18]
+        shift = thursDefault[i%18]
         week_day.push({...shift, available: employee_pref})
         break;
       case 5:
-        shift = satDefault[i%18]
+        shift = friDefault[i%18]
         week_day.push({...shift, available: employee_pref})
         break;
       case 6:
-        shift = sunDefault[i%18]
+        shift = satDefault[i%18]
         week_day.push({...shift, available: employee_pref})
         break;
       default:
@@ -257,11 +257,13 @@ const reformat_sched = (schedule) => {
  * @param {*} netid 
  */
 export const get_availability = (netid) => {
+  console.log("hello")
   return (dispatch) => {
     // Makes a GET call, fetching employee availability preferences
     resource('GET', 'employee/available/'+netid).then(schedule => {
       // Reformat schedule
       let reformatted = reformat_availability(schedule)
+      console.log("this is the reformated schedule: " + reformatted)
       dispatch({
         type: "GET_AVAILABILITY",
         schedule: reformatted

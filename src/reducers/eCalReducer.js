@@ -145,19 +145,19 @@ const sunDefault = [
   {hour: 24, available: 0, changed: false, closed: true}
 ]
 
-const scheduleReducer = (state={schedule:{M:monDefault, T:tuesDefault, W:wedDefault, R:thursDefault, F:friDefault, S:satDefault, U:sunDefault}, hoursFilled: false}, action) => {
+const scheduleReducer = (state={schedule:{U:sunDefault, M:monDefault, T:tuesDefault, W:wedDefault, R:thursDefault, F:friDefault, S:satDefault}, hoursFilled: false}, action) => {
     let new_schedule;
     switch(action.type) {
         case "GET_AVAILABILITY":
             console.log("THIS IS THE SCHEDULE when GET_AVAILABILITY is CALLED: " + action.schedule)
             new_schedule = {
-              M: action.schedule[0],
-              T: action.schedule[1],
-              W: action.schedule[2],
-              R: action.schedule[3],
-              F: action.schedule[4],
-              S: action.schedule[5],
-              U: action.schedule[6],
+              U: action.schedule[0],
+              M: action.schedule[1],
+              T: action.schedule[2],
+              W: action.schedule[3],
+              R: action.schedule[4],
+              F: action.schedule[5],
+              S: action.schedule[6],
             }
             return {...state, schedule:new_schedule}
 
@@ -351,20 +351,20 @@ const defaultScheduled = {
 
 }
 
-const activeReducer = (state={user:{}, schedule:{M:[], T:[], W:[], R:[], F:[], S:[], U:[]}}, action) => {
+const activeReducer = (state={user:{}, schedule:{U:[], M:[], T:[], W:[], R:[], F:[], S:[]}}, action) => {
 
     switch(action.type) {
         case "USER_SELECTED":
             return {...state, user:action.user}
         case "GET_SCHEDULED":
             let new_schedule = {
-              M: action.schedule[0],
-              T: action.schedule[1],
-              W: action.schedule[2],
-              R: action.schedule[3],
-              F: action.schedule[4],
-              S: action.schedule[5],
-              U: action.schedule[6],
+              U: action.schedule[0],
+              M: action.schedule[1],
+              T: action.schedule[2],
+              W: action.schedule[3],
+              R: action.schedule[4],
+              F: action.schedule[5],
+              S: action.schedule[6],
             }
             return {...state, schedule:new_schedule}
         case "GENERATE":
