@@ -89,15 +89,12 @@ const ModalList = ({p1, p2, p3, p4, schedule, toggle_scheduled, save_shift, dayn
                             <h1>Priority 1 (Preferred)</h1>
                             {p1.map((netid) => {
                                 return (
-                                    <RaisedButton
-                                        style={{margin: 2}} 
-                                        key={netid} 
-                                        label={getName(netid, users)} 
-                                        backgroundColor={getButtonColor(netid, userHours)} 
-                                        onClick={() => toggle_scheduled(netid)} 
-                                        // For hover effects
-                                        onMouseEnter={() => handleTooltip(netid)}
-                                        onMouseLeave={() => handleTooltip(netid)}
+                                    <UserPreferenceButton
+                                        netid={netid}
+                                        users={users}
+                                        userHours={userHours}
+                                        getButtonColor={getButtonColor}
+                                        toggle_scheduled={toggle_scheduled}
                                     />
                                 )
                             })}
@@ -106,7 +103,13 @@ const ModalList = ({p1, p2, p3, p4, schedule, toggle_scheduled, save_shift, dayn
                             <h1>Priority 2 (Available)</h1>
                             {p2.map((netid) => {
                                 return (
-                                    <RaisedButton style={{margin: 2}} key={netid} label={getName(netid, users)} backgroundColor={getButtonColor(netid, userHours)} onClick={() => toggle_scheduled(netid)} />
+                                    <UserPreferenceButton
+                                        netid={netid}
+                                        users={users}
+                                        userHours={userHours}
+                                        getButtonColor={getButtonColor}
+                                        toggle_scheduled={toggle_scheduled}
+                                    />
                                 )
                             })}
                         </GridTile>
@@ -114,7 +117,13 @@ const ModalList = ({p1, p2, p3, p4, schedule, toggle_scheduled, save_shift, dayn
                             <h1>Priority 3 (Not Preferred)</h1>
                             {p3.map((netid) => {
                                 return (
-                                    <RaisedButton style={{margin: 2}} key={netid} label={getName(netid, users)} backgroundColor={getButtonColor(netid, userHours)} onClick={() => toggle_scheduled(netid)} />
+                                    <UserPreferenceButton
+                                        netid={netid}
+                                        users={users}
+                                        userHours={userHours}
+                                        getButtonColor={getButtonColor}
+                                        toggle_scheduled={toggle_scheduled}
+                                    />
                                 )
                             })}
                         </GridTile>
@@ -158,7 +167,13 @@ const ModalList = ({p1, p2, p3, p4, schedule, toggle_scheduled, save_shift, dayn
                                     <div>Shift filled</div>}</div>}
                             {schedule.map((netid) => {
                                 return (
-                                    <RaisedButton style={{margin: 2}} key={netid} label={getName(netid, users)} backgroundColor={getButtonColor(netid, userHours)} onClick={() => toggle_scheduled(netid)} />
+                                    <UserPreferenceButton
+                                        netid={netid}
+                                        users={users}
+                                        userHours={userHours}
+                                        getButtonColor={getButtonColor}
+                                        toggle_scheduled={toggle_scheduled}
+                                    />
                                 )
                             })}
                         </GridTile>

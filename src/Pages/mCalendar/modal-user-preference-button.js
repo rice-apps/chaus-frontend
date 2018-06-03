@@ -58,6 +58,7 @@ class UserPreferenceButton extends React.Component {
                 style={{margin: 2, width: 200}} 
                 key={netid} 
                 label={hover ? this.getHours() : this.getName(netid, users)} 
+                labelColor={fullWhite}
                 backgroundColor={this.props.getButtonColor(netid, userHours)} 
                 onClick={() => this.props.toggle_scheduled(netid)} 
                 // For hover effects
