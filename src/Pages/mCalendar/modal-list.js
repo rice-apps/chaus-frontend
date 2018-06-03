@@ -9,6 +9,7 @@ import {GridList, GridTile} from 'material-ui/GridList';
 import RaisedButton from 'material-ui/RaisedButton';
 import Save from 'material-ui/svg-icons/content/save'
 import {fullWhite} from 'material-ui/styles/colors';
+import UserPreferenceButton from './modal-user-preference-button';
 
 const getButtonColor = (user, totals) => {
     // Determine if employee is underscheduled, within hour range,
@@ -46,11 +47,6 @@ const getButtonColor = (user, totals) => {
   }
 }
 
-const getName = (netid, users) => {
-    var person = users.find( (user) => {return user.netid == netid})
-    return person.firstName + " " + person.lastName[0]
-}
-
 const styles = {
     topGrid: {
         display: 'flex',
@@ -64,6 +60,7 @@ const styles = {
         flex:1
     }
 }
+
 
 const ModalList = ({p1, p2, p3, p4, schedule, toggle_scheduled, save_shift, dayname, hour, userHours, users}) => {
     console.log("MODAL CALLED")
@@ -93,7 +90,15 @@ const ModalList = ({p1, p2, p3, p4, schedule, toggle_scheduled, save_shift, dayn
                             {p1.map((netid) => {
                                 return (
                                     <RaisedButton
-                                        style={{margin: 2}} key={netid} label={getName(netid, users)} backgroundColor={getButtonColor(netid, userHours)} onClick={() => toggle_scheduled(netid)} />
+                                        style={{margin: 2}} 
+                                        key={netid} 
+                                        label={getName(netid, users)} 
+                                        backgroundColor={getButtonColor(netid, userHours)} 
+                                        onClick={() => toggle_scheduled(netid)} 
+                                        // For hover effects
+                                        onMouseEnter={() => handleTooltip(netid)}
+                                        onMouseLeave={() => handleTooltip(netid)}
+                                    />
                                 )
                             })}
                         </GridTile>
@@ -116,8 +121,17 @@ const ModalList = ({p1, p2, p3, p4, schedule, toggle_scheduled, save_shift, dayn
                         <GridTile>
                             <h1>Priority 4 (Unavailable)</h1>
                             {p4.map((netid) => {
+                                // return (
+                                //     <RaisedButton style={{margin: 2}} key={netid} label={getName(netid, users)} backgroundColor={getButtonColor(netid, userHours)} onClick={() => toggle_scheduled(netid)} />
+                                // )
                                 return (
-                                    <RaisedButton style={{margin: 2}} key={netid} label={getName(netid, users)} backgroundColor={getButtonColor(netid, userHours)} onClick={() => toggle_scheduled(netid)} />
+                                    <UserPreferenceButton
+                                        netid={netid}
+                                        users={users}
+                                        userHours={userHours}
+                                        getButtonColor={getButtonColor}
+                                        toggle_scheduled={toggle_scheduled}
+                                    />
                                 )
                             })}
                         </GridTile>
