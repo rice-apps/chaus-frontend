@@ -91,34 +91,61 @@ const ModalList = ({p1, p2, p3, p4, schedule, toggle_scheduled, save_shift, dayn
                         <GridTile>
                             <h1>Priority 1 (Preferred)</h1>
                             {p1.map((netid) => {
-                                return (
-                                    <RaisedButton
-                                        style={{margin: 2}} key={netid} label={getName(netid, users)} backgroundColor={getButtonColor(netid, userHours)} onClick={() => toggle_scheduled(netid)} />
-                                )
+                                if (netid != "undefined") {
+                                    return (
+                                        <RaisedButton
+                                            style={{margin: 2}} 
+                                            key={netid} 
+                                            label={getName(netid, users)} 
+                                            backgroundColor={getButtonColor(netid, userHours)} 
+                                            onClick={() => toggle_scheduled(netid)} />
+                                    )
+                                }
                             })}
                         </GridTile>
                         <GridTile>
                             <h1>Priority 2 (Available)</h1>
                             {p2.map((netid) => {
-                                return (
-                                    <RaisedButton style={{margin: 2}} key={netid} label={getName(netid, users)} backgroundColor={getButtonColor(netid, userHours)} onClick={() => toggle_scheduled(netid)} />
-                                )
+                                if (netid != "undefined") {
+                                    return (
+                                        <RaisedButton
+                                            style={{margin: 2}} 
+                                            key={netid} 
+                                            label={getName(netid, users)} 
+                                            backgroundColor={getButtonColor(netid, userHours)} 
+                                            onClick={() => toggle_scheduled(netid)} />
+                                    )
+                                }
                             })}
                         </GridTile>
                         <GridTile>
                             <h1>Priority 3 (Not Preferred)</h1>
                             {p3.map((netid) => {
-                                return (
-                                    <RaisedButton style={{margin: 2}} key={netid} label={getName(netid, users)} backgroundColor={getButtonColor(netid, userHours)} onClick={() => toggle_scheduled(netid)} />
-                                )
+                                if (netid != "undefined") {
+                                    return (
+                                        <RaisedButton
+                                            style={{margin: 2}} 
+                                            key={netid} 
+                                            label={getName(netid, users)} 
+                                            backgroundColor={getButtonColor(netid, userHours)} 
+                                            onClick={() => toggle_scheduled(netid)} />
+                                    )
+                                }
                             })}
                         </GridTile>
                         <GridTile>
                             <h1>Priority 4 (Unavailable)</h1>
                             {p4.map((netid) => {
-                                return (
-                                    <RaisedButton style={{margin: 2}} key={netid} label={getName(netid, users)} backgroundColor={getButtonColor(netid, userHours)} onClick={() => toggle_scheduled(netid)} />
-                                )
+                                if (netid != "undefined") {
+                                    return (
+                                        <RaisedButton
+                                            style={{margin: 2}} 
+                                            key={netid} 
+                                            label={getName(netid, users)} 
+                                            backgroundColor={getButtonColor(netid, userHours)} 
+                                            onClick={() => toggle_scheduled(netid)} />
+                                    )
+                                }
                             })}
                         </GridTile>
                     </GridList>
