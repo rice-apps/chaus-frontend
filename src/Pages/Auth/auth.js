@@ -42,7 +42,7 @@ export default connect (
     (state, ownProps) => {
       return {
         search: ownProps.location.search,
-        loggedIn: state.auth.authenticated,
+        loggedIn: state.auth.authReducer.authenticated,
         users: state.eCal.userReducer.users
       }
     },
