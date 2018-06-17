@@ -31,4 +31,6 @@ const Authorization = (allowedRoles) => (
     }
 ) 
 
-export default Authorization
+// Calls HOC Authorization, which only allows "Admin" access
+export const Admin = Authorization(['admin'])
+export const User = Authorization(['user'])
