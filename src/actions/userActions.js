@@ -3,6 +3,7 @@
  */
 import { resource } from './masterActions'
 import { get_availability, get_scheduled } from './employeeActions'
+import { getUserRole } from './authActions';
 
 
 /**
@@ -37,6 +38,13 @@ export const initializeStates = () => {
             })
         })
     }
+}
+
+export const initializeUser = () => {
+  console.log("INITIALIZE USER");
+  return (dispatch) => {
+    dispatch(getUserRole());
+  }
 }
 
 export const toggle_availability = (dayname, hour, availability, changed) => {
