@@ -15,6 +15,17 @@ import FullCalendar from '../Pages/eCalendar/full-calendar'
 import LoginPage from '../Pages/login'
 import AddRemove from '../Pages/AddDrop/add-remove'
 import Auth from '../Pages/Auth/auth'
+import {Admin, User} from './InnerAuth'
+
+// const Authorization = (allowedRoles) => (
+//     ({ component: Component, ...rest }) => (
+//         <Route {...rest} render={(props) => (
+//             localStorage.getItem('token') && allowedRoles.includes(props.user.role)
+//                 ? <Component {...props} />
+//                 : <Redirect to='/login' />
+//         )} />
+//     )
+// );
 
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
@@ -24,6 +35,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
             : <Redirect to='/login' />
     )} />
  )
+
 const App = () => {
         return (
             <div>
@@ -32,9 +44,9 @@ const App = () => {
                         <PrivateRoute exact path='/' component={FullCalendar}/>
                         <PrivateRoute path='/ecal' component={FullCalendar}/>
                         <PrivateRoute path='/mcal' component={MFullCalendar} />
-                        <PrivateRoute path='/addremove' component={AddRemove}/>
                         <Route path='/login' component={LoginPage}/>
                         <Route path='/auth' component={Auth} />
+                        <Route path='/addremove' component={Admin(AddRemove)} />
                     </Switch>
                 </BrowserRouter>
             </div>    

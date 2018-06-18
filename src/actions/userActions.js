@@ -3,6 +3,7 @@
  */
 import { resource } from './masterActions'
 import { get_availability, get_scheduled } from './employeeActions'
+import { getUserInfo } from './authActions';
 
 
 /**
@@ -17,7 +18,7 @@ export const selectUser = (netid) => {
         console.log("Selected User" + netid)
         
         resource('GET', 'user/'+netid).then( (r) => {
-          console.log("USER OBJECT: " + r)
+          console.log("USER OBJECT: " + JSON.stringify(r[0]))
             return dispatch({
                 type: "USER_SELECTED",
                 user: r[0]
@@ -37,6 +38,13 @@ export const initializeStates = () => {
             })
         })
     }
+}
+
+export const initializeUser = () => {
+  console.log("INITIALIZE USER");
+  return (dispatch) => {
+    dispatch(getUserInfo());
+  }
 }
 
 export const toggle_availability = (dayname, hour, availability, changed) => {

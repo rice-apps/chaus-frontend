@@ -15,6 +15,8 @@ export const sendTicket = (search) => {
               netid: result.user.username,
               token: result.user.token
             })
+            // Also set role
+            dispatch(getUserInfo());
           }
           else {
             dispatch({
@@ -59,4 +61,32 @@ export const ticketToBackend = (ticket) => {
 
       )
     }
+}
+
+/*
+  
+*/
+export const getUserInfo = () => {
+  // Get Token from localStorage
+  let token = localStorage.getItem('token');
+  return (dispatch) => {
+    // Call backend method for decoding & providing role
+    resource('GET', 'activeUser/'+token).then(
+      (userInfo) => {
+        dispatch({
+          type: "SET_USER_ROLE",
+          role: userInfo.role
+        })
+        dispatch({
+          type: "SET_USER_NETID",
+          netid: userInfo.netid
+        })
+      }
+    )
+    .catch(
+      (err) => {
+        console.log(err);
+      }
+    )
+  }
 }

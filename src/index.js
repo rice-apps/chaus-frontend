@@ -13,7 +13,7 @@ import { createStore, applyMiddleware, combineReducers } from 'redux'
 
 import { BrowserRouter, Route, Switch, Link, Redirect } from 'react-router-dom'
 
-import {initializeStates} from './actions/userActions'
+import {initializeStates, initializeUser} from './actions/userActions'
 
 
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
@@ -23,6 +23,7 @@ const store = createStore(
     Reducer, applyMiddleware(thunkMiddleware)
 )
 initializeStates()(store.dispatch)
+initializeUser()(store.dispatch)
 ReactDOM.render(
     <Provider store={store}>
         <App/>
