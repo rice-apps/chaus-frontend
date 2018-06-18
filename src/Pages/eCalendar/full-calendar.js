@@ -3,9 +3,11 @@
  */
 
 import React, {Component} from 'react'
+import { connect } from 'react-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import EmployeeCalendar from './/employee-calendar'
 import UserList from './/user-list'
+import UserInfo from './/individualUserPage'
 import ActiveSchedule from './/active-user-schedule'
 import Sidebar from '../sidebar.js'
 import Logo from '../chaus-logo.js'
@@ -19,7 +21,7 @@ const legend = {
     "Unavailable": "#fa5457"
 }
 
-const FullCalendar = () => {
+const FullCalendar = ({activeUserRole}) => {
     
     return (
         <div>
@@ -27,7 +29,9 @@ const FullCalendar = () => {
             <MuiThemeProvider>
                 <div style={{display: 'flex', paddingTop: 60}}>
                     <div style={{flexGrow: 0.3}} >
-                        <UserList />
+                        {activeUserRole == 'admin'
+                        ? <UserList />
+                        : <UserInfo />}
                     </div>
                     <EmployeeCalendar/>
                     <ActiveSchedule/>
@@ -39,4 +43,10 @@ const FullCalendar = () => {
     )
 }
 
-export default FullCalendar
+export default connect(
+    (state) => {
+        return {
+            activeUserRole: state.auth.activeUserReducer.role
+        }
+    }
+)(FullCalendar)
