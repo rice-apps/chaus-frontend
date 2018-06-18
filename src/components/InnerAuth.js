@@ -24,7 +24,7 @@ const Authorization = (allowedRoles) => (
         return connect(
             (state) => {
                 return {
-                    role: state.auth.roleReducer.role
+                    role: state.auth.activeUserReducer.role
                 }
             }
         )(WithAuthorization)
