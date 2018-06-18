@@ -38,6 +38,7 @@ const authReducer = (state={authenticated:false, fetching: false, failed: false}
  * Reducer that keeps track of different states related to current user's role
  * @param {*} state 
  *      role: String containing one of three values: 'non-user', 'user', 'admin'
+ *      activeUser: String containing netid of logged-in user
  * @param {*} action 
  */
 const activeUserReducer = (state={role: 'non-user', activeUser: ''}, action) => {
