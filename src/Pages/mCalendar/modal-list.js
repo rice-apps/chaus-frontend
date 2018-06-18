@@ -65,7 +65,7 @@ const styles = {
     }
 }
 
-const ModalList = ({p1, p2, p3, p4, schedule, toggle_scheduled, save_shift, dayname, hour, userHours, users}) => {
+const ModalList = ({p1, p2, p3, p4, schedule, toggle_scheduled, save_shift, dayname, hour, userHours, users, activeUserRole}) => {
     console.log("MODAL CALLED")
 
     // Change 'allowedShifts' to reflect max capacity of each shift (default 3 right now)
@@ -178,7 +178,10 @@ const ModalList = ({p1, p2, p3, p4, schedule, toggle_scheduled, save_shift, dayn
                         <GridTile>
                             <div style={{display: 'flex'}}>
                                 <span style={{flex:1}}/>
-                                <RaisedButton backgroundColor="#a4c639" icon={<Save color={fullWhite}/>} onClick={() => save_shift(schedule, p1, p2, p3, p4, dayname, hour)} />
+                                {activeUserRole == 'admin'
+                                ? <RaisedButton backgroundColor="#a4c639" icon={<Save color={fullWhite}/>} onClick={() => save_shift(schedule, p1, p2, p3, p4, dayname, hour)} />
+                                : <div />}
+                                
                             </div>
                         </GridTile>
                     </GridList>
@@ -199,7 +202,9 @@ export default connect (
             dayname: state.mCal.activeShiftReducer.dayname,
             hour: state.mCal.activeShiftReducer.hour,
             userHours: state.mCal.activeShiftReducer.userHours,
-            users: state.eCal.userReducer.users}
+            users: state.eCal.userReducer.users,
+            activeUserRole: state.auth.activeUserReducer.role
+        }
     },
     (dispatch) => {
         return {
