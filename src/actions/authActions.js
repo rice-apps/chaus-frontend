@@ -73,7 +73,6 @@ export const getUserRole = () => {
     // Call backend method for decoding & providing role
     resource('GET', 'auth/role/'+token).then(
       (role) => {
-        console.log(role);
         dispatch({
           type: "SET_USER_ROLE",
           role

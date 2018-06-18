@@ -43,7 +43,6 @@ const authReducer = (state={authenticated:false, fetching: false, failed: false}
 const roleReducer = (state={role: 'non-user'}, action) => {
     switch(action.type) {
         case "SET_USER_ROLE":
-            console.log(action.role);
             return {...state, role: action.role}
         default:
             return state
