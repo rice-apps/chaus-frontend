@@ -40,16 +40,17 @@ const authReducer = (state={authenticated:false, fetching: false, failed: false}
  *      role: String containing one of three values: 'non-user', 'user', 'admin'
  * @param {*} action 
  */
-const roleReducer = (state={role: 'non-user'}, action) => {
+const activeUserReducer = (state={role: 'non-user', activeUser: ''}, action) => {
     switch(action.type) {
         case "SET_USER_ROLE":
             return {...state, role: action.role}
+        case "SET_USER_NETID":
+            return {...state, activeUser: action.netid}
         default:
             return state
     }
-
 }
 
 export default combineReducers({
-    authReducer, roleReducer
+    authReducer, activeUserReducer
 });
