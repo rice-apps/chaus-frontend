@@ -295,7 +295,7 @@ export const toggle_availability = (dayname, hour, available) => {
         type: "CHANGE_HOUR_"+dayname,
         hour: hour,
         // On click, available will change to the next type (red -> grey -> green -> yellow -> orange)
-        available: (available%4)+1,
+        available: available,
         changed: true
       })
       dispatch(check_hours_filled());
