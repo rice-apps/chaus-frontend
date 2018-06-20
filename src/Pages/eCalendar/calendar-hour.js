@@ -7,6 +7,7 @@ import { toggle_availability } from '../../actions/employeeActions'
 //Material Imports
 import RaisedButton from 'material-ui/RaisedButton';
 import ChangeButton from './/changes-button'
+import PreferenceSelect from './preferenceSelect';
 
 const changeColor = (preference) => {
   switch(preference) {
@@ -47,22 +48,21 @@ const changeColor2 = (preference) => {
   }
 }
 
-const CalendarHour = ({dayname, hour, toggle_availability}) => {
+const setButton = (dayname, hour) => {
+  if (dayname == 'S' && hour.hour == '24') {
+    return (
+      <ChangeButton />
+    )
+  }
+  return (<PreferenceSelect dayname={dayname} hour={hour} style={{height: 34}} />)
+}
+
+const CalendarHour = ({dayname, hour}) => {
   return (
-      <div style={{height: 34, display: 'flex', justifyContent: 'center'}}>
-          {dayname == 'S' && hour.hour== '24' ? <ChangeButton/> : <RaisedButton backgroundColor={changeColor2(hour.available)} disabled={hour.closed} style={{height:34}}
-          onClick={() => toggle_availability(dayname, hour.hour, hour.available)}/>}
+    <div style={{height: 34, display: 'flex', justifyContent: 'center'}}>
+      {setButton(dayname, hour)}
     </div>
   )
 }
 
-export default connect (
-    (state) => {
-      return {}
-    },
-    (dispatch) => {
-        return {
-          toggle_availability: (dayname, hour, availability) => dispatch(toggle_availability(dayname, hour, availability))
-        }
-    }
-)(CalendarHour)
+export default CalendarHour;
