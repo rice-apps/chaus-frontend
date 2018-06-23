@@ -64,7 +64,7 @@ const styles = {
     }
 }
 
-const ModalList = ({p1, p2, p3, p4, schedule, toggle_scheduled, save_shift, dayname, hour, userHours, users}) => {
+const ModalList = ({p1, p2, p3, p4, schedule, toggle_scheduled, save_shift, dayname, hour, userHours, users, activeUserRole}) => {
     console.log("MODAL CALLED")
 
     // Change 'allowedShifts' to reflect max capacity of each shift (default 3 right now)
@@ -90,34 +90,86 @@ const ModalList = ({p1, p2, p3, p4, schedule, toggle_scheduled, save_shift, dayn
                         <GridTile>
                             <h1>Priority 1 (Preferred)</h1>
                             {p1.map((netid) => {
+<<<<<<< HEAD
                                 return (
                                     <Button variant="Raised"
                                         style={{margin: 2}} key={netid} label={getName(netid, users)} backgroundColor={getButtonColor(netid, userHours)} onClick={() => toggle_scheduled(netid)} />
                                 )
+=======
+                                if (netid != "undefined") {
+                                    return (
+                                        <RaisedButton
+                                            style={{margin: 2}} 
+                                            key={netid} 
+                                            label={getName(netid, users)} 
+                                            backgroundColor={getButtonColor(netid, userHours)} 
+                                            onClick={() => toggle_scheduled(netid)} />
+                                    )
+                                }
+>>>>>>> security
                             })}
                         </GridTile>
                         <GridTile>
                             <h1>Priority 2 (Available)</h1>
                             {p2.map((netid) => {
+<<<<<<< HEAD
                                 return (
                                     <Button variant="Raised" style={{margin: 2}} key={netid} label={getName(netid, users)} backgroundColor={getButtonColor(netid, userHours)} onClick={() => toggle_scheduled(netid)} />
                                 )
+=======
+                                if (netid != "undefined") {
+                                    return (
+                                        <RaisedButton
+                                            style={{margin: 2}} 
+                                            key={netid} 
+                                            label={getName(netid, users)} 
+                                            backgroundColor={getButtonColor(netid, userHours)} 
+                                            onClick={() => toggle_scheduled(netid)} />
+                                    )
+                                }
+>>>>>>> security
                             })}
                         </GridTile>
                         <GridTile>
                             <h1>Priority 3 (Not Preferred)</h1>
                             {p3.map((netid) => {
+<<<<<<< HEAD
                                 return (
                                     <Button variant="Raised" style={{margin: 2}} key={netid} label={getName(netid, users)} backgroundColor={getButtonColor(netid, userHours)} onClick={() => toggle_scheduled(netid)} />
                                 )
+=======
+                                if (netid != "undefined") {
+                                    return (
+                                        <RaisedButton
+                                            style={{margin: 2}} 
+                                            key={netid} 
+                                            label={getName(netid, users)} 
+                                            backgroundColor={getButtonColor(netid, userHours)} 
+                                            onClick={() => toggle_scheduled(netid)} />
+                                    )
+                                }
+>>>>>>> security
                             })}
                         </GridTile>
                         <GridTile>
                             <h1>Priority 4 (Unavailable)</h1>
                             {p4.map((netid) => {
+<<<<<<< HEAD
                                 return (
                                     <Button variant="Raised" style={{margin: 2}} key={netid} label={getName(netid, users)} backgroundColor={getButtonColor(netid, userHours)} onClick={() => toggle_scheduled(netid)} />
                                 )
+=======
+                                if (netid != "undefined") {
+                                    return (
+                                        <RaisedButton
+                                            style={{margin: 2}} 
+                                            key={netid} 
+                                            label={getName(netid, users)} 
+                                            backgroundColor={getButtonColor(netid, userHours)} 
+                                            onClick={() => toggle_scheduled(netid)} />
+                                    )
+                                }
+>>>>>>> security
                             })}
                         </GridTile>
                     </GridList>
@@ -150,7 +202,14 @@ const ModalList = ({p1, p2, p3, p4, schedule, toggle_scheduled, save_shift, dayn
                         <GridTile>
                             <div style={{display: 'flex'}}>
                                 <span style={{flex:1}}/>
+<<<<<<< HEAD
                                 <Button variant="Raised" backgroundColor="#a4c639" icon={<Save />} onClick={() => save_shift(schedule, p1, p2, p3, p4, dayname, hour)} />
+=======
+                                {activeUserRole == 'admin'
+                                ? <RaisedButton backgroundColor="#a4c639" icon={<Save color={fullWhite}/>} onClick={() => save_shift(schedule, p1, p2, p3, p4, dayname, hour)} />
+                                : <div />}
+                                
+>>>>>>> security
                             </div>
                         </GridTile>
                     </GridList>
@@ -171,7 +230,9 @@ export default connect (
             dayname: state.mCal.activeShiftReducer.dayname,
             hour: state.mCal.activeShiftReducer.hour,
             userHours: state.mCal.activeShiftReducer.userHours,
-            users: state.userReducer.users}
+            users: state.eCal.userReducer.users,
+            activeUserRole: state.auth.activeUserReducer.role
+        }
     },
     (dispatch) => {
         return {

@@ -2,9 +2,10 @@
  * Created by Will on 2/17/2018.
  */
 import { combineReducers } from 'redux'
+import 'babel-polyfill'; // for async/await
 
 const monDefault = [
-  {hour: 7, available: 0, changed: false, closed: false},
+  {hour: 7, available: 0, changed: false, closed: true},
   {hour: 8, available: 0, changed: false, closed: false},
   {hour: 9, available: 0, changed: false, closed: false},
   {hour: 10, available: 0, changed: false, closed: false},
@@ -15,16 +16,16 @@ const monDefault = [
   {hour: 15, available: 0, changed: false, closed: false},
   {hour: 16, available: 0, changed: false, closed: false },
   {hour: 17, available: 0, changed: false, closed: false},
-  {hour: 18, available: 0, changed: false, closed: false},
-  {hour: 19, available: 0, changed: false, closed: false},
-  {hour: 20, available: 0, changed: false, closed: false},
-  {hour: 21, available: 0, changed: false, closed: false},
-  {hour: 22, available: 0, changed: false, closed: false},
-  {hour: 23, available: 0, changed: false, closed: false},
-  {hour: 24, available: 0, changed: false, closed: false}
+  {hour: 18, available: 0, changed: false, closed: true},,
+  {hour: 19, available: 0, changed: false, closed: true},
+  {hour: 20, available: 0, changed: false, closed: true},
+  {hour: 21, available: 0, changed: false, closed: true},
+  {hour: 22, available: 0, changed: false, closed: true},
+  {hour: 23, available: 0, changed: false, closed: true},
+  {hour: 24, available: 0, changed: false, closed: true}
 ]
 const tuesDefault = [
-  {hour: 7, available: 0, changed: false, closed: false},
+  {hour: 7, available: 0, changed: false, closed: true},
   {hour: 8, available: 0, changed: false, closed: false},
   {hour: 9, available: 0, changed: false, closed: false},
   {hour: 10, available: 0, changed: false, closed: false},
@@ -35,16 +36,16 @@ const tuesDefault = [
   {hour: 15, available: 0, changed: false, closed: false},
   {hour: 16, available: 0, changed: false, closed: false },
   {hour: 17, available: 0, changed: false, closed: false},
-  {hour: 18, available: 0, changed: false, closed: false},
-  {hour: 19, available: 0, changed: false, closed: false},
-  {hour: 20, available: 0, changed: false, closed: false},
-  {hour: 21, available: 0, changed: false, closed: false},
-  {hour: 22, available: 0, changed: false, closed: false},
-  {hour: 23, available: 0, changed: false, closed: false},
-  {hour: 24, available: 0, changed: false, closed: false}
+  {hour: 18, available: 0, changed: false, closed: true},,
+  {hour: 19, available: 0, changed: false, closed: true},
+  {hour: 20, available: 0, changed: false, closed: true},
+  {hour: 21, available: 0, changed: false, closed: true},
+  {hour: 22, available: 0, changed: false, closed: true},
+  {hour: 23, available: 0, changed: false, closed: true},
+  {hour: 24, available: 0, changed: false, closed: true}
 ]
 const wedDefault = [
-  {hour: 7, available: 0, changed: false, closed: false},
+  {hour: 7, available: 0, changed: false, closed: true},
   {hour: 8, available: 0, changed: false, closed: false},
   {hour: 9, available: 0, changed: false, closed: false},
   {hour: 10, available: 0, changed: false, closed: false},
@@ -55,16 +56,16 @@ const wedDefault = [
   {hour: 15, available: 0, changed: false, closed: false},
   {hour: 16, available: 0, changed: false, closed: false },
   {hour: 17, available: 0, changed: false, closed: false},
-  {hour: 18, available: 0, changed: false, closed: false},
-  {hour: 19, available: 0, changed: false, closed: false},
-  {hour: 20, available: 0, changed: false, closed: false},
-  {hour: 21, available: 0, changed: false, closed: false},
-  {hour: 22, available: 0, changed: false, closed: false},
-  {hour: 23, available: 0, changed: false, closed: false},
-  {hour: 24, available: 0, changed: false, closed: false}
+  {hour: 18, available: 0, changed: false, closed: true},,
+  {hour: 19, available: 0, changed: false, closed: true},
+  {hour: 20, available: 0, changed: false, closed: true},
+  {hour: 21, available: 0, changed: false, closed: true},
+  {hour: 22, available: 0, changed: false, closed: true},
+  {hour: 23, available: 0, changed: false, closed: true},
+  {hour: 24, available: 0, changed: false, closed: true}
 ]
 const thursDefault = [
-  {hour: 7, available: 0, changed: false, closed: false},
+  {hour: 7, available: 0, changed: false, closed: true},
   {hour: 8, available: 0, changed: false, closed: false},
   {hour: 9, available: 0, changed: false, closed: false},
   {hour: 10, available: 0, changed: false, closed: false},
@@ -75,16 +76,16 @@ const thursDefault = [
   {hour: 15, available: 0, changed: false, closed: false},
   {hour: 16, available: 0, changed: false, closed: false },
   {hour: 17, available: 0, changed: false, closed: false},
-  {hour: 18, available: 0, changed: false, closed: false},
-  {hour: 19, available: 0, changed: false, closed: false},
-  {hour: 20, available: 0, changed: false, closed: false},
-  {hour: 21, available: 0, changed: false, closed: false},
-  {hour: 22, available: 0, changed: false, closed: false},
-  {hour: 23, available: 0, changed: false, closed: false},
-  {hour: 24, available: 0, changed: false, closed: false}
+  {hour: 18, available: 0, changed: false, closed: true},,
+  {hour: 19, available: 0, changed: false, closed: true},
+  {hour: 20, available: 0, changed: false, closed: true},
+  {hour: 21, available: 0, changed: false, closed: true},
+  {hour: 22, available: 0, changed: false, closed: true},
+  {hour: 23, available: 0, changed: false, closed: true},
+  {hour: 24, available: 0, changed: false, closed: true}
 ]
 const friDefault = [
-  {hour: 7, available: 0, changed: false, closed: false},
+  {hour: 7, available: 0, changed: false, closed: true},
   {hour: 8, available: 0, changed: false, closed: false},
   {hour: 9, available: 0, changed: false, closed: false},
   {hour: 10, available: 0, changed: false, closed: false},
@@ -94,8 +95,8 @@ const friDefault = [
   {hour: 14, available: 0, changed: false, closed: false},
   {hour: 15, available: 0, changed: false, closed: false},
   {hour: 16, available: 0, changed: false, closed: false },
-  {hour: 17, available: 0, changed: false, closed: true},
-  {hour: 18, available: 0, changed: false, closed: true},
+  {hour: 17, available: 0, changed: false, closed: false},
+  {hour: 18, available: 0, changed: false, closed: true},,
   {hour: 19, available: 0, changed: false, closed: true},
   {hour: 20, available: 0, changed: false, closed: true},
   {hour: 21, available: 0, changed: false, closed: true},
@@ -107,13 +108,13 @@ const satDefault = [
   {hour: 7, available: 0, changed: false, closed: true},
   {hour: 8, available: 0, changed: false, closed: true},
   {hour: 9, available: 0, changed: false, closed: true},
-  {hour: 10, available: 0, changed: false, closed: false},
-  {hour: 11, available: 0, changed: false, closed: false},
-  {hour: 12, available: 0, changed: false, closed: false },
-  {hour: 13, available: 0, changed: false, closed: false},
-  {hour: 14, available: 0, changed: false, closed: false},
-  {hour: 15, available: 0, changed: false, closed: false},
-  {hour: 16, available: 0, changed: false, closed: false},
+  {hour: 10, available: 0, changed: false, closed: true},
+  {hour: 11, available: 0, changed: false, closed: true},
+  {hour: 12, available: 0, changed: false, closed: true },
+  {hour: 13, available: 0, changed: false, closed: true},
+  {hour: 14, available: 0, changed: false, closed: true},
+  {hour: 15, available: 0, changed: false, closed: true},
+  {hour: 16, available: 0, changed: false, closed: true},
   {hour: 17, available: 0, changed: false, closed: true},
   {hour: 18, available: 0, changed: false, closed: true},
   {hour: 19, available: 0, changed: false, closed: true},
@@ -131,36 +132,35 @@ const sunDefault = [
   {hour: 11, available: 0, changed: false, closed: true},
   {hour: 12, available: 0, changed: false, closed: true },
   {hour: 13, available: 0, changed: false, closed: true},
-  {hour: 14, available: 0, changed: false, closed: false},
-  {hour: 15, available: 0, changed: false, closed: false},
-  {hour: 16, available: 0, changed: false, closed: false },
-  {hour: 17, available: 0, changed: false, closed: false},
-  {hour: 18, available: 0, changed: false, closed: false},
-  {hour: 19, available: 0, changed: false, closed: false},
-  {hour: 20, available: 0, changed: false, closed: false},
-  {hour: 21, available: 0, changed: false, closed: false},
-  {hour: 22, available: 0, changed: false, closed: false},
-  {hour: 23, available: 0, changed: false, closed: false},
-  {hour: 24, available: 0, changed: false, closed: false}
+  {hour: 14, available: 0, changed: false, closed: true},
+  {hour: 15, available: 0, changed: false, closed: true},
+  {hour: 16, available: 0, changed: false, closed: true},
+  {hour: 17, available: 0, changed: false, closed: true},
+  {hour: 18, available: 0, changed: false, closed: true},
+  {hour: 19, available: 0, changed: false, closed: true},
+  {hour: 20, available: 0, changed: false, closed: true},
+  {hour: 21, available: 0, changed: false, closed: true},
+  {hour: 22, available: 0, changed: false, closed: true},
+  {hour: 23, available: 0, changed: false, closed: true},
+  {hour: 24, available: 0, changed: false, closed: true}
 ]
 
-const scheduleReducer = (state={schedule:{M:monDefault, T:tuesDefault, W:wedDefault, R:thursDefault, F:friDefault, S:satDefault, U:sunDefault}}, action) => {
+const scheduleReducer = (state={schedule:{U:sunDefault, M:monDefault, T:tuesDefault, W:wedDefault, R:thursDefault, F:friDefault, S:satDefault}, hoursFilled: false}, action) => {
     let new_schedule;
     switch(action.type) {
         case "GET_AVAILABILITY":
-            //console.log(action.schedule)
+            console.log("THIS IS THE SCHEDULE when GET_AVAILABILITY is CALLED: " + action.schedule)
             new_schedule = {
-              M: action.schedule[0],
-              T: action.schedule[1],
-              W: action.schedule[2],
-              R: action.schedule[3],
-              F: action.schedule[4],
-              S: action.schedule[5],
-              U: action.schedule[6],
+              U: action.schedule[0],
+              M: action.schedule[1],
+              T: action.schedule[2],
+              W: action.schedule[3],
+              R: action.schedule[4],
+              F: action.schedule[5],
+              S: action.schedule[6],
             }
             return {...state, schedule:new_schedule}
-        case "GET_SCHEDULED":
-            return {...state, schedule:action.schedule}
+
         case "CHANGE_HOUR_M":
             new_schedule = []
             state.schedule.M.map(
@@ -267,6 +267,19 @@ const scheduleReducer = (state={schedule:{M:monDefault, T:tuesDefault, W:wedDefa
             }
             console.log(new_week)
             return {...state, schedule: new_week}
+        case "CHECK_HOURS_FILLED":
+            let hoursFilled = true;
+            // Check each day in schedule in parallel
+            let availability = state.schedule
+            Object.keys(availability).forEach(async (day) => {
+              // Now iterate through each preference in parallel
+              availability[day].forEach(async (shiftObj) => {
+                if (shiftObj['closed'] == false && shiftObj['available'] == 0) {
+                  hoursFilled = false
+                }
+              })
+            })
+            return {...state, hoursFilled}
         default:
             return state
     }
@@ -275,7 +288,7 @@ const scheduleReducer = (state={schedule:{M:monDefault, T:tuesDefault, W:wedDefa
 const sideBarReducer = (state={toggle:false}, action) => {
     switch(action.type) {
         case "TOGGLEBURGER":
-            return {...state, toggle:action.toggle}
+            return {...state, toggle:!state.toggle}
         default:
             return state
     }
@@ -290,11 +303,13 @@ const userReducer = (state={netids:[], users: []}, action) => {
             console.log(action.netids)
             return {...state, netids:action.netids}
         case "GET_USERS":
-            let netids = []
-            for (var user in action.users) {
-                netids.push(action.users[user].netid)
+            let newarr = []
+            for (let i in action.users) {
+              console.log("netids: " + action.users[i].netid)
+              newarr.push(action.users[i].netid)
+
             }
-            return {...state, netids:netids, users: action.users}
+            return {...state, netids:newarr, users: action.users}
         case "CREATE_USER_FAILED":
             return {...state}
         case "CREATE_USER_SUCCESS":
@@ -317,19 +332,47 @@ const userReducer = (state={netids:[], users: []}, action) => {
             // // Remove deleted user from users: filter array without user
             // new_users = state.users.filter(user => user.netid != action.netid);
             return {...state, netids: new_netids, users: action.users}
+        case "USER_HOUR_UPDATE":
+            // Find our user by id
+            let usersCopy = state.users
+            let userIndex = usersCopy.findIndex((user) => {
+                return user._id == action.user._id
+            });
+            // Replace in copied array
+            usersCopy.splice(userIndex, 1, action.user)
+            return {...state, users: usersCopy}
         default:
             return state
     }
 }
 
-const activeReducer = (state={user:{}, schedule:{M:[], T:[], W:[], R:[], F:[], S:[], U:[]}}, action) => {
+const defaultScheduled = {
+  M:[],
+
+}
+
+const activeReducer = (state={user:{}, schedule:{U:[], M:[], T:[], W:[], R:[], F:[], S:[]}}, action) => {
 
     switch(action.type) {
         case "USER_SELECTED":
-            console.log(action.user)
             return {...state, user:action.user}
+        case "GET_SCHEDULED":
+            let new_schedule = {
+              U: action.schedule[0],
+              M: action.schedule[1],
+              T: action.schedule[2],
+              W: action.schedule[3],
+              R: action.schedule[4],
+              F: action.schedule[5],
+              S: action.schedule[6],
+            }
+            return {...state, schedule:new_schedule}
         case "GENERATE":
             return {...state, schedule:action.schedule}
+        case "ACTIVEUSER_IDEAL_HOUR_UPDATE":
+            return {...state, user: {...state.user, idealHour: action.hours}}
+        case "ACTIVEUSER_MAX_HOUR_UPDATE":
+            return {...state, user: {...state.user, maxHour: action.hours}}
         default:
             return state
     }

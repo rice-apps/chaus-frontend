@@ -6,8 +6,7 @@ import { resource } from './masterActions'
 
 export const toggleMenu = (state) => {
     return (dispatch) => dispatch({
-        type:"TOGGLEBURGER",
-        toggle:!state
+        type:"TOGGLEBURGER"
     })
 }
 

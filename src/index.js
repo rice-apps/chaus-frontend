@@ -4,9 +4,14 @@ import App from "./components/App";
 import LoginPage from "./Pages/login.js";
 import Auth from "./Pages/Auth/auth";
 import FullCalendar from "./Pages/eCalendar/full-calendar.js"
+<<<<<<< HEAD
 import AddRemove from "./Pages/AddDrop/add-remove.js"
 import UserManagement from "./Pages/userManagement.js"
 import Reducer from './reducers/index'
+=======
+import MFullCalendar from './Pages/mCalendar/master-calendar'
+import Reducer from './reducers/reducerCombined'
+>>>>>>> security
 import { Provider } from 'react-redux'
 import thunkMiddleware from 'redux-thunk'
 
@@ -20,14 +25,11 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 
 import { BrowserRouter, Route, Switch, Link, Redirect } from 'react-router-dom'
 
-import {get_users} from './actions/userActions'
+import {initializeStates, initializeUser} from './actions/userActions'
 
-// import {get_netids} from './actions/userActions'
 
-//import { Router, Route, browserHistory ,hashHistory} from 'react-router'
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 
-// const combinedReducer = combineReducers({...Reducer, routing: routerReducer});
 
 // Apollo Setup
 const httpLink = new HttpLink({ uri: 'http://localhost:4000' })
@@ -37,8 +39,9 @@ const client = new ApolloClient({
 })
 
 const store = createStore(
-    Reducer, applyMiddleware(thunkMiddleware),
+    Reducer, applyMiddleware(thunkMiddleware)
 )
+<<<<<<< HEAD
 
 //const history = syncHistoryWithStore(hashHistory, store)
 
@@ -71,4 +74,12 @@ ReactDOM.render(
      </ApolloProvider>
    </Provider>
    , document.getElementById('app')
+=======
+initializeStates()(store.dispatch)
+initializeUser()(store.dispatch)
+ReactDOM.render(
+    <Provider store={store}>
+        <App/>
+    </Provider>, document.getElementById('app')
+>>>>>>> security
 );

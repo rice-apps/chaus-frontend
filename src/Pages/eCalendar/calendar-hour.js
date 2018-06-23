@@ -7,6 +7,7 @@ import { toggle_availability } from '../../actions/employeeActions'
 //Material Imports
 import Button from 'material-ui/Button';
 import ChangeButton from './/changes-button'
+import PreferenceSelect from './preferenceSelect';
 
 const changeColor = (preference) => {
   switch(preference) {
@@ -35,35 +36,33 @@ const changeColor2 = (preference) => {
   // If we want to stick to a single color scheme
   switch (preference) {
     case 1:
-      return "#2196f3"
+      return "#5fa55a" // green
     case 2:
-      return "#64b5f6"
+      return "#f6d51f" // yellow
     case 3:
-      return "#bbdefb" // light blue
+      return "#fa8925" // orange
     case 4:
-      return "#f44336" // red
+      return "#fa5457" // red
     default:
-      return "#607d8b"
+      return "#01b4bc" // blue
   }
 }
 
-const CalendarHour = ({dayname, hour, toggle_availability}) => {
-  console.log(hour)
+const setButton = (dayname, hour) => {
+  if (dayname == 'S' && hour.hour == '24') {
+    return (
+      <ChangeButton />
+    )
+  }
+  return (<PreferenceSelect dayname={dayname} hour={hour} style={{height: 34}} />)
+}
+
+const CalendarHour = ({dayname, hour}) => {
   return (
-      <div style={{height: 34, display: 'flex', justifyContent: 'center'}}>
-          {dayname == 'S' && hour.hour== '24' ? <ChangeButton/> : <Button variant="Raised" backgroundColor={changeColor2(hour.available)} disabled={hour.closed} style={{height:34}}
-          onClick={() => toggle_availability(dayname, hour.hour, hour.available)}/>}
+    <div style={{height: 34, display: 'flex', justifyContent: 'center'}}>
+      {setButton(dayname, hour)}
     </div>
   )
 }
 
-export default connect (
-    (state) => {
-      return {}
-    },
-    (dispatch) => {
-        return {
-          toggle_availability: (dayname, hour, availability) => dispatch(toggle_availability(dayname, hour, availability))
-        }
-    }
-)(CalendarHour)
+export default CalendarHour;

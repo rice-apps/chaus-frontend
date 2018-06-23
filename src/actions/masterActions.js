@@ -1,15 +1,20 @@
+import { setHours } from "./userActions";
+
 /**
  * Created by Will and Josh on 11/19/2017.
  */
 // export const url =  'http://riceapps.org:3240';
+<<<<<<< HEAD
 // export const url =  'http://localhost:3000/api';
 export const url = 'http://chaus.riceapps.org/api'
 
+=======
+export const url =  'http://localhost:3000/api';
+>>>>>>> security
 //export const url =  'https://chaus-backend.herokuapp.com';
 // export const url =  'http://localhost:3000';
 
 export const resource = (method, endpoint, payload) => {
-    // console.log("THE ENDPOINT: " + endpoint + "\n" + "THE PAYLOAD: " + payload + "\n" + "THE METHOD: " + method)
     const options =  {
         method,
         credentials: 'include',
@@ -19,8 +24,6 @@ export const resource = (method, endpoint, payload) => {
     }
     if (payload) options.body = JSON.stringify(payload)
 
-    // console.log('The options for ', endpoint, options)
-    // console.log('The url: ',`${url}/${endpoint}`)
     return fetch(`${url}/${endpoint}`, options)
         .then(r => {
             if (r.status === 200) {
@@ -53,7 +56,7 @@ const create_users_hours = () =>{
         console.log("RRRR: ", r)
         Promise.all(r.map((user) => {userHrs[user.netid] = update_user_total_hours(user.netid,
             {max: user.maxHour,
-            min: user.minHour,
+            ideal: user.idealHour,
             total: 0})
         }))
         .then(() => {
@@ -71,8 +74,6 @@ export const open_modal = (dayname, hour) => {
         console.log(dayname, hour.hour)
         resource('GET', 'master/shift/'+ dayname + '/' + (hour.hour - 7)).then( r => {
             console.log("PLEASE WORK")
-            //console.log("Here is something else", resource('GET','users').then (s => {}))
-            //console.log("HERE IS R", r);
             create_users_hours()
             .then((promise) => {
               var user_hours = {}
@@ -80,6 +81,9 @@ export const open_modal = (dayname, hour) => {
                 console.log(promises)
                 Object.keys(promise).forEach((key, index) => {
                   user_hours[key] = promises[index]
+                  let netid = key;
+                  let hours = promises[index].total
+                  dispatch(setHours(netid, hours, 'total'))
                 })
                 console.log("user hour object", user_hours)
                 return dispatch({

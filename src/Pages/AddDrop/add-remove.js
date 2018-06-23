@@ -12,8 +12,13 @@ import {List, ListItem} from 'material-ui/List';
 import {Container, Row, Col} from 'reactstrap';
 // Actions
 import {add_user, remove_user} from '../../actions/userActions'
+<<<<<<< HEAD
 // Components
 import Sidebar from '../sidebar.js'
+=======
+import Sidebar from '../sidebar.js'
+
+>>>>>>> security
 
 const list_style = {
   width: '30vw',
@@ -50,9 +55,7 @@ class AddUser extends React.Component {
     this.state = {
       netid: "",
       firstName: "",
-      lastName: "",
-      minHours: undefined,
-      maxHours: undefined
+      lastName: ""
     }
   };
 
@@ -60,18 +63,11 @@ class AddUser extends React.Component {
     console.log("Running!")
     // Dispatch add action
     let state_copy = {...this.state}
-    let {netid, firstName, lastName, minHours, maxHours} = state_copy;
-    // Check if optional fields are empty
-    if (minHours == "") {
-      minHours = undefined
-    }
-    if (maxHours == "") {
-      maxHours = undefined
-    }
-    console.log(netid, firstName, lastName, minHours, maxHours);
-    this.props.add_user(netid, firstName, lastName, minHours, maxHours);
+    let {netid, firstName, lastName} = state_copy;
+    console.log(netid, firstName, lastName);
+    this.props.add_user(netid, firstName, lastName);
     // Clear values
-    this.setState({netid: "", firstName: "", lastName: "", minHours: "", maxHours: ""});
+    this.setState({netid: "", firstName: "", lastName: ""});
   }
 
   render() {
@@ -98,6 +94,7 @@ class AddUser extends React.Component {
           underlineShow={false}
           />
         <Divider />
+<<<<<<< HEAD
         <TextField
           floatingLabelText="Minimum Hours"
           onChange={(e, val) => this.setState({minHours: val})}
@@ -114,6 +111,9 @@ class AddUser extends React.Component {
         <Divider />
         <Button
           variant="Raised"
+=======
+        <RaisedButton
+>>>>>>> security
           label="Submit"
           onClick={this.handleSubmit.bind(this)}
           />
@@ -122,43 +122,18 @@ class AddUser extends React.Component {
   }
 }
 
-// const AddUser = ({add_user}) => {
-//   return (
-//     <div style={addUserStyle}>
-//       <TextField
-//         floatingLabelText="Netid"
-//         />
-//       <Divider />
-//       <TextField
-//         floatingLabelText="First Name"
-//         />
-//       <Divider />
-//       <TextField
-//         floatingLabelText="Last Name"
-//         />
-//       <Divider />
-//       <TextField
-//         floatingLabelText="Minimum Hours"
-//         />
-//       <Divider />
-//       <TextField
-//         floatingLabelText="Maximum Hours"
-//         />
-//       <Divider />
-//       <RaisedButton
-//         label="Submit"
-//         onClick={() => add_user()}
-//         />
-//     </div>
-//   )
-// }
 
 const AddRemove = ({users, netids, add_user, remove_user}) => {
   return (
     <MuiThemeProvider>
     <div style={{display: 'inline-block'}}>
+<<<<<<< HEAD
         <div style={{marginBottom: "50px", zIndex: 10, position: 'relative'}}>
             <Sidebar/>
+=======
+        <div style={{marginBottom: '50px', zIndex: 10, position: 'relative'}}>
+          <Sidebar/>
+>>>>>>> security
         </div>
         <div style={{alignContent: 'right'}}>
           <AddUser add_user={add_user}/>
@@ -203,8 +178,8 @@ export default connect (
     },
     (dispatch, ownProps) => {
         return {
-          add_user: (netid, firstName, lastName, minHour, maxHour) => dispatch(
-            add_user(netid, firstName, lastName, minHour, maxHour)),
+          add_user: (netid, firstName, lastName) => dispatch(
+            add_user(netid, firstName, lastName)),
           remove_user: (netid) => dispatch(remove_user(netid))
         }
     }
