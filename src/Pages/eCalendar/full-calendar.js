@@ -4,7 +4,7 @@
 
 import React, {Component} from 'react'
 import { connect } from 'react-redux';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
 import EmployeeCalendar from './/employee-calendar'
 import UserList from './/user-list'
 import UserInfo from './/individualUserPage'

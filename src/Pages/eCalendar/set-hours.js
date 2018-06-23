@@ -3,8 +3,8 @@
  */
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import TextField from 'material-ui/TextField'
-import RaisedButton from 'material-ui/RaisedButton'
+import TextField from '@material-ui/core/TextField'
+import { Button } from '@material-ui/core/Button'
 
 const setHoursStyle = {
 
@@ -58,7 +58,8 @@ class SetHours extends React.Component {
                 value={this.state.maxHours}
                 />
                 <br />
-                <RaisedButton
+                <Button
+                variant="Raised"
                 label="Submit"
                 onClick={this.handleSubmit.bind(this)}
                 disabled={this.state.disableSubmit || (this.state.idealHours == "" && this.state.maxHours == "")}

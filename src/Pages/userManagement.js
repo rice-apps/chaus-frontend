@@ -9,11 +9,11 @@ import Sidebar from './sidebar.js'
 import { Query, Mutation } from 'react-apollo';
 import gql from 'graphql-tag'
 // Material Imports
-import Grid from 'material-ui/Grid';
-import List, { ListItem, ListItemSecondaryAction, ListItemText } from 'material-ui/List';
-import IconButton from 'material-ui/IconButton';
-import DeleteIcon from '@material-ui/icons/Delete';
-import TextField from 'material-ui/TextField';
+import Grid from '@material-ui/core/Grid';
+import List, { ListItem, ListItemSecondaryAction, ListItemText } from '@material-ui/core/List';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@@material-ui/core/icons/Delete';
+import TextField from '@material-ui/core/TextField';
 
 /*
   Inputs:

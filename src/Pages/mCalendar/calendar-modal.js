@@ -6,8 +6,8 @@ import {connect} from 'react-redux'
 import {close_modal} from '../../actions/masterActions'
 import ModalList from './modal-list'
 //Material Imports
-import Dialog from 'material-ui/Dialog';
-import Button from 'material-ui/Button';
+import Dialog from '@material-ui/core/Dialog';
+import { Button } from '@material-ui/core';
 
 const DayTitle = (dayname) => {
     switch(dayname) {

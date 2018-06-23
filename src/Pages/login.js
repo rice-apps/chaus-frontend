@@ -2,26 +2,21 @@
  * Created by Will Mundy, Danny Andreini on 4/8/18.
  */
 import React, {Component} from 'react'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-<<<<<<< HEAD
-import Button from 'material-ui/Button';
-=======
-import RaisedButton from 'material-ui/RaisedButton';
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
 import {get_users} from '../actions/userActions'
->>>>>>> security
-
+import { Button } from '@material-ui/core';
 const LOGINURL = 'https://idp.rice.edu/idp/profile/cas/login';
 const SERVICEURL = 'http://chaus.riceapps.org/auth';
 
 const divStyle = {
-  backgroundColor: '#5e6c8a', // light blue material-ui
+  backgroundColor: '#5e6c8a', // light blue @material-ui/core
   display: 'flex',
   justifyContent: 'center',
   height: '100vh'
 }
 
 const buttonStyle = {
-  // backgroundColor: '#64B5F6', // light blue material-ui
+  // backgroundColor: '#64B5F6', // light blue @material-ui/core
   display: 'flex',
   justifyContent: 'center',
   height: '30px',
@@ -29,7 +24,7 @@ const buttonStyle = {
 }
 
 const bbuttonStyle = {
-  // backgroundColor: '#64B5F6', // light blue material-ui
+  // backgroundColor: '#64B5F6', // light blue @material-ui/core
   display: 'flex',
   justifyContent: 'center',
   height: '40px',

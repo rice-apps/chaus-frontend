@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import RaisedButton from 'material-ui/RaisedButton';
-import TextField from 'material-ui/TextField';
-import {List, ListItem} from 'material-ui/List';
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
+import RaisedButton from '@material-ui/core/RaisedButton';
+import TextField from '@material-ui/core/TextField';
+import {List, ListItem} from '@material-ui/core/List';
 // Reactstrap
 import {Container, Row, Col} from 'reactstrap';
 // Actions

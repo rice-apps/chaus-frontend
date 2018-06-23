@@ -4,27 +4,16 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import Button from 'material-ui/Button';
-import AppBar from 'material-ui/AppBar';
-import Drawer from 'material-ui/Drawer';
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
+import AppBar from '@material-ui/core/AppBar';
+import Drawer from '@material-ui/core/Drawer';
 
 import {toggleMenu, changePage} from '../actions/sidebarActions';
-import { MenuItem } from 'material-ui/Menu';
+import { MenuItem } from '@material-ui/core/Menu';
 import {Link} from 'react-router-dom';
 
-import NavigationMenu from '@material-ui/icons/menu';
+import NavigationMenu from '@material-ui/icons/Menu';
 
-<<<<<<< HEAD
-const SideBar = ({toggle, toggleMenu, changePage, page}) => {
-    let pageTitle
-    if (page == "mCalendar") {
-        pageTitle = "Master Calendar"
-    } else if (page == "eCalendar") {
-        pageTitle = "Employee Availability"
-    }else {
-        pageTitle = "Add/Remove Users"
-=======
 const pageTitle = () => {
     switch (window.location.pathname) {
         case "/mcal":
@@ -33,14 +22,12 @@ const pageTitle = () => {
             return "Add/Remove Users"
         default:
             return "Employee Calendar"
->>>>>>> security
     }
 }
 
 const SideBar = ({toggle, toggleMenu, changePage}) => {
     return (
         <div style={{position: 'fixed', width: '100%', zIndex: 1}}>
-            <MuiThemeProvider >
                 <AppBar
                     title={pageTitle()}
                     titleStyle={{color: 'white'}}
@@ -55,23 +42,9 @@ const SideBar = ({toggle, toggleMenu, changePage}) => {
                     </a>
                 </AppBar>
 
-            </MuiThemeProvider>
-
-            <MuiThemeProvider>
 
                 <Drawer docked={false} open={toggle} onRequestChange={(open) => toggleMenu()}>
 
-<<<<<<< HEAD
-                        <MenuItem leftIcon={<NavigationMenu color={"black"} />} onClick={() => toggleMenu(toggle)}>
-                        </MenuItem>
-                        <MenuItem><Link to='/ecal' onClick={() => (changePage("eCalendar"), toggleMenu(toggle))}>Employee Calendar</Link></MenuItem>
-                        <MenuItem><Link to='/mcal' onClick={() => (changePage("mCalendar"), toggleMenu(toggle))}>Master Calendar</Link></MenuItem>
-                        <MenuItem><Link to='/addremove' onClick={() => (changePage("addRemove"), toggleMenu(toggle))}>Add & Remove Users</Link></MenuItem>
-
-                        <Link to='/' onClick={() => localStorage.removeItem("token")}>
-                            <Button variant="Raised" label="Logout" secondary={true} style={{"margin-left":15}}/>
-                        </Link>
-=======
                     <MenuItem leftIcon={<NavigationMenu color={"black"} />} onClick={() => toggleMenu()}>
                     </MenuItem>
                     <Link to='/ecal' onClick={() => (changePage("eCalendar"), toggleMenu())}><MenuItem>Employee Calendar</MenuItem></Link>
@@ -80,10 +53,8 @@ const SideBar = ({toggle, toggleMenu, changePage}) => {
                     <Link to='/' onClick={() => localStorage.removeItem("token")}>
                         <RaisedButton label="Logout" secondary={true} style={{"margin-left":15}}/>
                     </Link>
->>>>>>> security
                 </Drawer>
 
-            </MuiThemeProvider>
 
         </div>
     )

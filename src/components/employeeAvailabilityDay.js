@@ -9,7 +9,7 @@ import Sidebar from './sidebar.js'
 import { Query, Mutation } from 'react-apollo';
 import gql from 'graphql-tag'
 // Material Imports
-import Grid from 'material-ui/Grid';
+import Grid from '@material-ui/core/Grid';
 
 // Dumb Components
 const Shift = ({shift}) => {

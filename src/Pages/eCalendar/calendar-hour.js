@@ -5,29 +5,28 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import { toggle_availability } from '../../actions/employeeActions'
 //Material Imports
-import Button from 'material-ui/Button';
 import ChangeButton from './/changes-button'
 import PreferenceSelect from './preferenceSelect';
 
 const changeColor = (preference) => {
   switch(preference) {
     case 0:
-      // from material-ui color tool, 5th line of 'blue grey'
+      // from @material-ui/core color tool, 5th line of 'blue grey'
       return "#607d8b"
     case 1:
-      // from material-ui color tool, 5th line of 'green'
+      // from @material-ui/core color tool, 5th line of 'green'
       return "#4caf50"
     case 2:
-      // from material-ui color tool, 5th line of 'yellow'
+      // from @material-ui/core color tool, 5th line of 'yellow'
       return "#ffeb3b"
     case 3:
-      // from material-ui color tool, 5th line of 'amber'
+      // from @material-ui/core color tool, 5th line of 'amber'
       return "#ffc107"
     case 4:
-      // from material-ui color tool, 5th line of 'red'
+      // from @material-ui/core color tool, 5th line of 'red'
       return "#f44336"
     default:
-      // from material-ui color tool, 5th line of 'blue grey'
+      // from @material-ui/core color tool, 5th line of 'blue grey'
       return "#607d8b"
   }
 }

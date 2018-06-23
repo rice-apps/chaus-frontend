@@ -1,26 +1,11 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {get_scheduled} from '../../actions/employeeActions'
-<<<<<<< HEAD
-import Button from 'material-ui/Button'
-
-const processedShifts = (shiftArr) => {
-
-    var shiftString = ''
-    if (shiftArr[0]) {
-        shiftString = (shiftArr[0]-1) + ":55 to "
-        for (var i = 0; i<shiftArr.length-1; i++)
-        {
-            if (shiftArr[i+1] != (shiftArr[i]+1))
-            {
-                shiftString += shiftArr[i].toString()+":55, "
-                shiftString += (shiftArr[i+1]-1).toString()+":55 to "
-=======
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import SetHours from './set-hours';
-import RaisedButton from 'material-ui/RaisedButton';
-import TextField from 'material-ui/TextField';
-import {List, ListItem} from 'material-ui/List';
+import { Button } from '@material-ui/core';
+import TextField from '@material-ui/core/TextField';
+import {List, ListItem} from '@material-ui/core/List';
 // Reactstrap
 import {Container, Row, Col} from 'reactstrap';
 // Actions
@@ -29,7 +14,8 @@ import {setHours} from '../../actions/userActions'
 const SetIdealMaxHours = ({netid, hour, idealOrMax, setHours}) => {
     return (
         <MuiThemeProvider>
-            <RaisedButton
+            <Button
+                variant="Raised"
                 primary
                 label="Set Ideal Hours"
                 onClick={() => setHours(netid, hour, idealOrMax)}
@@ -61,7 +47,6 @@ const processedShifts = (dayArr) => {
         if (dayArr[p2] == true) {
             if (p1 < prev){
                 p1 = p2
->>>>>>> security
             }
             p2 += 1
         } else {
@@ -89,14 +74,10 @@ const GenerateSchedule = ({activeUser, activeSchedule, get_scheduled, setHours})
     return (
         <div style={{padding: '1em'}}>
             <h2>{activeUser.firstName + " " + activeUser.lastName + "'s Schedule"}</h2>
-<<<<<<< HEAD
             <Button variant="Raised" label={activeUser.netid+"'s Schedule"}
                           primary = {typeof(activeUser.netid) !== "undefined"}
                           disabled = {typeof(activeUser.netid) === "undefined"}
                           onClick={() => get_scheduled(activeUser.netid)} />
-=======
-
->>>>>>> security
             {Object.keys(activeSchedule).map((key) => {
                 var shiftString = processedShifts(activeSchedule[key])
                 return (

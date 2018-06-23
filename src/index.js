@@ -4,14 +4,8 @@ import App from "./components/App";
 import LoginPage from "./Pages/login.js";
 import Auth from "./Pages/Auth/auth";
 import FullCalendar from "./Pages/eCalendar/full-calendar.js"
-<<<<<<< HEAD
-import AddRemove from "./Pages/AddDrop/add-remove.js"
-import UserManagement from "./Pages/userManagement.js"
-import Reducer from './reducers/index'
-=======
 import MFullCalendar from './Pages/mCalendar/master-calendar'
 import Reducer from './reducers/reducerCombined'
->>>>>>> security
 import { Provider } from 'react-redux'
 import thunkMiddleware from 'redux-thunk'
 
@@ -41,45 +35,10 @@ const client = new ApolloClient({
 const store = createStore(
     Reducer, applyMiddleware(thunkMiddleware)
 )
-<<<<<<< HEAD
-
-//const history = syncHistoryWithStore(hashHistory, store)
-
-const PrivateRoute = ({ component: Component, ...rest }) => (
-   <Route {...rest} render={(props) => (
-       // localStorage.getItem('token')
-       true
-           ? <Component {...props} />
-           : <Redirect to='/login' />
-   )} />
-)
-
-
-get_users()(store.dispatch)
-// get_netids()(store.dispatch)
-ReactDOM.render(
-   <Provider store={store}>
-     <ApolloProvider client={client}>
-       <BrowserRouter>
-           <Switch>
-               <Route exact path='/' component={LoginPage}/>
-               <PrivateRoute path='/ecal' component={FullCalendar}/>
-               <PrivateRoute path='/mcal' component={App} />
-               <PrivateRoute path='/addremove' component={AddRemove}/>
-               <PrivateRoute path='/users' component={UserManagement}/>
-               <Route path='/login' component={LoginPage}/>
-               <Route path='/auth' component={Auth} />
-           </Switch>
-       </BrowserRouter>
-     </ApolloProvider>
-   </Provider>
-   , document.getElementById('app')
-=======
 initializeStates()(store.dispatch)
 initializeUser()(store.dispatch)
 ReactDOM.render(
     <Provider store={store}>
         <App/>
     </Provider>, document.getElementById('app')
->>>>>>> security
 );

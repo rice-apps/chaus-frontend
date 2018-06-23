@@ -5,7 +5,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import { toggle_availability } from '../../actions/employeeActions'
 //Material Imports
-import { MenuItem } from 'material-ui';
+import { MenuItem } from '@material-ui/core';
 
 const PreferenceMenuItem = ({dayname, hour, preference, closePopover, toggle_availability, changeColor}) => {
     const handleSelect = () => {

@@ -11,45 +11,6 @@ import { BrowserRouter, Route, Switch, Link, Redirect } from 'react-router-dom'
 import Sidebar from '../Pages/sidebar'
 import MFullCalendar from '../Pages/mCalendar/master-calendar'
 import Logo from '../Pages/chaus-logo'
-<<<<<<< HEAD
-import AddRemove from '../Pages/AddDrop/add-remove'
-
-const App = ({location}) => {
-    switch (location) {
-        case "eCalendar":
-            return (
-                <div>
-                    <Sidebar/>
-                    <FullCalendar/>
-                    <Logo/>
-                </div>
-            )
-        case "mCalendar":
-            return (
-                <div>
-                    <Sidebar/>
-                    <MFullCalendar/>
-                    <Logo/>
-                </div>
-            )
-        case "addRemove":
-            return (
-                <div>
-                    <Sidebar/>
-                    <AddRemove/>
-                    <Logo/>
-                </div>
-            )
-        default:
-            return (
-                <div>
-                    <Sidebar/>
-                    <FullCalendar/>
-                    <Logo/>
-                </div>
-            )
-    }
-=======
 import FullCalendar from '../Pages/eCalendar/full-calendar'
 import LoginPage from '../Pages/login'
 import AddRemove from '../Pages/AddDrop/add-remove'
@@ -74,7 +35,6 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
             : <Redirect to='/login' />
     )} />
  )
->>>>>>> security
 
 const App = () => {
         return (

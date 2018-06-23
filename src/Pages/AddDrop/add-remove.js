@@ -1,24 +1,18 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-// import DeleteForever from 'material-ui/svg-icons/action/delete-forever'
-import Delete from '@material-ui/icons/Delete';
-import IconButton from 'material-ui/IconButton';
-import Button from 'material-ui/Button';
-import Divider from 'material-ui/Divider';
-import TextField from 'material-ui/TextField';
-import {List, ListItem} from 'material-ui/List';
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
+// import DeleteForever from '@material-ui/core/svg-icons/action/delete-forever'
+import IconButton from '@material-ui/core/IconButton';
+import { Button } from '@material-ui/core';
+import Divider from '@material-ui/core/Divider';
+import TextField from '@material-ui/core/TextField';
+import {List, ListItem} from '@material-ui/core/List';
 // Reactstrap
 import {Container, Row, Col} from 'reactstrap';
 // Actions
 import {add_user, remove_user} from '../../actions/userActions'
-<<<<<<< HEAD
-// Components
-import Sidebar from '../sidebar.js'
-=======
 import Sidebar from '../sidebar.js'
 
->>>>>>> security
 
 const list_style = {
   width: '30vw',
@@ -94,26 +88,8 @@ class AddUser extends React.Component {
           underlineShow={false}
           />
         <Divider />
-<<<<<<< HEAD
-        <TextField
-          floatingLabelText="Minimum Hours"
-          onChange={(e, val) => this.setState({minHours: val})}
-          value={this.state.minHours}
-          underlineShow={false}
-          />
-        <Divider />
-        <TextField
-          floatingLabelText="Maximum Hours"
-          onChange={(e, val) => this.setState({maxHours: val})}
-          value={this.state.maxHours}
-          underlineShow={false}
-          />
-        <Divider />
         <Button
           variant="Raised"
-=======
-        <RaisedButton
->>>>>>> security
           label="Submit"
           onClick={this.handleSubmit.bind(this)}
           />
@@ -127,13 +103,8 @@ const AddRemove = ({users, netids, add_user, remove_user}) => {
   return (
     <MuiThemeProvider>
     <div style={{display: 'inline-block'}}>
-<<<<<<< HEAD
-        <div style={{marginBottom: "50px", zIndex: 10, position: 'relative'}}>
-            <Sidebar/>
-=======
         <div style={{marginBottom: '50px', zIndex: 10, position: 'relative'}}>
           <Sidebar/>
->>>>>>> security
         </div>
         <div style={{alignContent: 'right'}}>
           <AddUser add_user={add_user}/>

@@ -5,8 +5,8 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {close_modal, toggle_scheduled, save_shift} from '../../actions/masterActions'
 //Material Imports
-import {GridList, GridTile} from 'material-ui/GridList';
-import Button from 'material-ui/Button';
+import {GridList, GridTile} from '@material-ui/core/GridList';
+import { Button } from '@material-ui/core/Button';
 import Save from '@material-ui/icons/save'
 
 const getButtonColor = (user, totals) => {
@@ -28,19 +28,19 @@ const getButtonColor = (user, totals) => {
     //var color = 10;
   switch(color) {
     case 1:
-      // from material-ui color tool, 5th line of 'blue grey'
+      // from @material-ui/core color tool, 5th line of 'blue grey'
       return "#607d8b"
     case 2:
-      // from material-ui color tool, 5th line of 'green'
+      // from @material-ui/core color tool, 5th line of 'green'
       return "#4caf50"
     case 3:
-      // from material-ui color tool, 5th line of 'amber'
+      // from @material-ui/core color tool, 5th line of 'amber'
       return "#ffc107"
     case 4:
-      // from material-ui color tool, 5th line of 'red'
+      // from @material-ui/core color tool, 5th line of 'red'
       return "#f44336"
     default:
-      // from material-ui color tool, 5th line of 'blue grey'
+      // from @material-ui/core color tool, 5th line of 'blue grey'
       return "#607d8b"
   }
 }
@@ -90,86 +90,34 @@ const ModalList = ({p1, p2, p3, p4, schedule, toggle_scheduled, save_shift, dayn
                         <GridTile>
                             <h1>Priority 1 (Preferred)</h1>
                             {p1.map((netid) => {
-<<<<<<< HEAD
                                 return (
                                     <Button variant="Raised"
                                         style={{margin: 2}} key={netid} label={getName(netid, users)} backgroundColor={getButtonColor(netid, userHours)} onClick={() => toggle_scheduled(netid)} />
                                 )
-=======
-                                if (netid != "undefined") {
-                                    return (
-                                        <RaisedButton
-                                            style={{margin: 2}} 
-                                            key={netid} 
-                                            label={getName(netid, users)} 
-                                            backgroundColor={getButtonColor(netid, userHours)} 
-                                            onClick={() => toggle_scheduled(netid)} />
-                                    )
-                                }
->>>>>>> security
                             })}
                         </GridTile>
                         <GridTile>
                             <h1>Priority 2 (Available)</h1>
                             {p2.map((netid) => {
-<<<<<<< HEAD
                                 return (
                                     <Button variant="Raised" style={{margin: 2}} key={netid} label={getName(netid, users)} backgroundColor={getButtonColor(netid, userHours)} onClick={() => toggle_scheduled(netid)} />
                                 )
-=======
-                                if (netid != "undefined") {
-                                    return (
-                                        <RaisedButton
-                                            style={{margin: 2}} 
-                                            key={netid} 
-                                            label={getName(netid, users)} 
-                                            backgroundColor={getButtonColor(netid, userHours)} 
-                                            onClick={() => toggle_scheduled(netid)} />
-                                    )
-                                }
->>>>>>> security
                             })}
                         </GridTile>
                         <GridTile>
                             <h1>Priority 3 (Not Preferred)</h1>
                             {p3.map((netid) => {
-<<<<<<< HEAD
                                 return (
                                     <Button variant="Raised" style={{margin: 2}} key={netid} label={getName(netid, users)} backgroundColor={getButtonColor(netid, userHours)} onClick={() => toggle_scheduled(netid)} />
                                 )
-=======
-                                if (netid != "undefined") {
-                                    return (
-                                        <RaisedButton
-                                            style={{margin: 2}} 
-                                            key={netid} 
-                                            label={getName(netid, users)} 
-                                            backgroundColor={getButtonColor(netid, userHours)} 
-                                            onClick={() => toggle_scheduled(netid)} />
-                                    )
-                                }
->>>>>>> security
                             })}
                         </GridTile>
                         <GridTile>
                             <h1>Priority 4 (Unavailable)</h1>
                             {p4.map((netid) => {
-<<<<<<< HEAD
                                 return (
                                     <Button variant="Raised" style={{margin: 2}} key={netid} label={getName(netid, users)} backgroundColor={getButtonColor(netid, userHours)} onClick={() => toggle_scheduled(netid)} />
                                 )
-=======
-                                if (netid != "undefined") {
-                                    return (
-                                        <RaisedButton
-                                            style={{margin: 2}} 
-                                            key={netid} 
-                                            label={getName(netid, users)} 
-                                            backgroundColor={getButtonColor(netid, userHours)} 
-                                            onClick={() => toggle_scheduled(netid)} />
-                                    )
-                                }
->>>>>>> security
                             })}
                         </GridTile>
                     </GridList>
@@ -202,14 +150,7 @@ const ModalList = ({p1, p2, p3, p4, schedule, toggle_scheduled, save_shift, dayn
                         <GridTile>
                             <div style={{display: 'flex'}}>
                                 <span style={{flex:1}}/>
-<<<<<<< HEAD
                                 <Button variant="Raised" backgroundColor="#a4c639" icon={<Save />} onClick={() => save_shift(schedule, p1, p2, p3, p4, dayname, hour)} />
-=======
-                                {activeUserRole == 'admin'
-                                ? <RaisedButton backgroundColor="#a4c639" icon={<Save color={fullWhite}/>} onClick={() => save_shift(schedule, p1, p2, p3, p4, dayname, hour)} />
-                                : <div />}
-                                
->>>>>>> security
                             </div>
                         </GridTile>
                     </GridList>

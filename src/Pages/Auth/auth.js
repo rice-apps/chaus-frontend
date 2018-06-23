@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider'
 import EmployeeCalendar from '../eCalendar/employee-calendar'
 import UserList from '../eCalendar/user-list'
 import ActiveSchedule from '../eCalendar/active-user-schedule'

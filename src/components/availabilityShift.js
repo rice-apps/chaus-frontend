@@ -9,9 +9,9 @@ import { Query, Mutation } from 'react-apollo';
 // GraphQL Query Imports
 
 // Material Imports
-import Grid from 'material-ui/Grid';
+import Grid from '@material-ui/core/Grid';
 // Material Icon Imports
-import Save from '@material-ui/icons/save'
+import Save from '@@material-ui/core/icons/save'
 
 // Colors for Shift
 const changeColor = (preference) => {

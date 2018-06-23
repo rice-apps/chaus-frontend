@@ -5,7 +5,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import { selectUser } from '../../actions/userActions'
 import { get_availability } from '../../actions/employeeActions'
-import Button from 'material-ui/Button'
+import { Button } from '@material-ui/core'
 
 // import GridExampleGrid from './modal'
 

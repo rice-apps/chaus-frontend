@@ -4,7 +4,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 //Material Imports
-import {GridList, GridTile} from 'material-ui/GridList'
+import {GridList, GridTile} from '@material-ui/core/GridList'
 //Inner Imports
 import CalendarHour from './calendar-hour'
 // Action Imports
