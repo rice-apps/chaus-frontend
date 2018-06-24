@@ -16,6 +16,7 @@ import LoginPage from '../Pages/login'
 import AddRemove from '../Pages/AddDrop/add-remove'
 import Auth from '../Pages/Auth/auth'
 import {Admin, User} from './InnerAuth'
+import AdminPage from '../Pages/Admin/admin';
 
 // const Authorization = (allowedRoles) => (
 //     ({ component: Component, ...rest }) => (
@@ -47,6 +48,7 @@ const App = () => {
                         <Route path='/login' component={LoginPage}/>
                         <Route path='/auth' component={Auth} />
                         <Route path='/addremove' component={Admin(AddRemove)} />
+                        <Route path='/admin' component={AdminPage} />
                     </Switch>
                 </BrowserRouter>
             </div>    
