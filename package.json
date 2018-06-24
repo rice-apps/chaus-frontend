@@ -74,6 +74,7 @@
     "mocha": "^2.4.5",
     "mock-fetch": "https://www.clear.rice.edu/comp431/sample/mock-fetch.tgz",
     "moment": "^2.13.0",
+    "node-sass": "^4.9.0",
     "react": "^15.0.2",
     "react-addons-test-utils": "^15.1.0",
     "react-dom": "^15.0.2",
@@ -84,13 +85,14 @@
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.1.0",
     "rimraf": "^2.5.4",
+    "sass-loader": "^7.0.3",
     "selenium-webdriver": "^2.53.2",
     "serve": "^1.4.0",
     "sinon": "^2.0.0-pre",
     "source-map-loader": "^0.1.5",
     "style-loader": "^0.13.1",
     "surge": "^0.18.0",
-    "webpack": "^1.13.0",
+    "webpack": "^1.15.0",
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {

@@ -1,0 +1,24 @@
+// Imports
+
+
+// Helpful grid resource
+// https://css-tricks.com/snippets/css/complete-guide-grid/
+.main-container {
+    display: grid;
+    grid-template-columns: 40px 50px auto 50px 40px;
+    grid-template-rows: 25% 100px auto;
+}
+
+.user {
+    display: grid;
+    grid-row-start: row1-start;
+    grid-row-end: 3;
+    &-add {
+        grid-column-start: 2;
+        grid-column-end: 5;
+    }
+    &-list {
+        grid-column-start: 9;
+        grid-column-end: 12;
+    }
+}
