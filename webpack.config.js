@@ -46,17 +46,6 @@ module.exports = {
                 "css-loader",
                 "sass-loader"
             ]
-            // use: [
-            //     {
-            //         loader: "style-loader" // creates style nodes from JS strings
-            //     },
-            //     {
-            //         loader: "css-loader", // translates CSS into CommonJS
-            //     },
-            //     {
-            //         loader: "sass-loader" // compiles Sass to CSS
-            //     }
-            // ]
         },
         {
           test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
@@ -73,6 +62,11 @@ module.exports = {
         }, {
           test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
           loader: "url?limit=10000&mimetype=image/svg+xml"
+        },
+        {
+            test: /\.(graphql|gql)$/,
+            exclude: /node_modules/,
+            loader: 'graphql-tag/loader',
         }
         ]
     },
