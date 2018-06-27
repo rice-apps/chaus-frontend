@@ -15,21 +15,25 @@ import Sidebar from '../sidebar.js'
 // Components
 import AddUser from './addUser';
 import UserDetailList from './userDetailList';
+// GraphQL
+import { graphql, compose } from 'react-apollo';
+import { AllUsersDetail } from '../../graphql/queries/allUsers.graphql';
 
 // SASS
 import '../../css/adminPage.scss';
 
-const AdminPage = () => {
+const AdminPage = ({ data: { users = [] }}) => {
     return (
         <div className="main-container">
             <div className="user-add">
                 <AddUser />
             </div>
             <div className="user-list">
-                <UserDetailList />
+                <UserDetailList 
+                users={users} />
             </div>
         </div>
     )
 }
 
-export default AdminPage;
+export default graphql(AllUsersDetail)(AdminPage);

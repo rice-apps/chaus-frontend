@@ -1,0 +1,10 @@
+query AllUsersDetail {
+  users {
+    id
+    netid
+    minHour
+    maxHour
+    firstName
+    lastName
+  }
+}
