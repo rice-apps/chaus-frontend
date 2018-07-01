@@ -5,29 +5,24 @@ import UserDetailButton from './userDetailButton';
 
 // GraphQL Imports
 import { Mutation } from 'react-apollo';
-import { SetUserHours, DeleteUser } from '../../graphql/mutations/admin.graphql';
+// import { SetUserHours, DeleteUser } from '../../graphql/mutations/admin.graphql';
 
 
 // SASS
 import '../../css/adminPage.scss';
 
-const UserDetailList = ({ users }) => {
+const UserDetailList = ({ users, SetUserHours, DeleteUser, AllUsersDetail }) => {
     return (
         <div>
             {users.map((user) => {
+                console.log(user.netid);
                 return (
-                    <Mutation mutation={SetUserHours}>
-                        {(SetUserHours, { data } ) => (
-                            <Mutation mutation={DeleteUser}>
-                                {(DeleteUser, { data } ) => (
-                                    <UserDetailButton 
-                                    user={user}
-                                    setUserHours={SetUserHours}
-                                    deleteUser={DeleteUser} />
-                                )}
-                            </Mutation>
-                        )}
-                    </Mutation>
+                    <UserDetailButton 
+                    user={user}
+                    key={user.id}
+                    SetUserHours={SetUserHours}
+                    DeleteUser={DeleteUser}
+                    AllUsersDetail={AllUsersDetail} />
                 )
             })}
         </div>
