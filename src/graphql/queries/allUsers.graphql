@@ -2,9 +2,10 @@ query AllUsersDetail {
   users {
     id
     netid
-    minHour
+    idealHour
     maxHour
     firstName
     lastName
+    role
   }
 }
