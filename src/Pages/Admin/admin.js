@@ -18,16 +18,18 @@ import UserDetailList from './userDetailList';
 // GraphQL
 import { graphql, compose } from 'react-apollo';
 import { AllUsersDetail } from '../../graphql/queries/allUsers.graphql';
-import { SetUserHours, DeleteUser } from '../../graphql/mutations/admin.graphql';
+import { SetUserHours, DeleteUser, CreateUser } from '../../graphql/mutations/admin.graphql';
 
 // SASS
 import '../../css/adminPage.scss';
 
-const AdminPage = ({ data: { users = [] }, SetUserHours, DeleteUser }) => {
+const AdminPage = ({ data: { users = [] }, SetUserHours, DeleteUser, CreateUser }) => {
     return (
         <div className="main-container">
             <div className="user-add">
-                <AddUser />
+                <AddUser
+                    CreateUser={CreateUser}
+                    AllUsersDetail={AllUsersDetail} />
             </div>
             <div className="user-list">
                 <UserDetailList 
@@ -43,5 +45,6 @@ const AdminPage = ({ data: { users = [] }, SetUserHours, DeleteUser }) => {
 export default compose(
     graphql(AllUsersDetail),
     graphql(SetUserHours, { name: 'SetUserHours' }),
-    graphql(DeleteUser, { name: 'DeleteUser' })
+    graphql(DeleteUser, { name: 'DeleteUser' }),
+    graphql(CreateUser, { name: 'CreateUser' })
 )(AdminPage)

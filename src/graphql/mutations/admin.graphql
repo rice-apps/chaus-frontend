@@ -15,3 +15,15 @@ mutation DeleteUser($netid: String!) {
         netid
     }
 }
+
+mutation CreateUser($netid: String!) {
+    createUser(netid: $netid) {
+        id
+        netid
+        idealHour
+        maxHour
+        firstName
+        lastName
+        role
+    }
+}
