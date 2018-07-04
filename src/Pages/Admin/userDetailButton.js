@@ -56,9 +56,7 @@ class UserDetailButton extends React.Component {
             update: (proxy, { data: { deleteUser } }) => {
                 let data = proxy.readQuery({ query: AllUsersDetail });
                 let users = data.users.filter((user) => user.netid != deleteUser.netid);
-                console.log(users);
                 data = {...data, users};
-                console.log(data);
                 proxy.writeQuery({ query: AllUsersDetail, data });
             }
         });
