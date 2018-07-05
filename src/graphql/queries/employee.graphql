@@ -1,0 +1,14 @@
+query EmployeeCalendarQuery($netid: String!, $weekNo: Int) {
+  schedules(filter: $weekNo){
+    week {
+      dayName
+      shifts {
+        startTime
+        endTime
+        availabilities(where: { user: { netid: $netid } } ) {
+          availability
+        }
+      }
+    }
+  }
+}
