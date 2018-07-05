@@ -1,0 +1,48 @@
+// Imports
+
+// Helpful grid resource
+// https://css-tricks.com/snippets/css/complete-guide-grid/
+.main-container {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+}
+
+.employee {
+    &-calendar {
+        display: grid;
+        grid-template-columns: 10% 10% 10% 10% 10% 10% 10%;
+        grid-template-rows: auto;
+    }
+    &-day {
+        font-size: 0.5em
+    }
+    &-shift {
+        font-size: 0.5em
+    }
+    
+    // &-container {
+        
+    // }
+}
+
+
+.availability-button {
+    display: grid;
+    justify-self: center;
+    // width: 10%;
+}
+
+.user {
+    display: grid;
+    grid-row-start: row1-start;
+    grid-row-end: 3;
+    &-add {
+        grid-column-start: 2;
+        grid-column-end: 5;
+    }
+    &-list {
+        grid-column-start: 9;
+        grid-column-end: 12;
+    }
+}
