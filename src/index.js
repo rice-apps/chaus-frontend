@@ -13,7 +13,7 @@ import { createStore, applyMiddleware, combineReducers } from 'redux'
 
 import { BrowserRouter, Route, Switch, Link, Redirect } from 'react-router-dom'
 
-import {initializeStates, initializeUser} from './actions/userActions'
+import { initializeCalendar } from './actions/employeeActions'
 
 
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
@@ -57,9 +57,9 @@ export const client = new ApolloClient({
 
 const store = createStore(
     Reducer, applyMiddleware(thunkMiddleware)
-)
-initializeStates()(store.dispatch)
-initializeUser()(store.dispatch)
+);
+
+initializeCalendar()(store.dispatch, store.getState)
 ReactDOM.render(
     <ApolloProvider client={client}>
         <Provider store={store}>

@@ -8,9 +8,10 @@ import EmployeeDay from './employeeDay';
 import '../../css/memberPage.scss';
 
 const EmployeeCalendar = ({ schedule }) => {
+    console.log(schedule);
     return (
         <div className="employee-calendar">
-            {schedule.map((day) => {
+            {schedule && schedule.map((day) => {
                 return (
                     <EmployeeDay
                         dayName={day.dayName}

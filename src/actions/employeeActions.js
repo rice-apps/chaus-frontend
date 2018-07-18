@@ -2,6 +2,22 @@
 Created by Will on 2/17/18
  */
 import { resource } from './masterActions'
+import { client } from '../index';
+import { EmployeeCalendarQuery } from '../graphql/queries/employee.graphql';
+// Other actions
+import { getUserInfo } from './authActions';
+
+// New Beginning
+export const initializeCalendar = () => {
+  // Get netid
+  return async (dispatch, getState) => {
+    // Sets user info (netid, role)
+    dispatch(getUserInfo())
+    // Use netid to fetch availability
+    const netid = localStorage.getItem('netid');
+    dispatch(getAvailability(netid))
+  }
+}
 
 const monDefault = [
   {hour: 7, available: 0, changed: false, closed: true},
@@ -257,7 +273,6 @@ const reformat_sched = (schedule) => {
  * @param {*} netid 
  */
 export const get_availability = (netid) => {
-  console.log("hello")
   return (dispatch) => {
     // Makes a GET call, fetching employee availability preferences
     resource('GET', 'employee/available/'+netid).then(schedule => {
@@ -269,6 +284,25 @@ export const get_availability = (netid) => {
         schedule: reformatted
       })
       dispatch(check_hours_filled()) // Call this once availability schedule is set 
+    })
+  }
+}
+
+export const getAvailability = (netid) => {
+  return async (dispatch) => {
+    // Returns a promise, so we wait for resolve
+    const promise = await client.query({
+      query: EmployeeCalendarQuery,
+      variables: {
+        netid
+      }
+    });
+    // Cleaning up data
+    const schedule = promise.data.schedules[0];
+    console.log(schedule);
+    dispatch({
+      type: "GET_AVAILABILITY_NEW",
+      schedule
     })
   }
 }

@@ -83,7 +83,7 @@
     "react-test-renderer": "^15.0.2",
     "redux": "^3.5.2",
     "redux-logger": "^2.6.1",
-    "redux-thunk": "^2.1.0",
+    "redux-thunk": "^2.3.0",
     "rimraf": "^2.5.4",
     "sass-loader": "^7.0.3",
     "selenium-webdriver": "^2.53.2",
@@ -97,6 +97,7 @@
   },
   "dependencies": {
     "apollo-boost": "^0.1.10",
+    "apollo-fetch": "^0.7.0",
     "css-loader": "^0.23.1",
     "graphql": "^0.13.2",
     "graphql-tag": "^2.9.2",

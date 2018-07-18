@@ -2,9 +2,8 @@
  * Created by Jeffr on 7/18/2017.
  */
 import { resource } from './masterActions'
-import { get_availability, get_scheduled } from './employeeActions'
+import { get_availability, get_scheduled, getAvailability } from './employeeActions'
 import { getUserInfo } from './authActions';
-
 
 /**
  * 
@@ -13,7 +12,8 @@ import { getUserInfo } from './authActions';
 export const selectUser = (netid) => {
     console.log("SELECT USER CALLED")
     return (dispatch) => {
-        dispatch(get_availability(netid));
+        dispatch(getAvailability(netid));
+        // dispatch(get_availability(netid));
         dispatch(get_scheduled(netid));
         console.log("Selected User" + netid)
         

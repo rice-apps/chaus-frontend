@@ -7,17 +7,12 @@ import UserOptions from './userOptions';
 import { graphql, compose } from 'react-apollo';
 import { EmployeeCalendarQuery } from '../../graphql/queries/employee.graphql';
 import { SetUserPreference, SaveUserPreference } from '../../graphql/mutations/employee.graphql';
-import { initializeCalendar } from '../../actions/memberActions';
 // import { SetUserHours, DeleteUser, CreateUser } from '../../graphql/mutations/admin.graphql';
 
 // SASS
 import '../../css/memberPage.scss';
 
-const MemberPage = ({ data: { schedules = [{week: []}] }, eSchedule, SetUserPreference, SaveUserPreference, initializeCalendar }) => {
-    console.log(schedules);
-    initializeCalendar("wsm3");
-    // Schedules is array so get the first
-    schedules = schedules[0];
+const MemberPage = ({ schedules }) => {
     return (
         <div className="main-container">
             <div className="employee-calendar-container">
@@ -34,43 +29,79 @@ const MemberPage = ({ data: { schedules = [{week: []}] }, eSchedule, SetUserPref
     )
 }
 
-export default compose(
-    graphql(EmployeeCalendarQuery, { 
-        options: {
-            variables: {
-                netid: "wsm3"
-            }
+export default connect(
+    (state) => {
+        return {
+            schedules: state.eCal.newScheduleReducer.schedule
         }
-    }),
-    graphql(SetUserPreference, { 
-        props: ({ mutate }) => ({
-            SetUserPreference: (id, availability) => mutate({
-                variables: {
-                    id, availability
-                },
-                optimisticResponse: {
-                    __typename: "Mutation",
-                    updateShiftAvailability: {
-                        id: id,
-                        __typename: "UserAvailability",
-                        availability: availability
-                    }
-                }
-            })
-        })
-     }),
-    graphql(SaveUserPreference, { name: 'SaveUserPreference' }),
-    connect(
-        (state) => {
-            return {
-                eSchedule: state.member.memeReducer.schedule
-            }
-        },
-        (dispatch) => {
-            return {
-                initializeCalendar: (netid) => dispatch(initializeCalendar(netid))
-            }
+    },
+    (dispatch) => {
+        return {
         }
-    )
-    // graphql(CreateUser, { name: 'CreateUser' })
+    }
 )(MemberPage)
+
+// const MemberPage = ({ eSchedule, SetUserPreference, SaveUserPreference, initializeCalendar, selectUser }) => {
+//     // console.log(schedules);
+//     // initializeCalendar("wsm3");
+//     selectUser("wsm3");
+//     console.log(eSchedule);
+//     // Schedules is array so get the first
+//     const schedules = eSchedule;
+//     return (
+//         <div className="main-container">
+//             <div className="employee-calendar-container">
+//                 <EmployeeCalendar 
+//                     schedule={schedules.week}
+//                     SetUserPreference={SetUserPreference}
+//                     SaveUserPreference={SaveUserPreference}
+//                 />
+//             </div>
+//             <div className="user-options">
+//                 <UserOptions />
+//             </div>
+//         </div>
+//     )
+// }
+
+// export default compose(
+//     // graphql(EmployeeCalendarQuery, { 
+//     //     options: {
+//     //         variables: {
+//     //             netid: "wsm3"
+//     //         }
+//     //     }
+//     // }),
+//     graphql(SetUserPreference, { 
+//         props: ({ mutate }) => ({
+//             SetUserPreference: (id, availability) => mutate({
+//                 variables: {
+//                     id, availability
+//                 },
+//                 optimisticResponse: {
+//                     __typename: "Mutation",
+//                     updateShiftAvailability: {
+//                         id: id,
+//                         __typename: "UserAvailability",
+//                         availability: availability
+//                     }
+//                 }
+//             })
+//         })
+//      }),
+//     graphql(SaveUserPreference, { name: 'SaveUserPreference' }),
+//     connect(
+//         (state) => {
+//             return {
+//                 eSchedule: state.eCal.newScheduleReducer.schedule
+//             }
+//         },
+//         (dispatch) => {
+//             return {
+//                 initializeCalendar: (netid) => dispatch(initializeCalendar(netid)),
+//                 selectUser: (netid) => dispatch(selectUser(netid))
+//             }
+//         }
+//     )
+//     // graphql(CreateUser, { name: 'CreateUser' })
+// )(MemberPage)

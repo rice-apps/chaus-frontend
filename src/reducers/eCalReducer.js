@@ -145,6 +145,16 @@ const sunDefault = [
   {hour: 24, available: 0, changed: false, closed: true}
 ]
 
+const newScheduleReducer = (state={schedule: {}, hoursFilled: false}, action) => {
+  switch(action.type) {
+    case "GET_AVAILABILITY_NEW":
+      console.log(action.schedule);
+      return {...state, schedule: action.schedule}
+    default:
+      return {...state}
+  }
+}
+
 const scheduleReducer = (state={schedule:{U:sunDefault, M:monDefault, T:tuesDefault, W:wedDefault, R:thursDefault, F:friDefault, S:satDefault}, hoursFilled: false}, action) => {
     let new_schedule;
     switch(action.type) {
@@ -346,11 +356,6 @@ const userReducer = (state={netids:[], users: []}, action) => {
     }
 }
 
-const defaultScheduled = {
-  M:[],
-
-}
-
 const activeReducer = (state={user:{}, schedule:{U:[], M:[], T:[], W:[], R:[], F:[], S:[]}}, action) => {
 
     switch(action.type) {
@@ -379,5 +384,5 @@ const activeReducer = (state={user:{}, schedule:{U:[], M:[], T:[], W:[], R:[], F
 }
 
 export default combineReducers({
-    sideBarReducer, activeReducer, scheduleReducer, userReducer
+    sideBarReducer, activeReducer, scheduleReducer, userReducer, newScheduleReducer
 })
