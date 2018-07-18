@@ -48,14 +48,14 @@ const changeColor2 = (preference) => {
   }
 }
 
-const setButton = (dayname, hour) => {
-  if (dayname == 'S' && hour.hour == '24') {
-    return (
-      <ChangeButton />
-    )
-  }
-  return (<PreferenceSelect dayname={dayname} hour={hour} style={{height: 34}} />)
-}
+// const setButton = (dayname, hour) => {
+//   if (dayname == 'S' && hour.hour == '24') {
+//     return (
+//       <ChangeButton />
+//     )
+//   }
+//   return (<PreferenceSelect dayname={dayname} hour={hour} style={{height: 34}} />)
+// }
 
 const CalendarHour = ({dayname, hour}) => {
   return (

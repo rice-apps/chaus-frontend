@@ -7,15 +7,16 @@ import EmployeeDay from './employeeDay';
 // SASS
 import '../../css/memberPage.scss';
 
-const EmployeeCalendar = ({ schedule }) => {
+const EmployeeCalendar = ({ schedule, SetUserPreference, SaveUserPreference }) => {
     return (
         <div className="employee-calendar">
             {schedule.map((day) => {
-                console.log(day);
                 return (
                     <EmployeeDay
                         dayName={day.dayName}
                         shifts={day.shifts}
+                        SetUserPreference={SetUserPreference}
+                        SaveUserPreference={SaveUserPreference}
                         key={day.dayName}
                     />
                 )

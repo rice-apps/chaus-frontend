@@ -26,6 +26,25 @@
     // }
 }
 
+.preference {
+    background-color: #fa5457
+    &-0 {
+        background-color: #01b4bc
+    }
+    &-1 {
+        background-color: #5fa55a
+    }
+    &-2 {
+        background-color: #f6d51f
+    }
+    &-3 {
+        background-color: #fa8925
+    }
+    &-4 {
+        background-color: #fa5457
+    }
+}
+
 
 .availability-button {
     display: grid;

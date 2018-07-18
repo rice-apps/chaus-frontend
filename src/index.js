@@ -19,13 +19,40 @@ import {initializeStates, initializeUser} from './actions/userActions'
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 
 // Apollo Imports
-import ApolloClient from "apollo-boost";
+import ApolloClient, { ApolloLink, InMemoryCache, gql } from "apollo-boost";
+import { withClientState } from "apollo-link-state";
 import { ApolloProvider } from "react-apollo";
 
 // Apollo Setup
 const uri = "http://localhost:4000";
+const cache = new InMemoryCache();
+
 const client = new ApolloClient({
-  uri: uri
+    cache: cache,
+    uri: uri, 
+    clientState: {
+        resolvers: {
+            Mutation: {
+                updateShiftAvailability: (_, { availabilityId, availability }, { cache }) => {
+                  // First get current shift availability
+                  const id = `UserAvailability:${availabilityId}`;
+                  const fragment = gql`
+                      fragment updateAvailability on UserAvailability {
+                          availability
+                      }
+                  `;
+                  const userAvailability = cache.readFragment({ fragment, id });
+                  const data = {
+                      ...userAvailability,
+                      availability: availability,
+                  };
+                  // Then update it with passed in thing
+                  cache.writeFragment({ fragment, id, data });
+                  return null;
+                },
+              },
+        }
+    }
 });
 
 const store = createStore(
