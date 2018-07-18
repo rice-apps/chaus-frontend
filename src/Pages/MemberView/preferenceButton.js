@@ -56,7 +56,7 @@ class PreferenceButton extends React.Component {
     }
 
     render() {
-        var { dayname, hour, availability, id, SetUserPreference } = this.props;
+        var { dayname, hour, availability, id } = this.props;
         return (
             <div>
                 <div>
@@ -81,7 +81,6 @@ class PreferenceButton extends React.Component {
                             preference={1}
                             closePopover={this.handleClose}
                             changeColor={changeColor}
-                            SetUserPreference={SetUserPreference}
                             />
                         <PreferenceMenuItem
                             dayname={dayname}
@@ -90,7 +89,6 @@ class PreferenceButton extends React.Component {
                             preference={2}
                             closePopover={this.handleClose}
                             changeColor={changeColor}
-                            SetUserPreference={SetUserPreference}
                             />
                         <PreferenceMenuItem
                             dayname={dayname}
@@ -99,7 +97,6 @@ class PreferenceButton extends React.Component {
                             preference={3}
                             closePopover={this.handleClose}
                             changeColor={changeColor}
-                            SetUserPreference={SetUserPreference}
                             />
                         <PreferenceMenuItem
                             dayname={dayname}
@@ -108,7 +105,6 @@ class PreferenceButton extends React.Component {
                             preference={4}
                             closePopover={this.handleClose}
                             changeColor={changeColor}
-                            SetUserPreference={SetUserPreference}
                             />
                     </Menu>
                 </Popover>

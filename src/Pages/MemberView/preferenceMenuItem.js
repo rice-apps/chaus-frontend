@@ -5,10 +5,9 @@ import React, {Component} from 'react'
 //Material Imports
 import { MenuItem } from 'material-ui';
 
-const PreferenceMenuItem = ({dayname, hour, preference, id, closePopover, changeColor, SetUserPreference}) => {
+const PreferenceMenuItem = ({dayname, hour, preference, id, closePopover, changeColor }) => {
     const handleSelect = () => {
         // Mutation here
-        SetUserPreference(id, preference);
         // Then close select popover
         closePopover();
     }

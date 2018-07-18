@@ -7,7 +7,7 @@ import EmployeeShift from './employeeShift';
 // SASS
 import '../../css/memberPage.scss';
 
-const EmployeeDay = ({ dayName, shifts, SetUserPreference, SaveUserPreference }) => {
+const EmployeeDay = ({ dayName, shifts }) => {
     return (
         <div className="employee-day">
             <h1>{dayName}</h1>
@@ -23,8 +23,6 @@ const EmployeeDay = ({ dayName, shifts, SetUserPreference, SaveUserPreference })
                         dayName={dayName}
                         hour={startTime}
                         id={id}
-                        SetUserPreference={SetUserPreference}
-                        SaveUserPreference={SaveUserPreference}
                         key={startTime}
                     />
                 )

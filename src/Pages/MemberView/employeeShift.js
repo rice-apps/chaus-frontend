@@ -17,7 +17,7 @@ import { MuiThemeProvider } from 'material-ui/styles';
 //     return (<PreferenceSelect dayname={dayname} hour={hour} style={{height: 34}} />)
 //   }
 
-const returnButton = (dayName, hour, id, availability, SetUserPreference) => {
+const returnButton = (dayName, hour, id, availability ) => {
     if (dayName == 'Saturday' && hour == '24') {
         return (
             <h1>Meme</h1>
@@ -28,15 +28,14 @@ const returnButton = (dayName, hour, id, availability, SetUserPreference) => {
                 hour={hour}
                 id={id}
                 availability={availability}
-                SetUserPreference={SetUserPreference}
             />)
 }
 
-const EmployeeShift = ({ availability, dayName, hour, id, SetUserPreference, SaveUserPreference }) => {
+const EmployeeShift = ({ availability, dayName, hour, id }) => {
     return (
         <div className="employee-shift">
             <MuiThemeProvider>
-                {returnButton(dayName, hour, id, availability, SetUserPreference)}
+                {returnButton(dayName, hour, id, availability)}
             </MuiThemeProvider>
         </div>
     )
