@@ -19,4 +19,4 @@ const PreferenceMenuItem = ({dayname, hour, preference, id, closePopover, change
     )
 }
 
-export default PreferenceMenuItem
+export default PreferenceMenuItem;

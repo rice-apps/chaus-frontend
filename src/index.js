@@ -27,7 +27,7 @@ import { ApolloProvider } from "react-apollo";
 const uri = "http://localhost:4000";
 const cache = new InMemoryCache();
 
-const client = new ApolloClient({
+export const client = new ApolloClient({
     cache: cache,
     uri: uri, 
     clientState: {
@@ -67,3 +67,4 @@ ReactDOM.render(
         </Provider>
     </ApolloProvider>, document.getElementById('app')
 );
+

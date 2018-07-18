@@ -1,4 +1,5 @@
-import React, {Component} from 'react'
+import React, {Component} from 'react';
+import { connect } from 'react-redux';
 // Components
 import EmployeeCalendar from './employeeCalendar';
 import UserOptions from './userOptions';
@@ -6,13 +7,15 @@ import UserOptions from './userOptions';
 import { graphql, compose } from 'react-apollo';
 import { EmployeeCalendarQuery } from '../../graphql/queries/employee.graphql';
 import { SetUserPreference, SaveUserPreference } from '../../graphql/mutations/employee.graphql';
+import { initializeCalendar } from '../../actions/memberActions';
 // import { SetUserHours, DeleteUser, CreateUser } from '../../graphql/mutations/admin.graphql';
 
 // SASS
 import '../../css/memberPage.scss';
 
-const MemberPage = ({ data: { schedules = [{week: []}] }, SetUserPreference, SaveUserPreference }) => {
+const MemberPage = ({ data: { schedules = [{week: []}] }, eSchedule, SetUserPreference, SaveUserPreference, initializeCalendar }) => {
     console.log(schedules);
+    initializeCalendar("wsm3");
     // Schedules is array so get the first
     schedules = schedules[0];
     return (
@@ -56,6 +59,18 @@ export default compose(
             })
         })
      }),
-    graphql(SaveUserPreference, { name: 'SaveUserPreference' })
+    graphql(SaveUserPreference, { name: 'SaveUserPreference' }),
+    connect(
+        (state) => {
+            return {
+                eSchedule: state.member.memeReducer.schedule
+            }
+        },
+        (dispatch) => {
+            return {
+                initializeCalendar: (netid) => dispatch(initializeCalendar(netid))
+            }
+        }
+    )
     // graphql(CreateUser, { name: 'CreateUser' })
 )(MemberPage)
