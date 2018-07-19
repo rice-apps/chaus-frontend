@@ -1,4 +1,3 @@
-import React, {Component} from 'react'
 import React, { PureComponent } from 'react'
 // Components
 import EmployeeShift from './employeeShift';
@@ -15,8 +14,9 @@ const EmployeeDay = ({ dayName, shifts }) => {
             {shifts.map((shift) => {
                 // Change logic here if availability structure changes
                 let shiftId = shift.id;
-                let availability = shift.availabilities[0].availability;
-                let availabilityId = shift.availabilities[0].id;
+                let availability = shift.availabilities;
+                let availabilityId = "1";
+                // let availabilityId = shift.availabilities[0].id;
                 let startTime = shift.startTime;
                 let changed = false;
                 return (

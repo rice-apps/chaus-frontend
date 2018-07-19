@@ -154,7 +154,15 @@ const newScheduleReducer = (state={schedule: {}, hoursFilled: false}, action) =>
       var week = action.schedule.week;
       for (var index in week) {
         var dayName = week[index].dayName;
-        newSchedule[dayName] = week[index];
+        newSchedule[dayName] = {...week[index]};
+        // Flatten
+        var shifts = [...newSchedule[dayName].shifts];
+        for (var shiftIndex in shifts) {
+          var shift = {...shifts[shiftIndex]};
+          shift.availabilities = shift.availabilities[0].availability;
+          shifts[shiftIndex] = shift;
+        }
+        newSchedule[dayName].shifts = shifts;
         // switch(parseInt(index)) {
         //   case 0:
         //     newSchedule['M'] = week[0];
@@ -185,6 +193,30 @@ const newScheduleReducer = (state={schedule: {}, hoursFilled: false}, action) =>
       newSchedule = {week: newSchedule}
       console.log(newSchedule);
       return {...state, schedule: newSchedule}
+    case "UPDATE_PREFERENCE_TWO":
+      var day = {...state.schedule.week[action.dayName]};
+      var newShifts = [];
+      for (var shiftIndex in day.shifts) {
+        var shift = day.shifts[shiftIndex];
+        if (shift.id == action.id) {
+          shift = {
+            ...shift,
+            availabilities: action.availability
+          };
+        }
+        newShifts.push(shift);
+      }
+      day.shifts = newShifts;
+      return {
+        ...state,
+        schedule: {
+          ...state.schedule,
+          week: {
+            ...state.schedule.week,
+            [action.dayName]: day
+          }
+        }
+      }
     case "UPDATE_PREFERENCE_NEW":
       var day = {...state.schedule.week[action.dayName]};
       var newShifts = [];
