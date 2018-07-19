@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, { PureComponent } from 'react'
 // Components
 import PreferenceButton from './preferenceButton';
 // GraphQL

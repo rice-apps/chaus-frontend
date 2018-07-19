@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import React, { PureComponent } from 'react'
 // Components
 import EmployeeShift from './employeeShift';
 // GraphQL

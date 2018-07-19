@@ -1,7 +1,7 @@
 /**
  * Created by Will on 06/20/2018.
  */
-import React, {Component} from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 //Action Imports
 import { updatePreference } from '../../actions/employeeActions';

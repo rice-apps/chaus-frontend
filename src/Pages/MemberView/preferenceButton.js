@@ -1,7 +1,7 @@
 /**
  * Created by Will on 06/20/2018.
  */
-import React, {Component} from 'react'
+import React, { PureComponent } from 'react'
 //Material Imports
 import RaisedButton from 'material-ui/RaisedButton';
 import { Menu, Popover } from 'material-ui';
@@ -25,7 +25,7 @@ const changeColor = (preference) => {
   }
 }
 
-class PreferenceButton extends React.Component {
+class PreferenceButton extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
