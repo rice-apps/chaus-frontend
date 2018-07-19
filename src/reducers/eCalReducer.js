@@ -145,7 +145,7 @@ const sunDefault = [
   {hour: 24, available: 0, changed: false, closed: true}
 ]
 
-const newScheduleReducer = (state={schedule: {}, hoursFilled: false}, action) => {
+const newScheduleReducer = (state={schedule: {}, hoursFilled: false, saving: false}, action) => {
   var newSchedule;
   switch(action.type) {
     case "GET_AVAILABILITY_NEW":
@@ -160,8 +160,8 @@ const newScheduleReducer = (state={schedule: {}, hoursFilled: false}, action) =>
         var shifts = [...newSchedule[dayName].shifts];
         // Iterate through each shift index
         for (var shiftIndex in shifts) {
-          // Copy shift object
-          var shift = {...shifts[shiftIndex]};
+          // Copy shift object, add changed property
+          var shift = {...shifts[shiftIndex], changed: false};
           // Set availability object to the preference, essentially unnesting object
           shift.availabilities = shift.availabilities[0].availability;
           shifts[shiftIndex] = shift;
@@ -180,10 +180,11 @@ const newScheduleReducer = (state={schedule: {}, hoursFilled: false}, action) =>
         var shift = day.shifts[shiftIndex];
         // Once we find the shift we want to change
         if (shift.id == action.id) {
-          // Copy shift object, and change availability
+          // Copy shift object, change availability, update changed property
           shift = {
             ...shift,
-            availabilities: action.availability
+            availabilities: action.availability,
+            changed: true 
           };
         }
         // Add shift object to new shift array
@@ -201,6 +202,10 @@ const newScheduleReducer = (state={schedule: {}, hoursFilled: false}, action) =>
           }
         }
       }
+    case "PRE_SAVE_PREFERENCE":
+      return {...state, saving: true}
+    case "POST_SAVE_PREFERENCE":
+      return {...state, saving: false}
     default:
       return {...state}
   }

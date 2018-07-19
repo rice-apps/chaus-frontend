@@ -1,8 +1,14 @@
-import React, { PureComponent } from 'react'
+import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
+// Material UI
+import { RaisedButton } from 'material-ui';
+import CircularProgress from 'material-ui/CircularProgress';
 // Components
 import PreferenceButton from './preferenceButton';
 // GraphQL
 // import { SetUserHours, DeleteUser, CreateUser } from '../../graphql/mutations/admin.graphql';
+// Actions
+import { savePreferences } from '../../actions/employeeActions';
 
 // SASS
 import '../../css/memberPage.scss';
@@ -17,11 +23,19 @@ import { MuiThemeProvider } from 'material-ui/styles';
 //     return (<PreferenceSelect dayname={dayname} hour={hour} style={{height: 34}} />)
 //   }
 
-const returnButton = (dayName, hour, availabilityId, availability, shiftId ) => {
-    if (dayName == 'Saturday' && hour == '24') {
-        return (
-            <h1>Meme</h1>
-        )
+const returnButton = (dayName, hour, availabilityId, availability, shiftId, savePreferences, saving ) => {
+    if (dayName == 'Saturday' && hour == '13') {
+        if (saving) {
+            return (<CircularProgress />);
+        }
+        else {
+            return (
+                <RaisedButton
+                    label="Save"
+                    onClick={() => savePreferences()}
+                />
+            )
+        }
     }
     return (<PreferenceButton
                 dayName={dayName}
@@ -32,14 +46,25 @@ const returnButton = (dayName, hour, availabilityId, availability, shiftId ) => 
             />)
 }
 
-const EmployeeShift = ({ availability, dayName, hour, availabilityId, shiftId }) => {
+const EmployeeShift = ({ availability, dayName, hour, availabilityId, shiftId, savePreferences, saving }) => {
     return (
         <div className="employee-shift">
             <MuiThemeProvider>
-                {returnButton(dayName, hour, availabilityId, availability, shiftId)}
+                {returnButton(dayName, hour, availabilityId, availability, shiftId, savePreferences, saving)}
             </MuiThemeProvider>
         </div>
     )
 }
 
-export default EmployeeShift
+export default connect(
+    (state) => {
+        return {
+            saving: state.eCal.newScheduleReducer.saving
+        }
+    },
+    (dispatch) => {
+        return {
+            savePreferences: () => dispatch(savePreferences())
+        }
+    }
+)(EmployeeShift)

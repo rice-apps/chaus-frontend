@@ -2,9 +2,7 @@ mutation SaveUserPreference($netid: String!, $shiftAvailabilities: [shiftAvail!]
     updateShiftAvailabilities(
         netid: $netid
         shiftAvailabilities: $shiftAvailabilities
-    ) {
-        netid
-    }
+    )
 }
 
 mutation SetUserPreference($id: Int!, $availability: Int!) {

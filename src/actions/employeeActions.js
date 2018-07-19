@@ -4,13 +4,14 @@ Created by Will on 2/17/18
 import { resource } from './masterActions'
 import { client } from '../index';
 import { EmployeeCalendarQuery } from '../graphql/queries/employee.graphql';
+import { SaveUserPreference } from '../graphql/mutations/employee.graphql';
 // Other actions
 import { getUserInfo } from './authActions';
 
 // New Beginning
 export const initializeCalendar = () => {
   // Get netid
-  return async (dispatch, getState) => {
+  return (dispatch, getState) => {
     // Sets user info (netid, role)
     dispatch(getUserInfo())
     // Use netid to fetch availability
@@ -29,6 +30,50 @@ export const updatePreference = (id, availability, dayName) => {
       dayName,
       availability,
       netid
+    })
+  }
+}
+
+// Save Preferences Helper function
+const findChangedShifts = (schedule) => {
+  var shiftAvailabilities = [];
+  Object.keys(schedule.week).forEach((dayName) => {
+    var day = schedule.week[dayName];
+    for (var shift of day.shifts) {
+      if (shift.changed) {
+        var shiftAvail = {
+          shift: shift.id,
+          availability: shift.availabilities // TODO: CHANGE TO AVAILABILITY 
+        };
+        shiftAvailabilities.push(shiftAvail);
+      }
+    }
+  });
+  return shiftAvailabilities;
+}
+
+export const savePreferences = () => {
+  return async (dispatch, getState) => {
+    // Set loading circle
+    dispatch({
+      type: "PRE_SAVE_PREFERENCE"
+    });
+    // Get netid
+    const netid = getState().auth.activeUserReducer.activeUser;
+    // Get changed shifts
+    const schedule = getState().eCal.newScheduleReducer.schedule;
+    var shiftAvailabilities = findChangedShifts(schedule);
+    // Make GraphQL call
+    const promise = await client.mutate({
+      mutation: SaveUserPreference,
+      variables: {
+        netid,
+        shiftAvailabilities
+      }
+    });
+    // Remove loading circle
+    dispatch({
+      type: "POST_SAVE_PREFERENCE"
     })
   }
 }
