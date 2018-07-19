@@ -24,7 +24,7 @@ export const updatePreference = (id, availability, dayName) => {
     // Get netid
     const netid = getState().auth.activeUserReducer.activeUser;
     dispatch({
-      type: "UPDATE_PREFERENCE_TWO",
+      type: "UPDATE_PREFERENCE",
       id,
       dayName,
       availability,
