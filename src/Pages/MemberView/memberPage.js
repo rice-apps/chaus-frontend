@@ -12,15 +12,11 @@ import { SetUserPreference, SaveUserPreference } from '../../graphql/mutations/e
 // SASS
 import '../../css/memberPage.scss';
 
-const MemberPage = ({ schedules }) => {
+const MemberPage = ({ }) => {
     return (
         <div className="main-container">
             <div className="employee-calendar-container">
-                <EmployeeCalendar 
-                    schedule={schedules.week}
-                    SetUserPreference={SetUserPreference}
-                    SaveUserPreference={SaveUserPreference}
-                />
+                <EmployeeCalendar />
             </div>
             <div className="user-options">
                 <UserOptions />
@@ -29,17 +25,7 @@ const MemberPage = ({ schedules }) => {
     )
 }
 
-export default connect(
-    (state) => {
-        return {
-            schedules: state.eCal.newScheduleReducer.schedule
-        }
-    },
-    (dispatch) => {
-        return {
-        }
-    }
-)(MemberPage)
+export default MemberPage;
 
 // const MemberPage = ({ eSchedule, SetUserPreference, SaveUserPreference, initializeCalendar, selectUser }) => {
 //     // console.log(schedules);

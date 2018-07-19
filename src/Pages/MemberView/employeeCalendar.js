@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import { connect } from 'react-redux';
 // Components
 import EmployeeDay from './employeeDay';
 // GraphQL
@@ -8,11 +9,11 @@ import EmployeeDay from './employeeDay';
 import '../../css/memberPage.scss';
 
 const EmployeeCalendar = ({ schedule }) => {
-    console.log(schedule);
+    var week = schedule.week;
     return (
         <div className="employee-calendar">
-            {schedule && Object.keys(schedule).map((dayName) => {
-                var day = schedule[dayName];
+            {week && Object.keys(week).map((dayName) => {
+                var day = week[dayName];
                 return (
                     <EmployeeDay
                         dayName={dayName}
@@ -25,4 +26,10 @@ const EmployeeCalendar = ({ schedule }) => {
     )
 }
 
-export default EmployeeCalendar
+export default connect(
+    (state) => {
+        return {
+            schedule: state.eCal.newScheduleReducer.schedule
+        }
+    }
+)(EmployeeCalendar);
