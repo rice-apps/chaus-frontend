@@ -19,6 +19,20 @@ export const initializeCalendar = () => {
   }
 }
 
+export const updatePreference = (id, availability, dayName) => {
+  return (dispatch, getState) => {
+    // Get netid
+    const netid = getState().auth.activeUserReducer.activeUser;
+    dispatch({
+      type: "UPDATE_PREFERENCE_NEW",
+      id,
+      dayName,
+      availability,
+      netid
+    })
+  }
+}
+
 const monDefault = [
   {hour: 7, available: 0, changed: false, closed: true},
   {hour: 8, available: 0, changed: false, closed: false},

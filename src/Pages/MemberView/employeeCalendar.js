@@ -11,12 +11,13 @@ const EmployeeCalendar = ({ schedule }) => {
     console.log(schedule);
     return (
         <div className="employee-calendar">
-            {schedule && schedule.map((day) => {
+            {schedule && Object.keys(schedule).map((dayName) => {
+                var day = schedule[dayName];
                 return (
                     <EmployeeDay
-                        dayName={day.dayName}
+                        dayName={dayName}
                         shifts={day.shifts}
-                        key={day.dayName}
+                        key={dayName}
                     />
                 )
             })}

@@ -146,10 +146,138 @@ const sunDefault = [
 ]
 
 const newScheduleReducer = (state={schedule: {}, hoursFilled: false}, action) => {
+  var newSchedule;
   switch(action.type) {
     case "GET_AVAILABILITY_NEW":
-      console.log(action.schedule);
-      return {...state, schedule: action.schedule}
+      newSchedule = {};
+      // Iterate through each index of incoming schedule
+      var week = action.schedule.week;
+      for (var index in week) {
+        var dayName = week[index].dayName;
+        newSchedule[dayName] = week[index];
+        // switch(parseInt(index)) {
+        //   case 0:
+        //     newSchedule['M'] = week[0];
+        //     console.log(newSchedule);
+        //     break;
+        //   case 1:
+        //     newSchedule['T'] = week[1]
+        //     break;
+        //   case 2:
+        //     newSchedule['W'] = week[2]
+        //     break;
+        //   case 3:
+        //     newSchedule['R'] = week[3]
+        //     break;
+        //   case 4:
+        //     newSchedule['F'] = week[4]
+        //     break;
+        //   case 5:
+        //     newSchedule['S'] = week[5]
+        //     break;
+        //   case 6:
+        //     newSchedule['U'] = week[6]
+        //     break;
+        //   default:
+        //     break;
+        // }
+      }
+      newSchedule = {week: newSchedule}
+      console.log(newSchedule);
+      return {...state, schedule: newSchedule}
+    case "UPDATE_PREFERENCE_NEW":
+      var day = {...state.schedule.week[action.dayName]};
+      var newShifts = [];
+      for (var shiftIndex in day.shifts) {
+        var shift = day.shifts[shiftIndex];
+        if (shift.id == action.id) {
+          shift = {
+            ...shift,
+            availabilities: {
+              ...shift.availabilities,
+              [0]: {
+                ...shift.availabilities[0],
+                availability: action.availability
+              }
+            }
+          };
+        }
+        newShifts.push(shift);
+      }
+      day.shifts = newShifts;
+      return {
+        ...state,
+        schedule: {
+          ...state.schedule,
+          week: {
+            ...state.schedule.week,
+            [action.dayName]: day
+          }
+        }
+      }
+    case "UPDATE_PREFERENCE":
+      // id, preference, netid
+      // Setup newSchedule
+      newSchedule = {week: []};
+      var schedule = {...state.schedule};
+      var week = schedule.week.slice();
+      for (var dayIndex in week) {
+        var day = {...week[dayIndex]};
+        if (day.dayName == action.dayName) {
+          var shifts = day.shifts.slice();
+          for (var shiftIndex in shifts) {
+            var shift = shifts[shiftIndex];
+            if (shift.id == action.id) {
+              shift = {...shift};
+              // var userAvailability = shift.availabilities.filter( (availObj) => availObj.user.netid == action.netid);
+              var availabilities = shift.availabilities.slice();
+              availabilities[0] = {...availabilities[0], availability: action.availability}
+              shift.availabilities = availabilities;
+              shifts[shiftIndex] = shift;
+              // return {
+              //   ...state,
+              //   schedule: {
+              //     ...state.schedule,
+              //     week: {
+              //       ...state.schedule.week,
+              //       [dayIndex]: {
+              //         ...state.schedule.week[dayIndex],
+              //         shifts: {
+              //           ...state.schedule.week[dayIndex].shifts,
+              //           [shiftIndex]: {
+              //             ...state.schedule.week[dayIndex].shifts[shiftIndex],
+              //             availabilities: availabilities
+              //           }
+              //         }
+              //       }
+              //     }
+              //   }
+              // }
+              // return {
+              //   ...state,
+              //   schedule: {
+              //     ...state.schedule.week,
+              //     [dayIndex]: {
+              //       ...state.schedule.week[dayIndex],
+              //       [shiftIndex]: {
+              //         ...state.schedule.week[dayIndex][shiftIndex],
+              //         availabilities: availabilities
+              //       }
+              //     }
+              //   }
+              // }
+              // shift.availabilities[0].availability = action.availability
+            }
+          }
+          newSchedule.week.push(day);
+          newSchedule.week[dayIndex].shifts = shifts;
+        }
+        else {
+          newSchedule.week.push(day);
+        }
+      }
+      // return {...state}
+      return {...state, schedule: newSchedule}
     default:
       return {...state}
   }

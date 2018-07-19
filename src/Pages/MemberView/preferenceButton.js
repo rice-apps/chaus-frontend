@@ -56,7 +56,7 @@ class PreferenceButton extends React.Component {
     }
 
     render() {
-        var { dayname, hour, availability, id } = this.props;
+        var { dayName, hour, availability, availabilityId, shiftId } = this.props;
         return (
             <div>
                 <div>
@@ -75,33 +75,33 @@ class PreferenceButton extends React.Component {
                 zDepth={0}>
                     <Menu>
                         <PreferenceMenuItem
-                            dayname={dayname}
+                            dayName={dayName}
                             hour={hour}
-                            id={id}
+                            shiftId={shiftId}
                             preference={1}
                             closePopover={this.handleClose}
                             changeColor={changeColor}
                             />
                         <PreferenceMenuItem
-                            dayname={dayname}
+                            dayName={dayName}
                             hour={hour}
-                            id={id}
+                            shiftId={shiftId}
                             preference={2}
                             closePopover={this.handleClose}
                             changeColor={changeColor}
                             />
                         <PreferenceMenuItem
-                            dayname={dayname}
+                            dayName={dayName}
                             hour={hour}
-                            id={id}
+                            shiftId={shiftId}
                             preference={3}
                             closePopover={this.handleClose}
                             changeColor={changeColor}
                             />
                         <PreferenceMenuItem
-                            dayname={dayname}
+                            dayName={dayName}
                             hour={hour}
-                            id={id}
+                            shiftId={shiftId}
                             preference={4}
                             closePopover={this.handleClose}
                             changeColor={changeColor}

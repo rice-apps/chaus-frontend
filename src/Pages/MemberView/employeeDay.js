@@ -13,16 +13,18 @@ const EmployeeDay = ({ dayName, shifts }) => {
             <h1>{dayName}</h1>
             {shifts.map((shift) => {
                 // Change logic here if availability structure changes
+                let shiftId = shift.id;
                 let availability = shift.availabilities[0].availability;
-                let id = shift.availabilities[0].id;
+                let availabilityId = shift.availabilities[0].id;
                 let startTime = shift.startTime;
                 let changed = false;
                 return (
                     <EmployeeShift
                         availability={availability}
                         dayName={dayName}
+                        shiftId={shiftId}
                         hour={startTime}
-                        id={id}
+                        availabilityId={availabilityId}
                         key={startTime}
                     />
                 )
