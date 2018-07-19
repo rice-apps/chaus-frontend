@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import { connect } from 'react-redux';
 // Components
 import EmployeeCalendar from './employeeCalendar';
 import UserOptions from './userOptions';
