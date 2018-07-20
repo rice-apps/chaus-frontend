@@ -23,8 +23,8 @@ import { MuiThemeProvider } from 'material-ui/styles';
 //     return (<PreferenceSelect dayname={dayname} hour={hour} style={{height: 34}} />)
 //   }
 
-const returnButton = (dayName, hour, availabilityId, availability, shiftId, savePreferences, saving ) => {
-    if (dayName == 'Saturday' && hour == '13') {
+const returnButton = (dayName, hour, availabilityId, availability, shiftId, savePreferences, saving, closed ) => {
+    if (dayName == 'Sunday' && hour == '24') {
         if (saving) {
             return (<CircularProgress />);
         }
@@ -43,14 +43,15 @@ const returnButton = (dayName, hour, availabilityId, availability, shiftId, save
                 availabilityId={availabilityId}
                 availability={availability}
                 shiftId={shiftId}
+                closed={closed}
             />)
 }
 
-const EmployeeShift = ({ availability, dayName, hour, availabilityId, shiftId, savePreferences, saving }) => {
+const EmployeeShift = ({ availability, dayName, hour, availabilityId, shiftId, savePreferences, saving, closed }) => {
     return (
         <div className="employee-shift">
             <MuiThemeProvider>
-                {returnButton(dayName, hour, availabilityId, availability, shiftId, savePreferences, saving)}
+                {returnButton(dayName, hour, availabilityId, availability, shiftId, savePreferences, saving, closed)}
             </MuiThemeProvider>
         </div>
     )

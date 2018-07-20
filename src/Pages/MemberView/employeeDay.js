@@ -16,6 +16,7 @@ const EmployeeDay = ({ dayName, shifts }) => {
                 let shiftId = shift.id;
                 let availability = shift.availabilities;
                 let availabilityId = "1";
+                let closed = shift.closed;
                 // let availabilityId = shift.availabilities[0].id;
                 let startTime = shift.startTime;
                 let changed = false;
@@ -25,6 +26,7 @@ const EmployeeDay = ({ dayName, shifts }) => {
                         dayName={dayName}
                         shiftId={shiftId}
                         hour={startTime}
+                        closed={closed}
                         availabilityId={availabilityId}
                         key={startTime}
                     />

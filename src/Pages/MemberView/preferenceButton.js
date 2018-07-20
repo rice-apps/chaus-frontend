@@ -56,14 +56,14 @@ class PreferenceButton extends PureComponent {
     }
 
     render() {
-        var { dayName, hour, availability, availabilityId, shiftId } = this.props;
+        var { dayName, hour, availability, availabilityId, shiftId, closed } = this.props;
         return (
             <div>
                 <div>
                     <RaisedButton
                     backgroundColor={changeColor(availability)}
                     onClick={this.handleClick} 
-                    disabled={hour.closed}
+                    disabled={closed}
                     />
                 </div>
                 <Popover

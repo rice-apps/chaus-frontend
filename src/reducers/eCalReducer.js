@@ -163,7 +163,12 @@ const newScheduleReducer = (state={schedule: {}, hoursFilled: false, saving: fal
           // Copy shift object, add changed property
           var shift = {...shifts[shiftIndex], changed: false};
           // Set availability object to the preference, essentially unnesting object
-          shift.availabilities = shift.availabilities[0].availability;
+          if (!shift.closed) {
+            shift.availabilities = shift.availabilities[0].availability;
+          }
+          else {
+            shift.availabilities = 0;
+          }
           shifts[shiftIndex] = shift;
         }
         // Set shifts property to updated shifts object

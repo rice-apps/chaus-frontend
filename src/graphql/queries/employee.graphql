@@ -6,6 +6,7 @@ query EmployeeCalendarQuery($netid: String!, $weekNo: Int) {
         id
         startTime
         endTime
+        closed
         availabilities(where: { user: { netid: $netid } } ) {
           id
           availability
