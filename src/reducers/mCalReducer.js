@@ -41,6 +41,8 @@ const newActiveShiftReducer = (state={
             // Otherwise, add them in
             else {
                 scheduled.push(action.netid);
+                // Sort alphabetically
+                scheduled.sort();
             }
             return {...state, scheduled: scheduled}
         default:

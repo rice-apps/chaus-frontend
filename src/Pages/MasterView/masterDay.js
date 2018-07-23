@@ -19,6 +19,7 @@ const MasterDay = ({ dayName, shifts }) => {
                     dayName: dayName,
                     shiftId: shift.id,
                     availabilities: shift.availabilities,
+                    scheduled: shift.scheduled,
                     closed: shift.closed,
                     hour: shift.startTime,
                     changed: false

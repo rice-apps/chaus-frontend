@@ -42,7 +42,10 @@ class MasterAvailabilities extends PureComponent {
                         <React.Fragment>
                             <h4>{priorityKey}</h4>
                             {netids.map((netid) => (
-                                <AvailabilityButton netid={netid} />
+                                <AvailabilityButton 
+                                key={`${netid}-available`}
+                                netid={netid} 
+                                />
                             ))}
                         </React.Fragment>
                     );
