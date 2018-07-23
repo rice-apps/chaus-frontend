@@ -18,6 +18,7 @@ import Auth from '../Pages/Auth/auth'
 import {Admin, User} from './InnerAuth'
 import AdminPage from '../Pages/Admin/admin';
 import MemberPage from '../Pages/MemberView/memberPage';
+import MasterPage from '../Pages/MasterView/masterPage';
 
 // const Authorization = (allowedRoles) => (
 //     ({ component: Component, ...rest }) => (
@@ -51,6 +52,7 @@ const App = () => {
                         <Route path='/addremove' component={Admin(AddRemove)} />
                         <Route path='/admin' component={AdminPage} />
                         <Route path='/member' component={MemberPage} />
+                        <Route path='/master' component={MasterPage} />
                     </Switch>
                 </BrowserRouter>
             </div>    

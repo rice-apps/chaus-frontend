@@ -1,4 +1,7 @@
 import { setHours } from "./userActions";
+import { client } from "../index";
+// GraphQL
+import { MasterScheduleQuery } from '../graphql/queries/master.graphql';
 
 /**
  * Created by Will and Josh on 11/19/2017.
@@ -30,6 +33,138 @@ export const resource = (method, endpoint, payload) => {
         })
         .catch(err => console.error(err))
 }
+
+// New Beginning
+/*
+Function: 
+Get the master schedule outline
+*/
+export const initializeMasterSchedule = () => {
+    return async (dispatch) => {
+        // Fetch availabilities
+        const promise = await client.query({
+            query: MasterScheduleQuery
+        });
+        // Pull out schedule from fulfilled promise
+        const schedule = promise.data.schedules[0];
+        // Send to reducer
+        return dispatch({
+            type: "GET_MASTER_SCHEDULE",
+            schedule
+        });
+    }
+}
+
+/*
+Function: 
+Get the scheduled & availabilities of all users for given shift
+Params:
+ @param shiftId: String representing id of shift
+*/
+export const getShiftInfo = (shiftId) => {
+    return async (dispatch) => {
+        // Fetch info
+        const shiftInfo = await client.query({
+            query: MasterShiftQuery,
+            variables: {
+                shiftId
+            }
+        });
+        // Send to reducer
+        return dispatch({
+            type: "GET_SHIFT_INFO",
+            shiftInfo
+        });
+    }
+}
+
+/*
+Function: 
+Get scheduled users for a given shift
+Params:
+ @param shiftId: String representing id of shift
+*/
+export const getUsersScheduled = (shiftId) => {
+    return async (dispatch) => {
+        // Fetch scheduled
+        const scheduledArray = await client.query({
+            query: MasterScheduledQuery,
+            variables: {
+                shiftId
+            }
+        });
+        // Send to reducer
+        return dispatch({
+            type: "GET_SHIFT_SCHEDULED",
+            scheduledArray
+        });
+    }
+}
+
+/*
+Function: 
+Save scheduled users for a given shift
+Params:
+ @param scheduledUsersIds: Array containing scheduled user ids
+*/
+export const saveUsersScheduled = (scheduledUsersIds) => {
+    return async (dispatch) => {
+        // Mutate scheduled
+        const message = await client.mutate({
+            mutation: MasterScheduledMutation,
+            variables: {
+                scheduledUsersIds
+            }
+        });
+        // Send changes to reducer
+        return dispatch({
+            type: "SAVE_SCHEDULED_USERS",
+            message
+        });
+    }
+}
+
+// Helper function for sortAvailabilities
+const splitAvailabilities = (availabilities) => {
+    console.log("HEELO");
+    var sortedAvailabilities = {};
+    for (var priority = 1; priority <= 4; priority++) {
+        var filteredPriorities = availabilities.filter((availabilityObject) => {
+            // Pulls out availability and corresponding netid from user object
+            var { availability } = availabilityObject;
+            // Check if availability matches current priority
+            return availability == priority;
+        });
+        // Creates property with corresponding Priority (ex: Priority1)
+        sortedAvailabilities[`Priority${priority}`] = filteredPriorities.map((availabilityObject) => {
+            // We only want user object
+            return availabilityObject.user;
+        })
+    };
+    return sortedAvailabilities;
+}
+
+export const sortAvailabilities = (availabilities) => {
+    return (dispatch) => {
+        var sortedAvailabilities = splitAvailabilities(availabilities);
+        return dispatch({
+            type: "SORT_AVAILABILITIES",
+            sortedAvailabilities
+        })
+    }
+}
+
+export const updateScheduled = (netid) => {
+    return (dispatch) => {
+        console.log(netid);
+        return dispatch({
+            type: "UPDATE_SCHEDULED",
+            netid
+        })
+    }
+}
+
+// End of new
 
 const update_user_total_hours = (netid, hour_obj) =>{
   return new Promise((resolve, reject) => {

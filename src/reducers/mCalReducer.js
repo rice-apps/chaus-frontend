@@ -3,6 +3,51 @@
  */
 import { combineReducers } from 'redux'
 
+// New beginning
+
+// TODO: Change reducer name, remove new
+const newScheduleReducer = (state={
+    schedule: {}
+}, action) => {
+    switch(action.type) {
+        case "GET_MASTER_SCHEDULE":
+            console.log(action.schedule);
+            return {...state, schedule: action.schedule}
+        case "GET_SHIFT_SCHEDULED":
+            return {...state}
+        case "SAVE_SHIFT_SCHEDULED":
+            return {...state}
+        default:
+            return {...state}
+    }
+}
+
+// TODO: Change reducer name; remove new
+const newActiveShiftReducer = (state={
+    availabilities: {},
+    scheduled: []
+}, action) => {
+    switch(action.type) {
+        case "SORT_AVAILABILITIES":
+            return {...state, availabilities: action.sortedAvailabilities};
+        case "UPDATE_SCHEDULED":
+            var scheduled = state.scheduled.slice();
+            // Remove from scheduled if present
+            if (scheduled.includes(action.netid)) {
+                // Get index of netid
+                var index = scheduled.indexOf(action.netid);
+                scheduled.splice(index, 1);
+            }
+            // Otherwise, add them in
+            else {
+                scheduled.push(action.netid);
+            }
+            return {...state, scheduled: scheduled}
+        default:
+            return {...state};
+    }
+}
+
 const mmonReducer = (state={mon:[
     {hour: 7, closed: true},
     {hour: 8, closed: false},
@@ -420,5 +465,5 @@ const checkTotalsReducer = (state={shifts: []}, action) =>{
 }*/
 
 export default combineReducers({
-    activeShiftReducer, checkTotalsReducer, mmonReducer, mtuesReducer, mwedReducer, mthursReducer, mfriReducer, msatReducer, msunReducer
+    newActiveShiftReducer, newScheduleReducer, activeShiftReducer, checkTotalsReducer, mmonReducer, mtuesReducer, mwedReducer, mthursReducer, mfriReducer, msatReducer, msunReducer
 })

@@ -1,0 +1,47 @@
+query MasterScheduleQuery {
+  schedules { # TODO: Add filter for multiple calendars
+    week {
+      dayName
+      shifts {
+        id
+        startTime
+        endTime
+        closed
+        availabilities {
+            user {
+                netid
+                firstName
+                lastName
+            }
+            availability
+        }
+        scheduled {
+          id
+          firstName
+          lastName
+        }
+      }
+    }
+  }
+}
+
+query MasterShiftQuery($shiftId: String!) {
+    shifts(where: { id: $shiftId }) {
+        startTime
+        endTime
+        closed
+        availabilities {
+            user {
+                netid
+            }
+            availability
+        }
+        scheduled {
+          user {
+              id
+              firstName
+              lastName
+          }
+        }
+    }
+}
