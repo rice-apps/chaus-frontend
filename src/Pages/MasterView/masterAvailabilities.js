@@ -39,7 +39,7 @@ class MasterAvailabilities extends PureComponent {
                     })
                     console.log(netids);
                     return (
-                        <React.Fragment>
+                        <React.Fragment key={priorityKey}>
                             <h4>{priorityKey}</h4>
                             {netids.map((netid) => (
                                 <UserButton 
