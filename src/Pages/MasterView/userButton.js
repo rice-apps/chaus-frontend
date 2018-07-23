@@ -10,7 +10,7 @@ import { updateScheduled } from '../../actions/masterActions';
 import '../../css/masterPage.scss';
 import { RaisedButton } from 'material-ui';
 
-const AvailabilityButton = ({ netid, updateScheduled }) => {
+const UserButton = ({ netid, updateScheduled }) => {
     return (
         <RaisedButton
         label={netid}
@@ -31,4 +31,4 @@ export default connect(
             updateScheduled: (netid) => dispatch(updateScheduled(netid))
         }
     }
-)(AvailabilityButton);
+)(UserButton);

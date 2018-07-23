@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 // Material UI
 // Components
-import AvailabilityButton from './availabilityButton';
+import UserButton from './userButton';
 // GraphQL
 // Actions
 // Context
@@ -15,7 +15,7 @@ const MasterScheduled = ({ scheduled }) => {
             <h4>Scheduled</h4>
             <React.Fragment>
             {scheduled.map((netid) => (
-                <AvailabilityButton
+                <UserButton
                 key={`${netid}-scheduled`}
                 netid={netid}
                 />

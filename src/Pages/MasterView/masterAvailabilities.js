@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 // Material UI
 
 // Components
-import AvailabilityButton from './availabilityButton';
+import UserButton from './userButton';
 // GraphQL
 // import { SetUserHours, DeleteUser, CreateUser } from '../../graphql/mutations/admin.graphql';
 // Actions
@@ -42,7 +42,7 @@ class MasterAvailabilities extends PureComponent {
                         <React.Fragment>
                             <h4>{priorityKey}</h4>
                             {netids.map((netid) => (
-                                <AvailabilityButton 
+                                <UserButton 
                                 key={`${netid}-available`}
                                 netid={netid} 
                                 />
