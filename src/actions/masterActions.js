@@ -126,7 +126,6 @@ export const saveUsersScheduled = (scheduledUsersIds) => {
 
 // Helper function for sortAvailabilities
 const splitAvailabilities = (availabilities) => {
-    console.log("HEELO");
     var sortedAvailabilities = {};
     for (var priority = 1; priority <= 4; priority++) {
         var filteredPriorities = availabilities.filter((availabilityObject) => {
@@ -135,9 +134,9 @@ const splitAvailabilities = (availabilities) => {
             // Check if availability matches current priority
             return availability == priority;
         });
-        // Creates property with corresponding Priority (ex: Priority1)
+        // Creates object property with corresponding Priority (ex: Priority1)
         sortedAvailabilities[`Priority${priority}`] = filteredPriorities.map((availabilityObject) => {
-            // We only want user object
+            // We only want user object from each availabilityObject
             return availabilityObject.user;
         })
     };
@@ -156,11 +155,27 @@ export const sortAvailabilities = (availabilities) => {
 
 export const updateScheduled = (netid) => {
     return (dispatch) => {
-        console.log(netid);
         return dispatch({
             type: "UPDATE_SCHEDULED",
             netid
         })
+    }
+}
+
+export const setScheduled = (scheduled) => {
+    return (dispatch) => {
+        return dispatch({
+            type: "SET_SCHEDULED",
+            scheduled
+        });
+    }
+}
+
+export const resetActiveShift = () => {
+    return (dispatch) => {
+        return dispatch({
+            type: "RESET_ACTIVE_SHIFT"
+        });
     }
 }
 

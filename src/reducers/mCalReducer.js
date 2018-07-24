@@ -30,6 +30,10 @@ const newActiveShiftReducer = (state={
     switch(action.type) {
         case "SORT_AVAILABILITIES":
             return {...state, availabilities: action.sortedAvailabilities};
+        case "SET_SCHEDULED":
+            return {...state, scheduled: action.scheduled};
+        case "RESET_ACTIVE_SHIFT":
+            return {...state, availabilities: {}, scheduled: []};
         case "UPDATE_SCHEDULED":
             var scheduled = state.scheduled.slice();
             // Remove from scheduled if present
