@@ -145,7 +145,11 @@ const sunDefault = [
   {hour: 24, available: 0, changed: false, closed: true}
 ]
 
-const newScheduleReducer = (state={schedule: {}, hoursFilled: false, saving: false}, action) => {
+// New beginning 
+
+const newScheduleReducer = (state={
+  schedule: {}, hoursFilled: false, saving: false, activeUser: { netid: "wsm3" }
+}, action) => {
   var newSchedule;
   switch(action.type) {
     case "GET_AVAILABILITY_NEW":

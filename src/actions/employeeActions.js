@@ -9,13 +9,13 @@ import { SaveUserPreference } from '../graphql/mutations/employee.graphql';
 import { getUserInfo } from './authActions';
 
 // New Beginning
-export const initializeCalendar = () => {
+export const initializeCalendar = (netid) => {
   // Get netid
   return (dispatch, getState) => {
     // Sets user info (netid, role)
+    // TODO: Remove this
     dispatch(getUserInfo())
     // Use netid to fetch availability
-    const netid = localStorage.getItem('netid');
     dispatch(getAvailability(netid))
   }
 }
