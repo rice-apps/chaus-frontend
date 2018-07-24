@@ -10,12 +10,13 @@ import { updateScheduled } from '../../actions/masterActions';
 import '../../css/masterPage.scss';
 import { RaisedButton } from 'material-ui';
 
-const UserButton = ({ netid, updateScheduled }) => {
+const UserButton = ({ user, updateScheduled }) => {
+    var { netid } = user;
     return (
         <RaisedButton
         label={netid}
-        style={{ margin: '5px' }}
-        onClick={() => updateScheduled(netid)}
+        className="master-userbutton"
+        onClick={() => updateScheduled(user)}
         />
     )
 }

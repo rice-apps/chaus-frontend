@@ -1,0 +1,8 @@
+mutation MasterScheduledMutation($shift: ID!, $scheduled: [userNetid!]!) {
+    updateShiftScheduled(
+        id: $shift
+        users: $scheduled
+    ) {
+        id
+    }
+}

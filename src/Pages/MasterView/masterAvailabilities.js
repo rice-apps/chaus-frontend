@@ -7,16 +7,16 @@ import '../../css/masterPage.scss';
 const MasterAvailabilities = ({ sortedAvailabilities }) => (
     <div className="master-availabilities">
         {Object.keys(sortedAvailabilities).map((priorityKey) => {
-            var netids = sortedAvailabilities[priorityKey].map((availabilityObject) => {
-                return availabilityObject.netid;
-            })
+            var users = sortedAvailabilities[priorityKey].map((user) => {
+                return user;
+            });
             return (
                 <React.Fragment key={priorityKey}>
                     <h4>{priorityKey}</h4>
-                    {netids.map((netid) => (
+                    {users.map((user) => (
                         <UserButton 
-                        key={`${netid}-available`}
-                        netid={netid} 
+                        key={`${user.netid}-available`}
+                        user={user} 
                         />
                     ))}
                 </React.Fragment>

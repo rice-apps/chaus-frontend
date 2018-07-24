@@ -24,10 +24,14 @@ const newScheduleReducer = (state={
 
 // TODO: Change reducer name; remove new
 const newActiveShiftReducer = (state={
+    shift: "",
     availabilities: {},
-    scheduled: []
+    scheduled: [],
+    saving: false
 }, action) => {
     switch(action.type) {
+        case "SET_SHIFT_ID":
+            return {...state, shift: action.shiftId};
         case "SORT_AVAILABILITIES":
             return {...state, availabilities: action.sortedAvailabilities};
         case "SET_SCHEDULED":
@@ -36,19 +40,31 @@ const newActiveShiftReducer = (state={
             return {...state, availabilities: {}, scheduled: []};
         case "UPDATE_SCHEDULED":
             var scheduled = state.scheduled.slice();
+            // Check if user present
+            var filteredUsers = scheduled.filter((user) => {
+                return user.netid == action.user.netid;
+            });
             // Remove from scheduled if present
-            if (scheduled.includes(action.netid)) {
-                // Get index of netid
-                var index = scheduled.indexOf(action.netid);
+            if (filteredUsers.length > 0) {
+                // Get index of user object
+                var index = scheduled.indexOf(action.user);
+                // Remove user object in place
                 scheduled.splice(index, 1);
             }
             // Otherwise, add them in
             else {
-                scheduled.push(action.netid);
+                // Push user object into scheduled array
+                scheduled.push(action.user);
                 // Sort alphabetically
-                scheduled.sort();
+                scheduled.sort((userA, userB) => {
+                    return userA.netid > userB.netid;
+                });
             }
             return {...state, scheduled: scheduled}
+        case "SAVE_SCHEDULED_PREPARING":
+            return {...state, saving: true};
+        case "SAVE_SCHEDULED_FINISHED":
+            return {...state, saving: false};
         default:
             return {...state};
     }

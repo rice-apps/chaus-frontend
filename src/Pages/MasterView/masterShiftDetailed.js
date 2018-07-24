@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import MasterAvailabilities from './masterAvailabilities';
 import MasterScheduled from './masterScheduled';
 // Actions
-import { sortAvailabilities, setScheduled, resetActiveShift } from '../../actions/masterActions';
+import { setShiftId, sortAvailabilities, setScheduled, resetActiveShift, saveScheduled } from '../../actions/masterActions';
 // SASS
 import '../../css/masterPage.scss';
 
@@ -19,10 +19,11 @@ class MasterShiftDetailed extends PureComponent {
     // Necessary lifecycle methods
     componentWillMount() {
         // Renamed received value of availabilities to rawAvailabilities
-        var { availabilities: rawAvailabilities, scheduled } = this.state.contextVals;
+        var { availabilities: rawAvailabilities, scheduled, shiftId } = this.state.contextVals;
         // Get action methods into more readable names
-        const { sortAvailabilities, setScheduled } = this.props;
+        const { sortAvailabilities, setScheduled, setShiftId } = this.props;
         // Setup active shift reducer
+        setShiftId(shiftId);
         sortAvailabilities(rawAvailabilities);
         setScheduled(scheduled);
     }
@@ -32,7 +33,10 @@ class MasterShiftDetailed extends PureComponent {
         resetActiveShift();
     }
     render() {
-        var { sortedAvailabilities, scheduled } = this.props;
+        // Get state
+        var { sortedAvailabilities, scheduled, saving } = this.props;
+        // Get actions
+        var { saveScheduled } = this.props;
         return (
             <div className="master-detailed">
                 <MasterAvailabilities
@@ -40,6 +44,8 @@ class MasterShiftDetailed extends PureComponent {
                 />
                 <MasterScheduled 
                 scheduled={scheduled}
+                saveScheduled={saveScheduled}
+                saving={saving}
                 />
             </div>
         )
@@ -50,14 +56,17 @@ export default connect(
     (state) => {
         return {
             sortedAvailabilities: state.mCal.newActiveShiftReducer.availabilities,
-            scheduled: state.mCal.newActiveShiftReducer.scheduled
+            scheduled: state.mCal.newActiveShiftReducer.scheduled,
+            saving: state.mCal.newActiveShiftReducer.saving
         }
     },
     (dispatch) => {
         return {
+            setShiftId: (shiftId) => dispatch(setShiftId(shiftId)),
             sortAvailabilities: (rawAvailabilities) => dispatch(sortAvailabilities(rawAvailabilities)),
             setScheduled: (scheduled) => dispatch(setScheduled(scheduled)),
-            resetActiveShift: () => dispatch(resetActiveShift())
+            resetActiveShift: () => dispatch(resetActiveShift()),
+            saveScheduled: () => dispatch(saveScheduled())
         }
     }
 )(MasterShiftDetailed);

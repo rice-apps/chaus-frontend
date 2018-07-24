@@ -2,6 +2,7 @@ import { setHours } from "./userActions";
 import { client } from "../index";
 // GraphQL
 import { MasterScheduleQuery } from '../graphql/queries/master.graphql';
+import { MasterScheduledMutation } from '../graphql/mutations/master.graphql';
 
 /**
  * Created by Will and Josh on 11/19/2017.
@@ -124,6 +125,15 @@ export const saveUsersScheduled = (scheduledUsersIds) => {
     }
 }
 
+export const setShiftId = (shiftId) => {
+    return (dispatch) => {
+        return dispatch({
+            type: "SET_SHIFT_ID",
+            shiftId
+        })
+    }
+}
+
 // Helper function for sortAvailabilities
 const splitAvailabilities = (availabilities) => {
     var sortedAvailabilities = {};
@@ -153,11 +163,11 @@ export const sortAvailabilities = (availabilities) => {
     }
 }
 
-export const updateScheduled = (netid) => {
+export const updateScheduled = (user) => {
     return (dispatch) => {
         return dispatch({
             type: "UPDATE_SCHEDULED",
-            netid
+            user
         })
     }
 }
@@ -176,6 +186,32 @@ export const resetActiveShift = () => {
         return dispatch({
             type: "RESET_ACTIVE_SHIFT"
         });
+    }
+}
+
+export const saveScheduled = () => {
+    return async (dispatch, getState) => {
+        // Initially set progress circle
+        dispatch({
+            type: "SAVE_SCHEDULED_PREPARING"
+        });
+        // Get currently scheduled users
+        var { shift, scheduled } = getState().mCal.newActiveShiftReducer;
+        // Prepare user objects for mutation
+        scheduled = scheduled.map((user) => {
+            return { netid: user.netid };
+        });
+        // Save through mutation to GraphQL
+        const promise = await client.mutate({
+            mutation: MasterScheduledMutation,
+            variables: {
+                shift,
+                scheduled
+            }
+        });
+        return dispatch({
+            type: "SAVE_SCHEDULED_FINISHED",
+        })
     }
 }
 

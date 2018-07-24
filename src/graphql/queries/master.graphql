@@ -10,15 +10,11 @@ query MasterScheduleQuery {
         availabilities {
             user {
                 netid
-                firstName
-                lastName
             }
             availability
         }
         scheduled {
-          id
-          firstName
-          lastName
+            netid
         }
       }
     }
