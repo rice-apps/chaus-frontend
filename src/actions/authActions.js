@@ -1,5 +1,11 @@
 import { resource } from './masterActions'
 
+/*
+Function: Parses URL to get ticket returned by IDP, 
+sends to backend, checks if ticket is still valid. If so,
+gets user data
+@param search: String in format of "?ticket=ST-1532455356829-SKjhoBUFUqSquWAMuODVqPisD"
+*/
 export const sendTicket = (search) => {
   var equalSignIndex = search.indexOf('=') + 1;
   var ticket = search.substring(equalSignIndex,);
