@@ -60,9 +60,6 @@ const store = createStore(
     Reducer, applyMiddleware(thunkMiddleware)
 );
 
-initializeCalendar()(store.dispatch, store.getState)
-// initializeStates()(store.dispatch)
-// initializeUser()(store.dispatch)
 ReactDOM.render(
     <ApolloProvider client={client}>
         <Provider store={store}>
