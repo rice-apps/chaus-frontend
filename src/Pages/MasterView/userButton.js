@@ -22,9 +22,7 @@ const UserButton = ({ netid, updateScheduled }) => {
 
 export default connect(
     (state) => {
-        return {
-            
-        }
+        return {}
     },
     (dispatch) => {
         return {
