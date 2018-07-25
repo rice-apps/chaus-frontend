@@ -59,7 +59,8 @@ export const savePreferences = () => {
       type: "PRE_SAVE_PREFERENCE"
     });
     // Get netid
-    const netid = getState().auth.activeUserReducer.activeUser;
+    // const netid = getState().auth.activeUserReducer.activeUser;
+    const netid = getState().auth.authReducer.loggedInUser.netid;
     // Get changed shifts
     const schedule = getState().eCal.newScheduleReducer.schedule;
     var shiftAvailabilities = findChangedShifts(schedule);
