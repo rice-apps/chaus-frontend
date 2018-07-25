@@ -1,7 +1,8 @@
 import { resource } from './masterActions'
 import { client } from '../index';
 // GraphQL 
-import { InitialAuthentication } from '../graphql/queries/auth.graphql';
+import { InitialAuthentication } from '../graphql/mutations/auth.graphql';
+import { AuthenticateUser } from '../graphql/queries/auth.graphql';
 
 /**
  * Function: Parses URL to get ticket returned by IDP, 
@@ -34,6 +35,40 @@ export const sendTicket = (search) => {
         })
       }
     }
+}
+
+/**
+ * Function: Checks for JWT Token and authenticates if present
+ * @param {*} token: String representing JWT Token
+ */
+export const authenticateUser = () => {
+  console.log("And now here");
+  var token = localStorage.getItem('token');
+  return async (dispatch) => {
+    // Let reducer know we are about to query db
+    dispatch({
+      type: "AUTHENTICATION_PROCESSING"
+    });
+    if (token) {
+      // Authenticate against db
+      var authResponse = await client.query({
+        query: AuthenticateUser,
+        variables: {
+          token
+        }
+      });
+      var user = authResponse.data.authenticateUser;
+      dispatch({
+        type: "AUTHENTICATION_SUCCEEDED",
+        user
+      });
+    }
+    else {
+      dispatch({
+        type: "AUTHENTICATION_FAILED"
+      });
+    }
+  }
 }
 
 /**

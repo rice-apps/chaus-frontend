@@ -14,7 +14,7 @@ import { createStore, applyMiddleware, combineReducers } from 'redux'
 import { BrowserRouter, Route, Switch, Link, Redirect } from 'react-router-dom'
 
 import { initializeCalendar } from './actions/employeeActions'
-import { getUserInfo } from './actions/authActions';
+import { getUserInfo, authenticateUser } from './actions/authActions';
 
 
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
@@ -59,6 +59,9 @@ export const client = new ApolloClient({
 const store = createStore(
     Reducer, applyMiddleware(thunkMiddleware)
 );
+
+// Attempt to authenticate user
+authenticateUser()(store.dispatch);
 
 ReactDOM.render(
     <ApolloProvider client={client}>

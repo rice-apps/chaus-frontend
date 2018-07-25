@@ -3,10 +3,11 @@
  */
 
  // Dependencies
-import React from 'react'
+import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import { BrowserRouter, Route, Switch, Link, Redirect } from 'react-router-dom'
-
+// Actions
+import { authenticateUser } from '../actions/authActions';
 // Pages
 import Sidebar from '../Pages/sidebar'
 import MFullCalendar from '../Pages/mCalendar/master-calendar'
@@ -15,7 +16,7 @@ import FullCalendar from '../Pages/eCalendar/full-calendar'
 import LoginPage from '../Pages/login'
 import AddRemove from '../Pages/AddDrop/add-remove'
 import Auth from '../Pages/Auth/auth'
-import {Admin, User} from './InnerAuth'
+import {Admin, Employee} from './InnerAuth'
 import AdminPage from '../Pages/Admin/admin';
 import MemberPage from '../Pages/MemberView/memberPage';
 import MasterPage from '../Pages/MasterView/masterPage';
@@ -50,9 +51,9 @@ const App = () => {
                         <Route path='/login' component={LoginPage}/>
                         <Route path='/auth' component={Auth} />
                         <Route path='/addremove' component={Admin(AddRemove)} />
-                        <Route path='/admin' component={AdminPage} />
-                        <Route path='/member' component={MemberPage} />
-                        <Route path='/master' component={MasterPage} />
+                        <PrivateRoute path='/admin' component={Admin(AdminPage)} />
+                        <PrivateRoute path='/member' component={Employee(MemberPage)} />
+                        <PrivateRoute path='/master' component={Employee(MasterPage)} />
                     </Switch>
                 </BrowserRouter>
             </div>    
