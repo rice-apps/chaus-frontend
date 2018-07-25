@@ -22,6 +22,14 @@ const newScheduleReducer = (state={
     }
 }
 
+// Helper function for newActiveShiftReducer
+const netidSorter = (userList) => {
+    var userListCopy = userList.slice();
+    return userListCopy.sort((userA, userB) => {
+        return userA.netid > userB.netid;
+    });
+}
+
 // TODO: Change reducer name; remove new
 const newActiveShiftReducer = (state={
     shift: "",
@@ -32,10 +40,18 @@ const newActiveShiftReducer = (state={
     switch(action.type) {
         case "SET_SHIFT_ID":
             return {...state, shift: action.shiftId};
-        case "SORT_AVAILABILITIES":
-            return {...state, availabilities: action.sortedAvailabilities};
+        case "SORT_AVAILABILITIES": // TODO: Change name, will be confusing with abc sort
+            var abcSortedAvailabilities = {};
+            for (var priority in action.sortedAvailabilities) {
+                var userList = action.sortedAvailabilities[priority];
+                // Sorts each list of users alphabetically by netid
+                abcSortedAvailabilities[priority] = netidSorter(userList);
+            }
+            return {...state, availabilities: abcSortedAvailabilities};
         case "SET_SCHEDULED":
-            return {...state, scheduled: action.scheduled};
+            // Sorts scheduled users alphabetically by netid 
+            var scheduledList = netidSorter(action.scheduled);
+            return {...state, scheduled: scheduledList};
         case "RESET_ACTIVE_SHIFT":
             return {...state, availabilities: {}, scheduled: []};
         case "UPDATE_SCHEDULED":
@@ -56,9 +72,7 @@ const newActiveShiftReducer = (state={
                 // Push user object into scheduled array
                 scheduled.push(action.user);
                 // Sort alphabetically
-                scheduled.sort((userA, userB) => {
-                    return userA.netid > userB.netid;
-                });
+                scheduled = netidSorter(scheduled);
             }
             return {...state, scheduled: scheduled}
         case "SAVE_SCHEDULED_PREPARING":
