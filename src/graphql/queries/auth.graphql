@@ -1,0 +1,14 @@
+mutation InitialAuthentication($ticket: String!) {
+    initialAuthentication(
+        ticket: $ticket
+    ) {
+        user {
+            id
+            netid
+            firstName
+            lastName
+            role
+        }
+        token
+    }
+}

@@ -1,4 +1,7 @@
 import { resource } from './masterActions'
+import { client } from '../index';
+// GraphQL 
+import { InitialAuthentication } from '../graphql/queries/auth.graphql';
 
 /*
 Function: Parses URL to get ticket returned by IDP, 
@@ -9,29 +12,47 @@ gets user data
 export const sendTicket = (search) => {
   var equalSignIndex = search.indexOf('=') + 1;
   var ticket = search.substring(equalSignIndex,);
-
-  console.log("Parsed Ticket: " + ticket);
-    return (dispatch) => {
-      resource('GET', 'auth'+'?ticket='+ticket).then(
-        (result) => {
-
-          if (result) {
-            dispatch({
-              type: "TICKET_APPROVED",
-              netid: result.user.username,
-              token: result.user.token
-            })
-            // Also set role
-            dispatch(getUserInfo());
-          }
-          else {
-            dispatch({
-              type: "TICKET_DECLINED"
-            })
-          }
+    return async (dispatch) => {
+      var response = await client.mutate({
+        mutation: InitialAuthentication,
+        variables: {
+          ticket
         }
+      });
+      var authPayload = response.data.initialAuthentication;
+      if (authPayload.user && authPayload.token) {
+        dispatch({
+          type: "TICKET_APPROVED",
+          user: authPayload.user,
+          token: authPayload.token
+        });
+      }
+      else {
+        dispatch({
+          type: "TICKET_REJECTED"
+        })
+      }
+      // return ;
+      // resource('GET', 'auth'+'?ticket='+ticket).then(
+      //   (result) => {
 
-      )
+      //     if (result) {
+      //       dispatch({
+      //         type: "TICKET_APPROVED",
+      //         netid: result.user.username,
+      //         token: result.user.token
+      //       })
+      //       // Also set role
+      //       dispatch(getUserInfo());
+      //     }
+      //     else {
+      //       dispatch({
+      //         type: "TICKET_DECLINED"
+      //       })
+      //     }
+      //   }
+
+      // )
 
     }
 }

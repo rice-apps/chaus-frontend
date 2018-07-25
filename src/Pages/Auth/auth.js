@@ -15,25 +15,51 @@ const divStyle = {
   height: '100vh'
 }
 
-const Auth = ({search, loggedIn, sendTicket, redirectUrl, users}) => {
-  // Call action which sends ticket to backend
-  sendTicket(search);
-  // Check whether user is logged in
-  console.log("checking if user is logged in...state: " + loggedIn)
-  if (loggedIn == true) {
-    console.log("logged in... Initializing states..")
-    console.log("redirecting...")
-    redirectUrl()
-    // initializeStates()
-    // console.log("INITIALIZED USERS: " + users)
+class Auth extends Component {
+  constructor(props) {
+    super(props);
+    // On init, send ticket to backend
+    var { sendTicket, search } = props;
+    sendTicket(search);
   }
-  return (
-    <MuiThemeProvider>
-      <div style={divStyle}>
+
+  componentDidUpdate(oldProps, newProps) {
+    var { loggedIn } = newProps;
+    console.log("Checking if user is logged in...");
+    console.log("STate: " + loggedIn);
+    if (loggedIn) {
+      redirectUrl();
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        Authenticating...
       </div>
-    </MuiThemeProvider>
-  )
+    )
+  }
 }
+
+// const Auth = ({search, loggedIn, sendTicket, redirectUrl, users}) => {
+//   // Call action which sends ticket to backend
+//   sendTicket(search);
+//   // Check whether user is logged in
+//   console.log("checking if user is logged in...state: " + loggedIn)
+//   if (loggedIn == true) {
+//     console.log("logged in... Initializing states..")
+//     console.log("redirecting...")
+//     redirectUrl()
+//     // initializeStates()
+//     // console.log("INITIALIZED USERS: " + users)
+//   }
+//   return (
+//     <MuiThemeProvider>
+//       <div style={divStyle}>
+//       </div>
+//     </MuiThemeProvider>
+//   )
+// }
 
 /**
  * Connect method which calls 
