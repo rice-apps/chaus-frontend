@@ -23,16 +23,14 @@ class Auth extends Component {
     sendTicket(search);
   }
 
-  componentDidUpdate(oldProps, newProps) {
-    var { loggedIn } = newProps;
-    console.log("Checking if user is logged in...");
-    console.log("STate: " + loggedIn);
-    if (loggedIn) {
-      redirectUrl();
-    }
-  }
-
   render() {
+    var { loggedInUser, redirectUrl } = this.props;
+    if (loggedInUser) {
+      // Get user role
+      var { role } = loggedInUser;
+      // Redirect based on role
+      redirectUrl(role);
+    }
     return (
       <div>
         Authenticating...
@@ -41,26 +39,6 @@ class Auth extends Component {
   }
 }
 
-// const Auth = ({search, loggedIn, sendTicket, redirectUrl, users}) => {
-//   // Call action which sends ticket to backend
-//   sendTicket(search);
-//   // Check whether user is logged in
-//   console.log("checking if user is logged in...state: " + loggedIn)
-//   if (loggedIn == true) {
-//     console.log("logged in... Initializing states..")
-//     console.log("redirecting...")
-//     redirectUrl()
-//     // initializeStates()
-//     // console.log("INITIALIZED USERS: " + users)
-//   }
-//   return (
-//     <MuiThemeProvider>
-//       <div style={divStyle}>
-//       </div>
-//     </MuiThemeProvider>
-//   )
-// }
-
 /**
  * Connect method which calls 
  */
@@ -68,14 +46,15 @@ export default connect (
     (state, ownProps) => {
       return {
         search: ownProps.location.search,
-        loggedIn: state.auth.authReducer.authenticated,
+        loggedInUser: state.auth.authReducer.loggedInUser,
         users: state.eCal.userReducer.users
       }
     },
     (dispatch, ownProps) => {
         return {
           sendTicket: (search) => dispatch(sendTicket(search)),
-          redirectUrl: () => ownProps.history.push('/mcal'),
+          redirectUrl: (role) => role == 'Admin' ? 
+          ownProps.history.push('/master') : ownProps.history.push('/member'),
           initialize_states: () => dispatch(initializeStates())
         }
     }
