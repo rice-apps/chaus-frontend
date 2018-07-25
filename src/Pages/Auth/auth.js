@@ -25,7 +25,8 @@ class Auth extends Component {
 
   render() {
     var { loggedInUser, redirectUrl } = this.props;
-    if (loggedInUser) {
+    // Do not redirect until loggedInUser appears (i.e. authenticated)
+    if (loggedInUser.role) {
       // Get user role
       var { role } = loggedInUser;
       // Redirect based on role
