@@ -14,7 +14,7 @@ Created by Will on 4/8/18
  * @param {*} action 
  */
 const authReducer = (state={
-    loggedInUser: {}, authenticated: false
+    loggedInUser: {}, authenticated: false, fetching: false
 }, action) => {
     switch(action.type) {
         case "TICKET_APPROVED":
@@ -27,6 +27,14 @@ const authReducer = (state={
             // TODO: Add visual cues to indicate failure
             console.log("Ticket failed");
             return {...state};
+        case "AUTHENTICATION_PROCESSING":
+            return {...state, fetching: true};
+        case "AUTHENTICATION_SUCCEEDED":
+            return {...state, loggedInUser: action.user, fetching: false};
+        case "AUTHENTICATION_FAILED":
+            // Strip token from localStorage since it has expired or been corrupted
+            localStorage.removeItem('token');
+            return {...state, fetching: false};
         default:
             return {...state};
     }
