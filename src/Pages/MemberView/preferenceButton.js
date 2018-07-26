@@ -95,8 +95,9 @@ class PreferenceButton extends PureComponent {
                         anchorOrigin={this.state.anchorOrigin}
                         targetOrigin={this.state.targetOrigin}
                         onRequestClose={this.handleClose}
+                        style={{ backgroundColor: 'transparent ' }}
                         zDepth={0}>
-                            <Menu>
+                            <Menu style={{ backgroundColor: 'transparent ' }}>
                                 <React.Fragment>
                                 {this.createMenuItems(dayName, shift)}                                
                                 </React.Fragment>
