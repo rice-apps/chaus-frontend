@@ -4,6 +4,7 @@
 
  // Dependencies
 import React, { Component } from 'react'
+import '../css/masterPage.scss';
 import {connect} from 'react-redux'
 import { BrowserRouter, Route, Switch, Link, Redirect } from 'react-router-dom'
 // Actions
@@ -41,23 +42,25 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
  )
 
 const App = () => {
-        return (
-            <div>
-                <BrowserRouter>
-                    <Switch>
-                        <PrivateRoute exact path='/' component={FullCalendar}/>
-                        <PrivateRoute path='/ecal' component={FullCalendar}/>
-                        <PrivateRoute path='/mcal' component={MFullCalendar} />
-                        <Route path='/login' component={LoginPage}/>
-                        <Route path='/auth' component={Auth} />
-                        <Route path='/addremove' component={Admin(AddRemove)} />
-                        <PrivateRoute path='/admin' component={Admin(AdminPage)} />
-                        <PrivateRoute path='/member' component={Employee(MemberPage)} />
-                        <PrivateRoute path='/master' component={Employee(MasterPage)} />
-                    </Switch>
-                </BrowserRouter>
-            </div>    
-        )
+    // Fix document body margin
+    document.body.style.margin = 0;
+    return (
+        <div>
+            <BrowserRouter>
+                <Switch>
+                    <PrivateRoute exact path='/' component={FullCalendar}/>
+                    <PrivateRoute path='/ecal' component={FullCalendar}/>
+                    <PrivateRoute path='/mcal' component={MFullCalendar} />
+                    <Route path='/login' component={LoginPage}/>
+                    <Route path='/auth' component={Auth} />
+                    <Route path='/addremove' component={Admin(AddRemove)} />
+                    <PrivateRoute path='/admin' component={Admin(AdminPage)} />
+                    <PrivateRoute path='/member' component={Employee(MemberPage)} />
+                    <PrivateRoute path='/master' component={Employee(MasterPage)} />
+                </Switch>
+            </BrowserRouter>
+        </div>    
+    )
 }
 
 export default App

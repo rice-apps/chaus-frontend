@@ -12,7 +12,7 @@ import '../../css/masterPage.scss';
 const MasterDay = ({ dayName, shifts }) => {
     return (
         <div className="master-day">
-            <h1>{dayName}</h1>
+            <span className="master-title">{dayName}</span>
             {shifts.map((shift) => {
                 // Change logic here if availability structure changes
                 var contextValues = {
@@ -28,7 +28,11 @@ const MasterDay = ({ dayName, shifts }) => {
                     <MasterShiftProvider 
                     value={contextValues}
                     key={shift.id}>
-                        <MasterShift key={shift.id} id={shift.id} />
+                        <MasterShift 
+                        key={shift.id} 
+                        id={shift.id} 
+                        closed={shift.closed}
+                        />
                     </MasterShiftProvider>
                 )
             })}

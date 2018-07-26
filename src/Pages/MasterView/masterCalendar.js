@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 // Components
 import MasterDay from './masterDay';
+import ScheduleTimes from '../../components/ScheduleTimes';
 // Actions
 import { initializeMasterSchedule } from '../../actions/masterActions';
 // GraphQL
@@ -11,13 +12,9 @@ import { initializeMasterSchedule } from '../../actions/masterActions';
 import '../../css/memberPage.scss';
 
 class MasterCalendar extends Component {
-    constructor() {
-        super();
-    }
-
-    // Necessary lifecycle method
-    componentDidMount() {
-        const { initializeMasterSchedule } = this.props;
+    constructor(props) {
+        super(props);
+        const { initializeMasterSchedule } = props;
         initializeMasterSchedule();
     }
 
@@ -26,6 +23,7 @@ class MasterCalendar extends Component {
         var week = schedule.week;
         return (
             <div className="master-calendar">
+                <ScheduleTimes />
                 {week && week.map((day) => {
                     return (
                         <MasterDay

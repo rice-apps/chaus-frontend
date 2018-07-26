@@ -8,12 +8,18 @@ import { MasterShiftContext } from './masterContext';
 // SASS
 import '../../css/masterPage.scss';
 
+// TODO: Change Color based on Slots Filled
+const changeColor = () => {
+    return "#0080FF";
+}
+
 class MasterShift extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            modalOpen: false
-        }
+            modalOpen: false,
+            closed: props.closed
+        };
     }
     handleOpen = () => {
         this.setState({ modalOpen: true });
@@ -22,9 +28,16 @@ class MasterShift extends Component {
         this.setState({ modalOpen: false });
     }
     render() {
+        var { closed } = this.state;
         return (
             <MuiThemeProvider>
-                <div>
+                <div className="master-shift">
+                    <RaisedButton
+                    label=" "
+                    onClick={this.handleOpen}
+                    disabled={closed}
+                    backgroundColor={changeColor()}
+                    />
                     <MasterShiftContext.Consumer>
                     { props => {
                         /*
@@ -45,9 +58,6 @@ class MasterShift extends Component {
                         )
                     }}
                     </MasterShiftContext.Consumer>
-                    <RaisedButton
-                    onClick={this.handleOpen}
-                    />
                 </div>
             </MuiThemeProvider>
         )
