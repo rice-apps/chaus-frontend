@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { RaisedButton } from 'material-ui';
 import CircularProgress from 'material-ui/CircularProgress';
 // Components
+import { EmployeeShiftContext } from './employeeContext';
 import PreferenceButton from './preferenceButton';
 // GraphQL
 // import { SetUserHours, DeleteUser, CreateUser } from '../../graphql/mutations/admin.graphql';
@@ -14,17 +15,8 @@ import { savePreferences } from '../../actions/employeeActions';
 import '../../css/memberPage.scss';
 import { MuiThemeProvider } from 'material-ui/styles';
 
-// const setButton = (dayName, hour) => {
-//     if (dayName == 'Sunday' && hour == '24') {
-//       return (
-//         <ChangeButton />
-//       )
-//     }
-//     return (<PreferenceSelect dayname={dayname} hour={hour} style={{height: 34}} />)
-//   }
-
-const returnButton = (dayName, hour, availabilityId, availability, shiftId, savePreferences, saving, closed ) => {
-    if (dayName == 'Sunday' && hour == '24') {
+const returnButton = (dayName, startTime, saving, savePreferences) => {
+    if (dayName == 'Saturday' && startTime == '24') {
         if (saving) {
             return (<CircularProgress />);
         }
@@ -37,21 +29,20 @@ const returnButton = (dayName, hour, availabilityId, availability, shiftId, save
             )
         }
     }
-    return (<PreferenceButton
-                dayName={dayName}
-                hour={hour}
-                availabilityId={availabilityId}
-                availability={availability}
-                shiftId={shiftId}
-                closed={closed}
-            />)
+    return (
+        <PreferenceButton />
+    )
 }
 
-const EmployeeShift = ({ availability, dayName, hour, availabilityId, shiftId, savePreferences, saving, closed }) => {
+const EmployeeShift = ({ saving, savePreferences }) => {
     return (
         <div className="employee-shift">
             <MuiThemeProvider>
-                {returnButton(dayName, hour, availabilityId, availability, shiftId, savePreferences, saving, closed)}
+                <EmployeeShiftContext.Consumer>
+                {({ dayName, startTime }) => 
+                returnButton(dayName, startTime, saving, savePreferences)
+                }
+                </EmployeeShiftContext.Consumer>
             </MuiThemeProvider>
         </div>
     )
