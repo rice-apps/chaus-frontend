@@ -1,0 +1,33 @@
+.main-container {
+    display: grid;
+    grid-template-columns: 5fr 10fr 5fr;
+    grid-template-rows: auto;
+}
+
+.calendar {
+    &-container {
+        margin-top: 10%;
+    }
+    &-week {
+        display: grid;
+        grid-template-columns: 70px repeat(7, 1fr);
+        grid-column-gap: 1%;
+        grid-template-rows: auto;
+        // justify-content: center;
+    }
+    &-day {
+        display: grid;
+        justify-content: left;
+        margin: 1%;
+        &-title {
+            font-size: 14px;
+            color: rgba(0, 0, 0, 0.54);
+            margin-bottom: 10%;
+        }
+    }
+    &-shift {
+        display: grid;
+        margin-bottom: 5%;
+        width: 2%;
+    }
+}

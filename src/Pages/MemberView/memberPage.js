@@ -12,6 +12,7 @@ import { SetUserPreference, SaveUserPreference } from '../../graphql/mutations/e
 
 // SASS
 import '../../css/memberPage.scss';
+import '../../css/calendar.scss';
 
 const legend = {
     "Undetermined": "#01b4bc",
@@ -25,9 +26,9 @@ const MemberPage = ({ }) => {
     return (
         <div>
             <Sidebar />
-            <div className="employee-container">
+            <div className="main-container">
                 <ColorLegend legend={legend} />
-                <div className="employee-calendar-container">
+                <div className="calendar-container">
                     <EmployeeCalendar />
                 </div>
                 <div className="user-options">

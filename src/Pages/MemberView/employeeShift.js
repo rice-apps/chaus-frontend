@@ -13,7 +13,6 @@ import SaveButton from '../../components/SaveButton';
 import { savePreferences } from '../../actions/employeeActions';
 
 // SASS
-import '../../css/memberPage.scss';
 import { MuiThemeProvider } from 'material-ui/styles';
 
 const returnButton = (dayName, startTime, saving, savePreferences) => {
@@ -32,7 +31,7 @@ const returnButton = (dayName, startTime, saving, savePreferences) => {
 
 const EmployeeShift = ({ saving, savePreferences }) => {
     return (
-        <div className="employee-shift">
+        <div className="calendar-shift">
             <MuiThemeProvider>
                 <EmployeeShiftContext.Consumer>
                 {({ dayName, startTime }) => 

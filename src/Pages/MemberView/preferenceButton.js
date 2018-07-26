@@ -7,7 +7,6 @@ import RaisedButton from 'material-ui/RaisedButton';
 import { Menu, Popover } from 'material-ui';
 import PreferenceMenuItem from './preferenceMenuItem';
 
-import '../../css/memberPage.scss';
 import { EmployeeShiftContext } from './employeeContext';
 
 const changeColor = (preference) => {
