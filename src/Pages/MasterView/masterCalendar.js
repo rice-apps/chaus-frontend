@@ -5,8 +5,6 @@ import MasterDay from './masterDay';
 import ScheduleTimes from '../../components/ScheduleTimes';
 // Actions
 import { initializeMasterSchedule } from '../../actions/masterActions';
-// GraphQL
-// import { SetUserHours, DeleteUser, CreateUser } from '../../graphql/mutations/admin.graphql';
 
 class MasterCalendar extends Component {
     constructor(props) {

@@ -2,8 +2,6 @@ import React, { PureComponent } from 'react'
 // Components
 import EmployeeShift from './employeeShift';
 import { EmployeeShiftContext } from './employeeContext';
-// GraphQL
-// import { SetUserHours, DeleteUser, CreateUser } from '../../graphql/mutations/admin.graphql';
 
 const EmployeeDay = ({ dayName, shifts }) => {
     return (

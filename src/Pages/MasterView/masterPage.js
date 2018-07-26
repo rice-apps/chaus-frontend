@@ -4,8 +4,6 @@ import ColorLegend from '../color-legend';
 import MasterCalendar from './masterCalendar';
 import MasterOptions from './masterOptions';
 import Sidebar from '../sidebar';
-// GraphQL
-// import { SetUserHours, DeleteUser, CreateUser } from '../../graphql/mutations/admin.graphql';
 
 // SASS
 import '../../css/masterPage.scss';

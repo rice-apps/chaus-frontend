@@ -1,6 +1,4 @@
 import React, { PureComponent } from 'react';
-import { Subheader } from 'material-ui';
-// Material UI
 // SASS
 import '../css/calendar.scss';
 

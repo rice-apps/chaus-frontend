@@ -1,14 +1,9 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-// Material UI
-import { RaisedButton } from 'material-ui';
-import CircularProgress from 'material-ui/CircularProgress';
 // Components
 import { EmployeeShiftContext } from './employeeContext';
 import PreferenceButton from './preferenceButton';
 import SaveButton from '../../components/SaveButton';
-// GraphQL
-// import { SetUserHours, DeleteUser, CreateUser } from '../../graphql/mutations/admin.graphql';
 // Actions
 import { savePreferences } from '../../actions/employeeActions';
 

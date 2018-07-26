@@ -1,14 +1,11 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 // Material UI
+import { RaisedButton } from 'material-ui';
 // Components
-// GraphQL
 // Actions
 import { updateScheduled } from '../../actions/masterActions';
 // Context
-// SASS
-import '../../css/masterPage.scss';
-import { RaisedButton } from 'material-ui';
 
 const UserButton = ({ user, updateScheduled }) => {
     var { netid } = user;

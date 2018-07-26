@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
 // Components
 import MasterShift from './masterShift';
-// GraphQL
 // Context
 import { MasterShiftContext, MasterShiftProvider } from './masterContext';
-// import { SetUserHours, DeleteUser, CreateUser } from '../../graphql/mutations/admin.graphql';
 
 // SASS
 import '../../css/masterPage.scss';
