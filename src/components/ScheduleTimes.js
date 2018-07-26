@@ -13,7 +13,8 @@ const ScheduleTimes = () => {
                 displayedTime = slot.toString() + ":55 AM";
             }
             else if (slot >= 12 && slot != 24) {
-                displayedTime = slot % 12;
+                // If slot is 12, displayedTime is 12. Else, displayedTime is mod 12
+                displayedTime = slot == 12 ? slot : slot % 12;
                 displayedTime = displayedTime.toString() + ":55 PM";
             }
             else {
