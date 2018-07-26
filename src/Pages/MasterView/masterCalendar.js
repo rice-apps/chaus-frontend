@@ -8,9 +8,6 @@ import { initializeMasterSchedule } from '../../actions/masterActions';
 // GraphQL
 // import { SetUserHours, DeleteUser, CreateUser } from '../../graphql/mutations/admin.graphql';
 
-// SASS
-import '../../css/memberPage.scss';
-
 class MasterCalendar extends Component {
     constructor(props) {
         super(props);
@@ -22,12 +19,12 @@ class MasterCalendar extends Component {
         var { schedule } = this.props;
         var week = schedule.week;
         return (
-            <div className="master-calendar">
+            <div className="calendar-week">
                 {week && (<ScheduleTimes />)}
                 {week && week.map((day) => {
                     return (
                         <MasterDay
-                        className="master-day"
+                        className="calendar-day"
                         dayName={day.dayName}
                         shifts={day.shifts} 
                         key={day.dayName}

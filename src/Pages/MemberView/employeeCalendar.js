@@ -2,11 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 // Components
 import EmployeeDay from './employeeDay';
+import ScheduleTimes from '../../components/ScheduleTimes';
 // Actions
 import { initializeCalendar } from '../../actions/employeeActions';
-
-// SASS
-import '../../css/memberPage.scss';
 
 class EmployeeCalendar extends Component {
     constructor(props) {
@@ -20,7 +18,8 @@ class EmployeeCalendar extends Component {
         var { schedule } = this.props;
         var week = schedule.week;
         return (
-            <div className="employee-calendar">
+            <div className="calendar-week">
+                {week && (<ScheduleTimes />)}
                 {week && Object.keys(week).map((dayName) => {
                     var day = week[dayName];
                     return (

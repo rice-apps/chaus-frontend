@@ -5,13 +5,10 @@ import { EmployeeShiftContext } from './employeeContext';
 // GraphQL
 // import { SetUserHours, DeleteUser, CreateUser } from '../../graphql/mutations/admin.graphql';
 
-// SASS
-import '../../css/memberPage.scss';
-
 const EmployeeDay = ({ dayName, shifts }) => {
     return (
-        <div className="employee-day">
-            <h1>{dayName}</h1>
+        <div className="calendar-day">
+            <span className="calendar-day-title">{dayName}</span>
             {shifts.map((shift) => {
                 var contextValues = {
                     dayName: dayName,

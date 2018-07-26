@@ -7,7 +7,6 @@ import RaisedButton from 'material-ui/RaisedButton';
 import { Menu, Popover } from 'material-ui';
 import PreferenceMenuItem from './preferenceMenuItem';
 
-import '../../css/memberPage.scss';
 import { EmployeeShiftContext } from './employeeContext';
 
 const changeColor = (preference) => {
@@ -84,6 +83,7 @@ class PreferenceButton extends PureComponent {
                     <div>
                         <div>
                             <RaisedButton
+                            label=" "
                             backgroundColor={changeColor(availability)}
                             onClick={this.handleClick} 
                             disabled={closed}
