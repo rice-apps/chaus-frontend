@@ -5,7 +5,7 @@
 
 .master-container {
     display: grid;
-    grid-template-columns: 5fr 6fr 5fr;
+    grid-template-columns: 5fr 10fr 5fr;
     grid-template-rows: auto;
 }
 
@@ -13,6 +13,7 @@
     &-calendar {
         display: grid;
         grid-template-columns: 70px repeat(7, 1fr);
+        grid-column-gap: 1%;
         grid-template-rows: auto;
         &-container {
             margin-top: 10%;

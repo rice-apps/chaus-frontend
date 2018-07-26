@@ -10,7 +10,7 @@ import '../../css/masterPage.scss';
 
 // TODO: Change Color based on Slots Filled
 const changeColor = () => {
-    return "#0080FF";
+    return "#607d8b";
 }
 
 class MasterShift extends Component {
