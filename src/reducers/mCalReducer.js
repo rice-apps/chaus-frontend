@@ -62,8 +62,10 @@ const newActiveShiftReducer = (state={
             });
             // Remove from scheduled if present
             if (filteredUsers.length > 0) {
-                // Get index of user object
-                var index = scheduled.indexOf(action.user);
+                // Gets netid of each user, then finds index of object with correct netid
+                var index = scheduled
+                .map((user) => { return user.netid })
+                .indexOf(action.user.netid);
                 // Remove user object in place
                 scheduled.splice(index, 1);
             }
