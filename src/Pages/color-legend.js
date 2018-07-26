@@ -4,6 +4,9 @@
 
 import React, {Component} from 'react'
 import FlatButton from 'material-ui/FlatButton'
+import { MuiThemeProvider } from 'material-ui/styles';
+
+import '../css/general.scss';
 
 /*
 Input:
@@ -17,18 +20,20 @@ Ex:
 */
 const ColorLegend = ({legend}) => {
     return (
-        <div style={{position: 'absolute', right: 60, top: 105}}>
+        <div className="color-legend">
+            <MuiThemeProvider>
             {   // Iterate through keys of object
                 Object.keys(legend).map((setting, index) => {
                 // Get color associated to setting
                 var color = legend[setting];
                 return (
-                    <div>
-                        <FlatButton style={{ backgroundColor: color, height: 15, minWidth: 15, marginTop: '-4.5px', marginRight: 5 }} />
+                    <div className="color-key">
+                        <FlatButton style={{ backgroundColor: color, height: 15, minWidth: 15, marginRight: '1%' }} />
                         = {setting}
                     </div>
                 )
             })}
+            </MuiThemeProvider>
         </div>
     )
 }
