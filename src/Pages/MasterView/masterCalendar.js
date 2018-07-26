@@ -41,27 +41,6 @@ class MasterCalendar extends Component {
     }
 }
 
-// const MasterCalendar = ({ schedule, initializeMasterSchedule }) => {
-//     initializeMasterSchedule();
-//     var week = schedule.week;
-//     console.log(schedule);
-//     return (
-//         <div className="employee-calendar">
-//             <h1>Meme</h1>
-//             {week && Object.keys(week).map((dayName) => {
-//                 var day = week[dayName];
-//                 return (
-//                     <EmployeeDay
-//                         dayName={dayName}
-//                         shifts={day.shifts}
-//                         key={dayName}
-//                     />
-//                 )
-//             })}
-//         </div>
-//     )
-// }
-
 export default connect(
     (state) => {
         return {
