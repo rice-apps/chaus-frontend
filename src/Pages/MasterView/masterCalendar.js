@@ -23,7 +23,7 @@ class MasterCalendar extends Component {
         var week = schedule.week;
         return (
             <div className="master-calendar">
-                <ScheduleTimes />
+                {week && (<ScheduleTimes />)}
                 {week && week.map((day) => {
                     return (
                         <MasterDay
