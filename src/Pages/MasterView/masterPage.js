@@ -9,6 +9,7 @@ import Sidebar from '../sidebar';
 
 // SASS
 import '../../css/masterPage.scss';
+import '../../css/calendar.scss';
 
 const legend = {
     "Empty": "#5fa55a",
@@ -21,9 +22,9 @@ const MasterPage = ({ }) => {
     return (
         <div>
             <Sidebar />
-            <div className="master-container">
+            <div className="main-container">
                 <ColorLegend legend={legend} />
-                <div className="master-calendar-container">
+                <div className="calendar-container">
                     <MasterCalendar />
                 </div>
                 <div className="master-options">

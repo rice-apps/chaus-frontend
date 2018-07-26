@@ -11,8 +11,8 @@ import '../../css/masterPage.scss';
 
 const MasterDay = ({ dayName, shifts }) => {
     return (
-        <div className="master-day">
-            <span className="master-title">{dayName}</span>
+        <div className="calendar-day">
+            <span className="calendar-day-title">{dayName}</span>
             {shifts.map((shift) => {
                 // Change logic here if availability structure changes
                 var contextValues = {

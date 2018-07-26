@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { Subheader } from 'material-ui';
 // Material UI
 // SASS
-import '../css/masterPage.scss';
+import '../css/calendar.scss';
 
 const ScheduleTimes = () => {
     const createTimeSlots = () => {
@@ -22,14 +22,14 @@ const ScheduleTimes = () => {
             }
             timeSlots.push(
                 <React.Fragment>
-                    <span className="master-times-title">{displayedTime}</span>
+                    <span className="calendar-times-title">{displayedTime}</span>
                 </React.Fragment>
             );
         };
         return timeSlots;
     }
     return (
-        <div className="master-times">
+        <div className="calendar-times">
             {createTimeSlots()}
         </div>
     )

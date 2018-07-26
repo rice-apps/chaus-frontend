@@ -5,8 +5,6 @@ import { RaisedButton, Dialog, MuiThemeProvider } from 'material-ui';
 import MasterShiftDetailed from './masterShiftDetailed';
 // Context
 import { MasterShiftContext } from './masterContext';
-// SASS
-import '../../css/masterPage.scss';
 
 // TODO: Change Color based on Slots Filled
 const changeColor = () => {
@@ -31,7 +29,7 @@ class MasterShift extends Component {
         var { closed } = this.state;
         return (
             <MuiThemeProvider>
-                <div className="master-shift">
+                <div className="calendar-shift">
                     <RaisedButton
                     label=" "
                     onClick={this.handleOpen}
