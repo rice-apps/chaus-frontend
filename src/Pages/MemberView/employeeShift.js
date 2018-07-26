@@ -6,6 +6,7 @@ import CircularProgress from 'material-ui/CircularProgress';
 // Components
 import { EmployeeShiftContext } from './employeeContext';
 import PreferenceButton from './preferenceButton';
+import SaveButton from '../../components/SaveButton';
 // GraphQL
 // import { SetUserHours, DeleteUser, CreateUser } from '../../graphql/mutations/admin.graphql';
 // Actions
@@ -17,17 +18,12 @@ import { MuiThemeProvider } from 'material-ui/styles';
 
 const returnButton = (dayName, startTime, saving, savePreferences) => {
     if (dayName == 'Saturday' && startTime == '24') {
-        if (saving) {
-            return (<CircularProgress />);
-        }
-        else {
-            return (
-                <RaisedButton
-                    label="Save"
-                    onClick={() => savePreferences()}
-                />
-            )
-        }
+        return (
+            <SaveButton
+            saving={saving}
+            saveMechanism={savePreferences}
+            />
+        )
     }
     return (
         <PreferenceButton />
