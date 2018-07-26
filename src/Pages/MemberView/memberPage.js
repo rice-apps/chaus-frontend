@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 // Components
 import EmployeeCalendar from './employeeCalendar';
 import UserOptions from './userOptions';
+import ColorLegend from '../color-legend';
+import Sidebar from '../sidebar';
 // GraphQL
 import { graphql, compose } from 'react-apollo';
 import { EmployeeCalendarQuery } from '../../graphql/queries/employee.graphql';
@@ -11,14 +13,26 @@ import { SetUserPreference, SaveUserPreference } from '../../graphql/mutations/e
 // SASS
 import '../../css/memberPage.scss';
 
+const legend = {
+    "Undetermined": "#01b4bc",
+    "Preferred": "#5fa55a",
+    "Available": "#f6d51f",
+    "Not Preferred": "#fa8925",
+    "Unavailable": "#fa5457"
+}
+
 const MemberPage = ({ }) => {
     return (
-        <div className="main-container">
-            <div className="employee-calendar-container">
-                <EmployeeCalendar />
-            </div>
-            <div className="user-options">
-                <UserOptions />
+        <div>
+            <Sidebar />
+            <div className="employee-container">
+                <ColorLegend legend={legend} />
+                <div className="employee-calendar-container">
+                    <EmployeeCalendar />
+                </div>
+                <div className="user-options">
+                    <UserOptions />
+                </div>
             </div>
         </div>
     )

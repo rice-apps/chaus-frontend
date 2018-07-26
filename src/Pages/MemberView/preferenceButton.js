@@ -84,6 +84,7 @@ class PreferenceButton extends PureComponent {
                     <div>
                         <div>
                             <RaisedButton
+                            label=" "
                             backgroundColor={changeColor(availability)}
                             onClick={this.handleClick} 
                             disabled={closed}

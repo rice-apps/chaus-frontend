@@ -11,7 +11,7 @@ import '../../css/memberPage.scss';
 const EmployeeDay = ({ dayName, shifts }) => {
     return (
         <div className="employee-day">
-            <h1>{dayName}</h1>
+            <span className="employee-title">{dayName}</span>
             {shifts.map((shift) => {
                 var contextValues = {
                     dayName: dayName,

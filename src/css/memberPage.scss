@@ -2,28 +2,39 @@
 
 // Helpful grid resource
 // https://css-tricks.com/snippets/css/complete-guide-grid/
-.main-container {
+.employee-container {
     display: grid;
-    grid-template-columns: auto;
+    grid-template-columns: 5fr 10fr 5fr;
     grid-template-rows: auto;
 }
 
 .employee {
     &-calendar {
         display: grid;
-        grid-template-columns: 10% 10% 10% 10% 10% 10% 10%;
+        grid-template-columns: 70px repeat(7, 1fr);
+        grid-column-gap: 1%;
         grid-template-rows: auto;
+        &-container {
+            margin-top: 10%;
+        }
     }
     &-day {
-        font-size: 0.5em
+        display: grid;
+        justify-content: left;
+        margin: 1%;
+        // font-size: 0.5em
     }
     &-shift {
-        font-size: 0.5em
+        display: grid;
+        margin-bottom: 5%;
+        width: 2%;
+        // font-size: 0.5em
     }
-    
-    // &-container {
-        
-    // }
+    &-title {
+        font-size: 14px;
+        color: rgba(0, 0, 0, 0.54);
+        margin-bottom: 10%;
+    }
 }
 
 .preference {

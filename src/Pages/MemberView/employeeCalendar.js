@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 // Components
 import EmployeeDay from './employeeDay';
+import ScheduleTimes from '../../components/ScheduleTimes';
 // Actions
 import { initializeCalendar } from '../../actions/employeeActions';
 
@@ -21,6 +22,7 @@ class EmployeeCalendar extends Component {
         var week = schedule.week;
         return (
             <div className="employee-calendar">
+                {week && (<ScheduleTimes />)}
                 {week && Object.keys(week).map((dayName) => {
                     var day = week[dayName];
                     return (
