@@ -5,12 +5,11 @@ import { combineReducers } from 'redux'
 import mCal from './mCalReducer';
 import eCal from './eCalReducer';
 import auth from './authReducer';
-import member from './memberReducer';
 import { routerReducer } from 'react-router-redux'
 
 const Reducer = combineReducers({
-    eCal, mCal, auth, member, routerReducer
+    eCal, mCal, auth, routerReducer
 })
 
 
-export default Reducer
+export default Reducer;

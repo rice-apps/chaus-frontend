@@ -1,4 +1,3 @@
-import { resource } from './masterActions'
 import { client } from '../index';
 // GraphQL 
 import { InitialAuthentication } from '../graphql/mutations/auth.graphql';
@@ -68,33 +67,5 @@ export const authenticateUser = () => {
         type: "AUTHENTICATION_FAILED"
       });
     }
-  }
-}
-
-/**
- * TODO: Remove this action (ensure all things dependent on it change)
- */
-export const getUserInfo = () => {
-  // Get Token from localStorage
-  let token = localStorage.getItem('token');
-  return (dispatch) => {
-    // Call backend method for decoding & providing role
-    resource('GET', 'activeUser/'+token).then(
-      (userInfo) => {
-        dispatch({
-          type: "SET_USER_ROLE",
-          role: userInfo.role
-        })
-        dispatch({
-          type: "SET_USER_NETID",
-          netid: userInfo.netid
-        })
-      }
-    )
-    .catch(
-      (err) => {
-        console.log(err);
-      }
-    )
   }
 }

@@ -59,5 +59,5 @@ const activeUserReducer = (state={role: 'non-user', activeUser: ''}, action) => 
 }
 
 export default combineReducers({
-    authReducer, activeUserReducer
+    authReducer
 });
