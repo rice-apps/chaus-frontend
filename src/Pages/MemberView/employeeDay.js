@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 // Components
 import EmployeeShift from './employeeShift';
+import { EmployeeShiftContext } from './employeeContext';
 // GraphQL
 // import { SetUserHours, DeleteUser, CreateUser } from '../../graphql/mutations/admin.graphql';
 
@@ -12,24 +13,19 @@ const EmployeeDay = ({ dayName, shifts }) => {
         <div className="employee-day">
             <h1>{dayName}</h1>
             {shifts.map((shift) => {
+                var contextValues = {
+                    dayName: dayName,
+                    shift: shift.id,
+                    availability: shift.availabilities,
+                    closed: shift.closed,
+                    startTime: shift.startTime,
+                    changed: false
+                };
                 // Change logic here if availability structure changes
-                let shiftId = shift.id;
-                let availability = shift.availabilities;
-                let availabilityId = "1";
-                let closed = shift.closed;
-                // let availabilityId = shift.availabilities[0].id;
-                let startTime = shift.startTime;
-                let changed = false;
                 return (
-                    <EmployeeShift
-                        availability={availability}
-                        dayName={dayName}
-                        shiftId={shiftId}
-                        hour={startTime}
-                        closed={closed}
-                        availabilityId={availabilityId}
-                        key={startTime}
-                    />
+                    <EmployeeShiftContext.Provider value={contextValues}>
+                        <EmployeeShift key={shift.id} />
+                    </EmployeeShiftContext.Provider>
                 )
             })}
         </div>

@@ -8,10 +8,10 @@ import { updatePreference } from '../../actions/employeeActions';
 //Material Imports
 import { MenuItem } from 'material-ui';
 
-const PreferenceMenuItem = ({ dayName, hour, preference, shiftId, closePopover, changeColor, updatePreference }) => {
+const PreferenceMenuItem = ({ dayName, shift, preference, closePopover, changeColor, updatePreference }) => {
     const handleSelect = () => {
         // Mutation here
-        updatePreference(shiftId, preference, dayName);
+        updatePreference(shift, preference, dayName);
         // Then close select popover
         closePopover();
     }
@@ -29,7 +29,7 @@ export default connect(
     },
     (dispatch) => {
         return {
-            updatePreference: (shiftId, preference, dayName) => dispatch(updatePreference(shiftId, preference, dayName))
+            updatePreference: (shift, preference, dayName) => dispatch(updatePreference(shift, preference, dayName))
         }
     }
 )(PreferenceMenuItem)

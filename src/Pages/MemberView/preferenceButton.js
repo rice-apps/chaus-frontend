@@ -8,6 +8,7 @@ import { Menu, Popover } from 'material-ui';
 import PreferenceMenuItem from './preferenceMenuItem';
 
 import '../../css/memberPage.scss';
+import { EmployeeShiftContext } from './employeeContext';
 
 const changeColor = (preference) => {
   // If we want to stick to a single color scheme
@@ -54,61 +55,56 @@ class PreferenceButton extends PureComponent {
             popoverOpen: false
         });
     }
+    
+    /*
+    TODO: Remove inputs to this method; PreferenceMenuItem should use
+    ContextAPI Consumer to get dayName and shift; currently not using
+    because MaterialUI Popover is messing it up
+    */
+    createMenuItems = (dayName, shift) => {
+        var menuItems = [];
+        for (var preference = 1; preference <= 4; preference++) {
+            menuItems.push(
+                <PreferenceMenuItem
+                dayName={dayName}
+                shift={shift}
+                preference={preference}
+                closePopover={this.handleClose}
+                changeColor={changeColor}
+                />
+            );
+        }
+        return menuItems;
+    }
 
     render() {
-        var { dayName, hour, availability, availabilityId, shiftId, closed } = this.props;
         return (
-            <div>
-                <div>
-                    <RaisedButton
-                    backgroundColor={changeColor(availability)}
-                    onClick={this.handleClick} 
-                    disabled={closed}
-                    />
-                </div>
-                <Popover
-                open={this.state.popoverOpen}
-                anchorEl={this.state.anchorEl}
-                anchorOrigin={this.state.anchorOrigin}
-                targetOrigin={this.state.targetOrigin}
-                onRequestClose={this.handleClose}
-                zDepth={0}>
-                    <Menu>
-                        <PreferenceMenuItem
-                            dayName={dayName}
-                            hour={hour}
-                            shiftId={shiftId}
-                            preference={1}
-                            closePopover={this.handleClose}
-                            changeColor={changeColor}
+            <EmployeeShiftContext.Consumer>
+                {({ dayName, shift, availability, closed }) => (
+                    <div>
+                        <div>
+                            <RaisedButton
+                            backgroundColor={changeColor(availability)}
+                            onClick={this.handleClick} 
+                            disabled={closed}
                             />
-                        <PreferenceMenuItem
-                            dayName={dayName}
-                            hour={hour}
-                            shiftId={shiftId}
-                            preference={2}
-                            closePopover={this.handleClose}
-                            changeColor={changeColor}
-                            />
-                        <PreferenceMenuItem
-                            dayName={dayName}
-                            hour={hour}
-                            shiftId={shiftId}
-                            preference={3}
-                            closePopover={this.handleClose}
-                            changeColor={changeColor}
-                            />
-                        <PreferenceMenuItem
-                            dayName={dayName}
-                            hour={hour}
-                            shiftId={shiftId}
-                            preference={4}
-                            closePopover={this.handleClose}
-                            changeColor={changeColor}
-                            />
-                    </Menu>
-                </Popover>
-            </div>
+                        </div>
+                        <Popover
+                        open={this.state.popoverOpen}
+                        anchorEl={this.state.anchorEl}
+                        anchorOrigin={this.state.anchorOrigin}
+                        targetOrigin={this.state.targetOrigin}
+                        onRequestClose={this.handleClose}
+                        zDepth={0}>
+                            <Menu>
+                                <React.Fragment>
+                                {this.createMenuItems(dayName, shift)}                                
+                                </React.Fragment>
+                            </Menu>
+                        </Popover>
+                    </div>
+                )}
+            </EmployeeShiftContext.Consumer>
         )
     }
 }
