@@ -27,3 +27,13 @@ mutation CreateUser($netid: String!) {
         role
     }
 }
+
+mutation SetUserRole($netid: String!, $role: ROLE) {
+    updateUser(
+        netid: $netid,
+        role: $role
+    ) {
+        netid
+        role
+    }
+}
