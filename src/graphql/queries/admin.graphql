@@ -1,0 +1,11 @@
+query UserDetailQuery($netid: String!) {
+    user(netid: $netid) {
+        id
+        netid
+        idealHour
+        maxHour
+        firstName
+        lastName
+        role
+    }
+}

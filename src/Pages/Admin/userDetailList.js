@@ -8,14 +8,10 @@ import { Mutation } from 'react-apollo';
 // import { SetUserHours, DeleteUser } from '../../graphql/mutations/admin.graphql';
 
 
-// SASS
-import '../../css/adminPage.scss';
-
 const UserDetailList = ({ users, SetUserHours, DeleteUser, AllUsersDetail }) => {
     return (
-        <div>
+        <React.Fragment>
             {users.map((user) => {
-                console.log(user.netid);
                 return (
                     <UserDetailButton 
                     user={user}
@@ -25,7 +21,7 @@ const UserDetailList = ({ users, SetUserHours, DeleteUser, AllUsersDetail }) => 
                     AllUsersDetail={AllUsersDetail} />
                 )
             })}
-        </div>
+        </React.Fragment>
     )
 };
 
