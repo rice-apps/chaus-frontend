@@ -24,6 +24,9 @@ const AdminPage = ({ data: { users = [] }, SetUserHours, DeleteUser, CreateUser 
                 SetUserHours={SetUserHours}
                 DeleteUser={DeleteUser}
                 AllUsersDetail={AllUsersDetail} />
+                    <div className="user-detail-display">
+                    <UserDetailDisplay />
+                    </div>
             </div>
         </div>
     )
