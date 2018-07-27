@@ -57,7 +57,6 @@ class AddUser extends React.Component {
         return (
             <MuiThemeProvider>
                 <div>
-                    <h1>Add User</h1>
                     <TextField
                         floatingLabelText="Netid"
                         value={this.state.netid}

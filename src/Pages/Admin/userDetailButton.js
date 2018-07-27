@@ -1,6 +1,9 @@
 import React, {Component} from 'react'
+import { connect } from 'react-redux';
 // MUI Imports
 import { FlatButton, Popover, Menu, MenuItem, Dialog, RaisedButton } from 'material-ui';
+// Actions
+import { showUserDetail } from '../../actions/adminActions';
 // SASS
 import '../../css/adminPage.scss';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -24,6 +27,9 @@ class UserDetailButton extends React.Component {
             open: true,
             anchorEl: event.currentTarget
         });
+        const { showUserDetail, user } = this.props;
+        // Display info on user
+        showUserDetail(user);
     }
 
     handleRequestClose = () => {
@@ -74,8 +80,6 @@ class UserDetailButton extends React.Component {
     handleSetHours = () => {
         let { netid } = this.state.user;
         let { ideal, max } = this.state;
-        console.log(ideal);
-        console.log(max);
         this.props.SetUserHours(
         {
             variables: {
@@ -153,4 +157,11 @@ class UserDetailButton extends React.Component {
     }
 }
 
-export default UserDetailButton;
+export default connect(
+    (state) => { return {} },
+    (dispatch) => {
+        return {
+            showUserDetail: (user) => dispatch(showUserDetail(user))
+        }
+    }
+)(UserDetailButton);
