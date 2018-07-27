@@ -22,8 +22,8 @@ const pageTitle = () => {
     switch (window.location.pathname) {
         case "/mcal":
             return "Master Calendar"
-        case "/addremove":
-            return "Add/Remove Users"
+        case "/admin":
+            return "Admin Page"
         default:
             return "Employee Calendar"
     }
@@ -57,7 +57,7 @@ const SideBar = ({toggle, toggleMenu, changePage}) => {
                     </MenuItem>
                     <Link to='/ecal' onClick={() => (changePage("eCalendar"), toggleMenu())}><MenuItem>Employee Calendar</MenuItem></Link>
                     <Link to='/mcal' onClick={() => (changePage("mCalendar"), toggleMenu())}><MenuItem>Master Calendar</MenuItem></Link>
-                    <Link to='/addremove' onClick={() => (changePage("addRemove"), toggleMenu())}><MenuItem>Add & Remove Users</MenuItem></Link>
+                    <Link to='/admin' onClick={() => (changePage("admin"), toggleMenu())}><MenuItem>Admin Page</MenuItem></Link>
                     <Link to='/' onClick={() => localStorage.removeItem("token")}>
                         <RaisedButton label="Logout" secondary={true} style={{"margin-left":15}}/>
                     </Link>

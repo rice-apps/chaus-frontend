@@ -43,7 +43,7 @@ export default connect (
         return {
           sendTicket: (search) => dispatch(sendTicket(search)),
           redirectUrl: (role) => role == 'Admin' ? 
-          ownProps.history.push('/master') : ownProps.history.push('/member'),
+          ownProps.history.push('/mcal') : ownProps.history.push('/ecal'),
         }
     }
 )(Auth)
